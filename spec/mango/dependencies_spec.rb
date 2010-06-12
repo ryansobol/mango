@@ -23,7 +23,8 @@ describe Mango::Dependencies do
 
     it "file name to gem name look-up table should be correct" do
       expected = {
-        :spec => :rspec
+        "rack/test".to_sym => "rack-test".to_sym,
+        :spec              => :rspec
       }
       Mango::Dependencies::FILE_NAME_TO_GEM_NAME.should == expected
     end
