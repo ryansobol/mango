@@ -41,9 +41,10 @@ class Mango
 
     # bluecloth is a hidden yard dependency for markdown support
     DEVELOPMENT_GEMS = {
-      :rspec     => '1.3.0',
-      :yard      => '0.5.5',
-      :bluecloth => '2.0.7'
+      "rack-test".to_sym => '0.5.4',
+      :rspec             => '1.3.0',
+      :yard              => '0.5.5',
+      :bluecloth         => '2.0.7'
     }
 
     # Thanx rspec for bucking the pattern :(
@@ -63,7 +64,7 @@ class Mango
     # @param [LoadError] error A rescued exception
     # @raise [RuntimeError] Raised when the `LoadError` argument is an unknown development gem.
     def self.create_warning_for(error)
-      error.message.match(/no such file to load -- (\w*)/) do |match_data|
+      error.message.match(/no such file to load -- ([\w-]*)/) do |match_data|
         file_name = match_data[1].to_sym
         gem_name  = if DEVELOPMENT_GEMS.has_key?(file_name)
           file_name

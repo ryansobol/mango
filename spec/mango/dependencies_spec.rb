@@ -12,9 +12,10 @@ describe Mango::Dependencies do
 
     it "development gem names and versions should be correct" do
       expected = {
-        :rspec     => '1.3.0',
-        :yard      => '0.5.5',
-        :bluecloth => '2.0.7'
+        "rack-test".to_sym => '0.5.4',
+        :rspec             => '1.3.0',
+        :yard              => '0.5.5',
+        :bluecloth         => '2.0.7'
       }
 
       Mango::Dependencies::DEVELOPMENT_GEMS.should == expected
@@ -124,6 +125,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       end
 
       expected = [
+        "rack-test --version '0.5.4'",
         "rspec --version '1.3.0'",
         "yard --version '0.5.5'",
         "bluecloth --version '2.0.7'"
@@ -132,7 +134,9 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
     end
 
     it "should raise an exception when creating a warning from an unknown development gem dependency" do
-      lambda { Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- _fakegem")) }.should raise_exception(RuntimeError, "Cannot create a dependency warning for unknown development gem -- _fakegem")
+      lambda {
+        Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- _fakegem"))
+      }.should raise_exception(RuntimeError, "Cannot create a dependency warning for unknown development gem -- _fakegem")
     end
   end
 

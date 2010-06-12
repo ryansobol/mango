@@ -32,10 +32,13 @@ REQUIREMENTS
 **Required dependencies**
 
 * Ruby 1.9.1
+* Rack 1.1.0
+* Sinatra 1.0
 
 **Optional development dependencies**
 
 * Rake 0.8.7 (bundled with Ruby 1.9.1)
+* Rack::Test 0.5.4
 * RSpec 1.3.0
 * YARD 0.5.5
 * BlueCloth 2.0.7
@@ -47,6 +50,7 @@ INSTALLING
 USAGE
 -----
 
+    $ rackup
 
 EXAMPLE
 -------
