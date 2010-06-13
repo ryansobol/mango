@@ -1,12 +1,12 @@
 # encoding: UTF-8
-require 'lib/mango'
+require File.expand_path(File.dirname(__FILE__) + '/lib/mango')
 Mango::Dependencies.warn_at_exit
 
 ###################################################################################################
 
 begin
   require 'spec/rake/spectask'
-  require 'rack/test' # hidden dependency
+  require 'rack/test' # hidden internal dependency
   Spec::Rake::SpecTask.new(:spec)
   task :default => :spec
 rescue LoadError => e
