@@ -1,5 +1,4 @@
 # encoding: UTF-8
-require 'sinatra'
 require 'sinatra/base'
 
 class Mango

@@ -1,3 +1,3 @@
 # encoding: UTF-8
-require 'lib/mango'
+require ::File.expand_path(::File.dirname(__FILE__) + '/lib/mango')
 run Mango::Application

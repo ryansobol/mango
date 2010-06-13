@@ -2,7 +2,7 @@
 require 'spec_helper'
 require 'rack/test'
 
-set :environment, :test
+Mango::Application.set :environment, :test
 
 describe Mango::Application do
   include Rack::Test::Methods
