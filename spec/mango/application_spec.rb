@@ -14,6 +14,6 @@ describe Mango::Application do
   it "GET / should say hello" do
     get '/'
     last_response.should be_ok
-    last_response.body.should == 'Hello world!'
+    last_response.body.should == "Hello world!\n"
   end
 end

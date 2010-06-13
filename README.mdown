@@ -34,6 +34,7 @@ REQUIREMENTS
 * Ruby 1.9.1
 * Rack 1.1.0
 * Sinatra 1.0
+* Haml 3.0.12
 
 **Optional development dependencies**
 

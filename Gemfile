@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'rack', '1.1.0'
 gem 'sinatra', '1.0'
+gem 'haml', '3.0.12'
 
 group :test do
   gem 'rack-test', '0.5.4'
