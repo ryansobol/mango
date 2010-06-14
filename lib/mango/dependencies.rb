@@ -41,16 +41,16 @@ class Mango
 
     # bluecloth is a hidden yard dependency for markdown support
     DEVELOPMENT_GEMS = {
-      "rack-test".to_sym => '0.5.4',
-      :rspec             => '1.3.0',
-      :yard              => '0.5.5',
-      :bluecloth         => '2.0.7'
+      :'rack-test' => '0.5.4',
+      :rspec       => '1.3.0',
+      :yard        => '0.5.5',
+      :bluecloth   => '2.0.7'
     }
 
-    # Thanx rake-test and rspec for bucking the pattern :(
+    # Bastards...
     FILE_NAME_TO_GEM_NAME = {
-      "rack/test".to_sym => "rack-test".to_sym,
-      :spec              => :rspec
+      :'rack/test' => :'rack-test',
+      :spec        => :rspec
     }
 
     # Empties the warnings cache.  This method is called when the class is required.

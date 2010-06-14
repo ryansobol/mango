@@ -12,10 +12,10 @@ describe Mango::Dependencies do
 
     it "development gem names and versions should be correct" do
       expected = {
-        "rack-test".to_sym => '0.5.4',
-        :rspec             => '1.3.0',
-        :yard              => '0.5.5',
-        :bluecloth         => '2.0.7'
+        :'rack-test' => '0.5.4',
+        :rspec       => '1.3.0',
+        :yard        => '0.5.5',
+        :bluecloth   => '2.0.7'
       }
 
       Mango::Dependencies::DEVELOPMENT_GEMS.should == expected
@@ -23,8 +23,8 @@ describe Mango::Dependencies do
 
     it "file name to gem name look-up table should be correct" do
       expected = {
-        "rack/test".to_sym => "rack-test".to_sym,
-        :spec              => :rspec
+        :'rack/test' => :'rack-test',
+        :spec        => :rspec
       }
       Mango::Dependencies::FILE_NAME_TO_GEM_NAME.should == expected
     end

@@ -4,7 +4,9 @@ require 'haml'
 
 class Mango
   class Application < Sinatra::Base
-    get '/' do
+    set :views, 'themes/default/'
+
+    get '*' do
       haml :index
     end
   end
