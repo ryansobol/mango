@@ -1,4 +1,12 @@
+Mango release 0.1.0 (June 15, 2010)
+===================================
+
+  * Dynamically route HTTP requests to Haml content pages
+  * Route unknown pages to a customizable 404 page
+  * Wrap content pages within customizable Haml templates and layouts
+  * Publish to any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
+
 Mango unrelease 0.0.1 (June 12, 2010)
 =====================================
 
-* First commit of the project
+  * First commit of the project

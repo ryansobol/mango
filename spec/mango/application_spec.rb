@@ -54,7 +54,10 @@ describe Mango::Application do
     <title>App Root Page</title>
   </head>
   <body>
-    <p>Welcome to Mango!</p>
+    <h1>Welcome to Mango!</h1>
+    <div id='content'>
+      <p>/index.haml</p>
+    </div>
   </body>
 </html>
       EXPECTED
@@ -81,7 +84,100 @@ describe Mango::Application do
     <title>App Root Page</title>
   </head>
   <body>
-    <p>Welcome to Mango!</p>
+    <h1>Welcome to Mango!</h1>
+    <div id='content'>
+      <p>/index.haml</p>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+###################################################################################################
+
+  describe "GET /about/" do
+    before(:each) do
+      get '/about/'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should welcome us with the index template" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <div id='content'>
+      <p>/about/index.haml</p>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+###################################################################################################
+
+  describe "GET /about/index" do
+    before(:each) do
+      get '/about/index'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should welcome us with the index template" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <div id='content'>
+      <p>/about/index.haml</p>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+###################################################################################################
+
+  describe "GET /about/us" do
+    before(:each) do
+      get '/about/us'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should welcome us with the index template" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <div id='content'>
+      <p>/about/us.haml</p>
+    </div>
   </body>
 </html>
       EXPECTED

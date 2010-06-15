@@ -4,7 +4,7 @@ gem 'sinatra', '1.0'
 gem 'haml', '3.0.12'
 
 group :server do
-  gem 'rack', '1.1.0'
+  gem 'rack', '1.2.1'
 end
 
 group :test do
