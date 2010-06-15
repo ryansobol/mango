@@ -2,7 +2,7 @@
 
 Image courtesy of [B.C. Tree Fruits LTD.](http://www.bctree.com/products/sourced/mango.php)
 
-Mango release 0.1.0 (June 15, 2010)
+Mango release 0.1.1 (June 15, 2010)
 ===================================
 
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
@@ -14,10 +14,7 @@ Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {
 WHAT'S NEW?
 -----------
 
-  * Dynamically route HTTP requests to Haml content pages
-  * Route unknown pages to a customizable 404 page
-  * Wrap content pages within customizable Haml templates and layouts
-  * Publish to any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
+  * Reserved the 'mango' namespace on RubyGems.org!
 
 Please see {file:doc/HISTORY.mdown} for the historical overview of the project.
 
