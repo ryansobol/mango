@@ -1,0 +1,13 @@
+!!! 5
+%html
+  %head
+    %meta{ :charset => "utf-8" }
+
+    %title= "some title"
+
+    / Include a shiv so that we can style HTML5 elements in IE.
+    / http://remysharp.com/2009/01/07/html5-enabling-script/
+    /[if IE]
+      %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js" }
+  %body
+    = yield

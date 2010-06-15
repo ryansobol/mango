@@ -2,8 +2,10 @@
 require 'spec_helper'
 require 'rack/test'
 
-Mango::Application.set :environment, :test
-Mango::Application.set :views, 'spec/themes/default'
+class Mango::Application
+  set :environment, :test
+  set :root, File.expand_path(File.join(File.dirname(__FILE__), '..', 'app_root'))
+end
 
 describe Mango::Application do
   include Rack::Test::Methods
@@ -12,9 +14,105 @@ describe Mango::Application do
     Mango::Application
   end
 
-  it "GET / should say hello" do
-    get '/'
-    last_response.should be_ok
-    last_response.body.should == "Welcome to Mango!\n"
+###################################################################################################
+
+  describe "directives" do
+    before(:each) do
+      @expected = File.expand_path(File.join(File.dirname(__FILE__), '..', 'app_root'))
+    end
+
+    it "root should be app_root" do
+      Mango::Application.root.should == @expected
+    end
+
+    it "views should be app_root/themes/default/views/" do
+      Mango::Application.views.should == File.join(@expected, 'themes', 'default', 'views')
+    end
+
+    it "content should be app_root/content/" do
+      Mango::Application.content.should == File.join(@expected, 'content')
+    end
   end
+
+###################################################################################################
+
+  describe "GET /" do
+    before(:each) do
+      get '/'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should welcome us with the index template" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <p>Welcome to Mango!</p>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+###################################################################################################
+
+  describe "GET /index" do
+    before(:each) do
+      get '/index'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should welcome us with the index template" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <p>Welcome to Mango!</p>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+###################################################################################################
+
+  describe "GET /page/not/found" do
+    before(:each) do
+      get '/page/not/found'
+    end
+
+    it "should return 404 status code" do
+      last_response.should be_not_found
+    end
+
+    it "should warn us with the 404 template" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <h1>Page not found</h1>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
 end
