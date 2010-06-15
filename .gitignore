@@ -3,5 +3,6 @@
 .rvmrc
 .yardoc
 .yardopts
+*.gem
 *.tmproj
 yardoc
