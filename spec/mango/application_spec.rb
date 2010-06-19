@@ -29,6 +29,10 @@ describe Mango::Application do
       Mango::Application.views.should == File.join(@expected, 'themes', 'default', 'views')
     end
 
+    it "public should be app_root/themes/default/public/" do
+      Mango::Application.public.should == File.join(@expected, 'themes', 'default', 'public')
+    end
+
     it "content should be app_root/content/" do
       Mango::Application.content.should == File.join(@expected, 'content')
     end
@@ -73,6 +77,40 @@ describe Mango::Application do
   describe "GET /index" do
     before(:each) do
       get '/index'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <div id='content'>
+      <p>/index.haml</p>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /index?foo=bar" do
+    before(:each) do
+      get '/index?foo=bar'
     end
 
     it "should return 200 status code" do
@@ -274,7 +312,7 @@ Disallow: /cgi-bin/
     end
 
     it "should send the correct body content" do
-      content_path = File.join(Mango::Application.publik, 'images', 'ripe-mango.jpg')
+      content_path = File.join(Mango::Application.public, 'images', 'ripe-mango.jpg')
       last_response.body.should == File.open(content_path, 'rb').read
     end
   end
