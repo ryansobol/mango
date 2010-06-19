@@ -274,7 +274,7 @@ Disallow: /cgi-bin/
     end
 
     it "should send the correct body content" do
-      content_path = File.join(Mango::Application.theme, 'public', 'images', 'ripe-mango.jpg')
+      content_path = File.join(Mango::Application.publik, 'images', 'ripe-mango.jpg')
       last_response.body.should == File.open(content_path, 'rb').read
     end
   end

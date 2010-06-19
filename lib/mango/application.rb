@@ -60,7 +60,7 @@ class Mango
     set :content, lambda { File.join(root, 'content') }
 
     # TODO refactor
-    set :theme, lambda { File.join(root, 'themes', 'default') }
+    set :publik, lambda { File.join(root, 'themes', 'default', 'public') }
     # /TODO
 
     not_found do
@@ -69,8 +69,8 @@ class Mango
 
     get '*' do
       # TODO refactor
-      public_file_path = File.expand_path(File.join(settings.theme, 'public', params['splat']))
-      if File.exists?(public_file_path) && File.file?(public_file_path) && File.fnmatch(File.join(settings.theme, 'public/*'), public_file_path)
+      public_file_path = File.expand_path(File.join(settings.publik, params['splat'].first))
+      if File.file?(public_file_path) && File.fnmatch(File.join(settings.publik, '*'), public_file_path)
         send_file public_file_path
       end
       # /TODO
