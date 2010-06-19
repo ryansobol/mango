@@ -59,11 +59,22 @@ class Mango
     set :views, lambda { File.join(root, 'themes', 'default', 'views') }
     set :content, lambda { File.join(root, 'content') }
 
+    # TODO refactor
+    set :theme, lambda { File.join(root, 'themes', 'default') }
+    # /TODO
+
     not_found do
       haml :'404'
     end
 
     get '*' do
+      # TODO refactor
+      public_file_path = File.expand_path(File.join(settings.theme, 'public', params['splat']))
+      if File.exists?(public_file_path) && File.file?(public_file_path) && File.fnmatch(File.join(settings.theme, 'public/*'), public_file_path)
+        send_file public_file_path
+      end
+      # /TODO
+
       page_path = build_page_path(params['splat'].first)
       not_found unless File.exist?(page_path)
 

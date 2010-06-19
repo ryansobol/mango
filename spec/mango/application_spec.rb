@@ -14,7 +14,7 @@ describe Mango::Application do
     Mango::Application
   end
 
-###################################################################################################
+  #################################################################################################
 
   describe "directives" do
     before(:each) do
@@ -34,7 +34,7 @@ describe Mango::Application do
     end
   end
 
-###################################################################################################
+  #################################################################################################
 
   describe "GET /" do
     before(:each) do
@@ -45,7 +45,11 @@ describe Mango::Application do
       last_response.should be_ok
     end
 
-    it "should welcome us with the index template" do
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -64,7 +68,7 @@ describe Mango::Application do
     end
   end
 
-###################################################################################################
+  #################################################################################################
 
   describe "GET /index" do
     before(:each) do
@@ -75,7 +79,11 @@ describe Mango::Application do
       last_response.should be_ok
     end
 
-    it "should welcome us with the index template" do
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -94,7 +102,7 @@ describe Mango::Application do
     end
   end
 
-###################################################################################################
+  #################################################################################################
 
   describe "GET /about/" do
     before(:each) do
@@ -105,7 +113,11 @@ describe Mango::Application do
       last_response.should be_ok
     end
 
-    it "should welcome us with the index template" do
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -124,7 +136,7 @@ describe Mango::Application do
     end
   end
 
-###################################################################################################
+  #################################################################################################
 
   describe "GET /about/index" do
     before(:each) do
@@ -135,7 +147,11 @@ describe Mango::Application do
       last_response.should be_ok
     end
 
-    it "should welcome us with the index template" do
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -154,7 +170,7 @@ describe Mango::Application do
     end
   end
 
-###################################################################################################
+  #################################################################################################
 
   describe "GET /about/us" do
     before(:each) do
@@ -165,7 +181,11 @@ describe Mango::Application do
       last_response.should be_ok
     end
 
-    it "should welcome us with the index template" do
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -184,7 +204,7 @@ describe Mango::Application do
     end
   end
 
-###################################################################################################
+  #################################################################################################
 
   describe "GET /page/not/found" do
     before(:each) do
@@ -195,7 +215,86 @@ describe Mango::Application do
       last_response.should be_not_found
     end
 
-    it "should warn us with the 404 template" do
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <h1>Page not found</h1>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /robots.txt" do
+    before(:each) do
+      get '/robots.txt'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/plain'
+    end
+
+    it "should send the correct body content" do
+      last_response.body.should == <<-EXPECTED
+User-agent: *
+Disallow: /cgi-bin/
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /images/ripe-mango.jpg" do
+    before(:each) do
+      get '/images/ripe-mango.jpg'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'image/jpeg'
+    end
+
+    it "should send the correct body content" do
+      content_path = File.join(Mango::Application.theme, 'public', 'images', 'ripe-mango.jpg')
+      last_response.body.should == File.open(content_path, 'rb').read
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /../security_hole.txt" do
+    before(:each) do
+      get '/../security_hole.txt'
+    end
+
+    it "should return 404 status code" do
+      last_response.should be_not_found
+    end
+
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
