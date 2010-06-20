@@ -84,18 +84,20 @@ class Mango
     get '*' do
       uri_path = params['splat'].first
 
-      send_public_file_if_exists(uri_path)
-      render_content_page_if_exists(uri_path)
+      try_sending_public_file(uri_path)
+      try_rendering_content_page(uri_path)
       not_found
     end
+
+    ###############################################################################################
 
     private
 
     # Given a URI path, sends a public file, if it exists, and halts
     #
-    # @param [String] path
+    # @param [String] uri_path
     #
-    def send_public_file_if_exists(uri_path)
+    def try_sending_public_file(uri_path)
       public_match     = File.join(settings.public, '*')
       public_file_path = build_public_file_path(uri_path)
 
@@ -106,9 +108,9 @@ class Mango
 
     # Given a URI path, renders a content page, if it exists, and halts
     #
-    # @param [String] path
+    # @param [String] uri_path
     #
-    def render_content_page_if_exists(uri_path)
+    def try_rendering_content_page(uri_path)
       content_match     = File.join(settings.content, '*')
       content_page_path = build_content_page_path(uri_path)
 
@@ -117,6 +119,10 @@ class Mango
         halt haml(:page)
       end
     end
+
+    ###############################################################################################
+
+    private
 
     # Given a URI path, build a path to a potential public file
     #
