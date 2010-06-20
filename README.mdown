@@ -2,7 +2,7 @@
 
 Image courtesy of [B.C. Tree Fruits LTD.](http://www.bctree.com/products/sourced/mango.php)
 
-Mango release 0.1.1 (June 15, 2010)
+Mango release 0.2.0 (June 19, 2010)
 ===================================
 
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
@@ -14,28 +14,32 @@ Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {
 WHAT'S NEW?
 -----------
 
-  * Reserved the 'mango' namespace on RubyGems.org!
+  * Mango tries to route HTTP requests to static files first
+  * Then it tries to route HTTP requests to Haml content pages
+  * Finally, it routes unknown HTTP requests to a customizable 404 page
 
 Please see {file:doc/HISTORY.mdown} for the historical overview of the project.
 
 SYNOPSIS
 --------
 
-**Mango is a dynamic blog engine for Ruby hackers who believe in minimalism.**
+**Mango is a dynamic website engine for Ruby hackers who believe in minimalism.**
 
-Mango let's you use publish to the web using the tools you're already familiar with -- the file system and your trusty text editor.  With Mango, there is:
+Mango let's you publish to the web using the tools you're already familiar with -- the file system and your trusty text editor.  With Mango, there is:
 
   * No clunky administrator interface for managing content
-  * No unchangeable database requirements -- no database period!
-  * No know exploits  ;)
+  * No database to install, configure, and manage
+
+**The objective of Mango is to share 1 project -- 1 set of files -- between a small team of designers, developers, and content writers.**
 
 FEATURES
 --------
 
-  * Dynamically route HTTP requests to Haml content pages
-  * Route unknown pages to a customizable 404 page
-  * Wrap content pages within customizable Haml templates and layout
-  * Publish to any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
+  * Mango tries to route HTTP requests to static files first
+  * Then it tries to route HTTP requests to Haml content pages
+  * Finally, it routes unknown HTTP requests to a customizable 404 page
+  * Wraps pages within customizable Haml a template and layout
+  * Supports any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
 
 REQUIREMENTS
 ------------
@@ -58,7 +62,7 @@ REQUIREMENTS
 INSTALLING
 ----------
 
-    $ git clone git@github.com:ryansobol/mango.git
+    $ git clone http://github.com/ryansobol/mango.git
     $ cd mango
     $ bundle install
 
@@ -75,6 +79,9 @@ USAGE
     `-- themes
         `-- default
             |-- public
+            |   |-- images
+            |   |   `-- ripe-mango.jpg
+            |   `-- robots.txt
             `-- views
                 |-- 404.haml
                 |-- layout.haml
