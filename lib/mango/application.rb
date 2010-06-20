@@ -82,10 +82,9 @@ class Mango
     end
 
     get '*' do
-      uri_path = params['splat'].first
+      uri_path = params[:splat].first
 
-      try_sending_public_file(uri_path)
-      try_rendering_content_page(uri_path)
+      try_rendering_content_page! uri_path
       not_found
     end
 
@@ -93,44 +92,19 @@ class Mango
 
     private
 
-    # Given a URI path, sends a public file, if it exists, and halts
-    #
-    # @param [String] uri_path
-    #
-    def try_sending_public_file(uri_path)
-      public_match     = File.join(settings.public, '*')
-      public_file_path = build_public_file_path(uri_path)
-
-      if File.file?(public_file_path) && File.fnmatch(public_match, public_file_path)
-        send_file public_file_path
-      end
-    end
-
     # Given a URI path, renders a content page, if it exists, and halts
     #
     # @param [String] uri_path
     #
-    def try_rendering_content_page(uri_path)
+    def try_rendering_content_page!(uri_path)
       content_match     = File.join(settings.content, '*')
       content_page_path = build_content_page_path(uri_path)
 
-      if File.file?(content_page_path) && File.fnmatch(content_match, content_page_path)
-        @page = Haml::Engine.new(File.read(content_page_path)).to_html
-        halt haml(:page)
-      end
-    end
+      return unless File.fnmatch(content_match, content_page_path)
+      return unless File.file?(content_page_path)
 
-    ###############################################################################################
-
-    private
-
-    # Given a URI path, build a path to a potential public file
-    #
-    # @param [String] uri_path
-    # @return [String] The path to a potential public file
-    #
-    def build_public_file_path(uri_path)
-      File.expand_path(File.join(settings.public, uri_path))
+      @page = Haml::Engine.new(File.read(content_page_path)).to_html
+      halt haml(:page)
     end
 
     # Given a URI path, build a path to a potential content page
