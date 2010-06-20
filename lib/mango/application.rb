@@ -43,6 +43,7 @@ class Mango
   # |   |   |-- index.haml
   # |   |   `-- us.haml
   # |   `-- index.haml
+  # |-- index.haml
   # `-- themes
   #     `-- default
   #         |-- public
@@ -64,6 +65,7 @@ class Mango
   #   GET /               => 200 content/index.haml
   #   GET /index          => 200 content/index.haml
   #   GET /index?foo=bar  => 200 content/index.haml
+  #   GET /../index       => 404 content/404.haml
   #   GET /about/         => 200 content/about/index.haml
   #   GET /about/index    => 200 content/about/index.haml
   #   GET /about/us       => 200 content/about/us.haml

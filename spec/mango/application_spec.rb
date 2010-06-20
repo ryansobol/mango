@@ -142,6 +142,37 @@ describe Mango::Application do
 
   #################################################################################################
 
+  describe "GET /../index" do
+    before(:each) do
+      get '/../index'
+    end
+
+    it "should return 404 status code" do
+      last_response.should be_not_found
+    end
+
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <h1>Page not found</h1>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
   describe "GET /about/" do
     before(:each) do
       get '/about/'
