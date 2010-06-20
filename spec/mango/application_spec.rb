@@ -379,4 +379,37 @@ Disallow: /cgi-bin/
     end
   end
 
+  #################################################################################################
+
+  describe "GET /turner%2Bhooch" do
+    before(:each) do
+      get '/turner%2Bhooch'
+    end
+
+    it "should return 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "should send the correct Content-Type header" do
+      last_response['Content-Type'] == 'text/html'
+    end
+
+    it "should send the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>App Root Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <div id='content'>
+      <p>/turner+hooch.haml</p>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
 end

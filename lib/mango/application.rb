@@ -84,7 +84,7 @@ class Mango
     get '*' do
       uri_path = params[:splat].first
 
-      try_rendering_content_page! uri_path
+      render_content_page! uri_path
       not_found
     end
 
@@ -92,11 +92,11 @@ class Mango
 
     private
 
-    # Given a URI path, renders a content page, if it exists, and halts
+    # Given a URI path, attempts to render a content page, if it exists, and halts
     #
     # @param [String] uri_path
     #
-    def try_rendering_content_page!(uri_path)
+    def render_content_page!(uri_path)
       content_match     = File.join(settings.content, '*')
       content_page_path = build_content_page_path(uri_path)
 
