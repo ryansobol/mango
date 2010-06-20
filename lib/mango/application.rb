@@ -6,7 +6,7 @@ class Mango
   # It's probably no surprise that `Mango::Application` is an modular **application** class,
   # inheriting all of the magic and wonder of `Sinatra::Base`.
   #
-  # Currently, the class has a single route hanlder:
+  # Currently, the class has two route handlers:
   #
   # # `GET '*'`
   #
