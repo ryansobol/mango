@@ -36,13 +36,14 @@ class Mango
   # If a `layout.haml` template exists within `settings.views`, all rendered page are automatically
   # wrapped within this layout.
   #
-  # @example A tree view of the file structure for a `Mango::Application`
+  # @example File structure view of a `Mango::Application` (with potential security holes)
   #
   #   |-- content
   #   |   |-- about
   #   |   |   |-- index.haml
   #   |   |   `-- us.haml
   #   |   |-- index.haml
+  #   |   |-- override.haml
   #   |   `-- turner+hooch.haml
   #   |-- index.haml
   #   `-- themes
@@ -50,6 +51,7 @@ class Mango
   #           |-- public
   #           |   |-- images
   #           |   |   `-- ripe-mango.jpg
+  #           |   |-- override
   #           |   `-- robots.txt
   #           |-- security_hole.txt
   #           `-- views
@@ -57,21 +59,24 @@ class Mango
   #               |-- layout.haml
   #               `-- page.haml
   #
-  # @example A table mapping HTTP requests to content pages based on the above file structure
+  # @example HTTP requests mapped to HTTP responses based on the example file structure from above
   #
   #   GET /robots.txt            => 200 themes/default/public/robots.txt
+  #   GET /images/               => 404 content/404.haml (see http://bit.ly/9kLBDx)
+  #   GET /images/index.html     => 200 themes/default/public/images/index.html
   #   GET /images/ripe-mango.jpg => 200 themes/default/public/images/ripe-mango.jpg
   #   GET /../security_hole.txt  => 404 content/404.haml
+  #   GET /override              => 200 themes/default/public/override
   #
-  #   GET /               => 200 content/index.haml
-  #   GET /index          => 200 content/index.haml
-  #   GET /index?foo=bar  => 200 content/index.haml
-  #   GET /../index       => 404 content/404.haml
-  #   GET /about/         => 200 content/about/index.haml
-  #   GET /about/index    => 200 content/about/index.haml
-  #   GET /about/us       => 200 content/about/us.haml
-  #   GET /turner%2Bhooch => 200 content/turner+hooch.haml
-  #   GET /page/not/found => 404 content/404.haml
+  #   GET /                      => 200 content/index.haml
+  #   GET /index                 => 200 content/index.haml
+  #   GET /index?foo=bar         => 200 content/index.haml
+  #   GET /../index              => 404 content/404.haml
+  #   GET /about/                => 200 content/about/index.haml
+  #   GET /about/index           => 200 content/about/index.haml
+  #   GET /about/us              => 200 content/about/us.haml
+  #   GET /turner%2Bhooch        => 200 content/turner+hooch.haml
+  #   GET /page/not/found        => 404 content/404.haml
   #
   class Application < Sinatra::Base
     set :root, File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
