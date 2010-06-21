@@ -38,23 +38,24 @@ class Mango
   #
   # @example A tree view of the file structure for a `Mango::Application`
   #
-  # |-- content
-  # |   |-- about
-  # |   |   |-- index.haml
-  # |   |   `-- us.haml
-  # |   `-- index.haml
-  # |-- index.haml
-  # `-- themes
-  #     `-- default
-  #         |-- public
-  #         |   |-- images
-  #         |   |   `-- ripe-mango.jpg
-  #         |   `-- robots.txt
-  #         |-- security_hole.txt
-  #         `-- views
-  #             |-- 404.haml
-  #             |-- layout.haml
-  #             `-- page.haml
+  #   |-- content
+  #   |   |-- about
+  #   |   |   |-- index.haml
+  #   |   |   `-- us.haml
+  #   |   |-- index.haml
+  #   |   `-- turner+hooch.haml
+  #   |-- index.haml
+  #   `-- themes
+  #       `-- default
+  #           |-- public
+  #           |   |-- images
+  #           |   |   `-- ripe-mango.jpg
+  #           |   `-- robots.txt
+  #           |-- security_hole.txt
+  #           `-- views
+  #               |-- 404.haml
+  #               |-- layout.haml
+  #               `-- page.haml
   #
   # @example A table mapping HTTP requests to content pages based on the above file structure
   #
@@ -69,6 +70,7 @@ class Mango
   #   GET /about/         => 200 content/about/index.haml
   #   GET /about/index    => 200 content/about/index.haml
   #   GET /about/us       => 200 content/about/us.haml
+  #   GET /turner%2Bhooch => 200 content/turner+hooch.haml
   #   GET /page/not/found => 404 content/404.haml
   #
   class Application < Sinatra::Base
