@@ -1,3 +1,9 @@
+Mango release 0.2.1 (June 23, 2010)
+===================================
+
+  * Refactored the application to reduce its code size and increase its maintainability
+  * Improved the application's documentation and tests with additional HTTP routing examples
+
 Mango release 0.2.0 (June 19, 2010)
 ===================================
 

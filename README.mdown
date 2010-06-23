@@ -2,7 +2,7 @@
 
 Image courtesy of [B.C. Tree Fruits LTD.](http://www.bctree.com/products/sourced/mango.php)
 
-Mango release 0.2.0 (June 19, 2010)
+Mango release 0.2.1 (June 23, 2010)
 ===================================
 
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
@@ -14,9 +14,8 @@ Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {
 WHAT'S NEW?
 -----------
 
-  * Mango tries to route HTTP requests to static files first
-  * Then it tries to route HTTP requests to Haml content pages
-  * Finally, it routes unknown HTTP requests to a customizable 404 page
+  * Refactored the application to reduce its code size and increase its maintainability
+  * Improved the application's documentation and tests with additional HTTP routing examples
 
 Please see {file:doc/HISTORY.mdown} for the historical overview of the project.
 
