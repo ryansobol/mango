@@ -6,110 +6,71 @@ class Mango
   # It's probably no surprise that `Mango::Application` is a modular **application** class,
   # inheriting all of the magic and wonder of `Sinatra::Base`.
   #
-  # Currently, the class has three route handlers:
+  # For **every HTTP request**, the application will first attempt to match the request URI path to
+  # a public file found within `settings.public` and send that file.
   #
-  # # `GET *`
+  # In addition to serving static assets, the application has two dynamic route handlers:
   #
-  # First, the application attempts to match the URI path with a file stored in
-  # `settings.public`.  If a public file is found, the handler will:
+  #   * Content Pages with `GET *`
+  #   * Style Sheets with `GET /styles/*.css`
   #
-  #   * Send the public file with a 200 HTTP response code
-  #   * Halt execution
+  # and one error handler:
   #
-  # Next, the route handler attempts to match the URI path with a content page template stored in
-  # `settings.content`.  If a content page template is found, the handler will:
+  #   * 404 Page Not Found with `NOT_FOUND`
   #
-  #   * Read the page into memory
-  #   * Convert the content from Haml to HTML
-  #   * Save the HTML in the `@page` instance variable
-  #   * Render the `page.haml` template found within `settings.views` with a 200 HTTP response code
-  #   * Halt execution
+  # # Serving public files found within `settings.public`
   #
-  # Finally, if no matches are found, the route handler passes execution to the `Error 404` handler.
+  # ### Example requests routed to public files (with potential security holes)
   #
-  # # `GET /styles/*.css`
+  #     |-- content
+  #     |   `-- override.haml
+  #     `-- themes
+  #         `-- default
+  #             |-- public
+  #             |   |-- images
+  #             |   |   |-- index.html
+  #             |   |   `-- ripe-mango.jpg
+  #             |   |-- override
+  #             |   `-- robots.txt
+  #             `-- security_hole.txt
   #
-  # First, the application attempts to match the URI path with a file stored in `settings.public`.
-  # If a public file is found, the handler will:
+  #     GET /robots.txt            => 200 themes/default/public/robots.txt
+  #     GET /images/index.html     => 200 themes/default/public/images/index.html
+  #     GET /images/ripe-mango.jpg => 200 themes/default/public/images/ripe-mango.jpg
+  #     GET /override              => 200 themes/default/public/override
   #
-  #   * Send the public file with a 200 HTTP response code
-  #   * Halt execution
+  #     GET /images/               => pass to NOT_FOUND error handler (see http://bit.ly/9kLBDx)
+  #     GET /../security_hole.txt  => pass to NOT_FOUND error handler
   #
-  # Next, the route handler attempts to match the URI path with a style sheet template stored in
-  # `settings.styles`.  If a style sheet template is found, the handler will:
+  # # Content Pages with `GET *`
   #
-  #   * Read the page into memory
-  #   * Convert the content from Sass to CSS
-  #   * Render the the content with a 200 HTTP response code
-  #   * Halt execution
+  # ### Example `GET *` requests routed to content pages (with potential security holes)
   #
-  # Finally, if no matches are found, the route handler passes execution to the `Error 404` handler.
+  #     |-- content
+  #     |   |-- about
+  #     |   |   |-- index.haml
+  #     |   |   `-- us.haml
+  #     |   |-- index.haml
+  #     |   |-- override.haml
+  #     |   `-- turner+hooch.haml
+  #     `-- security_hole.haml
   #
-  # # `Error 404`
+  #     GET /                      => 200 content/index.haml
+  #     GET /index                 => 200 content/index.haml
+  #     GET /index?foo=bar         => 200 content/index.haml
+  #     GET /about/                => 200 content/about/index.haml
+  #     GET /about/index           => 200 content/about/index.haml
+  #     GET /about/us              => 200 content/about/us.haml
+  #     GET /turner%2Bhooch        => 200 content/turner+hooch.haml
   #
-  # This route handler simply renders the `404.haml` template found within `settings.views`.
+  #     GET /page_not_found        => pass to NOT_FOUND error handler
+  #     GET /../security_hole      => pass to NOT_FOUND error handler
   #
-  # # Layouts
+  # # Style Sheets with `GET /styles/*.css`
   #
-  # If a `layout.haml` template exists within `settings.views`, all other `settings.view` templates
-  # are automatically wrapped within this layout when rendered.
+  # ### Example `GET /styles/*.css` requests routed to style sheets (with potential security holes)
   #
-  # @example Routing `GET *` requests to content pages (with potential security holes)
-  #
-  #   |-- content
-  #   |   |-- about
-  #   |   |   |-- index.haml
-  #   |   |   `-- us.haml
-  #   |   |-- index.haml
-  #   |   |-- override.haml
-  #   |   `-- turner+hooch.haml
-  #   |-- security_hole.haml
-  #   `-- themes
-  #       `-- default
-  #           `-- views
-  #               |-- 404.haml
-  #               |-- layout.haml
-  #               `-- page.haml
-  #
-  #   GET /                      => 200 content/index.haml
-  #   GET /index                 => 200 content/index.haml
-  #   GET /index?foo=bar         => 200 content/index.haml
-  #   GET /about/                => 200 content/about/index.haml
-  #   GET /about/index           => 200 content/about/index.haml
-  #   GET /about/us              => 200 content/about/us.haml
-  #   GET /turner%2Bhooch        => 200 content/turner+hooch.haml
-  #
-  #   GET /page_not_found        => 404 themes/default/views/404.haml
-  #   GET /../security_hole      => 404 themes/default/views/404.haml
-  #
-  # @example Routing `GET *` requests to public files (with potential security holes)
-  #
-  #   |-- content
-  #   |   `-- override.haml
-  #   `-- themes
-  #       `-- default
-  #           |-- public
-  #           |   |-- images
-  #           |   |   |-- index.html
-  #           |   |   `-- ripe-mango.jpg
-  #           |   |-- override
-  #           |   `-- robots.txt
-  #           |-- security_hole.txt
-  #           `-- views
-  #               |-- 404.haml
-  #               `-- layout.haml
-  #
-  #   GET /robots.txt            => 200 themes/default/public/robots.txt
-  #   GET /images/index.html     => 200 themes/default/public/images/index.html
-  #   GET /images/ripe-mango.jpg => 200 themes/default/public/images/ripe-mango.jpg
-  #   GET /override              => 200 themes/default/public/override
-  #
-  #   GET /images/               => 404 themes/default/views/404.haml (see http://bit.ly/9kLBDx)
-  #   GET /../security_hole.txt  => 404 themes/default/views/404.haml
-  #
-  # @example Routing `GET /styles/*.css` requests to style sheets (with potential security holes)
-  #
-  #   `-- themes
+  #     `-- themes
   #       `-- default
   #           |-- public
   #           |   |-- default.css
@@ -119,25 +80,28 @@ class Mango
   #           |       `-- subfolder
   #           |           `-- another.css
   #           |-- security_hole.sass
-  #           |-- styles
-  #           |   |-- override.sass
-  #           |   |-- screen.sass
-  #           |   `-- subfolder
-  #           |       `-- screen.sass
-  #           `-- views
-  #               |-- 404.haml
-  #               `-- layout.haml
+  #           `-- styles
+  #               |-- override.sass
+  #               |-- screen.sass
+  #               `-- subfolder
+  #                   `-- screen.sass
   #
-  #   GET /styles/screen.css            => 200 themes/default/styles/screen.sass
-  #   GET /styles/subfolder/screen.css  => 200 themes/default/styles/subfolder/screen.sass
-  #   GET /styles/reset.css             => 200 themes/default/public/styles/reset.css
-  #   GET /styles/override.css          => 200 themes/default/public/styles/override.css
-  #   GET /default.css                  => 200 themes/default/public/default.css
-  #   GET /styles/subfolder/another.css => 200 themes/default/public/styles/subfolder/another.css
+  #     GET /styles/screen.css            => 200 themes/default/styles/screen.sass
+  #     GET /styles/subfolder/screen.css  => 200 themes/default/styles/subfolder/screen.sass
   #
-  #   GET /styles/style_not_found.css  => 404 themes/default/views/404.haml
-  #   GET /screen.css                  => 404 themes/default/views/404.haml
-  #   GET /styles/../security_hole.css => 404 themes/default/views/404.haml
+  #     GET /styles/reset.css             => 200 themes/default/public/styles/reset.css
+  #     GET /styles/override.css          => 200 themes/default/public/styles/override.css
+  #     GET /default.css                  => 200 themes/default/public/default.css
+  #     GET /styles/subfolder/another.css => 200 themes/default/public/styles/subfolder/another.css
+  #
+  #     GET /styles/style_not_found.css  => pass to NOT_FOUND error handler
+  #     GET /screen.css                  => pass to NOT_FOUND error handler
+  #     GET /styles/../security_hole.css => pass to NOT_FOUND error handler
+  #
+  # # 404 Page Not Found with `NOT_FOUND`
+  #
+  # When a requested URI path cannot be matched with a public file or template file, the error
+  # handler renders the 404 template and sends it with a 404 response.
   #
   class Application < Sinatra::Base
     set :root, File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
@@ -146,15 +110,121 @@ class Mango
     set :styles, lambda { File.join(root, 'themes', 'default', 'styles') }
     set :content, lambda { File.join(root, 'content') }
 
+    # Renders the `404.haml` template found within `settings.views` and sends it with 404 HTTP
+    # response.
+    #
+    # If a `layout.haml` template exists within `settings.views`, the `404.haml` template is wrapped
+    # within this layout when rendered.
+    #
+    # For example:
+    #
+    #     |-- content
+    #     |   `-- index.haml
+    #     `-- themes
+    #         `-- default
+    #             `-- views
+    #                 |-- 404.haml
+    #                 `-- layout.haml
+    #
+    #     GET /page_not_found => 404 themes/default/views/404.haml +
+    #                                themes/default/views/layout.haml
+    #
     not_found do
       haml :'404'
     end
 
+    # Attempts to render style sheet templates found within `settings.styles`
+    #
+    # First, the application attempts to match the URI path with a public CSS file stored in
+    # `settings.public`.  If a public CSS file is found, the handler will:
+    #
+    #   * Send the public CSS file with a 200 HTTP response code
+    #   * Halt execution
+    #
+    #  For example:
+    #
+    #     `-- themes
+    #         `-- default
+    #             `-- public
+    #                 `-- styles
+    #                     `-- reset.css
+    #
+    #     GET /styles/reset.css => 200 themes/default/public/styles/reset.css
+    #
+    # If no match is found, the route handler attempts to match the URI path with a style sheet
+    # template stored in `settings.styles`.  If a style sheet template is found, the handler will:
+    #
+    #   * Read the page into memory
+    #   * Convert the content from Sass to CSS
+    #   * Render the the content with a 200 HTTP response code
+    #   * Halt execution
+    #
+    # For example:
+    #
+    #     `-- themes
+    #         `-- default
+    #             `-- styles
+    #                 `-- screen.sass
+    #
+    #     GET /styles/screen.css => 200 themes/default/styles/screen.sass
+    #
+    # **It's intended that requests to public CSS files and requests to style sheet templates share
+    # the `/styles/` prefix.**
+    #
+    # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
+    # handler.
+    #
     get '/styles/*.css' do |uri_path|
       render_style_sheet! uri_path
       not_found
     end
 
+    # Attempts to render content page templates found within `settings.content`
+    #
+    # First, the application attempts to match the URI path with a public file stored in
+    # `settings.public`.  If a public file is found, the handler will:
+    #
+    #   * Send the public file with a 200 HTTP response code
+    #   * Halt execution
+    #
+    # For example:
+    #
+    #     `-- themes
+    #         `-- default
+    #             `-- public
+    #                 `-- hello_word.html
+    #
+    #     GET /hello_word.html => 200 themes/default/public/hello_word.html
+    #
+    # If no match is found, the route handler attempts to match the URI path with a content page
+    # template stored in `settings.content`.  If a content page template is found, the handler will:
+    #
+    #   * Read the page into memory
+    #   * Convert the content from Haml to HTML
+    #   * Save the HTML in the `@page` instance variable
+    #   * Render the `page.haml` template found within `settings.views` with a 200 HTTP response code
+    #   * Halt execution
+    #
+    # If a `layout.haml` template exists within `settings.views`, the `page.haml` template is wrapped
+    # within this layout when rendered.
+    #
+    # For example:
+    #
+    #     |-- content
+    #     |   `-- index.haml
+    #     `-- themes
+    #         `-- default
+    #             `-- views
+    #                 |-- layout.haml
+    #                 `-- page.haml
+    #
+    #     GET /index => 200 content/index.haml +
+    #                       themes/default/views/page.haml +
+    #                       themes/default/views/layout.haml
+    #
+    # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
+    # handler.
+    #
     get '*' do |uri_path|
       render_content_page! uri_path
       not_found
