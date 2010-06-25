@@ -1,0 +1,6 @@
+--output-dir ./yardoc
+--markup markdown
+-
+LICENSE
+doc/HISTORY.mdown
+doc/ROAD-MAP.mdown

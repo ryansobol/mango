@@ -6,7 +6,7 @@ Mango::Dependencies.warn_at_exit
 
 begin
   require 'spec/rake/spectask'
-  require 'rack/test' # hidden internal dependency
+  require 'rack/test' # for Rack support
   Spec::Rake::SpecTask.new(:spec)
   task :default => :spec
 rescue LoadError => e
@@ -17,7 +17,8 @@ end
 
 begin
   require 'yard'
-  require 'bluecloth' # hidden yard dependency for markdown support
+  require 'bluecloth' # for Markdown support
+  require 'yard/sinatra' # for Sinatra support
   YARD::Rake::YardocTask.new(:yard) do |t|
     t.options += ['--title', "Mango #{Mango::VERSION} Documentation"]
   end

@@ -12,10 +12,11 @@ describe Mango::Dependencies do
 
     it "development gem names and versions should be correct" do
       expected = {
-        :'rack-test' => '0.5.4',
-        :rspec       => '1.3.0',
-        :yard        => '0.5.5',
-        :bluecloth   => '2.0.7'
+        :'rack-test'    => '0.5.4',
+        :rspec          => '1.3.0',
+        :yard           => '0.5.8',
+        :'yard-sinatra' => '0.4.0.1',
+        :bluecloth      => '2.0.7'
       }
 
       Mango::Dependencies::DEVELOPMENT_GEMS.should == expected
@@ -23,8 +24,9 @@ describe Mango::Dependencies do
 
     it "file name to gem name look-up table should be correct" do
       expected = {
-        :'rack/test' => :'rack-test',
-        :spec        => :rspec
+        :'rack/test'          => :'rack-test',
+        :'spec/rake/spectask' => :rspec,
+        :'yard/sinatra'       => :'yard-sinatra'
       }
       Mango::Dependencies::FILE_NAME_TO_GEM_NAME.should == expected
     end
@@ -111,7 +113,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
 
     it "should create and cache one warning from a known development gem dependency" do
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- yard"))
-      Mango::Dependencies.class_variable_get(:@@warnings_cache).should ==  ["yard --version '0.5.5'"]
+      Mango::Dependencies.class_variable_get(:@@warnings_cache).should ==  ["yard --version '0.5.8'"]
     end
 
     it "should create and cache warnings from all known development gem dependencies" do
@@ -128,7 +130,8 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       expected = [
         "rack-test --version '0.5.4'",
         "rspec --version '1.3.0'",
-        "yard --version '0.5.5'",
+        "yard --version '0.5.8'",
+        "yard-sinatra --version '0.4.0.1'",
         "bluecloth --version '2.0.7'"
       ]
       Mango::Dependencies.class_variable_get(:@@warnings_cache).should == expected
@@ -153,7 +156,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
     end
 
     it "should display a warning message to the user on the standard output channel" do
-      Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- spec"))
+      Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- spec/rake/spectask"))
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- yard"))
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- bluecloth"))
       Mango::Dependencies.render_warnings
@@ -161,7 +164,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
 
 The following development gem dependencies could not be found. Without them, some available development features are missing:
 rspec --version '1.3.0'
-yard --version '0.5.5'
+yard --version '0.5.8'
 bluecloth --version '2.0.7'
       MESSAGE
     end

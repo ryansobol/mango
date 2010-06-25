@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Mango do
   describe "version synchronizing" do
     before(:each) do
-      @expected = "0.2.1"
+      @expected = "0.3.0"
     end
 
     it "should be correct for Mango::VERSION" do

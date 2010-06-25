@@ -1,3 +1,23 @@
+Mango release 0.3.0 (June 25, 2010)
+===================================
+
+### New Features:
+
+  * Added a route handler that renders [Sass](http://sass-lang.com/) templates to CSS!
+  * Refactored tests for better spec coverage of route handling
+  * Massive rewrite of internal documentation thanks to the [YARD::Sinatra (modified)](http://github.com/ryansobol/yard-sinatra)
+  * Uploaded developer documentation to [http://yardoc.org/docs/ryansobol-mango](http://yardoc.org/docs/ryansobol-mango)
+
+### Dependencies:
+
+  * Updated [Haml](http://haml-lang.com/) to 3.0.13
+  * Added [YARD::Sinatra](http://github.com/rkh/yard-sinatra) 0.4.0.1 [(modified)](http://github.com/ryansobol/yard-sinatra)
+
+### Bug fixes:
+
+  * Fixed Regex when parsing LoadError messages on missing development dependencies
+  * Fixed rspec gem name detection when requiring spec/rake/spectask in the Rakefile
+
 Mango release 0.2.1 (June 23, 2010)
 ===================================
 
