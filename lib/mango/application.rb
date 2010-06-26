@@ -7,12 +7,12 @@ class Mango
   # inheriting all of the magic and wonder of `Sinatra::Base`.
   #
   # For **every HTTP request**, the application will first attempt to match the request URI path to
-  # a public file found within `settings.public` and send that file.
+  # a public file found within `settings.public` and send that file with a 200 response code.
   #
   # In addition to serving static assets, the application has two dynamic route handlers:
   #
-  #   * Content Pages with `GET *`
-  #   * Style Sheets with `GET /styles/*.css`
+  #   * Content page templates with `GET *`
+  #   * Style sheet templates with `GET /styles/*.css`
   #
   # and one error handler:
   #
@@ -42,7 +42,7 @@ class Mango
   #     GET /images/               => pass to NOT_FOUND error handler (see http://bit.ly/9kLBDx)
   #     GET /../security_hole.txt  => pass to NOT_FOUND error handler
   #
-  # # Content Pages with `GET *`
+  # # Content page templates with `GET *`
   #
   # ### Example `GET *` requests routed to content pages (with potential security holes)
   #
@@ -66,7 +66,7 @@ class Mango
   #     GET /page_not_found        => pass to NOT_FOUND error handler
   #     GET /../security_hole      => pass to NOT_FOUND error handler
   #
-  # # Style Sheets with `GET /styles/*.css`
+  # # Style sheet templates with `GET /styles/*.css`
   #
   # ### Example `GET /styles/*.css` requests routed to style sheets (with potential security holes)
   #
@@ -154,9 +154,8 @@ class Mango
     # If no match is found, the route handler attempts to match the URI path with a style sheet
     # template stored in `settings.styles`.  If a style sheet template is found, the handler will:
     #
-    #   * Read the page into memory
-    #   * Convert the content from Sass to CSS
-    #   * Render the the content with a 200 HTTP response code
+    #   * Convert the style sheet template from Sass to CSS
+    #   * Send the converted style with a 200 HTTP response code
     #   * Halt execution
     #
     # For example:
@@ -202,7 +201,8 @@ class Mango
     #   * Read the page into memory
     #   * Convert the content from Haml to HTML
     #   * Save the HTML in the `@page` instance variable
-    #   * Render the `page.haml` template found within `settings.views` with a 200 HTTP response code
+    #   * Render the `page.haml` template found within `settings.views`
+    #   * Send the rendered page with a 200 HTTP response code
     #   * Halt execution
     #
     # If a `layout.haml` template exists within `settings.views`, the `page.haml` template is wrapped
