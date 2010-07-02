@@ -41,7 +41,7 @@ Mango release 0.1.0 (June 15, 2010)
 
   * Mango tries to route HTTP requests to Haml content pages first
   * Then it routes unknown HTTP requests to a customizable 404 page
-  * Wraps pages within customizable Haml a template and layout
+  * Wraps content pages within a customizable Haml template and layout
   * Supports any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
 
 Mango unrelease 0.0.1 (June 12, 2010)

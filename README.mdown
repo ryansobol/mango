@@ -52,7 +52,7 @@ FEATURES
   * Mango tries to route HTTP requests to static files first
   * Then it tries to route HTTP requests to Haml content pages or Sass style templates
   * Finally, it routes unknown HTTP requests to a customizable 404 page
-  * Wraps content pages within customizable Haml a template and layout
+  * Wraps content pages within a customizable Haml template and layout
   * Supports any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
 
 REQUIREMENTS
