@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'mango', 'version'))
+require File.expand_path(File.join(File.dirname(__FILE__), "lib", "mango", "version"))
 
 Gem::Specification.new do |s|
   s.name        = "mango"
@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.rubyforge_project         = "mango"
 
   s.files        = %w(LICENSE README.mdown)
-  s.require_path = 'lib'
+  s.require_path = "lib"
 end

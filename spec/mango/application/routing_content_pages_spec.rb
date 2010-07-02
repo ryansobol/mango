@@ -1,6 +1,6 @@
 # encoding: UTF-8
-require 'spec_helper'
-require 'rack/test'
+require "spec_helper"
+require "rack/test"
 
 describe Mango::Application do
   include Rack::Test::Methods
@@ -13,7 +13,7 @@ describe Mango::Application do
 
   describe "GET /" do
     before(:each) do
-      get '/'
+      get "/"
     end
 
     it "should return 200 status code" do
@@ -21,7 +21,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -47,7 +47,7 @@ describe Mango::Application do
 
   describe "GET /index" do
     before(:each) do
-      get '/index'
+      get "/index"
     end
 
     it "should return 200 status code" do
@@ -55,7 +55,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -81,7 +81,7 @@ describe Mango::Application do
 
   describe "GET /index?foo=bar" do
     before(:each) do
-      get '/index?foo=bar'
+      get "/index?foo=bar"
     end
 
     it "should return 200 status code" do
@@ -89,7 +89,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -115,7 +115,7 @@ describe Mango::Application do
 
   describe "GET /about/" do
     before(:each) do
-      get '/about/'
+      get "/about/"
     end
 
     it "should return 200 status code" do
@@ -123,7 +123,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -149,7 +149,7 @@ describe Mango::Application do
 
   describe "GET /about/index" do
     before(:each) do
-      get '/about/index'
+      get "/about/index"
     end
 
     it "should return 200 status code" do
@@ -157,7 +157,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -183,7 +183,7 @@ describe Mango::Application do
 
   describe "GET /about/us" do
     before(:each) do
-      get '/about/us'
+      get "/about/us"
     end
 
     it "should return 200 status code" do
@@ -191,7 +191,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -217,7 +217,7 @@ describe Mango::Application do
 
   describe "GET /turner%2Bhooch" do
     before(:each) do
-      get '/turner%2Bhooch'
+      get "/turner%2Bhooch"
     end
 
     it "should return 200 status code" do
@@ -225,7 +225,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -251,7 +251,7 @@ describe Mango::Application do
 
   describe "GET /page_not_found" do
     before(:each) do
-      get '/page_not_found'
+      get "/page_not_found"
     end
 
     it "should return 404 status code" do
@@ -259,7 +259,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -280,9 +280,20 @@ describe Mango::Application do
 
   #################################################################################################
 
+  describe "GET /page_with_missing_view" do
+    it "should raise RuntimeError" do
+      path = File.join(SPEC_APP_ROOT, "themes", "default", "views", "missing_view_template.haml")
+      lambda {
+        get "/page_with_missing_view"
+      }.should raise_exception(RuntimeError, "Unable to find a view template file -- #{path}")
+    end
+  end
+
+  #################################################################################################
+
   describe "GET /../security_hole" do
     before(:each) do
-      get '/../security_hole'
+      get "/../security_hole"
     end
 
     it "should return 404 status code" do
@@ -290,7 +301,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do

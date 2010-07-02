@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-class Mango
+module Mango
   # `Mango::Dependencies` is a class-methods-only **singleton** class that performs both strict
   # parse-time dependency checking and simple, elegant run-time dependency warning.
   #
@@ -27,7 +27,7 @@ class Mango
   #
   # @example Simple usage with the YARD gem
   #   begin
-  #     require 'yard'
+  #     require "yard"
   #     YARD::Rake::YardocTask.new(:yard)
   #   rescue LoadError => e
   #     Mango::Dependencies.create_warning_for(e)
@@ -37,21 +37,21 @@ class Mango
   # @see Mango::Dependencies.warn_at_exit
   class Dependencies
     # For now, starting with Ruby 1.9.1 but I would like to experiment with compatibility with Ruby >= 1.9.1 in the future.
-    REQUIRED_RUBY_VERSION = '1.9.1'
+    REQUIRED_RUBY_VERSION = "1.9.1"
 
     # bluecloth is a hidden yard dependency for markdown support
     DEVELOPMENT_GEMS = {
-      :'rack-test'    => '0.5.4',
-      :rspec          => '1.3.0',
-      :yard           => '0.5.8',
-      :'yard-sinatra' => '0.4.0.1',
-      :bluecloth      => '2.0.7'
+      :"rack-test"    => "0.5.4",
+      :rspec          => "1.3.0",
+      :yard           => "0.5.8",
+      :"yard-sinatra" => "0.4.0.1",
+      :bluecloth      => "2.0.7"
     }
 
     FILE_NAME_TO_GEM_NAME = {
-      :'rack/test'          => :'rack-test',
-      :'spec/rake/spectask' => :rspec,
-      :'yard/sinatra'       => :'yard-sinatra'
+      :"rack/test"          => :"rack-test",
+      :"spec/rake/spectask" => :rspec,
+      :"yard/sinatra"       => :"yard-sinatra"
     }
 
     # Empties the warnings cache.  This method is called when the class is required.
@@ -86,10 +86,10 @@ class Mango
     #
     # @example Sample warning message
     #   The following development gem dependencies could not be found. Without them, some available development features are missing:
-    #   jeweler --version '1.4.0'
-    #   rspec --version '1.3.0'
-    #   yard --version '0.5.3'
-    #   bluecloth --version '2.0.7'
+    #   jeweler --version "1.4.0"
+    #   rspec --version "1.3.0"
+    #   yard --version "0.5.3"
+    #   bluecloth --version "2.0.7"
     def self.render_warnings
       unless @@warnings_cache.empty?
         message = []

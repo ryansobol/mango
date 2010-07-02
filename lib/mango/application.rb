@@ -1,10 +1,13 @@
 # encoding: UTF-8
-require 'sinatra/base'
-require 'haml'
+require "sinatra/base"
+require "haml"
+require "sass"
 
-class Mango
-  # It's probably no surprise that `Mango::Application` is a modular **application** class,
-  # inheriting all of the magic and wonder of `Sinatra::Base`.
+module Mango
+  # It's probably no surprise that `Mango::Application` is a modular **application controller**
+  # class, inheriting all of the magic and wonder of `Sinatra::Base`.  The primary responsibility
+  # of the class is to receive an HTTP request and send an HTML response by instructing the
+  # necessary models and/or views to perform actions based on that request.
   #
   # For **every HTTP request**, the application will first attempt to match the request URI path to
   # a public file found within `settings.public` and send that file with a 200 response code.
@@ -104,11 +107,11 @@ class Mango
   # handler renders the 404 template and sends it with a 404 response.
   #
   class Application < Sinatra::Base
-    set :root, File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-    set :views, lambda { File.join(root, 'themes', 'default', 'views') }
-    set :public, lambda { File.join(root, 'themes', 'default', 'public') }
-    set :styles, lambda { File.join(root, 'themes', 'default', 'styles') }
-    set :content, lambda { File.join(root, 'content') }
+    set :root, File.expand_path(File.join(File.dirname(__FILE__), "..", ".."))
+    set :views, lambda { File.join(root, "themes", "default", "views") }
+    set :public, lambda { File.join(root, "themes", "default", "public") }
+    set :styles, lambda { File.join(root, "themes", "default", "styles") }
+    set :content, lambda { File.join(root, "content") }
 
     # Renders the `404.haml` template found within `settings.views` and sends it with 404 HTTP
     # response.
@@ -130,7 +133,7 @@ class Mango
     #                                themes/default/views/layout.haml
     #
     not_found do
-      haml :'404'
+      haml :"404"
     end
 
     # Attempts to render style sheet templates found within `settings.styles`
@@ -173,7 +176,7 @@ class Mango
     # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
     # handler.
     #
-    get '/styles/*.css' do |uri_path|
+    get "/styles/*.css" do |uri_path|
       render_style_sheet! uri_path
       not_found
     end
@@ -198,15 +201,13 @@ class Mango
     # If no match is found, the route handler attempts to match the URI path with a content page
     # template stored in `settings.content`.  If a content page template is found, the handler will:
     #
-    #   * Read the page into memory
-    #   * Convert the content from Haml to HTML
-    #   * Save the HTML in the `@page` instance variable
-    #   * Render the `page.haml` template found within `settings.views`
-    #   * Send the rendered page with a 200 HTTP response code
-    #   * Halt execution
+    #   * Read the content page into memory and assign it to the `@content_page` instance variable
+    #   * Render the content page's view template file (see `Mango::ContentPages`)
+    #     * A `RuntimeError` is raised if the view template does not exist within `settings.views`
+    #   * Send the rendered page with a 200 HTTP response code and halt execution
     #
-    # If a `layout.haml` template exists within `settings.views`, the `page.haml` template is wrapped
-    # within this layout when rendered.
+    # In addition, if a `layout.haml` template exists within `settings.views`, the page's view
+    # template is wrapped within this layout when rendered.
     #
     # For example:
     #
@@ -225,7 +226,7 @@ class Mango
     # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
     # handler.
     #
-    get '*' do |uri_path|
+    get "*" do |uri_path|
       render_content_page! uri_path
       not_found
     end
@@ -239,23 +240,23 @@ class Mango
     # @param [String] uri_path
     #
     def render_style_sheet!(uri_path)
-      styles_match     = File.join(settings.styles, '*')
+      styles_match     = File.join(settings.styles, "*")
       style_sheet_path = build_style_sheet_path(uri_path)
 
       return unless File.fnmatch(styles_match, style_sheet_path)
       return unless File.file?(style_sheet_path)
 
-      content_type 'text/css'
+      content_type "text/css"
       halt sass(uri_path.to_sym, :views => settings.styles)
     end
 
     # Given a URI path, build a path to a potential style sheet
     #
     # @param [String] uri_path
-    # @param [String] format
+    # @param [String] format (defaults to `sass`)
     # @return [String] The path to a potential style sheet
     #
-    def build_style_sheet_path(uri_path, format = 'sass')
+    def build_style_sheet_path(uri_path, format = "sass")
       File.expand_path(File.join(settings.styles, "#{uri_path}.#{format}"))
     end
 
@@ -266,27 +267,35 @@ class Mango
     # Given a URI path, attempts to render a content page, if it exists, and halt
     #
     # @param [String] uri_path
+    # @raise [RuntimeError] Raised when the content page's view template cannot be found
     #
     def render_content_page!(uri_path)
-      content_match     = File.join(settings.content, '*')
+      content_match     = File.join(settings.content, "*")
       content_page_path = build_content_page_path(uri_path)
-
       return unless File.fnmatch(content_match, content_page_path)
-      return unless File.file?(content_page_path)
 
-      @page = Haml::Engine.new(File.read(content_page_path)).to_html
-      halt haml(:page)
+      begin
+        @content_page = Mango::ContentPage.find_by_path(content_page_path)
+      rescue Mango::ContentPage::PageNotFound
+        return
+      end
+
+      begin
+        halt haml(@content_page.view)
+      rescue Errno::ENOENT
+        view_path = File.expand_path(File.join(settings.views, "#{@content_page.view}.haml"))
+        raise "Unable to find a view template file -- #{view_path}"
+      end
     end
 
     # Given a URI path, build a path to a potential content page
     #
     # @param [String] uri_path
-    # @param [String] format
     # @return [String] The path to a potential content page
     #
-    def build_content_page_path(uri_path, format = 'haml')
-      uri_path += 'index' if uri_path[-1] == '/'
-      File.expand_path(File.join(settings.content, "#{uri_path}.#{format}"))
+    def build_content_page_path(uri_path)
+      uri_path += "index" if uri_path[-1] == "/"
+      File.expand_path(File.join(settings.content, uri_path))
     end
 
   end

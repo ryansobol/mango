@@ -1,6 +1,6 @@
 # encoding: UTF-8
-require 'spec_helper'
-require 'rack/test'
+require "spec_helper"
+require "rack/test"
 
 describe Mango::Application do
   include Rack::Test::Methods
@@ -13,7 +13,7 @@ describe Mango::Application do
 
   describe "directives" do
     before(:each) do
-      @expected = File.expand_path(File.join(File.dirname(__FILE__), '..', 'app_root'))
+      @expected = SPEC_APP_ROOT
     end
 
     it "root should be app_root" do
@@ -21,19 +21,19 @@ describe Mango::Application do
     end
 
     it "views should be app_root/themes/default/views/" do
-      Mango::Application.views.should == File.join(@expected, 'themes', 'default', 'views')
+      Mango::Application.views.should == File.join(@expected, "themes", "default", "views")
     end
 
     it "public should be app_root/themes/default/public/" do
-      Mango::Application.public.should == File.join(@expected, 'themes', 'default', 'public')
+      Mango::Application.public.should == File.join(@expected, "themes", "default", "public")
     end
 
     it "styles should be app_root/themes/default/styles/" do
-      Mango::Application.styles.should == File.join(@expected, 'themes', 'default', 'styles')
+      Mango::Application.styles.should == File.join(@expected, "themes", "default", "styles")
     end
 
     it "content should be app_root/content/" do
-      Mango::Application.content.should == File.join(@expected, 'content')
+      Mango::Application.content.should == File.join(@expected, "content")
     end
   end
 

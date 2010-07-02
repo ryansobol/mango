@@ -1,6 +1,6 @@
 # encoding: UTF-8
-require 'spec_helper'
-require 'rack/test'
+require "spec_helper"
+require "rack/test"
 
 describe Mango::Application do
   include Rack::Test::Methods
@@ -13,7 +13,7 @@ describe Mango::Application do
 
   describe "GET /robots.txt" do
     before(:each) do
-      get '/robots.txt'
+      get "/robots.txt"
     end
 
     it "should return 200 status code" do
@@ -21,7 +21,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/plain'
+      last_response["Content-Type"] == "text/plain"
     end
 
     it "should send the correct body content" do
@@ -36,7 +36,7 @@ Disallow: /cgi-bin/
 
   describe "GET /images/index.html" do
     before(:each) do
-      get '/images/index.html'
+      get "/images/index.html"
     end
 
     it "should return 200 status code" do
@@ -44,7 +44,7 @@ Disallow: /cgi-bin/
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -67,7 +67,7 @@ Disallow: /cgi-bin/
 
   describe "GET /images/ripe-mango.jpg" do
     before(:each) do
-      get '/images/ripe-mango.jpg'
+      get "/images/ripe-mango.jpg"
     end
 
     it "should return 200 status code" do
@@ -75,12 +75,12 @@ Disallow: /cgi-bin/
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'image/jpeg'
+      last_response["Content-Type"] == "image/jpeg"
     end
 
     it "should send the correct body content" do
-      content_path = File.join(Mango::Application.public, 'images', 'ripe-mango.jpg')
-      last_response.body.should == File.open(content_path, 'rb').read
+      content_path = File.join(Mango::Application.public, "images", "ripe-mango.jpg")
+      last_response.body.should == File.open(content_path, "rb").read
     end
   end
 
@@ -88,7 +88,7 @@ Disallow: /cgi-bin/
 
   describe "GET /override" do
     before(:each) do
-      get '/override'
+      get "/override"
     end
 
     it "should return 200 status code" do
@@ -96,7 +96,7 @@ Disallow: /cgi-bin/
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -120,7 +120,7 @@ Disallow: /cgi-bin/
   # see http://bit.ly/9kLBDx
   describe "GET /images/" do
     before(:each) do
-      get '/images/'
+      get "/images/"
     end
 
     it "should return 404 status code" do
@@ -128,7 +128,7 @@ Disallow: /cgi-bin/
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do
@@ -151,7 +151,7 @@ Disallow: /cgi-bin/
 
   describe "GET /../security_hole.txt" do
     before(:each) do
-      get '/../security_hole.txt'
+      get "/../security_hole.txt"
     end
 
     it "should return 404 status code" do
@@ -159,7 +159,7 @@ Disallow: /cgi-bin/
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'] == 'text/html'
+      last_response["Content-Type"] == "text/html"
     end
 
     it "should send the correct body content" do

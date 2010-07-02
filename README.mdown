@@ -65,6 +65,7 @@ REQUIREMENTS
   * [Sinatra](http://www.sinatrarb.com/) 1.0
   * [Haml](http://haml-lang.com/) 3.0.13
   * [Sass](http://sass-lang.com/) 3.0.13 (bundled with Haml)
+  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.7
 
 **Optional development dependencies**
 

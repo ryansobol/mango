@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require 'spec_helper'
+require "spec_helper"
 
 describe Mango::Dependencies do
 
@@ -7,16 +7,16 @@ describe Mango::Dependencies do
 
   describe "class constant and variable defaults" do
     it "required ruby version should be correct" do
-      Mango::Dependencies::REQUIRED_RUBY_VERSION.should == '1.9.1'
+      Mango::Dependencies::REQUIRED_RUBY_VERSION.should == "1.9.1"
     end
 
     it "development gem names and versions should be correct" do
       expected = {
-        :'rack-test'    => '0.5.4',
-        :rspec          => '1.3.0',
-        :yard           => '0.5.8',
-        :'yard-sinatra' => '0.4.0.1',
-        :bluecloth      => '2.0.7'
+        :"rack-test"    => "0.5.4",
+        :rspec          => "1.3.0",
+        :yard           => "0.5.8",
+        :"yard-sinatra" => "0.4.0.1",
+        :bluecloth      => "2.0.7"
       }
 
       Mango::Dependencies::DEVELOPMENT_GEMS.should == expected
@@ -24,9 +24,9 @@ describe Mango::Dependencies do
 
     it "file name to gem name look-up table should be correct" do
       expected = {
-        :'rack/test'          => :'rack-test',
-        :'spec/rake/spectask' => :rspec,
-        :'yard/sinatra'       => :'yard-sinatra'
+        :"rack/test"          => :"rack-test",
+        :"spec/rake/spectask" => :rspec,
+        :"yard/sinatra"       => :"yard-sinatra"
       }
       Mango::Dependencies::FILE_NAME_TO_GEM_NAME.should == expected
     end
@@ -38,7 +38,7 @@ describe Mango::Dependencies do
 
   #################################################################################################
 
-  describe '.check_ruby_version (private)' do
+  describe ".check_ruby_version (private)" do
     before(:each) do
       $stderr = StringIO.new
     end
@@ -55,35 +55,35 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
     end
 
     it "should abort for ruby 1.8.6" do
-      version = '1.8.6'
+      version = "1.8.6"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should raise_exception(SystemExit, expected_message(version))
     end
 
     it "should abort for ruby 1.8.7" do
-      version = '1.8.7'
+      version = "1.8.7"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should raise_exception(SystemExit, expected_message(version))
     end
 
     it "should abort for ruby 1.9.0" do
-      version = '1.9.0'
+      version = "1.9.0"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should raise_exception(SystemExit, expected_message(version))
     end
 
     it "should not abort for ruby 1.9.1" do
-      version = '1.9.1'
+      version = "1.9.1"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should_not raise_exception(SystemExit, expected_message(version))
     end
 
     it "should abort for ruby 1.9.2" do
-      version = '1.9.2'
+      version = "1.9.2"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should raise_exception(SystemExit, expected_message(version))
@@ -92,7 +92,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
 
   #################################################################################################
 
-  describe '.destroy_warnings' do
+  describe ".destroy_warnings" do
     it "should empty the warnings cache" do
       Mango::Dependencies.class_variable_get(:@@warnings_cache).should be_empty
 
@@ -106,7 +106,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
 
   #################################################################################################
 
-  describe '.create_warning_for' do
+  describe ".create_warning_for" do
     after(:each) do
       Mango::Dependencies.destroy_warnings
     end
@@ -146,7 +146,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
 
   #################################################################################################
 
-  describe '.render_warnings' do
+  describe ".render_warnings" do
     before(:each) do
       $stdout = StringIO.new
     end
@@ -172,14 +172,14 @@ bluecloth --version '2.0.7'
     it "should not display a warning message to the user if there are no warnings in the cache" do
       Mango::Dependencies.destroy_warnings
       Mango::Dependencies.render_warnings
-      $stdout.string.should == ''
+      $stdout.string.should be_empty
     end
   end
 
   #################################################################################################
 
-  describe '.warn_at_exit' do
-    it 'should ensure Kernel#at_exit is invoked with a block' do
+  describe ".warn_at_exit" do
+    it "should ensure Kernel#at_exit is invoked with a block" do
       Mango::Dependencies.should_receive(:at_exit)
       # TODO how to specify that #at_exit receives a block?
       # maybe i can intercept the block, execute it and test the output?

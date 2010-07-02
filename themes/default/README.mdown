@@ -1,0 +1,13 @@
+Smashing Mangos release 0.1.0 (July 1, 2010)
+============================================
+
+Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the LICENSE for more information.
+
+SYNOPSIS
+--------
+
+**Smashing Mangos** is a [Mango](http://github.com/ryansobol/mango) theme inspired, and lovingly remixed,
+by "[Coding A HTML 5 Layout From Scratch](http://www.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/)"
+written by [Enrique Ramirez](http://enrique-ramirez.com/)
+and published by [Smashing Magazine](http://www.smashingmagazine.com/)
+on August 4th, 2009.

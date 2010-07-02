@@ -1,12 +1,12 @@
 # encoding: UTF-8
-require File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'mango'))
+require File.expand_path(File.join(File.dirname(__FILE__), "lib", "mango"))
 Mango::Dependencies.warn_at_exit
 
 ###################################################################################################
 
 begin
-  require 'spec/rake/spectask'
-  require 'rack/test' # for Rack support
+  require "spec/rake/spectask"
+  require "rack/test" # for Rack support
   Spec::Rake::SpecTask.new(:spec)
   task :default => :spec
 rescue LoadError => e
@@ -16,11 +16,11 @@ end
 ###################################################################################################
 
 begin
-  require 'yard'
-  require 'bluecloth' # for Markdown support
-  require 'yard/sinatra' # for Sinatra support
+  require "yard"
+  require "bluecloth" # for Markdown support
+  require "yard/sinatra" # for Sinatra support
   YARD::Rake::YardocTask.new(:yard) do |t|
-    t.options += ['--title', "Mango #{Mango::VERSION} Documentation"]
+    t.options += ["--title", "Mango #{Mango::VERSION} Documentation"]
   end
 rescue LoadError => e
   Mango::Dependencies.create_warning_for(e)
@@ -46,9 +46,9 @@ namespace :gem do
 
   desc "Builds, pushes, and cleans a gem for the current project"
   task :release do
-    Rake::Task['gem:build'].invoke
-    Rake::Task['gem:push'].invoke
-    Rake::Task['gem:clean'].invoke
+    Rake::Task["gem:build"].invoke
+    Rake::Task["gem:push"].invoke
+    Rake::Task["gem:clean"].invoke
   end
 
   def jeweler(&block)

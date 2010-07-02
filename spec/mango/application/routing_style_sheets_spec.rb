@@ -1,6 +1,6 @@
 # encoding: UTF-8
-require 'spec_helper'
-require 'rack/test'
+require "spec_helper"
+require "rack/test"
 
 describe Mango::Application do
   include Rack::Test::Methods
@@ -13,7 +13,7 @@ describe Mango::Application do
 
   describe "GET /styles/screen.css" do
     before(:each) do
-      get '/styles/screen.css'
+      get "/styles/screen.css"
     end
 
     it "should return 200 status code" do
@@ -21,7 +21,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/css'
+      last_response["Content-Type"].should == "text/css"
     end
 
     it "should send the correct body content" do
@@ -43,7 +43,7 @@ describe Mango::Application do
 
   describe "GET /styles/subfolder/screen.css" do
     before(:each) do
-      get '/styles/subfolder/screen.css'
+      get "/styles/subfolder/screen.css"
     end
 
     it "should return 200 status code" do
@@ -51,7 +51,7 @@ describe Mango::Application do
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/css'
+      last_response["Content-Type"].should == "text/css"
     end
 
     it "should send the correct body content" do
@@ -74,7 +74,7 @@ li {
 
   describe "GET /styles/reset.css" do
     before(:each) do
-      get '/styles/reset.css'
+      get "/styles/reset.css"
     end
 
     it "should return 200 status code" do
@@ -82,7 +82,7 @@ li {
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/css'
+      last_response["Content-Type"].should == "text/css"
     end
 
     it "should send the correct body content" do
@@ -122,7 +122,7 @@ time, mark, audio, video {
 
   describe "GET /styles/override.css" do
     before(:each) do
-      get '/styles/override.css'
+      get "/styles/override.css"
     end
 
     it "should return 200 status code" do
@@ -130,7 +130,7 @@ time, mark, audio, video {
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/css'
+      last_response["Content-Type"].should == "text/css"
     end
 
     it "should send the correct body content" do
@@ -146,7 +146,7 @@ time, mark, audio, video {
 
   describe "GET /default.css" do
     before(:each) do
-      get '/default.css'
+      get "/default.css"
     end
 
     it "should return 200 status code" do
@@ -154,7 +154,7 @@ time, mark, audio, video {
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/css'
+      last_response["Content-Type"].should == "text/css"
     end
 
     it "should send the correct body content" do
@@ -170,7 +170,7 @@ time, mark, audio, video {
 
   describe "GET /styles/subfolder/another.css" do
     before(:each) do
-      get '/styles/subfolder/another.css'
+      get "/styles/subfolder/another.css"
     end
 
     it "should return 200 status code" do
@@ -178,7 +178,7 @@ time, mark, audio, video {
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/css'
+      last_response["Content-Type"].should == "text/css"
     end
 
     it "should send the correct body content" do
@@ -194,7 +194,7 @@ time, mark, audio, video {
 
   describe "GET /styles/style_not_found.css" do
     before(:each) do
-      get '/styles/style_not_found.css'
+      get "/styles/style_not_found.css"
     end
 
     it "should return 404 status code" do
@@ -202,7 +202,7 @@ time, mark, audio, video {
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/html'
+      last_response["Content-Type"].should == "text/html"
     end
 
     it "should send the correct body content" do
@@ -225,7 +225,7 @@ time, mark, audio, video {
 
   describe "GET /screen.css" do
     before(:each) do
-      get '/screen.css'
+      get "/screen.css"
     end
 
     it "should return 404 status code" do
@@ -233,7 +233,7 @@ time, mark, audio, video {
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/html'
+      last_response["Content-Type"].should == "text/html"
     end
 
     it "should send the correct body content" do
@@ -256,7 +256,7 @@ time, mark, audio, video {
 
   describe "GET /styles/../security_hole.css" do
     before(:each) do
-      get '/styles/../security_hole.css'
+      get "/styles/../security_hole.css"
     end
 
     it "should return 404 status code" do
@@ -264,7 +264,7 @@ time, mark, audio, video {
     end
 
     it "should send the correct Content-Type header" do
-      last_response['Content-Type'].should == 'text/html'
+      last_response["Content-Type"].should == "text/html"
     end
 
     it "should send the correct body content" do
