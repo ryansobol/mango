@@ -8,7 +8,7 @@ Mango release 0.4.0 (August 30, 2010)
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
 **Source Code**: [http://github.com/ryansobol/mango](http://github.com/ryansobol/mango)  
-**Documentation**: [http://yardoc.org/docs/ryansobol-mango](http://yardoc.org/docs/ryansobol-mango)  
+**Documentation**: [http://rubydoc.info/github/ryansobol/mango](http://rubydoc.info/github/ryansobol/mango)  
 **Bug Tracker**: [http://github.com/ryansobol/mango/issues](http://github.com/ryansobol/mango/issues)  
 **Wiki**: [http://wiki.github.com/ryansobol/mango](http://wiki.github.com/ryansobol/mango)  
 
