@@ -15,7 +15,7 @@ describe Mango::Dependencies do
         :"rack-test"    => "0.5.4",
         :rspec          => "1.3.0",
         :yard           => "0.5.8",
-        :"yard-sinatra" => "0.4.0.1",
+        :"yard-sinatra" => "0.5.0",
         :bluecloth      => "2.0.7"
       }
 
@@ -131,7 +131,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
         "rack-test --version '0.5.4'",
         "rspec --version '1.3.0'",
         "yard --version '0.5.8'",
-        "yard-sinatra --version '0.4.0.1'",
+        "yard-sinatra --version '0.5.0'",
         "bluecloth --version '2.0.7'"
       ]
       Mango::Dependencies.class_variable_get(:@@warnings_cache).should == expected

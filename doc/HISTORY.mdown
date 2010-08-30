@@ -1,3 +1,20 @@
+Mango release 0.4.0 (August 30, 2010)
+=====================================
+
+### New Features:
+
+  * Added the beginnings of a default theme titled "Smashing Mangos".
+  * Added `Mango::Rack::Debugger` to the middleware stack (Only loads in the `:development` rack environment).
+  * Added a `Mango::ContentPage` model to convert user-generated content into HTML.  Supports either [Haml](http://haml-lang.com/) or [Markdown](http://daringfireball.net/projects/markdown/syntax) formatted content.
+  * Refactored `Mango::Application` to utilize `Mango::ContentPage`.  Now views have access to a `@content_page` instance variable.
+  * Added `Mango::FlavoredMarkdown`, a subset of [GithubFlavoredMarkdown](http://github.github.com/github-flavored-markdown/), into the Markdown-to-HTML conversion.
+
+### Dependencies:
+
+  * Updated [Haml](http://haml-lang.com/) to 3.0.18
+  * Updated [YARD::Sinatra](http://github.com/rkh/yard-sinatra) to 0.5.0
+  * Added [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.7 as a required dependency
+
 Mango release 0.3.0 (June 25, 2010)
 ===================================
 

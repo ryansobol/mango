@@ -1,7 +1,7 @@
 source :rubygems
 
 gem "sinatra", "1.0"
-gem "haml", "3.0.13"
+gem "haml", "3.0.18"
 gem "bluecloth", "2.0.7"
 
 group :server do
@@ -16,5 +16,5 @@ end
 group :rake_yard do
   gem "yard", "0.5.8"
   gem "bluecloth", "2.0.7"
-  gem "yard-sinatra", :require => "yard/sinatra", :git => "git://github.com/ryansobol/yard-sinatra.git"
+  gem "yard-sinatra", "0.5.0"
 end
