@@ -133,6 +133,7 @@ module Mango
     #                                themes/default/views/layout.haml
     #
     not_found do
+      # TODO need to add a @content_page with a #title method
       haml :"404"
     end
 

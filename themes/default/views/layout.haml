@@ -2,7 +2,8 @@
 %html
   %head
     %meta{ :charset => "utf-8" }
-    %title Smashing HTML5!
+    %title
+      #{@content_page.title rescue "404"} - The Official Mango Handbook
 
     %link{ :rel => "stylesheet", :href => "/styles/screen.css", :type => "text/css" }
 
@@ -17,22 +18,42 @@
   %body#index.home
     %header#banner.body
       %h1
-        %a{ :href => "#" }
-          Smashing HTML5!
+        %a{ :href => "/" }
+          Mango
           %strong
-            HTML5 in the year
+            Content management in the year
             %del 2022
-            %ins 2009
+            %ins 2010
       %nav
         %ul
-          %li.active
-            %a{ :href => "/" } home
-          %li
-            %a{ :href => "#" } portfolio
-          %li
-            %a{ :href => "#" } blog
-          %li
-            %a{ :href => "#" } contact
+          -# TODO need to refactor this repeatable pattern
+          - if @request.path_info == "/getting_started"
+            %li.active
+              %a{ :href => "/getting_started" } Getting Started
+          - else
+            %li
+              %a{ :href => "/getting_started" } Getting Started
+
+          - if @request.path_info == "/documentation"
+            %li.active
+              %a{ :href => "/documentation" } Documentation
+          - else
+            %li
+              %a{ :href => "/documentation" } Documentation
+
+          - if @request.path_info == "/contribute"
+            %li.active
+              %a{ :href => "/contribute" } Contribute
+          - else
+            %li
+              %a{ :href => "/contribute" } Contribute
+
+          - if @request.path_info == "/about"
+            %li.active
+              %a{ :href => "/about" } About
+          - else
+            %li
+              %a{ :href => "/about" } About
 
       = yield
 

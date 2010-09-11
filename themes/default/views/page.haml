@@ -7,11 +7,10 @@
     %footer.post-info
       %abbr.published{ :title => "2005-10-10T14:07:00-07:00" }
         / YYYYMMDDThh:mm:ss+ZZZZ
-        10th October 2005
-      %address.author
-        By
-        %a{ :href => "#" }
-          = @content_page.author
+        /10th October 2005
     %div.entry-content
       %p
         = @content_page.to_html
+
+      %p
+        %pre= @content_page.data
