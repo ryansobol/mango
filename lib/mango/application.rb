@@ -270,7 +270,6 @@ module Mango
     # Given a URI path, attempts to send an index.html file, if it exists, and halt
     #
     # @param [String] uri_path
-    # @see 
     #
     def render_index_file!(uri_path)
       return unless uri_path[-1] == "/"
