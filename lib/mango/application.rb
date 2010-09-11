@@ -117,8 +117,8 @@ module Mango
     # Renders the `404.haml` template found within `settings.views` and sends it with 404 HTTP
     # response.
     #
-    # If a `layout.haml` template exists within `settings.views`, the `404.haml` template is wrapped
-    # within this layout when rendered.
+    # The `404.haml` template is **not** wrapped within the `layout.haml` template when rendered,
+    # even if one exists within `settings.views`.
     #
     # For example:
     #
@@ -127,15 +127,12 @@ module Mango
     #     `-- themes
     #         `-- default
     #             `-- views
-    #                 |-- 404.haml
-    #                 `-- layout.haml
+    #                 `-- 404.haml
     #
-    #     GET /page_not_found => 404 themes/default/views/404.haml +
-    #                                themes/default/views/layout.haml
+    #     GET /page_not_found => 404 themes/default/views/404.haml
     #
     not_found do
-      # TODO need to add a @content_page with a #title method
-      haml :"404"
+      haml :"404", :layout => false
     end
 
     # Attempts to render style sheet templates found within `settings.styles`

@@ -168,7 +168,7 @@ Disallow: /cgi-bin/
 <html>
   <head>
     <meta charset='utf-8' />
-    <title>App Root Page</title>
+    <title>404 Page</title>
   </head>
   <body>
     <h1>Page not found</h1>
