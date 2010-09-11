@@ -12,6 +12,8 @@ Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {
 **Bug Tracker**: [http://github.com/ryansobol/mango/issues](http://github.com/ryansobol/mango/issues)  
 **Wiki**: [http://wiki.github.com/ryansobol/mango](http://wiki.github.com/ryansobol/mango)  
 
+**Mango respects [Semantic Versioning](http://semver.org/)!**
+
 WHAT'S NEW?
 -----------
 
