@@ -123,8 +123,8 @@ Disallow: /cgi-bin/
       get "/images/"
     end
 
-    it "should return 404 status code" do
-      last_response.should be_not_found
+    it "should return 200 status code" do
+      last_response.should be_ok
     end
 
     it "should send the correct Content-Type header" do
@@ -137,10 +137,10 @@ Disallow: /cgi-bin/
 <html>
   <head>
     <meta charset='utf-8' />
-    <title>App Root Page</title>
+    <title>/themes/default/public/images/index.html</title>
   </head>
   <body>
-    <h1>Page not found</h1>
+    <p>/themes/default/public/images/index.html</p>
   </body>
 </html>
       EXPECTED

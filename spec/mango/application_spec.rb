@@ -20,6 +20,10 @@ describe Mango::Application do
       Mango::Application.root.should == @expected
     end
 
+    it "theme should be default" do
+      Mango::Application.theme.should == "default"
+    end
+
     it "views should be app_root/themes/default/views/" do
       Mango::Application.views.should == File.join(@expected, "themes", "default", "views")
     end

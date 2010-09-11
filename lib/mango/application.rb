@@ -41,8 +41,8 @@ module Mango
   #     GET /images/index.html     => 200 themes/default/public/images/index.html
   #     GET /images/ripe-mango.jpg => 200 themes/default/public/images/ripe-mango.jpg
   #     GET /override              => 200 themes/default/public/override
+  #     GET /images/               => 200 themes/default/public/images/index.html
   #
-  #     GET /images/               => pass to NOT_FOUND error handler (see http://bit.ly/9kLBDx)
   #     GET /../security_hole.txt  => pass to NOT_FOUND error handler
   #
   # # Content page templates with `GET *`
@@ -108,9 +108,10 @@ module Mango
   #
   class Application < Sinatra::Base
     set :root, File.expand_path(File.join(File.dirname(__FILE__), "..", ".."))
-    set :views, lambda { File.join(root, "themes", "default", "views") }
-    set :public, lambda { File.join(root, "themes", "default", "public") }
-    set :styles, lambda { File.join(root, "themes", "default", "styles") }
+    set :theme, "default"
+    set :views, lambda { File.join(root, "themes", theme, "views") }
+    set :public, lambda { File.join(root, "themes", theme, "public") }
+    set :styles, lambda { File.join(root, "themes", theme, "styles") }
     set :content, lambda { File.join(root, "content") }
 
     # Renders the `404.haml` template found within `settings.views` and sends it with 404 HTTP
@@ -228,6 +229,7 @@ module Mango
     # handler.
     #
     get "*" do |uri_path|
+      render_index_file! uri_path
       render_content_page! uri_path
       not_found
     end
@@ -259,6 +261,36 @@ module Mango
     #
     def build_style_sheet_path(uri_path, format = "sass")
       File.expand_path(File.join(settings.styles, "#{uri_path}.#{format}"))
+    end
+
+    ###############################################################################################
+
+    private
+
+    # Given a URI path, attempts to send an index.html file, if it exists, and halt
+    #
+    # @param [String] uri_path
+    # @see 
+    #
+    def render_index_file!(uri_path)
+      return unless uri_path[-1] == "/"
+
+      index_match     = File.join(settings.public, "*")
+      index_file_path = build_index_file_path(uri_path)
+
+      return unless File.fnmatch(index_match, index_file_path)
+      return unless File.file?(index_file_path)
+
+      send_file index_file_path
+    end
+
+    # Given a URI path, build a path to a potential index.html file
+    #
+    # @param [String] uri_path
+    # @return [String] The path to a potential index.html file
+    #
+    def build_index_file_path(uri_path)
+      File.expand_path(File.join(settings.public, uri_path, "index.html"))
     end
 
     ###############################################################################################
