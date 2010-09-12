@@ -1,17 +1,8 @@
 # encoding: UTF-8
 require "spec_helper"
-require "rack/test"
 
 describe Mango::Application do
-  include Rack::Test::Methods
-
-  def app
-    Mango::Application
-  end
-
-  #################################################################################################
-
-  describe "directives" do
+  describe "settings" do
     before(:each) do
       @expected = SPEC_APP_ROOT
     end
@@ -40,5 +31,4 @@ describe Mango::Application do
       Mango::Application.content.should == File.join(@expected, "content")
     end
   end
-
 end
