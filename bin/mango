@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+# encoding: UTF-8
+
+require_relative "../lib/mango/runner"
+Mango::Runner.start
