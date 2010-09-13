@@ -107,7 +107,7 @@ module Mango
   # handler renders the 404 template and sends it with a 404 response.
   #
   class Application < Sinatra::Base
-    set :root, File.expand_path(File.join(File.dirname(__FILE__), "..", ".."))
+    set :root, Dir.getwd
     set :theme, "default"
     set :views, lambda { File.join(root, "themes", theme, "views") }
     set :public, lambda { File.join(root, "themes", theme, "public") }
