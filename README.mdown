@@ -2,8 +2,8 @@
 
 Image courtesy of [B.C. Tree Fruits LTD.](http://www.bctree.com/products/sourced/mango.php)
 
-Mango release 0.4.0 (August 30, 2010)
-=====================================
+Mango release 0.5.0 (September 12, 2010)
+========================================
 
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
@@ -36,23 +36,24 @@ Please see {file:doc/HISTORY.mdown} for the historical overview of the project.
 SYNOPSIS
 --------
 
-**Mango is a dynamic website engine for Ruby hackers who believe in minimalism.**
-
-Mango let's you publish to the web using the tools you're already familiar with -- the file system and your trusty text editor.  With Mango, there is:
-
-  * No clunky administrator interface for managing content
-  * No database to install, configure, and manage
-
-**The objective of Mango is to share 1 project -- 1 set of files -- between a small team of designers, developers, and content writers.**
+**Mango is a dynamic, database-free, and open source website framework that is designed to make life easier for small teams of designers, developers, and content writers.**
 
 FEATURES
 --------
 
-  * Mango tries to route HTTP requests to static files first
-  * Then it tries to route HTTP requests to Markdown or Haml content pages or Sass style templates
-  * Finally, it routes unknown HTTP requests to a customizable 404 page
-  * Wraps content pages within a customizable Haml template and layout
-  * Supports any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
+  1. Easy to install:  Mango installs as a RubyGem and can generate a basic website structure in seconds.
+
+  2. Easy to publish: Supports many types of deployments like direct SFTP uploading and source control systems like Git, Mercurial, SVN, CSV, etc.
+
+  3. Easy to write:  Mango let's you publish to the web using the tools you're already familiar with -- the file system and your trusty text editor.  Mango supports a variety of formats include Markdown, HAML, HTML, SASS, CSS, and JavaScript.  These files are easier to create and revise then working with database records.  Say goodbye to clunky administrator interfaces for managing content!
+
+  4. Easy to deploy: There's no database to install, configure, and manage.
+
+  5. Easy to understand:  Mango is perfect for smalls teams of varying levels of coding expertise.  Why not take the simple route where everyone is on the same page?  Instead of struggling with complex platforms, which most CMS are, Mango is perfect for people who has no coding experience.
+
+  6. Easy on the wallet: It's free!
+
+  7. Easy to... SPEED:  A major advantage of a database-less website framework is speed.  Database queries slow down servers.  On a high traffic website, this has a dramatic effect on the speed of the site.  With minimal server side scripting and zero database queries, Mango is lightening fast.
 
 REQUIREMENTS
 ------------
@@ -78,9 +79,7 @@ REQUIREMENTS
 INSTALLING
 ----------
 
-    $ git clone http://github.com/ryansobol/mango.git
-    $ cd mango
-    $ bundle install
+    $ gem install mango
 
 USAGE
 -----
@@ -108,6 +107,15 @@ USAGE
 ### Starting a development server
 
     $ rackup
+
+UNDER THE HOOD
+--------------
+
+  * Mango tries to route HTTP requests to static files first
+  * Then it tries to route HTTP requests to Markdown or Haml content pages or Sass style templates
+  * Finally, it routes unknown HTTP requests to a customizable 404 page
+  * Wraps content pages within a customizable Haml template and layout
+  * Supports any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
 
 MOTIVATION
 ----------
