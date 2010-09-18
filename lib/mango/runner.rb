@@ -5,32 +5,64 @@ module Mango
   class Runner < Thor
     include Thor::Actions
 
+    add_runtime_options!
+
+    source_root File.join(File.dirname(__FILE__), "templates")
+
     desc "create /path/to/your/app",
       "Creates a new Mango application with a default directory structure and configuration at the path you specify."
-    def create(path)
-      empty_directory(path)
-      create_file(File.join(path, "README.mdown"))
+    def create(destination)
+      self.destination_root = destination
+      empty_directory(destination)
+      template("README.md", File.join(self.destination_root, "README.md"))
+      template("config.ru", File.join(self.destination_root, "config.ru"))
+      build_content_path
+      build_themes_path
+    end
 
-      ##
+    ###############################################################################################
 
-      content_path = File.join(path, "content")
+    protected
 
-      empty_directory(content_path)
-      create_file(File.join(content_path, "index.mdown"))
+    def build_content_path
+      content_root = File.join(self.destination_root, "content")
+      empty_directory(content_root)
+      template("content/index.md", File.join(content_root, "index.md"))
+    end
 
-      ##
+    def build_themes_path
+      themes_root = File.join(self.destination_root, "themes")
+      empty_directory(themes_root)
 
-      themes_default_path = File.join(path, "themes", "default")
+      default_root = File.join(themes_root, "default")
+      empty_directory(default_root)
 
-      empty_directory(File.join(themes_default_path, "public"))
-      create_file(File.join(themes_default_path, "public", "favicon.ico"))
+      build_public_path default_root
+      build_styles_path default_root
+      build_views_path default_root
+    end
 
-      empty_directory(File.join(themes_default_path, "styles"))
+    ###############################################################################################
 
-      empty_directory(File.join(themes_default_path, "views"))
-      create_file(File.join(themes_default_path, "views", "404.haml"))
-      create_file(File.join(themes_default_path, "views", "layout.haml"))
-      create_file(File.join(themes_default_path, "views", "page.haml"))
+    protected
+
+    def build_public_path(destination)
+      public_root = File.join(destination, "public")
+      empty_directory(public_root)
+      create_file(File.join(public_root, "favicon.ico"))
+    end
+
+    def build_styles_path(destination)
+      styles_root = File.join(destination, "styles")
+      empty_directory(styles_root)
+    end
+
+    def build_views_path(destination)
+      views_root = File.join(destination, "views")
+      empty_directory(views_root)
+      template("themes/default/views/404.haml", File.join(views_root, "404.haml"))
+      template("themes/default/views/layout.haml", File.join(views_root, "layout.haml"))
+      template("themes/default/views/page.haml", File.join(views_root, "page.haml"))
     end
   end
 end
