@@ -50,6 +50,7 @@ module Mango
       public_root = File.join(destination, "public")
       empty_directory(public_root)
       create_file(File.join(public_root, "favicon.ico"))
+      template("themes/default/public/robots.txt", File.join(public_root, "robots.txt"))
     end
 
     def build_styles_path(destination)
