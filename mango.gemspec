@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require File.expand_path(File.join(File.dirname(__FILE__), "lib", "mango", "version"))
+require_relative "lib/mango/version"
 
 Gem::Specification.new do |s|
   s.name        = "mango"

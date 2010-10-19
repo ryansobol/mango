@@ -180,6 +180,37 @@ module Mango
       not_found
     end
 
+    ###############################################################################################
+
+    private
+
+    # Given a URI path, attempts to render a style sheet, if it exists, and halt
+    #
+    # @param [String] uri_path
+    #
+    def render_style_sheet!(uri_path)
+      styles_match     = File.join(settings.styles, "*")
+      style_sheet_path = build_style_sheet_path(uri_path)
+
+      return unless File.fnmatch(styles_match, style_sheet_path)
+      return unless File.file?(style_sheet_path)
+
+      content_type "text/css"
+      halt sass(uri_path.to_sym, :views => settings.styles)
+    end
+
+    # Given a URI path, build a path to a potential style sheet
+    #
+    # @param [String] uri_path
+    # @param [String] format (defaults to `sass`)
+    # @return [String] The path to a potential style sheet
+    #
+    def build_style_sheet_path(uri_path, format = "sass")
+      File.expand_path("#{uri_path}.#{format}", settings.styles)
+    end
+
+    public
+
     # Attempts to render content page templates found within `settings.content`
     #
     # First, the application attempts to match the URI path with a public file stored in
@@ -235,35 +266,6 @@ module Mango
 
     private
 
-    # Given a URI path, attempts to render a style sheet, if it exists, and halt
-    #
-    # @param [String] uri_path
-    #
-    def render_style_sheet!(uri_path)
-      styles_match     = File.join(settings.styles, "*")
-      style_sheet_path = build_style_sheet_path(uri_path)
-
-      return unless File.fnmatch(styles_match, style_sheet_path)
-      return unless File.file?(style_sheet_path)
-
-      content_type "text/css"
-      halt sass(uri_path.to_sym, :views => settings.styles)
-    end
-
-    # Given a URI path, build a path to a potential style sheet
-    #
-    # @param [String] uri_path
-    # @param [String] format (defaults to `sass`)
-    # @return [String] The path to a potential style sheet
-    #
-    def build_style_sheet_path(uri_path, format = "sass")
-      File.expand_path("#{uri_path}.#{format}", settings.styles)
-    end
-
-    ###############################################################################################
-
-    private
-
     # Given a URI path, attempts to send an index.html file, if it exists, and halt
     #
     # @param [String] uri_path
@@ -286,7 +288,8 @@ module Mango
     # @return [String] The path to a potential index.html file
     #
     def build_index_file_path(uri_path)
-      File.expand_path(File.join(settings.public, uri_path, "index.html"))
+      uri_path = File.join(uri_path, "index.html")
+      File.expand_path(uri_path, settings.public)
     end
 
     ###############################################################################################
