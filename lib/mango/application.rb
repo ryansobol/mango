@@ -225,7 +225,7 @@ module Mango
     # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
     # handler.
     #
-    get "*" do |uri_path|
+    get "/*" do |uri_path|
       render_index_file! uri_path
       render_content_page! uri_path
       not_found
@@ -257,7 +257,7 @@ module Mango
     # @return [String] The path to a potential style sheet
     #
     def build_style_sheet_path(uri_path, format = "sass")
-      File.expand_path(File.join(settings.styles, "#{uri_path}.#{format}"))
+      File.expand_path("#{uri_path}.#{format}", settings.styles)
     end
 
     ###############################################################################################
@@ -312,7 +312,7 @@ module Mango
       begin
         halt haml(@content_page.view)
       rescue Errno::ENOENT
-        view_path = File.expand_path(File.join(settings.views, "#{@content_page.view}.haml"))
+        view_path = File.expand_path("#{@content_page.view}.haml", settings.views)
         raise "Unable to find a view template file -- #{view_path}"
       end
     end
@@ -323,8 +323,8 @@ module Mango
     # @return [String] The path to a potential content page
     #
     def build_content_page_path(uri_path)
-      uri_path += "index" if uri_path[-1] == "/"
-      File.expand_path(File.join(settings.content, uri_path))
+      uri_path += "index" if uri_path.empty? || uri_path[-1] == "/"
+      File.expand_path(uri_path, settings.content)
     end
 
   end
