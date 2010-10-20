@@ -9,7 +9,7 @@ describe "This project's" do
     it "should have no malformed whitespace" do
       Dir.chdir(PROJECT_ROOT) do
         `git ls-files`.split("\n").each do |tracked_file|
-          next if tracked_file =~ /\.jpg/
+          next if tracked_file =~ /\.jpg|\.gif/
           tracked_file.should_not contain_tab_characters
           tracked_file.should_not contain_extra_spaces
         end
