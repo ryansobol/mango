@@ -2,6 +2,19 @@
 %html
   %head
     %meta{ :charset => "utf-8" }
-    %title App Root Page
-  %body
+    %title= "Mango: #{@content_page.title}" 
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "http://fonts.googleapis.com/css?family=Lobster" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/reset.css" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/screen.css" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/fireworks.css" }
+    %script{ :type => "text/javascript", :src => "/javascripts/fireworks.js"}
+    %script{ :type => "text/javascript", :src => "/javascripts/timer.js"}
+  %body{ :onload => "fire();" }
+    %div#fireworks-template
+      %div#fw.firework
+      %div#fp.fireworkParticle
+        %img{ :src => "/images/particles.gif" }
+
+    %div#fireContainer
+
     = yield

@@ -51,11 +51,36 @@ module Mango
       empty_directory(public_root)
       create_file(File.join(public_root, "favicon.ico"))
       template("themes/default/public/robots.txt", File.join(public_root, "robots.txt"))
+
+      build_public_images_path public_root
+      build_public_javascripts_path public_root
+      build_public_styles_path public_root
+    end
+
+    def build_public_images_path(destination)
+      public_images_root = File.join(destination, "images")
+      empty_directory(public_images_root)
+      template("themes/default/public/images/particles.gif", File.join(public_images_root, "particles.gif"))
+    end
+
+    def build_public_javascripts_path(destination)
+      public_javascripts_root = File.join(destination, "javascripts")
+      empty_directory(public_javascripts_root)
+      template("themes/default/public/javascripts/fireworks.js", File.join(public_javascripts_root, "fireworks.js"))
+      template("themes/default/public/javascripts/timer.js", File.join(public_javascripts_root, "timer.js"))
+    end
+
+    def build_public_styles_path(destination)
+      public_styles_root = File.join(destination, "styles")
+      empty_directory(public_javascripts_root)
+      template("themes/default/public/styles/fireworks.css", File.join(public_styles_root, "fireworks.css"))
+      template("themes/default/public/styles/reset.css", File.join(public_styles_root, "reset.css"))
     end
 
     def build_styles_path(destination)
       styles_root = File.join(destination, "styles")
       empty_directory(styles_root)
+      template("themes/default/styles/screen.sass", File.join(styles_root, "screen.sass"))
     end
 
     def build_views_path(destination)

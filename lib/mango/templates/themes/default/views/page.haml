@@ -1,4 +1,3 @@
-%h1 Welcome to Mango!
+%h1= @content_page.title
 
-%div#content
-  = @content_page.to_html
+= @content_page.to_html

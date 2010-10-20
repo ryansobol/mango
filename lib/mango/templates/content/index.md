@@ -1,4 +1,5 @@
 ---
-my_local_variable: stuff
+title: Congratulations!
 ---
-gogogo!
+
+## You did it!
