@@ -1,11 +1,11 @@
 # encoding: UTF-8
+ENV["RACK_ENV"] = "test"
 require "mango"
 
 PROJECT_ROOT  = File.expand_path("..", File.dirname(__FILE__))
 SPEC_APP_ROOT = File.expand_path("app_root", File.dirname(__FILE__))
 
 class Mango::Application
-  set :environment, :test
   set :root, SPEC_APP_ROOT
 end
 

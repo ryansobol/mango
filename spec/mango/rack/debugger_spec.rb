@@ -9,7 +9,7 @@ require "spec_helper"
 describe Mango::Rack::Debugger do
 
   # Ensure the ::Debugger constant is initialized
-  class ::Debugger; end
+  module ::Debugger; end
 
   before(:all) do
     @mock_kernel = mock(Kernel)

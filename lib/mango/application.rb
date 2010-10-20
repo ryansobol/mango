@@ -114,6 +114,10 @@ module Mango
     set :styles, lambda { File.join(root, "themes", theme, "styles") }
     set :content, lambda { File.join(root, "content") }
 
+    configure :development do
+      use Mango::Rack::Debugger
+    end
+
     # Renders the `404.haml` template found within `settings.views` and sends it with 404 HTTP
     # response.
     #
