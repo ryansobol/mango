@@ -13,8 +13,9 @@ module Mango
       "Creates a new Mango application with a default directory structure and configuration at the path you specify."
     def create(destination)
       self.destination_root = destination
-      copy_file("README.md", File.join(self.destination_root, "README.md"))
       copy_file("config.ru", File.join(self.destination_root, "config.ru"))
+      copy_file("Gemfile", File.join(self.destination_root, "Gemfile"))
+      copy_file("README.md", File.join(self.destination_root, "README.md"))
 
       build_content_path
       build_themes_path
