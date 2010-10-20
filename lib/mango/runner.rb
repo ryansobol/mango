@@ -72,7 +72,7 @@ module Mango
 
     def build_public_styles_path(destination)
       public_styles_root = File.join(destination, "styles")
-      empty_directory(public_javascripts_root)
+      empty_directory(public_styles_root)
       template("themes/default/public/styles/fireworks.css", File.join(public_styles_root, "fireworks.css"))
       template("themes/default/public/styles/reset.css", File.join(public_styles_root, "reset.css"))
     end
