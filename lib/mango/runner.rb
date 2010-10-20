@@ -60,7 +60,7 @@ module Mango
     def build_public_images_path(destination)
       public_images_root = File.join(destination, "images")
       empty_directory(public_images_root)
-      template("themes/default/public/images/particles.gif", File.join(public_images_root, "particles.gif"))
+      copy_file("themes/default/public/images/particles.gif", File.join(public_images_root, "particles.gif"))
     end
 
     def build_public_javascripts_path(destination)
