@@ -44,7 +44,7 @@ module Mango
       :"rack-test"    => "0.5.6",
       :rspec          => "2.0.1",
       :yard           => "0.5.8",
-      :"yard-sinatra" => "0.5.0",
+      :"yard-sinatra" => "0.5.1",
       :bluecloth      => "2.0.9"
     }
 
