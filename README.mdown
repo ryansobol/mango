@@ -158,6 +158,6 @@ Patches are always welcome and appreciated!  The process is straight-forward for
 
 Before making your change, take a moment to get a feel for the style of coding, specifications, and in-line documentation.
 
-Please see {file:doc/ROAD-MAP.mdown} to learn how to flow with the project.  In the near future, I plan on pushing this content directly into the [Issue Tracker](http://github.com/ryansobol/mango/issues).
+Visit the [Issue Tracker](http://github.com/ryansobol/mango/issues) learn how you can lend a hand and where to start.
 
 Again, thank you for taking the time to help improve Mango.
