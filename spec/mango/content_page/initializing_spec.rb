@@ -286,8 +286,7 @@ Not even for Mango!
 <p>Mango is like a drug.<br/>
 You must have more_and_more and more of the Mango<br/>
 until there is no Mango left.<br/>
-Not even for Mango!<br/>
-</p>
+Not even for Mango!</p>
       EOS
 
       page.to_html.should == expected.strip
