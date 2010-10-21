@@ -2,14 +2,14 @@
 
 Image courtesy of [B.C. Tree Fruits LTD.](http://www.bctree.com/products/sourced/mango.php)
 
-Mango release 0.5.0 (September 12, 2010)
-========================================
+Mango release 0.5.0.beta1 (October 19, 2010)
+============================================
 
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
 * **Source Code**: [http://github.com/ryansobol/mango](http://github.com/ryansobol/mango)
 * **Documentation**: [http://rubydoc.info/github/ryansobol/mango](http://rubydoc.info/github/ryansobol/mango)
-* **Bug Tracker**: [http://github.com/ryansobol/mango/issues](http://github.com/ryansobol/mango/issues)
+* **Issue Tracker**: [http://github.com/ryansobol/mango/issues](http://github.com/ryansobol/mango/issues)
 * **Wiki**: [http://wiki.github.com/ryansobol/mango](http://wiki.github.com/ryansobol/mango)
 
 **Mango respects [Semantic Versioning](http://semver.org/)!**
@@ -17,21 +17,32 @@ Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {
 WHAT'S NEW?
 -----------
 
-### New Features:
+### Features
 
-  * Added the beginnings of a default theme titled "Smashing Mangos".
-  * Added `Mango::Rack::Debugger` to the middleware stack (Only loads in the `:development` rack environment).
-  * Added a `Mango::ContentPage` model to convert user-generated content into HTML.  Supports either [Haml](http://haml-lang.com/) or [Markdown](http://daringfireball.net/projects/markdown/syntax) formatted content.
-  * Refactored `Mango::Application` to utilize `Mango::ContentPage`.  Now views have access to a `@content_page` instance variable.
-  * Added `Mango::FlavoredMarkdown`, a subset of [GithubFlavoredMarkdown](http://github.github.com/github-flavored-markdown/), into the Markdown-to-HTML conversion.
+  * Mango has been split into two pieces!
+    1. A web framework, distributed as a Ruby gem, that is completely abstracted away from application code.
+    2. A `mango` command-line tool that generates a [demo Mango application](http://mango-fireworks.heroku.com/).
+  * Mango now supports theme-switching!
+    * For example, add `class Mango::Application; set :theme, "theme_name"; end` to your application's config.ru.
+  * As a result of the new command-line application generator, all embedded application code has been removed.
+  * Now routes like `GET /images/` return a 200 response if the `themes/default/public/images/index.html` file is exists.
 
-### Dependencies:
+### Dependencies
 
-  * Updated [Haml](http://haml-lang.com/) to 3.0.18
-  * Updated [YARD::Sinatra](http://github.com/rkh/yard-sinatra) to 0.5.0
-  * Added [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.7 as a required dependency
+  * Updated [Bundler](http://gembundler.com/) to 1.0.3
+  * Updated [Haml](http://haml-lang.com/) to 3.0.22
+  * Updated [Sass](http://sass-lang.com/) to 3.0.22 (bundled with Haml)
+  * Updated [BlueCloth](http://deveiate.org/projects/BlueCloth) to 2.0.9
+  * Updated [Rack::Test](http://github.com/brynary/rack-test) to 0.5.6
+  * Updated [RSpec](http://rspec.info/) to 2.0.1
+  * Updated [YARD](http://yardoc.org/) to 0.5.8
+  * Updated [YARD::Sinatra](http://github.com/rkh/yard-sinatra) to 0.5.1
 
-Please see {file:doc/HISTORY.mdown} for the historical overview of the project.
+### Bugs
+
+  * The NOT_FOUND handler no longer renders the 404 template within a layout template.
+
+Please see {file:CHANGES.mdown} for the historical overview of the project.
 
 SYNOPSIS
 --------
@@ -61,20 +72,21 @@ REQUIREMENTS
 **Required dependencies**
 
   * [Ruby](http://www.ruby-lang.org/) 1.9.1
+  * [Bundler](http://gembundler.com/) 1.0.3
   * [Rack](http://rack.rubyforge.org/) 1.2.1
   * [Sinatra](http://www.sinatrarb.com/) 1.0
-  * [Haml](http://haml-lang.com/) 3.0.18
-  * [Sass](http://sass-lang.com/) 3.0.18 (bundled with Haml)
-  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.7
+  * [Haml](http://haml-lang.com/) 3.0.22
+  * [Sass](http://sass-lang.com/) 3.0.22 (bundled with Haml)
+  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.9
 
 **Optional development dependencies**
 
   * [Rake](http://rake.rubyforge.org/) 0.8.7 (bundled with Ruby)
-  * [Rack::Test](http://github.com/brynary/rack-test) 0.5.4
-  * [RSpec](http://rspec.info/) 1.3.0
+  * [Rack::Test](http://github.com/brynary/rack-test) 0.5.6
+  * [RSpec](http://rspec.info/) 2.0.1
   * [YARD](http://yardoc.org/) 0.5.8
-  * [YARD::Sinatra](http://github.com/rkh/yard-sinatra) 0.5.0
-  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.7
+  * [YARD::Sinatra](http://github.com/rkh/yard-sinatra) 0.5.1
+  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.9
 
 INSTALLING
 ----------

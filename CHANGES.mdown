@@ -1,11 +1,35 @@
-Mango release 0.5.0 (September 12, 2010)
-========================================
+Mango release 0.5.0.beta1 (October 19, 2010)
+============================================
 
+### Features
+
+  * Mango has been split into two pieces!
+    1. A web framework, distributed as a Ruby gem, that is completely abstracted away from application code.
+    2. A `mango` command-line tool that generates a [demo Mango application](http://mango-fireworks.heroku.com/).
+  * Mango now supports theme-switching!
+    * For example, add `class Mango::Application; set :theme, "theme_name"; end` to your application's config.ru.
+  * As a result of the new command-line application generator, all embedded application code has been removed.
+  * Now routes like `GET /images/` return a 200 response if the `themes/default/public/images/index.html` file is exists.
+
+### Dependencies
+
+  * Updated [Bundler](http://gembundler.com/) to 1.0.3
+  * Updated [Haml](http://haml-lang.com/) to 3.0.22
+  * Updated [Sass](http://sass-lang.com/) to 3.0.22 (bundled with Haml)
+  * Updated [BlueCloth](http://deveiate.org/projects/BlueCloth) to 2.0.9
+  * Updated [Rack::Test](http://github.com/brynary/rack-test) to 0.5.6
+  * Updated [RSpec](http://rspec.info/) to 2.0.1
+  * Updated [YARD](http://yardoc.org/) to 0.5.8
+  * Updated [YARD::Sinatra](http://github.com/rkh/yard-sinatra) to 0.5.1
+
+### Bugs
+
+  * The NOT_FOUND handler no longer renders the 404 template within a layout template.
 
 Mango release 0.4.0 (August 30, 2010)
 =====================================
 
-### New Features:
+### Features
 
   * Added the beginnings of a default theme titled "Smashing Mangos".
   * Added `Mango::Rack::Debugger` to the middleware stack (Only loads in the `:development` rack environment).
@@ -13,7 +37,7 @@ Mango release 0.4.0 (August 30, 2010)
   * Refactored `Mango::Application` to utilize `Mango::ContentPage`.  Now views have access to a `@content_page` instance variable.
   * Added `Mango::FlavoredMarkdown`, a subset of [GithubFlavoredMarkdown](http://github.github.com/github-flavored-markdown/), into the Markdown-to-HTML conversion.
 
-### Dependencies:
+### Dependencies
 
   * Updated [Haml](http://haml-lang.com/) to 3.0.18
   * Updated [YARD::Sinatra](http://github.com/rkh/yard-sinatra) to 0.5.0
@@ -22,19 +46,19 @@ Mango release 0.4.0 (August 30, 2010)
 Mango release 0.3.0 (June 25, 2010)
 ===================================
 
-### New Features:
+### Features
 
   * Added a route handler that renders [Sass](http://sass-lang.com/) templates to CSS!
   * Refactored tests for better spec coverage of route handling
   * Massive rewrite of internal documentation thanks to the [YARD::Sinatra (modified)](http://github.com/ryansobol/yard-sinatra)
   * Uploaded developer documentation to [http://yardoc.org/docs/ryansobol-mango](http://yardoc.org/docs/ryansobol-mango)
 
-### Dependencies:
+### Dependencies
 
   * Updated [Haml](http://haml-lang.com/) to 3.0.13
   * Added [YARD::Sinatra](http://github.com/rkh/yard-sinatra) 0.4.0.1 [(modified)](http://github.com/ryansobol/yard-sinatra)
 
-### Bug fixes:
+### Bugs
 
   * Fixed Regex when parsing LoadError messages on missing development dependencies
   * Fixed rspec gem name detection when requiring spec/rake/spectask in the Rakefile
