@@ -12,11 +12,11 @@ describe Mango::Dependencies do
 
     it "development gem names and versions should be correct" do
       expected = {
-        :"rack-test"    => "0.5.4",
-        :rspec          => "1.3.0",
+        :"rack-test"    => "0.5.6",
+        :rspec          => "2.0.1",
         :yard           => "0.5.8",
         :"yard-sinatra" => "0.5.0",
-        :bluecloth      => "2.0.7"
+        :bluecloth      => "2.0.9"
       }
 
       Mango::Dependencies::DEVELOPMENT_GEMS.should == expected
@@ -128,11 +128,11 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       end
 
       expected = [
-        "rack-test --version '0.5.4'",
-        "rspec --version '1.3.0'",
+        "rack-test --version '0.5.6'",
+        "rspec --version '2.0.1'",
         "yard --version '0.5.8'",
         "yard-sinatra --version '0.5.0'",
-        "bluecloth --version '2.0.7'"
+        "bluecloth --version '2.0.9'"
       ]
       Mango::Dependencies.class_variable_get(:@@warnings_cache).should == expected
     end
@@ -163,9 +163,9 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       $stdout.string.should == <<-MESSAGE
 
 The following development gem dependencies could not be found. Without them, some available development features are missing:
-rspec --version '1.3.0'
+rspec --version '2.0.1'
 yard --version '0.5.8'
-bluecloth --version '2.0.7'
+bluecloth --version '2.0.9'
       MESSAGE
     end
 

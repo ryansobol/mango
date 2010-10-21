@@ -41,11 +41,11 @@ module Mango
 
     # bluecloth is a hidden yard dependency for markdown support
     DEVELOPMENT_GEMS = {
-      :"rack-test"    => "0.5.4",
-      :rspec          => "1.3.0",
+      :"rack-test"    => "0.5.6",
+      :rspec          => "2.0.1",
       :yard           => "0.5.8",
       :"yard-sinatra" => "0.5.0",
-      :bluecloth      => "2.0.7"
+      :bluecloth      => "2.0.9"
     }
 
     FILE_NAME_TO_GEM_NAME = {
@@ -87,9 +87,9 @@ module Mango
     # @example Sample warning message
     #   The following development gem dependencies could not be found. Without them, some available development features are missing:
     #   jeweler --version "1.4.0"
-    #   rspec --version "1.3.0"
+    #   rspec --version "2.0.1"
     #   yard --version "0.5.3"
-    #   bluecloth --version "2.0.7"
+    #   bluecloth --version "2.0.9"
     def self.render_warnings
       unless @@warnings_cache.empty?
         message = []

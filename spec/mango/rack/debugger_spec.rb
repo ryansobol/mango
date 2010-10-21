@@ -11,14 +11,12 @@ describe Mango::Rack::Debugger do
   # Ensure the ::Debugger constant is initialized
   module ::Debugger; end
 
-  before(:all) do
-    @mock_kernel = mock(Kernel)
-    @mock_app    = mock("app")
-    @mock_env    = mock("env")
-  end
-
   before(:each) do
     $stdout = StringIO.new
+
+    @mock_kernel = double(Kernel)
+    @mock_app    = double("app")
+    @mock_env    = double("env")
   end
 
   after(:each) do

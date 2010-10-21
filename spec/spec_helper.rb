@@ -13,6 +13,6 @@ end
 
 Dir[File.join(File.dirname(__FILE__), "support", "**", "*.rb")].each { |f| require f }
 
-Spec::Runner.configure do |config|
-  config.include(MalformedWhitespaceMatchers)
+RSpec.configure do |config|
+  config.include MalformedWhitespaceMatchers
 end
