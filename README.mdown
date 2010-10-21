@@ -2,7 +2,7 @@
 
 Image courtesy of [B.C. Tree Fruits LTD.](http://www.bctree.com/products/sourced/mango.php)
 
-Mango release 0.5.0.beta1 (October 19, 2010)
+Mango release 0.5.0.beta2 (October 21, 2010)
 ============================================
 
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
