@@ -5,9 +5,9 @@ Mango::Dependencies.warn_at_exit
 ###################################################################################################
 
 begin
-  require "spec/rake/spectask"
+  require "rspec/core/rake_task"
   require "rack/test" # for Rack support
-  Spec::Rake::SpecTask.new(:spec)
+  RSpec::Core::RakeTask.new(:spec)
   task :default => :spec
 rescue LoadError => e
   Mango::Dependencies.create_warning_for(e)
