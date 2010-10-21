@@ -11,11 +11,11 @@ describe Mango::ContentPage do
       @page = Mango::ContentPage.find_by_path(path)
     end
 
-    it "should be an instance of Mango::ContentPage" do
+    it "is an instance of Mango::ContentPage" do
       @page.should be_instance_of(Mango::ContentPage)
     end
 
-    it "should save the data" do
+    it "saves the data" do
       @page.data.should == <<-EOS
 ---
 title: Haml!
@@ -27,26 +27,26 @@ category:
       EOS
     end
 
-    it "should detect content engine" do
+    it "detects the content engine" do
       @page.content_engine.should == :haml
     end
 
-    it "should load attributes" do
+    it "loads the attributes" do
       @page.attributes.should have(3).items
       @page.attributes.should include("title"    => "Haml!",)
       @page.attributes.should include("category" => ["content", "engine"])
       @page.attributes.should include("view"     => :page)
     end
 
-    it "should load body" do
+    it "loads the body" do
       @page.body.should == "%p /engines/haml.haml\n"
     end
 
-    it "should convert to HTML" do
+    it "converts to HTML" do
       @page.to_html.should == "<p>/engines/haml.haml</p>\n"
     end
 
-    it "should determine the view template's base file name" do
+    it "determines the view template's base file name" do
       @page.view.should == :page
     end
   end
@@ -59,11 +59,11 @@ category:
       @page = Mango::ContentPage.find_by_path(path)
     end
 
-    it "should be an instance of Mango::ContentPage" do
+    it "is an instance of Mango::ContentPage" do
       @page.should be_instance_of(Mango::ContentPage)
     end
 
-    it "should save the data" do
+    it "saves the data" do
       @page.data.should == <<-EOS
 ---
 title: Markdown!
@@ -75,26 +75,26 @@ category:
       EOS
     end
 
-    it "should detect content engine" do
+    it "detects the content engine" do
       @page.content_engine.should == :markdown
     end
 
-    it "should load attributes" do
+    it "loads the attributes" do
       @page.attributes.should have(3).items
       @page.attributes.should include("title"    => "Markdown!",)
       @page.attributes.should include("category" => ["content", "engine"])
       @page.attributes.should include("view"     => :page)
     end
 
-    it "should load body" do
+    it "loads the body" do
       @page.body.should == "### /engines/md.md\n"
     end
 
-    it "should convert to HTML" do
+    it "converts to HTML" do
       @page.to_html.should == "<h3>/engines/md.md</h3>"
     end
 
-    it "should determine the view template's base file name" do
+    it "determines the view template's base file name" do
       @page.view.should == :page
     end
   end
@@ -107,11 +107,11 @@ category:
       @page = Mango::ContentPage.find_by_path(path)
     end
 
-    it "should be an instance of Mango::ContentPage" do
+    it "is an instance of Mango::ContentPage" do
       @page.should be_instance_of(Mango::ContentPage)
     end
 
-    it "should save the data" do
+    it "saves the data" do
       @page.data.should == <<-EOS
 ---
 title: Markdown!
@@ -123,26 +123,26 @@ category:
       EOS
     end
 
-    it "should detect content engine" do
+    it "detects the content engine" do
       @page.content_engine.should == :markdown
     end
 
-    it "should load attributes" do
+    it "loads the attributes" do
       @page.attributes.should have(3).items
       @page.attributes.should include("title"    => "Markdown!",)
       @page.attributes.should include("category" => ["content", "engine"])
       @page.attributes.should include("view"     => :page)
     end
 
-    it "should load body" do
+    it "loads the body" do
       @page.body.should == "### /engines/mdown.mdown\n"
     end
 
-    it "should convert to HTML" do
+    it "converts to HTML" do
       @page.to_html.should == "<h3>/engines/mdown.mdown</h3>"
     end
 
-    it "should determine the view template's base file name" do
+    it "determines the view template's base file name" do
       @page.view.should == :page
     end
   end
@@ -155,11 +155,11 @@ category:
       @page = Mango::ContentPage.find_by_path(path)
     end
 
-    it "should be an instance of Mango::ContentPage" do
+    it "is an instance of Mango::ContentPage" do
       @page.should be_instance_of(Mango::ContentPage)
     end
 
-    it "should save the data" do
+    it "saves the data" do
       @page.data.should == <<-EOS
 ---
 title: Markdown!
@@ -171,26 +171,26 @@ category:
       EOS
     end
 
-    it "should detect content engine" do
+    it "detects the content engine" do
       @page.content_engine.should == :markdown
     end
 
-    it "should load attributes" do
+    it "loads the attributes" do
       @page.attributes.should have(3).items
       @page.attributes.should include("title"    => "Markdown!",)
       @page.attributes.should include("category" => ["content", "engine"])
       @page.attributes.should include("view"     => :page)
     end
 
-    it "should load body" do
+    it "loads the body" do
       @page.body.should == "### /engines/markdown.markdown\n"
     end
 
-    it "should convert to HTML" do
+    it "converts to HTML" do
       @page.to_html.should == "<h3>/engines/markdown.markdown</h3>"
     end
 
-    it "should determine the view template's base file name" do
+    it "determines the view template's base file name" do
       @page.view.should == :page
     end
   end
@@ -202,7 +202,7 @@ category:
       @path = File.join(SPEC_APP_ROOT, "content", "unknown")
     end
 
-    it "should raise exception" do
+    it "raises Mango::ContentPage::PageNotFound" do
       expected_message = "Unable to find content page for path -- #{@path}"
       lambda {
         Mango::ContentPage.find_by_path(@path)

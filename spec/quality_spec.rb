@@ -6,7 +6,7 @@ describe "This project's" do
   #################################################################################################
 
   describe "git tracked files" do
-    it "should have no malformed whitespace" do
+    it "has no malformed whitespace" do
       Dir.chdir(PROJECT_ROOT) do
         `git ls-files`.split("\n").each do |tracked_file|
           next if tracked_file =~ /\.jpg|\.gif/
@@ -20,7 +20,7 @@ describe "This project's" do
   #################################################################################################
 
   describe Gem::Specification do
-    it "should build" do
+    it "builds a .gem successfully" do
       Dir.chdir(PROJECT_ROOT) do
         `gem build mango.gemspec`
         $?.should == 0

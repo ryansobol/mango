@@ -6,13 +6,13 @@ describe Mango::ContentPage do
   #################################################################################################
 
   describe "class constants" do
-    it "should define CONTENT_ENGINES" do
+    it "defines CONTENT_ENGINES" do
       Mango::ContentPage::CONTENT_ENGINES.should have(2).item
       Mango::ContentPage::CONTENT_ENGINES.should include(:haml => ["haml"])
       Mango::ContentPage::CONTENT_ENGINES.should include(:markdown => ["md", "mdown", "markdown"])
     end
 
-    it "should define DEFAULT" do
+    it "defines DEFAULT" do
       Mango::ContentPage::DEFAULT.should have(3).items
       Mango::ContentPage::DEFAULT.should include(:body => "")
       Mango::ContentPage::DEFAULT.should include(:content_engine => :markdown)
@@ -33,10 +33,10 @@ title: Syntactic Sugar Makes Life Sweeter
 EOS
     end
 
-    it "should make title sweeter" do
+    it "makes the title sweeter" do
       @page.title.should == @page.attributes["title"]
     end
-    it "should not make unknown sweeter" do
+    it "doesn't make unknown sweeter" do
       lambda { @page.unknown }.should raise_exception(NoMethodError)
     end
   end

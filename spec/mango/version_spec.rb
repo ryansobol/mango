@@ -7,11 +7,11 @@ describe Mango do
       @expected = "0.5.0.beta1"
     end
 
-    it "should be correct for Mango::VERSION" do
+    it "is correct for Mango::VERSION" do
       Mango::VERSION.should == @expected
     end
 
-    it "should be correct for the VERSION rubygem file" do
+    it "is correct for the VERSION file" do
       Dir.chdir(PROJECT_ROOT) { File.read("VERSION").chomp.should == @expected }
     end
   end

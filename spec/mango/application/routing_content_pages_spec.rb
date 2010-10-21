@@ -16,15 +16,15 @@ describe Mango::Application do
       get ""
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -50,15 +50,15 @@ describe Mango::Application do
       get "/"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -84,15 +84,15 @@ describe Mango::Application do
       get "/index"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -118,15 +118,15 @@ describe Mango::Application do
       get "/index?foo=bar"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -152,15 +152,15 @@ describe Mango::Application do
       get "/about/"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -186,15 +186,15 @@ describe Mango::Application do
       get "/about/index"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -220,15 +220,15 @@ describe Mango::Application do
       get "/about/us"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -254,15 +254,15 @@ describe Mango::Application do
       get "/turner%2Bhooch"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -288,15 +288,15 @@ describe Mango::Application do
       get "/page_not_found"
     end
 
-    it "should return 404 status code" do
+    it "returns 404 status code" do
       last_response.should be_not_found
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -315,7 +315,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /page_with_missing_view" do
-    it "should raise RuntimeError" do
+    it "raises RuntimeError" do
       path = File.join(SPEC_APP_ROOT, "themes", "default", "views", "missing_view_template.haml")
       lambda {
         get "/page_with_missing_view"
@@ -330,15 +330,15 @@ describe Mango::Application do
       get "/../security_hole"
     end
 
-    it "should return 404 status code" do
+    it "returns 404 status code" do
       last_response.should be_not_found
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>

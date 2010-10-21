@@ -16,15 +16,15 @@ describe Mango::Application do
       get "/styles/screen.css"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/css"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 @charset "UTF-8";
 .content-navigation {
@@ -46,15 +46,15 @@ describe Mango::Application do
       get "/styles/subfolder/screen.css"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/css"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 @charset "UTF-8";
 table.hl {
@@ -77,15 +77,15 @@ li {
       get "/styles/reset.css"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/css"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 /*
 html5doctor.com Reset Stylesheet
@@ -125,15 +125,15 @@ time, mark, audio, video {
       get "/styles/override.css"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/css"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 #override {
   font-weight: bold;
@@ -149,15 +149,15 @@ time, mark, audio, video {
       get "/default.css"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/css"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 #default {
   background-color: black;
@@ -173,15 +173,15 @@ time, mark, audio, video {
       get "/styles/subfolder/another.css"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/css"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 #another {
   color: red;
@@ -197,15 +197,15 @@ time, mark, audio, video {
       get "/styles/style_not_found.css"
     end
 
-    it "should return 404 status code" do
+    it "returns 404 status code" do
       last_response.should be_not_found
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -228,15 +228,15 @@ time, mark, audio, video {
       get "/screen.css"
     end
 
-    it "should return 404 status code" do
+    it "returns 404 status code" do
       last_response.should be_not_found
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -259,15 +259,15 @@ time, mark, audio, video {
       get "/styles/../security_hole.css"
     end
 
-    it "should return 404 status code" do
+    it "returns 404 status code" do
       last_response.should be_not_found
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"].should == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>

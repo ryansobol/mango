@@ -16,15 +16,15 @@ describe Mango::Application do
       get "/robots.txt"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/plain"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 User-agent: *
 Disallow: /cgi-bin/
@@ -39,15 +39,15 @@ Disallow: /cgi-bin/
       get "/images/index.html"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -70,15 +70,15 @@ Disallow: /cgi-bin/
       get "/images/ripe-mango.jpg"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "image/jpeg"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       content_path = File.join(Mango::Application.public, "images", "ripe-mango.jpg")
       last_response.body.should == File.open(content_path, "rb").read
     end
@@ -91,15 +91,15 @@ Disallow: /cgi-bin/
       get "/override"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -123,15 +123,15 @@ Disallow: /cgi-bin/
       get "/images/"
     end
 
-    it "should return 200 status code" do
+    it "returns 200 status code" do
       last_response.should be_ok
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -154,15 +154,15 @@ Disallow: /cgi-bin/
       get "/../security_hole.txt"
     end
 
-    it "should return 404 status code" do
+    it "returns 404 status code" do
       last_response.should be_not_found
     end
 
-    it "should send the correct Content-Type header" do
+    it "sends the correct Content-Type header" do
       last_response["Content-Type"] == "text/html"
     end
 
-    it "should send the correct body content" do
+    it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
 <!DOCTYPE html>
 <html>

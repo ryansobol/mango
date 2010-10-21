@@ -33,19 +33,19 @@ describe Mango::Rack::Debugger do
       ::Debugger.should_receive(:start)
     end
 
-    it "should properly set @app" do
+    it "sets @app" do
       debugger = Mango::Rack::Debugger.new(@mock_app, @mock_kernel)
       debugger.instance_variable_get(:@app).should == @mock_app
     end
 
-    it "should inform the user" do
+    it "informs the user" do
       Mango::Rack::Debugger.new(@mock_app, @mock_kernel)
       $stdout.string.should == <<-OUTPUT
 => Debugger enabled
       OUTPUT
     end
 
-    it "should invoke the app" do
+    it "invokes the app" do
       debugger = Mango::Rack::Debugger.new(@mock_app, @mock_kernel)
       @mock_app.should_receive(:call).with(@mock_env)
       debugger.call(@mock_env)
@@ -74,37 +74,37 @@ describe Mango::Rack::Debugger do
       ::Debugger.should_not_receive(:start)
     end
 
-    it "should set @app" do
+    it "sets @app" do
       debugger = Mango::Rack::Debugger.new(@mock_app, @mock_kernel)
       debugger.instance_variable_get(:@app).should == @mock_app
     end
 
-    it "should inform the user for ruby 1.8.6" do
+    it "informs the user for ruby 1.8.6" do
       Mango::Rack::Debugger.new(@mock_app, @mock_kernel, "1.8.6")
       $stdout.string.should == @expected_ruby18_output
     end
 
-    it "should inform the user for ruby 1.8.7" do
+    it "informs the user for ruby 1.8.7" do
       Mango::Rack::Debugger.new(@mock_app, @mock_kernel, "1.8.7")
       $stdout.string.should == @expected_ruby18_output
     end
 
-    it "should inform the user for ruby 1.9.0" do
+    it "informs the user for ruby 1.9.0" do
       Mango::Rack::Debugger.new(@mock_app, @mock_kernel, "1.9.0")
       $stdout.string.should == @expected_ruby19_output
     end
 
-    it "should inform the user for ruby 1.9.1" do
+    it "informs the user for ruby 1.9.1" do
       Mango::Rack::Debugger.new(@mock_app, @mock_kernel, "1.9.1")
       $stdout.string.should == @expected_ruby19_output
     end
 
-    it "should inform the user for ruby 1.9.2" do
+    it "informs the user for ruby 1.9.2" do
       Mango::Rack::Debugger.new(@mock_app, @mock_kernel, "1.9.2")
       $stdout.string.should == @expected_ruby19_output
     end
 
-    it "should invoke the app" do
+    it "invokes the app" do
       debugger = Mango::Rack::Debugger.new(@mock_app, @mock_kernel)
       @mock_app.should_receive(:call).with(@mock_env)
       debugger.call(@mock_env)

@@ -54,35 +54,35 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       ERROR
     end
 
-    it "should abort for ruby 1.8.6" do
+    it "aborts for ruby 1.8.6" do
       version = "1.8.6"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should raise_exception(SystemExit, expected_message(version))
     end
 
-    it "should abort for ruby 1.8.7" do
+    it "aborts for ruby 1.8.7" do
       version = "1.8.7"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should raise_exception(SystemExit, expected_message(version))
     end
 
-    it "should abort for ruby 1.9.0" do
+    it "aborts for ruby 1.9.0" do
       version = "1.9.0"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should raise_exception(SystemExit, expected_message(version))
     end
 
-    it "should not abort for ruby 1.9.1" do
+    it "doesn't abort for ruby 1.9.1" do
       version = "1.9.1"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
       }.should_not raise_exception(SystemExit, expected_message(version))
     end
 
-    it "should abort for ruby 1.9.2" do
+    it "aborts for ruby 1.9.2" do
       version = "1.9.2"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
@@ -93,7 +93,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
   #################################################################################################
 
   describe ".destroy_warnings" do
-    it "should empty the warnings cache" do
+    it "empties the warnings cache" do
       Mango::Dependencies.class_variable_get(:@@warnings_cache).should be_empty
 
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- yard"))
@@ -111,12 +111,12 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       Mango::Dependencies.destroy_warnings
     end
 
-    it "should create and cache one warning from a known development gem dependency" do
+    it "creates and caches and cache one warning from a known development gem dependency" do
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- yard"))
       Mango::Dependencies.class_variable_get(:@@warnings_cache).should ==  ["yard --version '0.5.8'"]
     end
 
-    it "should create and cache warnings from all known development gem dependencies" do
+    it "creates and caches and cache warnings from all known development gem dependencies" do
       Mango::Dependencies::DEVELOPMENT_GEMS.each_key do |file_name|
         gem_name = if Mango::Dependencies::FILE_NAME_TO_GEM_NAME.has_key?(file_name)
           Mango::Dependencies::FILE_NAME_TO_GEM_NAME[file_name]
@@ -137,7 +137,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       Mango::Dependencies.class_variable_get(:@@warnings_cache).should == expected
     end
 
-    it "should raise an exception when creating a warning from an unknown development gem dependency" do
+    it "raises a RuntimeError when creating a warning from an unknown development gem dependency" do
       lambda {
         Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- _fakegem"))
       }.should raise_exception(RuntimeError, "Cannot create a dependency warning for unknown development gem -- _fakegem")
@@ -155,7 +155,7 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       $stdout = STDOUT
     end
 
-    it "should display a warning message to the user on the standard output channel" do
+    it "displays a warning message to the user on the standard output channel" do
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- spec/rake/spectask"))
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- yard"))
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- bluecloth"))
@@ -169,7 +169,7 @@ bluecloth --version '2.0.7'
       MESSAGE
     end
 
-    it "should not display a warning message to the user if there are no warnings in the cache" do
+    it "doesn't display a warning message to the user if there are no warnings in the cache" do
       Mango::Dependencies.destroy_warnings
       Mango::Dependencies.render_warnings
       $stdout.string.should be_empty
@@ -179,7 +179,7 @@ bluecloth --version '2.0.7'
   #################################################################################################
 
   describe ".warn_at_exit" do
-    it "should ensure Kernel#at_exit is invoked with a block" do
+    it "ensures Kernel#at_exit is invoked with a block" do
       Mango::Dependencies.should_receive(:at_exit)
       # TODO how to specify that #at_exit receives a block?
       # maybe i can intercept the block, execute it and test the output?
