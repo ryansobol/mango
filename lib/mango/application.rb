@@ -275,7 +275,7 @@ module Mango
     # @param [String] uri_path
     #
     def render_index_file!(uri_path)
-      return unless uri_path[-1] == "/"
+      return unless directory_path?(uri_path)
 
       index_match     = File.join(settings.public, "*")
       index_file_path = build_index_file_path(uri_path)
@@ -292,7 +292,7 @@ module Mango
     # @return [String] The path to a potential index.html file
     #
     def build_index_file_path(uri_path)
-      uri_path = File.join(uri_path, "index.html")
+      uri_path += "index.html"
       File.expand_path(uri_path, settings.public)
     end
 
@@ -330,9 +330,21 @@ module Mango
     # @return [String] The path to a potential content page
     #
     def build_content_page_path(uri_path)
-      uri_path += "index" if uri_path.empty? || uri_path[-1] == "/"
+      uri_path += "index" if directory_path?(uri_path)
       File.expand_path(uri_path, settings.content)
     end
 
+    ###############################################################################################
+
+    private
+
+    # Given a URI path, determine whether or no it looks like a directory path
+    #
+    # @param [String] uri_path
+    # @return [Boolean] `true` if the path is empty or has a trailing `/`, otherwise `false`
+    #
+    def directory_path?(uri_path)
+      uri_path.empty? || uri_path[-1] == "/"
+    end
   end
 end

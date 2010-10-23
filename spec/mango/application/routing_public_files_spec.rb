@@ -34,9 +34,9 @@ Disallow: /cgi-bin/
 
   #################################################################################################
 
-  describe "GET /images/index.html" do
+  describe "GET /images/" do
     before(:each) do
-      get "/images/index.html"
+      get "/images/"
     end
 
     it "returns 200 status code" do
@@ -60,6 +60,46 @@ Disallow: /cgi-bin/
   </body>
 </html>
       EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /" do
+    before(:each) do
+      @file_name     = File.join(Mango::Application.public, "index.html")
+      @expected_body = <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>/themes/default/public/index.html</title>
+  </head>
+  <body>
+    <p>/themes/default/public/index.html</p>
+  </body>
+</html>
+      EXPECTED
+
+      File.open(@file_name, "w") { |f| f.write(@expected_body) }
+
+      get "/"
+    end
+
+    after(:each) do
+      File.delete(@file_name)
+    end
+
+    it "returns 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "sends the correct Content-Type header" do
+      last_response["Content-Type"] == "text/html"
+    end
+
+    it "sends the correct body content" do
+      last_response.body.should == @expected_body
     end
   end
 
