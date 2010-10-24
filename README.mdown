@@ -91,7 +91,10 @@ REQUIREMENTS
 INSTALLING
 ----------
 
-    $ gem install mango
+    $ gem install mango -v 0.5.0.beta3
+
+Note: Depending on how RubyGems is installed, you *may* need to prepend the command with `sudo`.
+
 
 USAGE
 -----
