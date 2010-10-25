@@ -49,7 +49,7 @@ describe Mango::Dependencies do
 
     def expected_message(version)
       @expected_message = <<-ERROR
-This library requires Ruby 1.9.1 or 1.9.2, but you're using #{version}.
+This library supports Ruby 1.9.1 or 1.9.2, but you're using #{version}.
 Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for installation instructions.
       ERROR
     end

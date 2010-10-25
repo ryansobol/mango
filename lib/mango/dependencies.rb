@@ -114,7 +114,7 @@ module Mango
     def self.check_ruby_version(ruby_version = RUBY_VERSION)
       unless SUPPORTED_RUBY_VERSIONS.include?(ruby_version)
         abort <<-ERROR
-This library requires Ruby #{SUPPORTED_RUBY_VERSIONS.join(" or ")}, but you're using #{ruby_version}.
+This library supports Ruby #{SUPPORTED_RUBY_VERSIONS.join(" or ")}, but you're using #{ruby_version}.
 Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for installation instructions.
         ERROR
       end
