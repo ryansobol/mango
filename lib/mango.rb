@@ -1,5 +1,8 @@
 # encoding: UTF-8
-require_relative "mango/dependencies" # ruby version guard
+
+# Ensure the environment uses the correct version of Ruby
+require File.expand_path("mango/dependencies", File.dirname(__FILE__))
+
 require_relative "mango/version"
 require_relative "mango/rack/debugger"
 require_relative "mango/application"

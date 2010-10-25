@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 # encoding: UTF-8
 
+# Ensure the environment uses the correct version of Ruby
+require File.expand_path("../lib/mango/dependencies", File.dirname(__FILE__))
+
 require_relative "../lib/mango/runner"
 Mango::Runner.start

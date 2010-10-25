@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require_relative "lib/mango"
+require File.expand_path("lib/mango", File.dirname(__FILE__))
 Mango::Dependencies.warn_at_exit
 
 ###################################################################################################
