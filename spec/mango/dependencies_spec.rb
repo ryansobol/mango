@@ -7,7 +7,7 @@ describe Mango::Dependencies do
 
   describe "class constant and variable defaults" do
     it "required ruby version should be correct" do
-      Mango::Dependencies::REQUIRED_RUBY_VERSION.should == "1.9.1"
+      Mango::Dependencies::REQUIRED_RUBY_VERSIONS.should == ["1.9.1", "1.9.2"]
     end
 
     it "development gem names and versions should be correct" do
@@ -49,8 +49,8 @@ describe Mango::Dependencies do
 
     def expected_message(version)
       @expected_message = <<-ERROR
-This library requires Ruby 1.9.1, but you're using #{version}.
-Please visit http://www.ruby-lang.org/ for installation instructions.
+This library requires Ruby 1.9.1 or 1.9.2, but you're using #{version}.
+Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for installation instructions.
       ERROR
     end
 
@@ -82,11 +82,11 @@ Please visit http://www.ruby-lang.org/ for installation instructions.
       }.should_not raise_exception(SystemExit, expected_message(version))
     end
 
-    it "aborts for ruby 1.9.2" do
+    it "doesn't abort for ruby 1.9.2" do
       version = "1.9.2"
       lambda {
         Mango::Dependencies.send(:check_ruby_version, version)
-      }.should raise_exception(SystemExit, expected_message(version))
+      }.should_not raise_exception(SystemExit, expected_message(version))
     end
   end
 

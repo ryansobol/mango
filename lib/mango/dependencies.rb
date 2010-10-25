@@ -37,7 +37,7 @@ module Mango
   # @see Mango::Dependencies.warn_at_exit
   class Dependencies
     # For now, starting with Ruby 1.9.1 but I would like to experiment with compatibility with Ruby >= 1.9.1 in the future.
-    REQUIRED_RUBY_VERSION = "1.9.1"
+    REQUIRED_RUBY_VERSIONS = ["1.9.1", "1.9.2"]
 
     # bluecloth is a hidden yard dependency for markdown support
     DEVELOPMENT_GEMS = {
@@ -106,17 +106,17 @@ module Mango
 
     private
 
-    # Checks that the version of the current Ruby process matches the `REQUIRED_RUBY_VERSION`.
-    # This method is automatically invoked at the first time this class is required, ensuring the
-    # correct Ruby version at parse-time.
+    # Checks that the version of the current Ruby process matches the one of the
+    # `REQUIRED_RUBY_VERSIONS`. This method is automatically invoked at the first time this class
+    # is required, ensuring the correct Ruby version at parse-time.
     #
     # @param [String] ruby_version Useful for automated specifications.  Defaults to `RUBY_VERSION`.
     # @raise [SystemExit] Raised, with a message, when the process is using an incorrect version of Ruby.
     def self.check_ruby_version(ruby_version = RUBY_VERSION)
-      unless ruby_version == REQUIRED_RUBY_VERSION
+      unless REQUIRED_RUBY_VERSIONS.include?(ruby_version)
         abort <<-ERROR
-This library requires Ruby #{REQUIRED_RUBY_VERSION}, but you're using #{ruby_version}.
-Please visit http://www.ruby-lang.org/ for installation instructions.
+This library requires Ruby #{REQUIRED_RUBY_VERSIONS.join(" or ")}, but you're using #{ruby_version}.
+Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for installation instructions.
         ERROR
       end
     end
