@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "bundler",   "~> 1.0.3"
   s.add_runtime_dependency "rack",      "~> 1.2.1"
-  s.add_runtime_dependency "sinatra",   "~> 1.0"
+  s.add_runtime_dependency "sinatra",   "~> 1.0.0"
   s.add_runtime_dependency "haml",      "~> 3.0.22"
   s.add_runtime_dependency "bluecloth", "~> 2.0.9"
   s.add_runtime_dependency "thor",      "~> 0.14.3"
