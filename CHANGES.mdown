@@ -1,4 +1,4 @@
-Mango release 0.5.0.beta3 (October 23, 2010)
+Mango release 0.5.0.beta4 (October 24, 2010)
 ============================================
 
 ### Features
