@@ -9,9 +9,9 @@ module Mango
   # is not always a better version.
   #
   # `Mango::Dependencies` automatically enforces a strict parse-time check for the
-  # `REQUIRED_RUBY_VERSION` on both application and development processes for the `Mango` library.
-  # (i.e. `bin/mango`, `rake`, `spec`, etc)  Because of this, I've ensured this file is
-  # syntactically compatible with Ruby 1.8.6 or higher.
+  # `SUPPORTED_RUBY_VERSIONS` on both application and development processes for the `Mango`
+  # library. (i.e. `bin/mango`, `rake`, `spec`, `rackup`, etc)  Because of this, I've ensured this
+  # file is syntactically compatible with Ruby 1.8.7 or higher.
   #
   # Currently, `Mango` does **not** enforce strict parse-time version checking on `DEVELOPMENT_GEMS`.
   # In the future, I would like to experiment with using RubyGems and the `Kernel#gem` method to
@@ -36,8 +36,7 @@ module Mango
   # @see Mango::Dependencies.create_warning_for
   # @see Mango::Dependencies.warn_at_exit
   class Dependencies
-    # For now, starting with Ruby 1.9.1 but I would like to experiment with compatibility with Ruby >= 1.9.1 in the future.
-    REQUIRED_RUBY_VERSIONS = ["1.9.1", "1.9.2"]
+    SUPPORTED_RUBY_VERSIONS = ["1.9.1", "1.9.2"]
 
     # bluecloth is a hidden yard dependency for markdown support
     DEVELOPMENT_GEMS = {
@@ -49,9 +48,9 @@ module Mango
     }
 
     FILE_NAME_TO_GEM_NAME = {
-      :"rack/test"          => :"rack-test",
-      :"spec/rake/spectask" => :rspec,
-      :"yard/sinatra"       => :"yard-sinatra"
+      :"rack/test"            => :"rack-test",
+      :"rspec/core/rake_task" => :rspec,
+      :"yard/sinatra"         => :"yard-sinatra"
     }
 
     # Empties the warnings cache.  This method is called when the class is required.
@@ -107,15 +106,15 @@ module Mango
     private
 
     # Checks that the version of the current Ruby process matches the one of the
-    # `REQUIRED_RUBY_VERSIONS`. This method is automatically invoked at the first time this class
+    # `SUPPORTED_RUBY_VERSIONS`. This method is automatically invoked at the first time this class
     # is required, ensuring the correct Ruby version at parse-time.
     #
     # @param [String] ruby_version Useful for automated specifications.  Defaults to `RUBY_VERSION`.
     # @raise [SystemExit] Raised, with a message, when the process is using an incorrect version of Ruby.
     def self.check_ruby_version(ruby_version = RUBY_VERSION)
-      unless REQUIRED_RUBY_VERSIONS.include?(ruby_version)
+      unless SUPPORTED_RUBY_VERSIONS.include?(ruby_version)
         abort <<-ERROR
-This library requires Ruby #{REQUIRED_RUBY_VERSIONS.join(" or ")}, but you're using #{ruby_version}.
+This library requires Ruby #{SUPPORTED_RUBY_VERSIONS.join(" or ")}, but you're using #{ruby_version}.
 Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for installation instructions.
         ERROR
       end

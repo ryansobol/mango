@@ -6,8 +6,8 @@ describe Mango::Dependencies do
   #################################################################################################
 
   describe "class constant and variable defaults" do
-    it "required ruby version should be correct" do
-      Mango::Dependencies::REQUIRED_RUBY_VERSIONS.should == ["1.9.1", "1.9.2"]
+    it "supports ruby 1.9.1 or 1.9.2" do
+      Mango::Dependencies::SUPPORTED_RUBY_VERSIONS.should == ["1.9.1", "1.9.2"]
     end
 
     it "development gem names and versions should be correct" do
@@ -24,9 +24,9 @@ describe Mango::Dependencies do
 
     it "file name to gem name look-up table should be correct" do
       expected = {
-        :"rack/test"          => :"rack-test",
-        :"spec/rake/spectask" => :rspec,
-        :"yard/sinatra"       => :"yard-sinatra"
+        :"rack/test"            => :"rack-test",
+        :"rspec/core/rake_task" => :rspec,
+        :"yard/sinatra"         => :"yard-sinatra"
       }
       Mango::Dependencies::FILE_NAME_TO_GEM_NAME.should == expected
     end
@@ -156,7 +156,7 @@ Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for ins
     end
 
     it "displays a warning message to the user on the standard output channel" do
-      Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- spec/rake/spectask"))
+      Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- rspec/core/rake_task"))
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- yard"))
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- bluecloth"))
       Mango::Dependencies.render_warnings
