@@ -21,7 +21,7 @@ describe Mango::Application do
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"] == "text/plain"
+      last_response["Content-Type"].should == "text/plain;charset=utf-8"
     end
 
     it "sends the correct body content" do
@@ -44,7 +44,7 @@ Disallow: /cgi-bin/
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"] == "text/html"
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
     end
 
     it "sends the correct body content" do
@@ -95,7 +95,7 @@ Disallow: /cgi-bin/
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"] == "text/html"
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
     end
 
     it "sends the correct body content" do
@@ -115,7 +115,7 @@ Disallow: /cgi-bin/
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"] == "image/jpeg"
+      last_response["Content-Type"].should == "image/jpeg;charset=utf-8"
     end
 
     it "sends the correct body content" do
@@ -136,7 +136,7 @@ Disallow: /cgi-bin/
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"] == "text/html"
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
     end
 
     it "sends the correct body content" do
@@ -168,7 +168,7 @@ Disallow: /cgi-bin/
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"] == "text/html"
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
     end
 
     it "sends the correct body content" do
@@ -199,7 +199,7 @@ Disallow: /cgi-bin/
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"] == "text/html"
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
     end
 
     it "sends the correct body content" do

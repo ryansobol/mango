@@ -16,12 +16,13 @@ Mango release 0.5.0.beta5 (October 29, 2010)
   * Added [RubyGems](https://rubygems.org/) 1.3.7
   * Updated [Ruby](http://www.ruby-lang.org/) to 1.9.1 or 1.9.2
   * Updated [Bundler](http://gembundler.com/) to 1.0.3
+  * Updated [Sinatra](http://www.sinatrarb.com/) to 1.1.0
   * Updated [Haml](http://haml-lang.com/) to 3.0.22
   * Updated [Sass](http://sass-lang.com/) to 3.0.22 (bundled with Haml)
   * Updated [BlueCloth](http://deveiate.org/projects/BlueCloth) to 2.0.9
   * Updated [Rack::Test](http://github.com/brynary/rack-test) to 0.5.6
   * Updated [RSpec](http://rspec.info/) to 2.0.1
-  * Updated [YARD](http://yardoc.org/) to 0.5.8
+  * Updated [YARD](http://yardoc.org/) to 0.6.1
   * Updated [YARD::Sinatra](http://github.com/rkh/yard-sinatra) to 0.5.1
 
 ### Bugs

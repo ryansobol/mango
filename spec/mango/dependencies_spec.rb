@@ -14,7 +14,7 @@ describe Mango::Dependencies do
       expected = {
         :"rack-test"    => "0.5.6",
         :rspec          => "2.0.1",
-        :yard           => "0.5.8",
+        :yard           => "0.6.1",
         :"yard-sinatra" => "0.5.1",
         :bluecloth      => "2.0.9"
       }
@@ -113,7 +113,7 @@ Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for ins
 
     it "creates and caches and cache one warning from a known development gem dependency" do
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- yard"))
-      Mango::Dependencies.class_variable_get(:@@warnings_cache).should ==  ["yard --version '0.5.8'"]
+      Mango::Dependencies.class_variable_get(:@@warnings_cache).should ==  ["yard --version '0.6.1'"]
     end
 
     it "creates and caches and cache warnings from all known development gem dependencies" do
@@ -130,7 +130,7 @@ Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for ins
       expected = [
         "rack-test --version '0.5.6'",
         "rspec --version '2.0.1'",
-        "yard --version '0.5.8'",
+        "yard --version '0.6.1'",
         "yard-sinatra --version '0.5.1'",
         "bluecloth --version '2.0.9'"
       ]
@@ -164,7 +164,7 @@ Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for ins
 
 The following development gem dependencies could not be found. Without them, some available development features are missing:
 rspec --version '2.0.1'
-yard --version '0.5.8'
+yard --version '0.6.1'
 bluecloth --version '2.0.9'
       MESSAGE
     end
