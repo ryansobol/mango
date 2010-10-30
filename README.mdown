@@ -12,8 +12,6 @@ Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {
 * **Issue Tracker**: [http://github.com/ryansobol/mango/issues](http://github.com/ryansobol/mango/issues)
 * **Wiki**: [http://wiki.github.com/ryansobol/mango](http://wiki.github.com/ryansobol/mango)
 
-**Mango respects [Semantic Versioning](http://semver.org/)!**
-
 WHAT'S NEW?
 -----------
 
@@ -73,7 +71,9 @@ FEATURES
 REQUIREMENTS
 ------------
 
-**Required dependencies**
+**Mango respects [Semantic Versioning](http://semver.org/)!**
+
+### Required dependencies
 
   * [Ruby](http://www.ruby-lang.org/) 1.9.2 ([RVM](http://rvm.beginrescueend.com/) recommended)
   * [RubyGems](https://rubygems.org/) 1.3.7 (bundled with Ruby)
@@ -84,7 +84,7 @@ REQUIREMENTS
   * [Sass](http://sass-lang.com/) 3.0.22 (bundled with Haml)
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.9
 
-**Optional development dependencies**
+### Optional development dependencies
 
   * [Rake](http://rake.rubyforge.org/) 0.8.7 (bundled with Ruby)
   * [Rack::Test](http://github.com/brynary/rack-test) 0.5.6
@@ -96,21 +96,52 @@ REQUIREMENTS
 INSTALLING
 ----------
 
+### Ensuring Ruby 1.9.2 is installed and active
+
+I recommend [RVM](http://rvm.beginrescueend.com/) by Wayne E. Seguin.  It trivializes managing multiple versions of Ruby on one machine.
+
+    $ ruby -v
+    ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-darwin10.4.0]
+
+**TIP:** The revision and arch-type may differ on your machine.
+
+### Installing the Mango gem
+
     $ gem install mango -v 0.5.0.beta5
 
-Note: Depending on how RubyGems is installed on your machine, you *may* need to prepend the command with `sudo`.
+**TIP:** If you're not using [RVM](http://rvm.beginrescueend.com/), you *may* want to prepend the `gem` command with `sudo`.
 
 USAGE
 -----
 
 ### Generating a Mango application
 
+With Mango installed, the `mango` command will generate a new application.
+
     $ mango create /path/to/your/app
 
 ### Starting the application
 
+Mango applications are compatible with any [Rack supported web-server](http://rack.rubyforge.org/doc/).  The `rackup` command will start a web-server (default: WEBrick) listening at `http://0.0.0.0:9292`.
+
     $ cd /path/to/your/app
     $ rackup
+    [2010-10-30 15:39:41] INFO  WEBrick 1.3.1
+    [2010-10-30 15:39:41] INFO  ruby 1.9.2 (2010-08-18) [x86_64-darwin10.4.0]
+    [2010-10-30 15:39:41] INFO  WEBrick::HTTPServer#start: pid=27513 port=9292
+
+**TIP:** Type `Control + C` to quit `rackup`.
+
+If you prefer an alternative web-server (e.g. `thin`), simply install the gem and use the `-s SERVER` option to specify the web-server.
+
+    $ cd /path/to/your/app
+    $ gem install thin
+    $ rackup -s thin
+    >> Thin web server (v1.2.7 codename No Hup)
+    >> Maximum connections set to 1024
+    >> Listening on 0.0.0.0:9292, CTRL+C to stop
+
+**TIP:** To see a list of all the `rackup` command-line options, use the `--help` option.
 
 ### Generated application structure
 
