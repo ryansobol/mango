@@ -186,7 +186,7 @@ Now that the newly generated Mango application is running, here's how the applic
     * For routes ending in `.css`, Mango searches for [Sass](http://sass-lang.com/) styles found in `themes/styles/`.
     * For all other routes:
       * Mango searches for [Markdown](http://daringfireball.net/projects/markdown/syntax) or [Haml](http://haml-lang.com/) content pages in `content/`.
-      * Mango will also try to wrap the content page within [Haml](http://haml-lang.com/) template and layout pages.
+      * Mango will also try to wrap the content page within [Haml](http://haml-lang.com/) page and layout templates in `themes/default/views`.
   * If no static or template file is found, Mango routes unknown HTTP requests to a customizable 404 page found in `themes/default/views`.
 
 MOTIVATION
