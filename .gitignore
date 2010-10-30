@@ -1,4 +1,5 @@
 .DS_Store
+.bundle
 .rvmrc
 .yardoc
 *.gem
