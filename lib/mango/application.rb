@@ -118,6 +118,10 @@ module Mango
       use Mango::Rack::Debugger
     end
 
+    # For static files that don't have an extension, send the file as HTML content
+    #
+    mime_type "", "text/html"
+
     # Renders the `404.haml` template found within `settings.views` and sends it with 404 HTTP
     # response.
     #
