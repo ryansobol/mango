@@ -29,6 +29,12 @@ describe Mango::Runner do
     it "has a source root" do
       @runner.source_paths.should include (PROJECT_ROOT + "lib/mango/templates").to_s
     end
+
+    it "has a create task" do
+      task = Mango::Runner.tasks["create"]
+      task.name.should == "create"
+      task.description.should == "Creates a new Mango application at the specified path"
+    end
   end
 
   #################################################################################################

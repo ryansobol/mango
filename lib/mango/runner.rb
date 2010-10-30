@@ -9,8 +9,7 @@ module Mango
 
     source_root File.expand_path("templates", File.dirname(__FILE__))
 
-    desc "create /path/to/your/app",
-      "Creates a new Mango application with a default directory structure and configuration at the path you specify."
+    desc "create /path/to/your/app", "Creates a new Mango application at the specified path"
     def create(destination)
       self.destination_root = destination
 
