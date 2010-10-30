@@ -7,7 +7,7 @@ describe Mango::ContentPage do
 
   describe "finding app_root/content/engines/haml.haml" do
     before(:all) do
-      path  = File.join(SPEC_APP_ROOT, "content", "engines", "haml")
+      path  = SPEC_APP_ROOT + "content/engines/haml"
       @page = Mango::ContentPage.find_by_path(path)
     end
 
@@ -55,7 +55,7 @@ category:
 
   describe "finding app_root/content/engines/md.md" do
     before(:all) do
-      path  = File.join(SPEC_APP_ROOT, "content", "engines", "md")
+      path  = SPEC_APP_ROOT + "content/engines/md"
       @page = Mango::ContentPage.find_by_path(path)
     end
 
@@ -103,7 +103,7 @@ category:
 
   describe "finding app_root/content/engines/mdown.mdown" do
     before(:all) do
-      path  = File.join(SPEC_APP_ROOT, "content", "engines", "mdown")
+      path  = SPEC_APP_ROOT + "content/engines/mdown"
       @page = Mango::ContentPage.find_by_path(path)
     end
 
@@ -151,7 +151,7 @@ category:
 
   describe "finding app_root/content/engines/markdown.markdown" do
     before(:all) do
-      path  = File.join(SPEC_APP_ROOT, "content", "engines", "markdown")
+      path  = SPEC_APP_ROOT + "content/engines/markdown"
       @page = Mango::ContentPage.find_by_path(path)
     end
 
@@ -199,7 +199,7 @@ category:
 
   describe "finding app_root/content/unknown.anyengine" do
     before(:all) do
-      @path = File.join(SPEC_APP_ROOT, "content", "unknown")
+      @path = SPEC_APP_ROOT + "content/unknown"
     end
 
     it "raises Mango::ContentPage::PageNotFound" do
