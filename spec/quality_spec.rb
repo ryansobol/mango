@@ -5,8 +5,8 @@ describe "This project's" do
 
   #################################################################################################
 
-  describe "git tracked files" do
-    it "has no malformed whitespace" do
+  describe "git-tracked files" do
+    it "contain no malformed whitespace" do
       Dir.chdir(PROJECT_ROOT) do
         `git ls-files`.split("\n").each do |tracked_file|
           next if tracked_file =~ /\.jpg|\.gif/
