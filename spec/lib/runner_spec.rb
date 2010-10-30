@@ -43,20 +43,20 @@ describe Mango::Runner do
     before(:all) do
       $stdout = StringIO.new
       @runner = Mango::Runner.new
-      @runner.create(SPEC_RUNNER_ROOT)
+      @runner.create(RUNNER_ROOT)
     end
 
     after(:all) do
-      SPEC_RUNNER_ROOT.rmtree
+      RUNNER_ROOT.rmtree
       $stdout = STDOUT
     end
 
     it "generates the destination root" do
-      SPEC_RUNNER_ROOT.should be_a_directory
+      RUNNER_ROOT.should be_a_directory
     end
 
     it "generates .gitignore" do
-      expected = SPEC_RUNNER_ROOT + ".gitignore"
+      expected = RUNNER_ROOT + ".gitignore"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 .DS_Store
@@ -66,7 +66,7 @@ describe Mango::Runner do
     end
 
     it "generates config.ru" do
-      expected = SPEC_RUNNER_ROOT + "config.ru"
+      expected = RUNNER_ROOT + "config.ru"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 # encoding: UTF-8
@@ -76,7 +76,7 @@ run Mango::Application
     end
 
     it "generates Gemfile" do
-      expected = SPEC_RUNNER_ROOT + "Gemfile"
+      expected = RUNNER_ROOT + "Gemfile"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 # encoding: UTF-8
@@ -87,7 +87,7 @@ gem "mango", "0.5.0.beta5"
     end
 
     it "generates README.md" do
-      expected = SPEC_RUNNER_ROOT + "README.md"
+      expected = RUNNER_ROOT + "README.md"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 test readme
@@ -97,11 +97,11 @@ test readme
     ###############################################################################################
 
     it "generates content/" do
-      (SPEC_RUNNER_ROOT + "content").should be_a_directory
+      (RUNNER_ROOT + "content").should be_a_directory
     end
 
     it "generates content/index.md" do
-      expected = SPEC_RUNNER_ROOT + "content/index.md"
+      expected = RUNNER_ROOT + "content/index.md"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 ---
@@ -115,27 +115,27 @@ title: Congratulations!
     ###############################################################################################
 
     it "generates themes/" do
-      (SPEC_RUNNER_ROOT + "themes").should be_a_directory
+      (RUNNER_ROOT + "themes").should be_a_directory
     end
 
     it "generates themes/default" do
-      (SPEC_RUNNER_ROOT + "themes/default").should be_a_directory
+      (RUNNER_ROOT + "themes/default").should be_a_directory
     end
 
     ###############################################################################################
 
     it "generates themes/default/public" do
-      (SPEC_RUNNER_ROOT + "themes/default/public").should be_a_directory
+      (RUNNER_ROOT + "themes/default/public").should be_a_directory
     end
 
     it "generates themes/default/public/favicon.ico" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/public/favicon.ico"
+      expected = RUNNER_ROOT + "themes/default/public/favicon.ico"
       expected.should be_a_file
       File.read(expected).should == ""
     end
 
     it "generates themes/default/public/robots.txt" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/public/robots.txt"
+      expected = RUNNER_ROOT + "themes/default/public/robots.txt"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
@@ -149,11 +149,11 @@ title: Congratulations!
     ###############################################################################################
 
     it "generates themes/default/public/images" do
-      (SPEC_RUNNER_ROOT + "themes/default/public/images").should be_a_directory
+      (RUNNER_ROOT + "themes/default/public/images").should be_a_directory
     end
 
     it "generates themes/default/public/images" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/public/images/particles.gif"
+      expected = RUNNER_ROOT + "themes/default/public/images/particles.gif"
       expected.should be_a_file
       File.open(expected, "rb") { |f| f.read.size.should == 2469 }
     end
@@ -161,17 +161,17 @@ title: Congratulations!
     ###############################################################################################
 
     it "generates themes/default/public/javascripts" do
-      (SPEC_RUNNER_ROOT + "themes/default/public/javascripts").should be_a_directory
+      (RUNNER_ROOT + "themes/default/public/javascripts").should be_a_directory
     end
 
     it "generates themes/default/public/javascripts/fireworks.js" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/public/javascripts/fireworks.js"
+      expected = RUNNER_ROOT + "themes/default/public/javascripts/fireworks.js"
       expected.should be_a_file
       File.read(expected).size.should == 17167
     end
 
     it "generates themes/default/public/javascripts/timer.js" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/public/javascripts/timer.js"
+      expected = RUNNER_ROOT + "themes/default/public/javascripts/timer.js"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 function fire() {
@@ -185,17 +185,17 @@ function fire() {
     ###############################################################################################
 
     it "generates themes/default/public/styles" do
-      (SPEC_RUNNER_ROOT + "themes/default/public/styles").should be_a_directory
+      (RUNNER_ROOT + "themes/default/public/styles").should be_a_directory
     end
 
     it "generates themes/default/public/styles/fireworks.css" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/public/styles/fireworks.css"
+      expected = RUNNER_ROOT + "themes/default/public/styles/fireworks.css"
       expected.should be_a_file
       File.read(expected).size.should == 717
     end
 
     it "generates themes/default/public/styles/reset.css" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/public/styles/reset.css"
+      expected = RUNNER_ROOT + "themes/default/public/styles/reset.css"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 @charset "UTF-8";
@@ -258,11 +258,11 @@ table {
     ###############################################################################################
 
     it "generates themes/default/styles" do
-      (SPEC_RUNNER_ROOT + "themes/default/styles").should be_a_directory
+      (RUNNER_ROOT + "themes/default/styles").should be_a_directory
     end
 
     it "generates themes/default/styles/screen.sass" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/styles/screen.sass"
+      expected = RUNNER_ROOT + "themes/default/styles/screen.sass"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 @charset "UTF-8"
@@ -288,11 +288,11 @@ h2
     ###############################################################################################
 
     it "generates themes/default/views" do
-      (SPEC_RUNNER_ROOT + "themes/default/views").should be_a_directory
+      (RUNNER_ROOT + "themes/default/views").should be_a_directory
     end
 
     it "generates themes/default/views/404.haml" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/views/404.haml"
+      expected = RUNNER_ROOT + "themes/default/views/404.haml"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 !!! 5
@@ -320,7 +320,7 @@ h2
     end
 
     it "generates themes/default/views/layout.haml" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/views/layout.haml"
+      expected = RUNNER_ROOT + "themes/default/views/layout.haml"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 !!! 5
@@ -347,7 +347,7 @@ h2
     end
 
     it "generates themes/default/views/page.haml" do
-      expected = SPEC_RUNNER_ROOT + "themes/default/views/page.haml"
+      expected = RUNNER_ROOT + "themes/default/views/page.haml"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 %h1= @content_page.title

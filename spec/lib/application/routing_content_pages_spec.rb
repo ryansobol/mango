@@ -316,7 +316,7 @@ describe Mango::Application do
 
   describe "GET /page_with_missing_view" do
     it "raises RuntimeError" do
-      path = SPEC_APP_ROOT + "themes/default/views/missing_view_template.haml"
+      path = FIXTURE_ROOT + "themes/default/views/missing_view_template.haml"
       lambda {
         get "/page_with_missing_view"
       }.should raise_exception(RuntimeError, "Unable to find a view template file -- #{path}")

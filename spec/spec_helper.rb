@@ -2,12 +2,12 @@
 ENV["RACK_ENV"] = "test"
 require "mango"
 
-PROJECT_ROOT     = Pathname File.expand_path("..", File.dirname(__FILE__))
-SPEC_APP_ROOT    = Pathname File.expand_path("app_root", File.dirname(__FILE__))
-SPEC_RUNNER_ROOT = Pathname File.expand_path("runner_root", File.dirname(__FILE__))
+PROJECT_ROOT = Pathname File.expand_path("..", File.dirname(__FILE__))
+FIXTURE_ROOT = Pathname File.expand_path("fixture", File.dirname(__FILE__))
+RUNNER_ROOT  = Pathname File.expand_path("runner", File.dirname(__FILE__))
 
 class Mango::Application
-  set :root, SPEC_APP_ROOT.to_s
+  set :root, FIXTURE_ROOT.to_s
 end
 
 ###################################################################################################
