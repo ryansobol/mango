@@ -36,7 +36,7 @@ module Mango
   # @see Mango::Dependencies.create_warning_for
   # @see Mango::Dependencies.warn_at_exit
   class Dependencies
-    SUPPORTED_RUBY_VERSIONS = ["1.9.1", "1.9.2"]
+    SUPPORTED_RUBY_VERSIONS = ["1.9.2"]
 
     # bluecloth is a hidden yard dependency for markdown support
     DEVELOPMENT_GEMS = {
