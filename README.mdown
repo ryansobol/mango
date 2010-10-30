@@ -132,6 +132,8 @@ Mango applications are compatible with any [Rack supported web-server](http://ra
 
 **TIP:** Type `Control + C` to quit `rackup`.
 
+### Using an alternative web-server
+
 If you prefer an alternative web-server (e.g. `thin`), simply install the gem and use the `-s SERVER` option to specify the web-server.
 
     $ cd /path/to/your/app
@@ -145,6 +147,9 @@ If you prefer an alternative web-server (e.g. `thin`), simply install the gem an
 
 ### Generated application structure
 
+Now that the newly generated Mango application is running, here's how the application is structured.
+
+    $ cd /path/to/your/app
     $ tree
     .
     ├── Gemfile
@@ -172,14 +177,17 @@ If you prefer an alternative web-server (e.g. `thin`), simply install the gem an
                 ├── layout.haml
                 └── page.haml
 
-UNDER THE HOOD
---------------
+**TIP:** The [tree](http://mama.indstate.edu/users/ice/tree/) command is awesome!
 
-  * Mango tries to route HTTP requests to static files first
-  * Then it tries to route HTTP requests to Markdown or Haml content pages or Sass style templates
-  * Finally, it routes unknown HTTP requests to a customizable 404 page
-  * Wraps content pages within a customizable Haml template and layout
-  * Supports any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
+### Under the hood
+
+  * First, Mango tries to route an HTTP request to a static file found in `themes/default/public/`.
+  * If no static file is found, Mango tries to route the request to a template file.
+    * For routes ending in `.css`, Mango searches for [Sass](http://sass-lang.com/) styles found in `themes/styles/`.
+    * For all other routes:
+      * Mango searches for [Markdown](http://daringfireball.net/projects/markdown/syntax) or [Haml](http://haml-lang.com/) content pages in `content/`.
+      * Mango will also try to wrap the content page within [Haml](http://haml-lang.com/) template and layout pages.
+  * If no static or template file is found, Mango routes unknown HTTP requests to a customizable 404 page found in `themes/default/views`.
 
 MOTIVATION
 ----------
