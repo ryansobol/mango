@@ -81,8 +81,7 @@ run Mango::Application
       File.read(expected).should == <<-EOS
 # encoding: UTF-8
 source "http://rubygems.org"
-
-gem "mango", "0.5.0.beta5"
+gem "mango", "~> 0.5.0.beta5"
       EOS
     end
 
@@ -90,7 +89,28 @@ gem "mango", "0.5.0.beta5"
       expected = RUNNER_ROOT + "README.md"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
-test readme
+Your Mango Application Name
+===========================
+
+Summary
+-------
+
+
+
+Getting Started
+---------------
+
+
+
+Publishing
+----------
+
+
+
+Credits
+-------
+
+
       EOS
     end
 
