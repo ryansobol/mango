@@ -9,7 +9,7 @@ Mango release 0.5.0.beta5 (October 29, 2010)
   * Mango now supports theme-switching!
     * For example, add `class Mango::Application; set :theme, "theme_name"; end` to your application's config.ru.
   * As a result of the new command-line application generator, all embedded application code has been removed.
-  * Now routes like `GET /images/` return a 200 response if the `themes/default/public/images/index.html` file is exists.
+  * Now routes like `GET /images/` return a 200 response as long as `themes/default/public/images/index.html` exists.
 
 ### Dependencies
 
