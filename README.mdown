@@ -236,23 +236,23 @@ Now that the newly generated Mango application is running, here's how the applic
 WRITING
 -------
 
-Coming soon.
+Coming soon.  [Patches are welcomed](http://github.com/ryansobol/mango/issues#issue/2).
 
 THEMING
 -------
 
-Coming soon.
+Coming soon.  [Patches are welcomed](http://github.com/ryansobol/mango/issues#issue/3).
 
 PUBLISHING
 ----------
 
 ### Deploying to a single target with secure FTP uploads
 
-Coming soon.
+Coming soon.  [Patches are welcomed](http://github.com/ryansobol/mango/issues#issue/4).
 
 ### Deploying to multiple targets with Capistrano
 
-Coming soon.
+Coming soon.  [Patches are welcomed](http://github.com/ryansobol/mango/issues#issue/5).
 
 ### Deploying to the cloud with Heroku
 
