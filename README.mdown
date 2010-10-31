@@ -256,7 +256,7 @@ Coming soon.
 
 ### Deploying to the Cloud with Heroku
 
-Heroku (pronounced her-OH-koo) is a cloud platform for Ruby-powered web applications.  Heroku lets app developers spend 100% of their time on their application code, not managing servers, deployment, ongoing operations, or scaling.  And best of all, Mango applications can leverage the power of Heroku's cloud using only their basic ["Blossom" tier](http://heroku.com/pricing) at the rock-bottom price of *FREE*.
+Heroku (pronounced her-OH-koo) is a cloud platform for Ruby-powered web applications.  Heroku lets app developers spend 100% of their time on their application code, not managing servers, deployment, ongoing operations, or scaling.  And best of all, Mango applications can leverage this power with their *free* [Blossom tier](http://heroku.com/pricing).
 
 If you haven't done so already, prepare your Mango application with Git.  Just initialize a new Git repository, add the project directory, and commit.
 
