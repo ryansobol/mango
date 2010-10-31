@@ -54,19 +54,53 @@ SYNOPSIS
 FEATURES
 --------
 
-  1. Easy to install:  Mango installs as a RubyGem and can generate a basic website structure in seconds.
+Mango combines best-practices across multiple domains of expertise to provide a winning formula that feels just right.
 
-  2. Easy to publish: Supports many types of deployments like direct SFTP uploading and source control systems like Git, Mercurial, SVN, CSV, etc.
+### Easy to install
 
-  3. Easy to write:  Mango let's you publish to the web using the tools you're already familiar with -- the file system and your trusty text editor.  Mango supports a variety of formats include Markdown, HAML, HTML, SASS, CSS, and JavaScript.  These files are easier to create and revise then working with database records.  Say goodbye to clunky administrator interfaces for managing content!
+Mango installs as a [RubyGem](https://rubygems.org/gems/mango) and contains all the necessary components to get a basic website up-and-running in seconds.
 
-  4. Easy to deploy: There's no database to install, configure, and manage.
+### Easy to write
 
-  5. Easy to understand:  Mango is perfect for smalls teams of varying levels of coding expertise.  Why not take the simple route where everyone is on the same page?  Instead of struggling with complex platforms, which most CMS are, Mango is perfect for people who has no coding experience.
+Mango integrates with the writing tools you're already familiar with -- the file system and your favorite text editor!
 
-  6. Easy on the wallet: It's free!
+Working with a text editor you already know *saves time*.  And writing and revising content in a file *is often easier* then using the clunky administrator interface of a CMS (e.g. WordPress).  Plus, files *match perfectly* with version control systems, like [Git](http://git-scm.com/), for powerful revision history.  Bonus!
 
-  7. Easy to... SPEED:  A major advantage of a database-less website framework is speed.  Database queries slow down servers.  On a high traffic website, this has a dramatic effect on the speed of the site.  With minimal server side scripting and zero database queries, Mango is lightening fast.
+### Easy to theme
+
+Mango separates a website's theme from it's content.  This makes it *easy to change* the look-and-feel of a single page or an entire website.  Mango also supports powerful template languages that make it *easy to have uniformity*  with major sections (i.e. headers, footers, navigation, sidebars, etc.) across multiple pages.  The following web and template formats are supported my Mango:
+
+  * HAML
+  * HTML
+  * SASS
+  * CSS
+  * JavaScript
+
+with [more](http://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way!
+
+### Easy to publish
+
+Mango applications are dead-simple to publish.  Mango was designed to support a wide variety of publishing tools like:
+
+  * Single target, drag-and-drop secure FTP uploading
+  * Multiple target, automated deploying with [Capistrano](http://github.com/capistrano/capistrano)
+  * Cutting-edge cloud deploying with [Git](http://git-scm.com/) and [Heroku](http://heroku.com/)
+
+### Easy to collaborate
+
+With a strong separation of writing, theming and publishing, Mango applications are *designed to be shared* with content writers, web designers, and web developers.  But the beauty of Mango is that its simple, file-based approach *appeals to both veterans and newcomers*.  In addition, Mango has an emphasis on *accurate documentation*.  Mango understands that getting up and running quickly is critical for domain-specific experts.
+
+### Easy to maintain
+
+Mango is database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [semantic versioning](http://semver.org/), upgrading is *easy to plan*.
+
+### Easy to scale
+
+Mango application's are *built for speed*.  With minimal server side scripting and zero database queries, Mango is *lightening fast* and the user experience snappy.
+
+### Easy on the wallet
+
+Mango is *free* and open source software!
 
 REQUIREMENTS
 ------------
@@ -188,6 +222,10 @@ Now that the newly generated Mango application is running, here's how the applic
       * Mango searches for [Markdown](http://daringfireball.net/projects/markdown/syntax) or [Haml](http://haml-lang.com/) content pages in `content/`.
       * Mango will also try to wrap the content page within [Haml](http://haml-lang.com/) page and layout templates in `themes/default/views`.
   * If no static or template file is found, Mango routes unknown HTTP requests to a customizable 404 page found in `themes/default/views`.
+
+### Deploying to the wild
+
+
 
 MOTIVATION
 ----------
