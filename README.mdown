@@ -92,7 +92,7 @@ With a strong separation of writing, theming and publishing, Mango applications 
 
 ### Easy to maintain
 
-Mango is a database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [semantic versioning](http://semver.org/), upgrades are *easy to plan*.
+Mango is a database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/), *upgrading is painless and backwards-compatible* between patch releases.
 
 ### Easy to scale
 
