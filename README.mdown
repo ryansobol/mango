@@ -257,7 +257,7 @@ Mango is designed to make life easier for small, integrated teams.  They prefer 
 
 ### Harness the power of the Ruby toolbox
 
-The Ruby on Rails revolution has arrived.  The world's next-generation web applications are built with powerful tools from the Ruby eco-system.  Mango is designed harness the power of those same tools, but delivered in a smaller package to meet the needs of simpler websites.
+The Ruby on Rails revolution has arrived.  The world's next-generation web applications are built with powerful tools from the Ruby eco-system.  Mango is designed to harness this power, but delivered in a smaller package to meet the needs of simpler websites.
 
 CONTRIBUTING
 ------------
