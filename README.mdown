@@ -245,17 +245,28 @@ Coming soon.
 
 Heroku (pronounced her-OH-koo) is a cloud platform for Ruby-powered web applications.  Heroku lets app developers spend 100% of their time on their application code, not managing servers, deployment, ongoing operations, or scaling.  And best of all, Mango applications can leverage the power of Heroku's cloud using only their basic ["Blossom" tier](http://heroku.com/pricing) at the rock-bottom price of *FREE*.
 
-To [get started](http://docs.heroku.com/heroku-command#installation), sign up for an account, install the `heroku` gem, and add your ssh public key to their network.
+If you haven't done so already, prepare your Mango application with Git.  Just initialize a new Git repository, add the project directory, and commit.
 
-Next, [create a heroku app](http://docs.heroku.com/creating-apps), which is their fundamental unit of organization.
+    $ cd /path/to/your/app
+    $ git init
+    Initialized empty Git repository in .git/
+    $ git add .
+    $ git commit -m "First commit"
+
+Next, [get started with Heroku](http://docs.heroku.com/heroku-command#installation) by signing up for an account, installing the `heroku` gem, and adding your ssh public key to their network.
+
+    $ gem install heroku
+    $ heroku keys:add
+
+Then [create a heroku app](http://docs.heroku.com/creating-apps), which is their fundamental unit of organization.
 
     $ heroku create APP_NAME
 
-Then, migrate the heroku app to the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
+Migrate the heroku app to the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
 
     $ heroku stack:migrate bamboo-mri-1.9.2
 
-Finally, [deploy](http://docs.heroku.com/git) the heroku app.  If you're familiar with [Git](http://git-scm.com/), deployment is trivial.
+Finally, [deploy](http://docs.heroku.com/git) the heroku app.  If you've followed the instructions carefully, deployment is trivial.
 
     $ git push heroku master
 
