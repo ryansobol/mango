@@ -17,13 +17,13 @@ WHAT'S NEW?
 
 ### Features
 
-  * Mango has been split into two pieces!
+  * Mango has been split into two pieces.
     1. A web framework, distributed as a Ruby gem, that is completely abstracted away from application code.
     2. A `mango` command-line tool that generates a [demo Mango application](http://mango-fireworks.heroku.com/).
-  * Mango now supports theme-switching!
+  * Mango now supports theme-switching.
     * For example, add `class Mango::Application; set :theme, "theme_name"; end` to your application's config.ru.
   * As a result of the new command-line application generator, all embedded application code has been removed.
-  * Now routes like `GET /images/` return a 200 response if the `themes/default/public/images/index.html` file is exists.
+  * Now routes like `GET /images/` return a 200 response as long as `themes/default/public/images/index.html` exists.
 
 ### Dependencies
 
@@ -62,7 +62,7 @@ Mango installs as a [RubyGem](https://rubygems.org/gems/mango) and contains all 
 
 ### Easy to write
 
-Mango integrates with the writing tools you're already familiar with -- the file system and your favorite text editor!
+Mango integrates with the writing tools you're already familiar with -- the file system and your favorite text editor.
 
 Working with a text editor you already know *saves time*.  And writing and revising content in a file *is often easier* then using the clunky administrator interface of a CMS (e.g. WordPress).  Plus, files *match perfectly* with version control systems, like [Git](http://git-scm.com/), for powerful revision history.  Bonus!
 
@@ -76,7 +76,7 @@ Mango separates a website's theme from it's content.  This makes it *easy to cha
   * CSS
   * JavaScript
 
-with [more](http://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way!
+with [more](http://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
 
 ### Easy to publish
 
@@ -92,7 +92,7 @@ With a strong separation of writing, theming and publishing, Mango applications 
 
 ### Easy to maintain
 
-Mango is a database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/), *upgrading is painless and backwards-compatible* between patch releases.
+Mango is a database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/), *upgrading is painless andi backwards-compatible* between patch releases.
 
 ### Easy to scale
 
@@ -100,12 +100,12 @@ Mango application's are *built for speed*.  With minimal server side scripting a
 
 ### Easy on the wallet
 
-Mango is *free* and open source software!
+Mango is *free* and open source software.
 
 REQUIREMENTS
 ------------
 
-**Mango respects [Semantic Versioning](http://semver.org/)!**
+**Mango respects [Semantic Versioning](http://semver.org/)**
 
 ### Required dependencies
 
@@ -132,7 +132,7 @@ INSTALLING
 
 ### Ensuring Ruby 1.9.2 is installed and active
 
-I recommend [RVM](http://rvm.beginrescueend.com/) by Wayne E. Seguin.  It trivializes managing multiple versions of Ruby on one machine.
+I highly recommend [RVM](http://rvm.beginrescueend.com/) by Wayne E. Seguin.  It trivializes managing multiple versions of Ruby on one machine.
 
     $ ruby -v
     ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-darwin10.4.0]
@@ -141,12 +141,14 @@ I recommend [RVM](http://rvm.beginrescueend.com/) by Wayne E. Seguin.  It trivia
 
 ### Installing the Mango gem
 
+Mango, and all its necessary components, are packaged as RubyGems for easy distribution.
+
     $ gem install mango -v 0.5.0.beta5
 
 **TIP:** If you're not using [RVM](http://rvm.beginrescueend.com/), you *may* want to prepend the `gem` command with `sudo`.
 
-USAGE
------
+GETTING STARTED
+---------------
 
 ### Generating a Mango application
 
@@ -223,9 +225,46 @@ Now that the newly generated Mango application is running, here's how the applic
       * Mango will also try to wrap the content page within [Haml](http://haml-lang.com/) page and layout templates in `themes/default/views`.
   * If no static or template file is found, Mango routes unknown HTTP requests to a customizable 404 page found in `themes/default/views`.
 
-### Deploying to the wild
+WRITING
+-------
 
+Coming soon.
 
+THEMING
+-------
+
+Coming soon.
+
+PUBLISHING
+----------
+
+### Uploading to a single target with secure FTP
+
+Coming soon.
+
+### Uploading to multiple targets with Capistrano
+
+Coming soon.
+
+### Deploying to the Cloud with Heroku
+
+Heroku (pronounced her-OH-koo) is a cloud platform for Ruby-powered web applications.  Heroku lets app developers spend 100% of their time on their application code, not managing servers, deployment, ongoing operations, or scaling.  And best of all, Mango applications can leverage the power of Heroku's cloud using only their basic ["Blossom" tier](http://heroku.com/pricing) at the rock-bottom price of *FREE*.
+
+To [get started](http://docs.heroku.com/heroku-command#installation), sign up for an account, install the `heroku` gem, and add your ssh public key to their network.
+
+Next, [create a `heroku` app](http://docs.heroku.com/creating-apps), which is their fundamental unit of organization.
+
+    $ heroku create APP_NAME
+
+Then, migrate the `heroku` app to the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
+
+    $ heroku stack:migrate bamboo-mri-1.9.2
+
+Finally, [deploy](http://docs.heroku.com/git) the `heroku` app.  If you're familiar with [Git](http://git-scm.com/), deployment is trivial.
+
+    $ git push heroku master
+
+**TIP:** Like the entire the platform, the `heroku` command-line tool has [great documentation](http://docs.heroku.com/heroku-command).
 
 MOTIVATION
 ----------
@@ -235,24 +274,24 @@ Scratching my own itch.  Inspired by [Nesta](http://effectif.com/nesta) and [Jek
 REPORTING ISSUES
 ----------------
 
-Is Mango not behaving like you expect it should?  Please forgive me!  Would you take a moment to shed light on my negligence over at the [Issue Tracker](http://github.com/ryansobol/mango/issues)?  Here's a **Pro Tip** -- you can read through existing issues and vote for which issues you'd like to see resolved first!
+Is Mango not behaving like you expect it should?  Please forgive me.  Would you take a moment to shed light on my negligence over at the [Issue Tracker](http://github.com/ryansobol/mango/issues)?  Here's a **Pro Tip** -- you can read through existing issues and vote for which issues you'd like to see resolved first.
 
 Thank you for taking the time to help improve Mango.
 
 CONTRIBUTING
 ------------
 
-Is Mango not behaving like you need?  Open-source to the rescue!  There is a plethora of documentation to bring a Rubyist of any level up to speed.  The API documentation is generated, once the dependencies are met (please see the REQUIREMENTS section), by issuing the follow command:
+Is Mango not behaving like you need?  Open-source to the rescue.  There is a plethora of documentation to bring a Rubyist of any level up to speed.  The API documentation is generated, once the dependencies are met (please see the REQUIREMENTS section), by issuing the follow command:
 
     $ rake yard
 
-Patches are always welcome and appreciated!  The process is straight-forward for contributing your work back to the source:
+Patches are always welcome and appreciated.  The process is straight-forward for contributing your work back to the source:
 
 * Fork the project -- may I suggest [Github](http://www.github.com)?
 * Make your feature addition or bug fix **with specifications**.  It's important that I don't break your hard work in a future version unintentionally.
 * Please do not casually alter files in the project root. (e.g. LICENSE, Rakefile, README.mdown, VERSION, etc.)
 * Commit your changes and publish the change-set.
-* Send me a pull request.  Remember, all specs must pass!
+* Send me a pull request.  Remember, all specs must pass.
 
 Before making your change, take a moment to get a feel for the style of coding, specifications, and in-line documentation.
 
