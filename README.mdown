@@ -262,7 +262,6 @@ If you haven't done so already, prepare your Mango application with Git.  Just i
 
     $ cd /path/to/your/app
     $ git init
-    Initialized empty Git repository in .git/
     $ git add .
     $ git commit -m "First commit"
 
