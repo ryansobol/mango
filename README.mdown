@@ -101,7 +101,7 @@ Mango is *free* and open source software.
 REQUIREMENTS
 ------------
 
-**Mango respects [Semantic Versioning](http://semver.org/)**
+**Mango respects [Semantic Versioning](http://semver.org/).**
 
 ### Required dependencies
 
