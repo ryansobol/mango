@@ -254,7 +254,7 @@ Coming soon.
 
 Coming soon.
 
-### Deploying to the Cloud with Heroku
+### Deploying to the cloud with Heroku
 
 Heroku (pronounced her-OH-koo) is a cloud platform for Ruby-powered web applications.  Heroku lets app developers spend 100% of their time on their application code, not managing servers, deployment, ongoing operations, or scaling.  And best of all, Mango applications can leverage this power with their *free* [Blossom tier](http://heroku.com/pricing).
 
@@ -277,6 +277,10 @@ Then [create a heroku app](http://docs.heroku.com/creating-apps) that targets th
 Finally, [deploy](http://docs.heroku.com/git) the heroku app.  If you've followed these instructions carefully, deployment is trivial.
 
     $ git push heroku master
+
+Now, bask in the glory of your *live application* in the cloud.
+
+    $ heroku open
 
 **TIP:** Like the entire the platform, the `heroku` command-line tool has [great documentation](http://docs.heroku.com/heroku-command).
 
