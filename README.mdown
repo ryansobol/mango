@@ -16,8 +16,6 @@ SYNOPSIS
 FEATURES
 --------
 
-Mango combines best-practices across multiple domains of expertise to provide a winning formula that feels just right.
-
 ### Easy to install
 
 Mango installs as a [RubyGem](https://rubygems.org/gems/mango) and contains all the necessary components to get a basic website up-and-running in seconds.
