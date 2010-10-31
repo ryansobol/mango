@@ -253,7 +253,7 @@ PHILOSOPHY
 
 ### Painless collaboration
 
-Mango is designed to make life easier for small, integrated teams.  The tools that they prefer allow for shared access to the same resources and for processes that provide instantaneous feedback.
+Mango is designed to make life easier for small, integrated teams.  They prefer tools that allow for shared access to the same resources and for processes that provide instantaneous feedback.
 
 ### Harness the power of the Ruby toolbox
 
