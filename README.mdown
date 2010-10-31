@@ -270,7 +270,7 @@ Next, [get started with Heroku](http://docs.heroku.com/heroku-command#installati
     $ gem install heroku
     $ heroku keys:add
 
-Then [create a heroku app](http://docs.heroku.com/creating-apps) targeting the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
+Then [create a heroku app](http://docs.heroku.com/creating-apps) that targets the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
 
     $ heroku create APP_NAME --stack bamboo-mri-1.9.2
 
