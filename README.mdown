@@ -246,11 +246,11 @@ Coming soon.
 PUBLISHING
 ----------
 
-### Uploading to a single target with secure FTP
+### Deploying to a single target with secure FTP uploads
 
 Coming soon.
 
-### Uploading to multiple targets with Capistrano
+### Deploying to multiple targets with Capistrano
 
 Coming soon.
 
