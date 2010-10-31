@@ -248,15 +248,15 @@ Heroku (pronounced her-OH-koo) is a cloud platform for Ruby-powered web applicat
 
 To [get started](http://docs.heroku.com/heroku-command#installation), sign up for an account, install the `heroku` gem, and add your ssh public key to their network.
 
-Next, [create a `heroku` app](http://docs.heroku.com/creating-apps), which is their fundamental unit of organization.
+Next, [create a heroku app](http://docs.heroku.com/creating-apps), which is their fundamental unit of organization.
 
     $ heroku create APP_NAME
 
-Then, migrate the `heroku` app to the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
+Then, migrate the heroku app to the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
 
     $ heroku stack:migrate bamboo-mri-1.9.2
 
-Finally, [deploy](http://docs.heroku.com/git) the `heroku` app.  If you're familiar with [Git](http://git-scm.com/), deployment is trivial.
+Finally, [deploy](http://docs.heroku.com/git) the heroku app.  If you're familiar with [Git](http://git-scm.com/), deployment is trivial.
 
     $ git push heroku master
 
