@@ -181,9 +181,8 @@ If you prefer an alternative web-server (e.g. `thin`), simply install the gem an
 
 Now that the newly generated Mango application is running, here's how the application is structured.
 
-    $ cd /path/to/your/app
-    $ tree
-    .
+    $ tree /path/to/your/app
+    /path/to/your/app
     ├── Gemfile
     ├── README.md
     ├── config.ru
