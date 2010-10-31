@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.author      = "Ryan Sobol"
   s.email       = "contact@ryansobol.com"
   s.homepage    = "http://github.com/ryansobol/mango"
-  s.summary     = "Mango is a dynamic, database-free, and open source website framework"
+  s.summary     = "Mango is a dynamic, database-free, and open source website framework."
   s.description = "Mango is a dynamic, database-free, and open source website framework that is designed to make life easier for small teams of designers, developers, and content writers."
 
   s.required_ruby_version     = "~> 1.9.2"
