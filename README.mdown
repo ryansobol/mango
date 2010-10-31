@@ -1,7 +1,3 @@
-![Exotic Fruit](http://www.bctree.com/images/photos/sourced-mango.jpg)
-
-Image courtesy of [B.C. Tree Fruits LTD.](http://www.bctree.com/products/sourced/mango.php)
-
 Mango release 0.5.0.beta5 (October 29, 2010)
 ============================================
 
