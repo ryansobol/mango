@@ -143,6 +143,19 @@ Mango, and all its necessary components, are packaged as RubyGems for easy distr
 
 **TIP:** If you're not using [RVM](http://rvm.beginrescueend.com/), you *may* want to prepend the `gem` command with `sudo`.
 
+### Upgrading a Mango application
+
+Simply edit the gem version in your application's `Gemfile` and re-install with [Bundler](http://gembundler.com/).
+
+    $ cd /path/to/your/app
+    $ cat Gemfile
+    # encoding: UTF-8
+    source "http://rubygems.org"
+    gem "mango", "~> 0.5.0.beta5"
+    $ bundle install
+
+**TIP:** If you're working in the insolation of an [RVM gemset](http://rvm.beginrescueend.com/gemsets/basics/), type `gem clean` to uninstall outdated gems.
+
 GETTING STARTED
 ---------------
 
