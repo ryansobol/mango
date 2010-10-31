@@ -270,15 +270,11 @@ Next, [get started with Heroku](http://docs.heroku.com/heroku-command#installati
     $ gem install heroku
     $ heroku keys:add
 
-Then [create a heroku app](http://docs.heroku.com/creating-apps), which is their fundamental unit of organization.
+Then [create a heroku app](http://docs.heroku.com/creating-apps) targeting the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
 
-    $ heroku create APP_NAME
+    $ heroku create APP_NAME --stack bamboo-mri-1.9.2
 
-Migrate the heroku app to the "Badius Bamboo" plus "Matz Ruby Implementation" 1.9.2 [platform stack](http://docs.heroku.com/stack).
-
-    $ heroku stack:migrate bamboo-mri-1.9.2
-
-Finally, [deploy](http://docs.heroku.com/git) the heroku app.  If you've followed the instructions carefully, deployment is trivial.
+Finally, [deploy](http://docs.heroku.com/git) the heroku app.  If you've followed these instructions carefully, deployment is trivial.
 
     $ git push heroku master
 
