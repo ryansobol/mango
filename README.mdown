@@ -3,10 +3,10 @@ Mango release 0.5.0.beta5 (October 29, 2010)
 
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
-* **Source Code**: [http://github.com/ryansobol/mango](http://github.com/ryansobol/mango)
-* **Documentation**: [http://rubydoc.info/github/ryansobol/mango](http://rubydoc.info/github/ryansobol/mango)
-* **Issue Tracker**: [http://github.com/ryansobol/mango/issues](http://github.com/ryansobol/mango/issues)
-* **Wiki**: [http://wiki.github.com/ryansobol/mango](http://wiki.github.com/ryansobol/mango)
+  * **Source Code**: [http://github.com/ryansobol/mango](http://github.com/ryansobol/mango)
+  * **Documentation**: [http://rubydoc.info/github/ryansobol/mango/master/frames](http://rubydoc.info/github/ryansobol/mango/master/frames)
+  * **Issue Tracker**: [http://github.com/ryansobol/mango/issues](http://github.com/ryansobol/mango/issues)
+  * **Wiki**: [http://wiki.github.com/ryansobol/mango](http://wiki.github.com/ryansobol/mango)
 
 SYNOPSIS
 --------
