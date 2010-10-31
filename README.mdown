@@ -68,7 +68,7 @@ Working with a text editor you already know *saves time*.  And writing and revis
 
 ### Easy to theme
 
-Mango separates a website's theme from it's content.  This makes it *easy to change* the look-and-feel of a single page or an entire website.  Mango also supports powerful template languages that make it *easy to have uniformity*  with major sections (i.e. headers, footers, navigation, sidebars, etc.) across multiple pages.  The following web and template formats are supported my Mango:
+Mango separates a website's theme from it's content.  This makes it *easy to change* the look-and-feel of a single page or an entire website.  Mango also supports powerful template languages that make it *easy to have uniformity*  with major sections (i.e. headers, footers, navigation, sidebars, etc.) across multiple pages.  The following web and template formats are supported by Mango:
 
   * HAML
   * HTML
@@ -92,11 +92,11 @@ With a strong separation of writing, theming and publishing, Mango applications 
 
 ### Easy to maintain
 
-Mango is database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [semantic versioning](http://semver.org/), upgrading is *easy to plan*.
+Mango is a database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [semantic versioning](http://semver.org/), upgrades are *easy to plan*.
 
 ### Easy to scale
 
-Mango application's are *built for speed*.  With minimal server side scripting and zero database queries, Mango is *lightening fast* and the user experience snappy.
+Mango application's are *built for speed*.  With minimal server side scripting and zero database queries, Mango is *lightening fast* and the user experience is snappy.
 
 ### Easy on the wallet
 
