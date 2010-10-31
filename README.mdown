@@ -293,4 +293,4 @@ Then point your browser to `http://0.0.0.0:8808`
 CREDITS
 -------
 
-Thanks to all of my friends for their invaluable support!
+Thanks to all of my friends and family for their invaluable support!
