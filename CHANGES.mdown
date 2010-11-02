@@ -1,3 +1,11 @@
+Mango release 0.5.1 (November 1, 2010)
+======================================
+
+### Dependencies
+
+  * Updated [Bundler](http://gembundler.com/) dependency to ~> 1.0.0 to improve Heroku compatibility
+  * Updated README.mdown to better present the Semantic Versioning of dependencies (documentation change only)
+
 Mango release 0.5.0 (October 31, 2010)
 ======================================
 
