@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = "Mango is a dynamic, database-free, and open source website framework that is designed to make life easier for small teams of designers, developers, and content writers."
 
   s.required_ruby_version     = "~> 1.9.2"
-  s.required_rubygems_version = "~> 1.3.7"
+  s.required_rubygems_version = ">= 1.3.7"
   s.rubyforge_project         = "mango"
 
   s.add_runtime_dependency "bundler",   "~> 1.0.0"

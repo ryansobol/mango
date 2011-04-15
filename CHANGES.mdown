@@ -1,3 +1,10 @@
+Mango release 0.5.2 (April 15, 2011)
+====================================
+
+### Dependencies
+
+  * Updated [RubyGems](https://rubygems.org/) dependency to >= 1.3.7
+
 Mango release 0.5.1 (November 1, 2010)
 ======================================
 
