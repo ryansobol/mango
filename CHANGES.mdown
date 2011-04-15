@@ -1,3 +1,10 @@
+Mango release 0.5.3 (April 15, 2011)
+====================================
+
+### Bugs
+
+  * Fixed "no such file to load -- lib/mango/rack/static_assets_cache" bug
+
 Mango release 0.5.2 (April 15, 2011)
 ====================================
 
