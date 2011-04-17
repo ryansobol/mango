@@ -275,7 +275,7 @@ EOS
     it "seasons the rendered markup with Mango::FlavoredMarkdown" do
       data = <<-EOS
 Mango is like a drug.
-You must have more_and_more and more of the Mango
+You must have more and more and more of the Mango
 until there is no Mango left.
 Not even for Mango!
       EOS
@@ -284,7 +284,7 @@ Not even for Mango!
 
       expected = <<-EOS
 <p>Mango is like a drug.<br/>
-You must have more_and_more and more of the Mango<br/>
+You must have more and more and more of the Mango<br/>
 until there is no Mango left.<br/>
 Not even for Mango!</p>
       EOS

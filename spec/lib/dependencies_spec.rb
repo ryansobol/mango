@@ -12,11 +12,11 @@ describe Mango::Dependencies do
 
     it "development gem names and versions should be correct" do
       expected = {
-        :"rack-test"    => "0.5.6",
-        :rspec          => "2.0.1",
-        :yard           => "0.6.1",
+        :"rack-test"    => "0.5.7",
+        :rspec          => "2.5.0",
+        :yard           => "0.6.8",
         :"yard-sinatra" => "0.5.1",
-        :bluecloth      => "2.0.9"
+        :bluecloth      => "2.1.0"
       }
 
       Mango::Dependencies::DEVELOPMENT_GEMS.should == expected
@@ -113,7 +113,7 @@ Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for ins
 
     it "creates and caches and cache one warning from a known development gem dependency" do
       Mango::Dependencies.create_warning_for(LoadError.new("no such file to load -- yard"))
-      Mango::Dependencies.class_variable_get(:@@warnings_cache).should ==  ["yard --version '0.6.1'"]
+      Mango::Dependencies.class_variable_get(:@@warnings_cache).should ==  ["yard --version '0.6.8'"]
     end
 
     it "creates and caches and cache warnings from all known development gem dependencies" do
@@ -128,11 +128,11 @@ Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for ins
       end
 
       expected = [
-        "rack-test --version '0.5.6'",
-        "rspec --version '2.0.1'",
-        "yard --version '0.6.1'",
+        "rack-test --version '0.5.7'",
+        "rspec --version '2.5.0'",
+        "yard --version '0.6.8'",
         "yard-sinatra --version '0.5.1'",
-        "bluecloth --version '2.0.9'"
+        "bluecloth --version '2.1.0'"
       ]
       Mango::Dependencies.class_variable_get(:@@warnings_cache).should == expected
     end
@@ -163,9 +163,9 @@ Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for ins
       $stdout.string.should == <<-MESSAGE
 
 The following development gem dependencies could not be found. Without them, some available development features are missing:
-rspec --version '2.0.1'
-yard --version '0.6.1'
-bluecloth --version '2.0.9'
+rspec --version '2.5.0'
+yard --version '0.6.8'
+bluecloth --version '2.1.0'
       MESSAGE
     end
 

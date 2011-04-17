@@ -26,7 +26,6 @@ describe Mango::Application do
 
     it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
-@charset "UTF-8";
 .content-navigation {
   border-color: #3bbfce;
   color: #2ca2af; }
@@ -56,7 +55,6 @@ describe Mango::Application do
 
     it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
-@charset "UTF-8";
 table.hl {
   margin: 2em 0; }
   table.hl td.ln {

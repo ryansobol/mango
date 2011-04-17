@@ -15,17 +15,17 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.7"
   s.rubyforge_project         = "mango"
 
-  s.add_runtime_dependency "bundler",   "~> 1.0.0"
-  s.add_runtime_dependency "rack",      "~> 1.2.1"
-  s.add_runtime_dependency "sinatra",   "~> 1.1.0"
-  s.add_runtime_dependency "haml",      "~> 3.0.22"
-  s.add_runtime_dependency "bluecloth", "~> 2.0.9"
-  s.add_runtime_dependency "thor",      "~> 0.14.3"
+  s.add_runtime_dependency "bundler",   "~> 1.0.7"
+  s.add_runtime_dependency "rack",      "~> 1.2.2"
+  s.add_runtime_dependency "sinatra",   "~> 1.1.4"
+  s.add_runtime_dependency "haml",      "~> 3.0.25"
+  s.add_runtime_dependency "bluecloth", "~> 2.1.0"
+  s.add_runtime_dependency "thor",      "~> 0.14.6"
 
-  s.add_development_dependency "rspec",         "~> 2.0.1"
-  s.add_development_dependency "rack-test",     "~> 0.5.6"
-  s.add_development_dependency "yard",          "~> 0.6.1"
-  s.add_development_dependency "bluecloth",     "~> 2.0.9"
+  s.add_development_dependency "rspec",         "~> 2.5.0"
+  s.add_development_dependency "rack-test",     "~> 0.5.7"
+  s.add_development_dependency "yard",          "~> 0.6.8"
+  s.add_development_dependency "bluecloth",     "~> 2.1.0"
   s.add_development_dependency "yard-sinatra",  "~> 0.5.1"
 
   s.files              = `git ls-files`.split("\n")

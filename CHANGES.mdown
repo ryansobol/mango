@@ -1,3 +1,22 @@
+# CHANGES
+
+## v0.5.4 / Not Yet Released
+
+[Full change log](https://github.com/ryansobol/mango/compare/v0.5.3...v0.5.4)
+
+### Dependencies
+
+  * [GH#10](https://github.com/ryansobol/mango/issues/10) - Update gem dependencies
+    * Add [Bundler](http://gembundler.com/) ~> 1.0.7 to Gemfile
+    * Update [Rack](http://rack.rubyforge.org/) to ~> 1.2.2 (GH#10)
+    * Update [Sinatra](http://www.sinatrarb.com/) to ~> 1.1.4 (GH#10)
+    * Update [Haml](http://haml-lang.com/) (and [Sass](http://sass-lang.com/)) to ~> 3.0.25 (GH#10)
+    * Update [BlueCloth](http://deveiate.org/projects/BlueCloth) to ~> 2.1.0 (GH#10)
+    * Update [Thor](https://github.com/wycats/thor) to ~> 0.14.6 (GH#10)
+    * Update [RSpec](http://rspec.info/) to ~> 2.5.0 (GH#10)
+    * Update [Rack::Test](http://github.com/brynary/rack-test) to ~> 0.5.7 (GH#10)
+    * Update [YARD](http://yardoc.org/) to ~> 0.6.8 (GH#10)
+
 Mango release 0.5.3 (April 15, 2011)
 ====================================
 

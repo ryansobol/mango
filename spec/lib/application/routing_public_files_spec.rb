@@ -115,7 +115,7 @@ Disallow: /cgi-bin/
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "image/jpeg;charset=utf-8"
+      last_response["Content-Type"].should == "image/jpeg"
     end
 
     it "sends the correct body content" do
