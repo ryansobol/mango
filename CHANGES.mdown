@@ -8,14 +8,15 @@
 
   * Update gem dependencies [GH#10](https://github.com/ryansobol/mango/issues/10)
     * Add [Bundler](http://gembundler.com/) ~> 1.0.7 to Gemfile
-    * Update [Rack](http://rack.rubyforge.org/) to ~> 1.2.2 (GH#10)
-    * Update [Sinatra](http://www.sinatrarb.com/) to ~> 1.1.4 (GH#10)
-    * Update [Haml](http://haml-lang.com/) (and [Sass](http://sass-lang.com/)) to ~> 3.0.25 (GH#10)
-    * Update [BlueCloth](http://deveiate.org/projects/BlueCloth) to ~> 2.1.0 (GH#10)
-    * Update [Thor](https://github.com/wycats/thor) to ~> 0.14.6 (GH#10)
-    * Update [RSpec](http://rspec.info/) to ~> 2.5.0 (GH#10)
-    * Update [Rack::Test](http://github.com/brynary/rack-test) to ~> 0.5.7 (GH#10)
-    * Update [YARD](http://yardoc.org/) to ~> 0.6.8 (GH#10)
+    * Update [Rack](http://rack.rubyforge.org/) to ~> 1.2.2
+    * Update [Sinatra](http://www.sinatrarb.com/) to ~> 1.1.4
+    * Update [Haml](http://haml-lang.com/) (and [Sass](http://sass-lang.com/)) to ~> 3.0.25
+    * Update [BlueCloth](http://deveiate.org/projects/BlueCloth) to ~> 2.1.0
+    * Update [Thor](https://github.com/wycats/thor) to ~> 0.14.6
+    * Update [RSpec](http://rspec.info/) to ~> 2.5.0
+    * Update [Rack::Test](http://github.com/brynary/rack-test) to ~> 0.5.7
+    * Update [YARD](http://yardoc.org/) to ~> 0.6.8
+  * Use gemspec for Gemfile [GH#8](https://github.com/ryansobol/mango/issues/8)
 
 ### Documentation
 
