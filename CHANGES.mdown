@@ -22,31 +22,36 @@
 
   * Update [RubyGems](https://rubygems.org/) to >= 1.3.7 in README.mdown [GH#12](https://github.com/ryansobol/mango/issues/12)
   * Update all GitHub URLS to https [GH#15](https://github.com/ryansobol/mango/issues/15)
+  * Update CHANGES.mdown format [GH#13](https://github.com/ryansobol/mango/issues/13)
 
-Mango release 0.5.3 (April 15, 2011)
-====================================
+## v0.5.3 / 2011-04-15
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.5.2...v0.5.3)
 
 ### Bugs
 
   * Fixed "no such file to load -- lib/mango/rack/static_assets_cache" bug
 
-Mango release 0.5.2 (April 15, 2011)
-====================================
+## v0.5.2 / 2011-04-15
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.5.1...v0.5.2)
 
 ### Dependencies
 
   * Updated [RubyGems](https://rubygems.org/) dependency to >= 1.3.7
 
-Mango release 0.5.1 (November 1, 2010)
-======================================
+## v0.5.1 / 2010-11-01
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.5.0...v0.5.1)
 
 ### Dependencies
 
   * Updated [Bundler](http://gembundler.com/) dependency to ~> 1.0.0 to improve Heroku compatibility
   * Updated README.mdown to better present the Semantic Versioning of dependencies (documentation change only)
 
-Mango release 0.5.0 (October 31, 2010)
-======================================
+## v0.5.0 / 2010-10-31
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.4.0...v0.5.0)
 
 ### Features
 
@@ -77,8 +82,9 @@ Mango release 0.5.0 (October 31, 2010)
   * The NOT_FOUND handler no longer renders the 404 template within a layout template.
   * Improved install-time and run-time error messages for Ruby 1.8 environments
 
-Mango release 0.4.0 (August 30, 2010)
-=====================================
+## v0.4.0 / 2010-08-30
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.3.0...v0.4.0)
 
 ### Features
 
@@ -94,8 +100,9 @@ Mango release 0.4.0 (August 30, 2010)
   * Updated [YARD::Sinatra](https://github.com/rkh/yard-sinatra) to 0.5.0
   * Added [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.7 as a required dependency
 
-Mango release 0.3.0 (June 25, 2010)
-===================================
+## v0.3.0 / 2010-06-25
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.2.1...v0.3.0)
 
 ### Features
 
@@ -114,33 +121,36 @@ Mango release 0.3.0 (June 25, 2010)
   * Fixed Regex when parsing LoadError messages on missing development dependencies
   * Fixed rspec gem name detection when requiring spec/rake/spectask in the Rakefile
 
-Mango release 0.2.1 (June 23, 2010)
-===================================
+## v0.2.1 / 2010-06-23
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.2.0...v0.2.1)
 
   * Refactored the application to reduce its code size and increase its maintainability
   * Improved the application's documentation and tests with additional HTTP routing examples
 
-Mango release 0.2.0 (June 19, 2010)
-===================================
+## v0.2.0 / 2010-06-19
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.1.1...v0.2.0)
 
   * Mango tries to route HTTP requests to static files first
   * Then it tries to route HTTP requests to Haml content pages
   * Finally, it routes unknown HTTP requests to a customizable 404 page
 
-Mango release 0.1.1 (June 15, 2010)
-===================================
+## v0.1.1 / 2010-06-15
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.1.0...v0.1.1)
 
   * Reserved the 'mango' namespace on RubyGems.org!
 
-Mango release 0.1.0 (June 15, 2010)
-===================================
+## v0.1.0 / 2010-06-15
+
+[Full changes](https://github.com/ryansobol/mango/commits/v0.1.0)
 
   * Mango tries to route HTTP requests to Haml content pages first
   * Then it routes unknown HTTP requests to a customizable 404 page
   * Wraps content pages within a customizable Haml template and layout
   * Supports any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
 
-Mango unrelease 0.0.1 (June 12, 2010)
-=====================================
+## v0.0.1 / 2010-06-12
 
   * First commit of the project
