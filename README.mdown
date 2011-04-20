@@ -4,9 +4,9 @@ Mango release 0.5.3 (April 15, 2011)
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
   * **Demo Application** : [http://mango-fireworks.heroku.com/](http://mango-fireworks.heroku.com/)
-  * **Source Code**: [http://github.com/ryansobol/mango](http://github.com/ryansobol/mango)
+  * **Source Code**: [https://github.com/ryansobol/mango](https://github.com/ryansobol/mango)
   * **Documentation**: [http://rubydoc.info/github/ryansobol/mango/master/frames](http://rubydoc.info/github/ryansobol/mango/master/frames)
-  * **Issue Tracker**: [http://github.com/ryansobol/mango/issues](http://github.com/ryansobol/mango/issues)
+  * **Issue Tracker**: [https://github.com/ryansobol/mango/issues](https://github.com/ryansobol/mango/issues)
   * **Wiki**: [http://wiki.github.com/ryansobol/mango](http://wiki.github.com/ryansobol/mango)
 
 SYNOPSIS
@@ -37,14 +37,14 @@ Mango separates a website's theme from it's content.  This makes it *easy to cha
   * CSS
   * JavaScript
 
-with [more](http://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
+with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
 
 ### Easy to publish
 
 Mango applications are dead-simple to publish.  Mango was designed to support a wide variety of publishing tools like:
 
   * Single target, drag-and-drop secure FTP uploading
-  * Multiple target, automated deploying with [Capistrano](http://github.com/capistrano/capistrano)
+  * Multiple target, automated deploying with [Capistrano](https://github.com/capistrano/capistrano)
   * Cutting-edge cloud deploying with [Git](http://git-scm.com/) and [Heroku](http://heroku.com/)
 
 ### Easy to collaborate
@@ -83,10 +83,10 @@ REQUIREMENTS
 ### Optional development dependencies
 
   * [Rake](http://rake.rubyforge.org/) ~> 0.8.7 (bundled with Ruby)
-  * [Rack::Test](http://github.com/brynary/rack-test) ~> 0.5.7
+  * [Rack::Test](https://github.com/brynary/rack-test) ~> 0.5.7
   * [RSpec](http://rspec.info/) ~> 2.5.0
   * [YARD](http://yardoc.org/) ~> 0.6.8
-  * [YARD::Sinatra](http://github.com/rkh/yard-sinatra) ~> 0.5.1
+  * [YARD::Sinatra](https://github.com/rkh/yard-sinatra) ~> 0.5.1
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
 
 INSTALLING
@@ -202,23 +202,23 @@ Now that the newly generated Mango application is running, here's how the applic
 WRITING
 -------
 
-Coming soon.  [Patches are welcomed](http://github.com/ryansobol/mango/issues#issue/2).
+Coming soon.  [Patches are welcomed](https://github.com/ryansobol/mango/issues#issue/2).
 
 THEMING
 -------
 
-Coming soon.  [Patches are welcomed](http://github.com/ryansobol/mango/issues#issue/3).
+Coming soon.  [Patches are welcomed](https://github.com/ryansobol/mango/issues#issue/3).
 
 PUBLISHING
 ----------
 
 ### Deploying to a single target with secure FTP uploads
 
-Coming soon.  [Patches are welcomed](http://github.com/ryansobol/mango/issues#issue/4).
+Coming soon.  [Patches are welcomed](https://github.com/ryansobol/mango/issues#issue/4).
 
 ### Deploying to multiple targets with Capistrano
 
-Coming soon.  [Patches are welcomed](http://github.com/ryansobol/mango/issues#issue/5).
+Coming soon.  [Patches are welcomed](https://github.com/ryansobol/mango/issues#issue/5).
 
 ### Deploying to the cloud with Heroku
 
@@ -268,13 +268,13 @@ CONTRIBUTING
 
 ### Reporting Issues
 
-Is Mango not behaving like you expect it should?  Please forgive me.  Submit a report over at the [Issue Tracker](http://github.com/ryansobol/mango/issues) and I'll get that sorted out.
+Is Mango not behaving like you expect it should?  Please forgive me.  Submit a report over at the [Issue Tracker](https://github.com/ryansobol/mango/issues) and I'll get that sorted out.
 
 **TIP:** You can read through existing issues and vote for the ones you'd like to see resolved first.
 
 ### Submitting Patches
 
-Is Mango not behaving like you need?  Patches are always welcomed and appreciated.  [Report your issue](http://github.com/ryansobol/mango/issues) to make sure we're not duplicating any work and go to town.  Alternatively, you can lend a hand on [existing issues](http://github.com/ryansobol/mango/issues).
+Is Mango not behaving like you need?  Patches are always welcomed and appreciated.  [Report your issue](https://github.com/ryansobol/mango/issues) to make sure we're not duplicating any work and go to town.  Alternatively, you can lend a hand on [existing issues](https://github.com/ryansobol/mango/issues).
 
 Once you've been assigned an issue, the process for contributing your work back to the source is straight-forward.
 
