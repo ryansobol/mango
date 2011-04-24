@@ -8,6 +8,10 @@
 
   * Add erb.rb view template support [GH#21](https://github.com/ryansobol/mango/issues/21)
 
+### Dependencies
+
+  * Update [Sinatra](http://www.sinatrarb.com/) to ~> 1.2.6 [GH#14](https://github.com/ryansobol/mango/issues/14)
+
 ## v0.5.4 / 2011-04-24
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.3...v0.5.4)

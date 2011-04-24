@@ -321,7 +321,6 @@ describe Mango::Application do
   <p>/view_engines/erb.haml</p>
 
 </div>
-
   </body>
 </html>
       EXPECTED
