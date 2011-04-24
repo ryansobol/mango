@@ -4,6 +4,10 @@
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.3...v0.5.4)
 
+## Bugs
+
+  * Prevent gem building when unclean working directory [GH#9](https://github.com/ryansobol/mango/issues/9)
+
 ### Dependencies
 
   * Update gem dependencies [GH#10](https://github.com/ryansobol/mango/issues/10)

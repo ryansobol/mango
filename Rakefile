@@ -31,16 +31,27 @@ end
 namespace :gem do
   desc "Builds a gem from the current project's Gem::Specification"
   task :build do
+    puts "==> Building RubyGem"
+
+    if `git status` !~ /working directory clean/
+      abort "  Cannot build RubyGem because the working directory is not clean."
+    end
+
     system "gem build mango.gemspec"
   end
 
   desc "Removes the gem file for the current project"
   task :clean do
-    jeweler { |gem_file| rm gem_file }
+    puts "==> Cleaning up RubyGem build"
+    jeweler do |gem_file|
+      rm gem_file, :verbose => false
+      puts "  Removed #{gem_file}"
+    end
   end
 
   desc "Pushes the current gem to RubyGems.org"
   task :push do
+    puts "==> Pushing RubyGem"
     jeweler { |gem_file| system "gem push #{gem_file}"}
   end
 
@@ -56,7 +67,7 @@ namespace :gem do
     if File.exists?(file)
       yield file
     else
-      puts "No gem file found - #{file}"
+      puts "  RubyGem #{file.inspect} does not exist"
     end
   end
 end
