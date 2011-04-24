@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mango (0.5.3)
+    mango (0.5.4)
       bluecloth (~> 2.1.0)
       bundler (~> 1.0.7)
       haml (~> 3.0.25)

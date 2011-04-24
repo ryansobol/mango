@@ -1,6 +1,6 @@
 # CHANGES
 
-## v0.5.4 / Not Yet Released
+## v0.5.4 / 2011-04-24
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.3...v0.5.4)
 
