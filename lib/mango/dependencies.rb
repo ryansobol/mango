@@ -1,31 +1,22 @@
 # encoding: UTF-8
 
 module Mango
-  # `Mango::Dependencies` is a class-methods-only **singleton** class that performs both strict
-  # parse-time dependency checking and simple, elegant run-time dependency warning.
+  # `Mango::Dependencies` is a module that performs two types of depedency checking:
   #
-  # My preferred mental model is to consider software library dependencies as a snapshot in time.
-  # I also make the assumption, sometimes incorrectly, that a newer version of a software library
-  # is not always a better version.
+  #   * Strict parse-time version checking of Ruby
+  #   * Lenient run-time handling of missing development RubyGems
   #
   # `Mango::Dependencies` automatically enforces a strict parse-time check for the
-  # `SUPPORTED_RUBY_VERSIONS` on both application and development processes for the `Mango`
-  # library. (i.e. `bin/mango`, `rake`, `spec`, `rackup`, etc)  Because of this, I've ensured this
-  # file is syntactically compatible with Ruby 1.8.7 or higher.
+  # `SUPPORTED_RUBY_VERSIONS` on both application and development processes for the Mango
+  # library. (i.e. `bin/mango`, `rake`, `spec`, `rackup`, etc)  Because of this,
+  # `Mango::Dependencies` is syntactically compatible with Ruby 1.8.7 or higher.
   #
-  # Currently, `Mango` does **not** enforce strict parse-time version checking on `DEVELOPMENT_GEMS`.
-  # In the future, I would like to experiment with using RubyGems and the `Kernel#gem` method to
-  # this end.  For now, each developer is responsible for ensuring the correct versions of their
-  # necessary development gems are located in the `$LOAD_PATH` on their system.
-  #
-  # When a gem is required, but a `LoadError` is raised, and rescued, `Mango::Dependencies` can be
-  # incorporated into the process to warn a developer of missing development features.  Even with a
-  # few methods --  `.create_warning_for` and `.warn_at_exit` --  users are automatically warned, in
-  # this case at the moment of termination, about gems that could not found be in the `$LOAD_PATH`.
-  # Using `Mango::Dependencies` is **not** a mandatory inclusion for all gem requirements, merely a
-  # guide to help developers quickly see obstacles in their path.
+  # `Mango::Dependencies` is also a lenient, run-time handler used in the `Rakefile` to build
+  # developer-friendly warnings from rescued `LoadError` exceptions raised by missing
+  # development RubyGem dependencies.
   #
   # @example Simple usage with the YARD gem
+  #   Mango::Dependencies.warn_at_exit
   #   begin
   #     require "yard"
   #     YARD::Rake::YardocTask.new(:yard)
@@ -35,75 +26,14 @@ module Mango
   #
   # @see Mango::Dependencies.create_warning_for
   # @see Mango::Dependencies.warn_at_exit
-  class Dependencies
+  module Dependencies
     SUPPORTED_RUBY_VERSIONS = ["1.9.2"]
-
-    # bluecloth is a hidden yard dependency for markdown support
-    DEVELOPMENT_GEMS = {
-      :"rack-test"    => "0.5.7",
-      :rspec          => "2.5.0",
-      :yard           => "0.6.8",
-      :"yard-sinatra" => "0.5.1",
-      :bluecloth      => "2.1.0"
-    }
 
     FILE_NAME_TO_GEM_NAME = {
       :"rack/test"            => :"rack-test",
-      :"rspec/core/rake_task" => :rspec,
+      :"rspec/core/rake_task" => :"rspec-core",
       :"yard/sinatra"         => :"yard-sinatra"
     }
-
-    # Empties the warnings cache.  This method is called when the class is required.
-    def self.destroy_warnings
-      @@warnings_cache = []
-    end
-    destroy_warnings
-
-    # Creates and caches a warning from a `LoadError` exception.  Warnings are only created for
-    # known development gem dependencies.
-    #
-    # @param [LoadError] error A rescued exception
-    # @raise [RuntimeError] Raised when the `LoadError` argument is an unknown development gem.
-    def self.create_warning_for(error)
-      pattern = %r{no such file to load -- ([\w\-\\/]*)}
-      error.message.match(pattern) do |match_data|
-        file_name = match_data[1].to_sym
-        gem_name  = if DEVELOPMENT_GEMS.has_key?(file_name)
-          file_name
-        elsif FILE_NAME_TO_GEM_NAME.has_key?(file_name)
-          FILE_NAME_TO_GEM_NAME[file_name]
-        else
-          raise "Cannot create a dependency warning for unknown development gem -- #{file_name}"
-        end
-
-        @@warnings_cache << "#{gem_name} --version '#{DEVELOPMENT_GEMS[gem_name]}'"
-      end
-    end
-
-    # Displays a warning message to the user on the standard output channel if there are warnings
-    # to render.
-    #
-    # @example Sample warning message
-    #   The following development gem dependencies could not be found. Without them, some available development features are missing:
-    #   jeweler --version "1.4.0"
-    #   rspec --version "2.5.0"
-    #   yard --version "0.5.3"
-    #   bluecloth --version "2.1.0"
-    def self.render_warnings
-      unless @@warnings_cache.empty?
-        message = []
-        message << "The following development gem dependencies could not be found. Without them, some available development features are missing:"
-        message += @@warnings_cache
-        puts "\n" + message.join("\n")
-      end
-    end
-
-    # Attaches a call to `render_warnings` to `Kernel#at_exit`
-    def self.warn_at_exit
-      at_exit { render_warnings }
-    end
-
-    private
 
     # Checks that the version of the current Ruby process matches the one of the
     # `SUPPORTED_RUBY_VERSIONS`. This method is automatically invoked at the first time this class
@@ -115,10 +45,52 @@ module Mango
       unless SUPPORTED_RUBY_VERSIONS.include?(ruby_version)
         abort <<-ERROR
 This library supports Ruby #{SUPPORTED_RUBY_VERSIONS.join(" or ")}, but you're using #{ruby_version}.
-Please visit http://www.ruby-lang.org/ or http://rvm.beginrescueend.com/ for installation instructions.
+I recommend using Ruby Version Manager to install, manage and work with multiple Ruby environments.
+http://rvm.beginrescueend.com/
         ERROR
       end
     end
     check_ruby_version
+
+    # Empties the warnings cache.  This method is called when the class is required.
+    def self.destroy_warnings
+      @@warnings_cache = []
+    end
+    destroy_warnings
+
+    # Creates and caches a warning from a `LoadError` exception.
+    #
+    # @param [LoadError] error A rescued exception
+    def self.create_warning_for(error)
+      pattern = %r{no such file to load -- ([\w\-\\/]*)}
+      error.message.match(pattern) do |match_data|
+        file_name = match_data[1].to_sym
+        gem_name  = if FILE_NAME_TO_GEM_NAME.has_key?(file_name)
+          FILE_NAME_TO_GEM_NAME[file_name]
+        else
+          file_name
+        end
+
+        @@warnings_cache << gem_name
+      end
+    end
+
+    # Displays a warning message to the user on the standard output channel if there are warnings
+    # to render.
+    def self.render_warnings
+      unless @@warnings_cache.empty?
+        puts <<-EOS
+
+Could not require the following RubyGems: #{@@warnings_cache.join(", ")}
+Please run "bundle install" to access all development features.
+
+        EOS
+      end
+    end
+
+    # Attaches a call to `render_warnings` to `Kernel#at_exit`
+    def self.warn_at_exit
+      at_exit { render_warnings }
+    end
   end
 end

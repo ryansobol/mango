@@ -21,6 +21,7 @@
     * Update [Rack::Test](https://github.com/brynary/rack-test) to ~> 0.5.7
     * Update [YARD](http://yardoc.org/) to ~> 0.6.8
   * Use gemspec for Gemfile [GH#8](https://github.com/ryansobol/mango/issues/8)
+  * Modernize `Mango::Dependencies` [GH#17](https://github.com/ryansobol/mango/issues/17)
 
 ### Documentation
 
