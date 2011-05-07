@@ -212,6 +212,7 @@ Disallow: /cgi-bin/
   </head>
   <body>
     <h1>Page not found</h1>
+    <p id='template'>404.haml</p>
   </body>
 </html>
       EXPECTED

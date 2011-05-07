@@ -18,7 +18,7 @@ describe Mango::ContentPage do
       Mango::ContentPage::DEFAULT.should include(:content_engine => :markdown)
 
       attributes = Mango::ContentPage::DEFAULT[:attributes]
-      attributes.should include("view" => :page)
+      attributes.should include("view" => "page.haml")
     end
   end
 
@@ -29,16 +29,21 @@ describe Mango::ContentPage do
       @page = Mango::ContentPage.new <<-EOS
 ---
 title: Syntactic Sugar Makes Life Sweeter
+view: template.haml
 ---
 EOS
     end
 
-    it "makes the title sweeter" do
+    it "sweetens the title attribute" do
       @page.title.should == @page.attributes["title"]
     end
-    it "doesn't make unknown sweeter" do
+
+    it "sweetens the view attribute" do
+      @page.view.should == "template.haml"
+    end
+
+    it "doesn't sweeten an unknown attribute" do
       lambda { @page.unknown }.should raise_exception(NoMethodError)
     end
   end
-
 end

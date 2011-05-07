@@ -58,14 +58,6 @@ module Mango
   #
   # Attributes are key-value pairs, defined with [YAML](http://www.yaml.org/) formatting.
   #
-  # All `ContentPage` instances have a `view` attribute, even if one is not explicitly declared in
-  # the content file.  This attribute is essential as it guides the `Mango::Application` to render
-  # the correct view template file.
-  #
-  # When declaring an explicit view template, only the base file name is important. **It's assumed
-  # that all view templates are in Haml format.**  The default view template file name is defined
-  # by `Mango::ContentPage::DEFAULT["attributes"]`.
-  #
   # Syntactic sugar has been added for accessing attribtues.  For example:
   #
   #     @content_page.attributes["title"]
@@ -81,7 +73,26 @@ module Mango
   #     %title
   #       = @content_page.title
   #
+  # ### The View Attribute and Template
+  #
+  # All `ContentPage` instances have a `view` attribute, even if one is not explicitly declared in
+  # the content file.  This attribute is essential as it guides the `Mango::Application` to render
+  # the correct view template file.  The default view template file name is defined by
+  # `Mango::ContentPage::DEFAULT[:attributes]`.
+  #
+  # When declaring an explicit view template, the relative file name is required.  For example,
+  # given the following content page:
+  #
+  #     ---
+  #     view: blog.haml
+  #     ---
+  #
+  # the `Mango::Application` will attempt to render the content page within the `blog.haml` view
+  # template if it exists in the `Mango::Application.settings.views` directory.  The supported view
+  # template engines are defined by `Mango::Application::TEMPLATE_ENGINES`.
+  #
   # @see Mango::FlavoredMarkdown
+  # @see Mango::Application::TEMPLATE_ENGINES
   #
   class ContentPage
     class PageNotFound < RuntimeError; end
@@ -94,7 +105,7 @@ module Mango
 
     # Default values for various accessors
     DEFAULT = {
-      :attributes     => { "view" => :page },
+      :attributes     => { "view" => "page.haml" },
       :body           => "",
       :content_engine => :markdown
     }
@@ -162,17 +173,16 @@ module Mango
       end
     end
 
-    # Returns just the view template's base file name.  It's assumed that all view templates are in
-    # Haml format.
+    # Determines the view template's base file name.
     #
     # @example
-    #   @content_page.attributes["view"]  #=> "blog.haml"
-    #   @content_page.view                #=> :blog
+    #   @content_page.view            #=> "blog.haml"
+    #   @content_page.view_template   #=> :blog
     #
     # @return [Symbol] The view template's base file name.
     #
-    def view
-      File.basename(attributes["view"].to_s, '.*').to_sym
+    def view_template
+      @view_template ||= File.basename(attributes["view"].to_s, '.*').to_sym
     end
 
     # Adds syntactic suger for reading attributes.

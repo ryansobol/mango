@@ -35,7 +35,7 @@ category:
       @page.attributes.should have(3).items
       @page.attributes.should include("title"    => "Haml!",)
       @page.attributes.should include("category" => ["content", "engine"])
-      @page.attributes.should include("view"     => :page)
+      @page.attributes.should include("view"     => "page.haml")
     end
 
     it "loads the body" do
@@ -47,7 +47,7 @@ category:
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :page
+      @page.view_template.should == :page
     end
   end
 
@@ -83,7 +83,7 @@ category:
       @page.attributes.should have(3).items
       @page.attributes.should include("title"    => "Markdown!",)
       @page.attributes.should include("category" => ["content", "engine"])
-      @page.attributes.should include("view"     => :page)
+      @page.attributes.should include("view"     => "page.haml")
     end
 
     it "loads the body" do
@@ -95,7 +95,7 @@ category:
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :page
+      @page.view_template.should == :page
     end
   end
 
@@ -131,7 +131,7 @@ category:
       @page.attributes.should have(3).items
       @page.attributes.should include("title"    => "Markdown!",)
       @page.attributes.should include("category" => ["content", "engine"])
-      @page.attributes.should include("view"     => :page)
+      @page.attributes.should include("view"     => "page.haml")
     end
 
     it "loads the body" do
@@ -143,7 +143,7 @@ category:
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :page
+      @page.view_template.should == :page
     end
   end
 
@@ -179,7 +179,7 @@ category:
       @page.attributes.should have(3).items
       @page.attributes.should include("title"    => "Markdown!",)
       @page.attributes.should include("category" => ["content", "engine"])
-      @page.attributes.should include("view"     => :page)
+      @page.attributes.should include("view"     => "page.haml")
     end
 
     it "loads the body" do
@@ -191,7 +191,7 @@ category:
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :page
+      @page.view_template.should == :page
     end
   end
 

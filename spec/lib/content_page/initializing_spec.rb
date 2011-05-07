@@ -10,7 +10,7 @@ describe Mango::ContentPage do
       @expected_data = <<-EOS
 ---
 title: Delicious Cake!
-view: blog
+view: blog.haml
 ---
 %p So delicious!
 EOS
@@ -29,7 +29,7 @@ EOS
     it "loads the attributes" do
       @page.attributes.should have(2).items
       @page.attributes.should include("title" => "Delicious Cake!")
-      @page.attributes.should include("view" => "blog")
+      @page.attributes.should include("view" => "blog.haml")
     end
 
     it "loads the body" do
@@ -41,7 +41,7 @@ EOS
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :blog
+      @page.view_template.should == :blog
     end
   end
 
@@ -52,7 +52,7 @@ EOS
       @expected_data = <<-EOS
 ---
 title: Chocolate Pie!
-view: blog
+view: blog.haml
 ---
 ### Sweet and crumbly!
 EOS
@@ -71,7 +71,7 @@ EOS
     it "loads the attributes" do
       @page.attributes.should have(2).items
       @page.attributes.should include("title" => "Chocolate Pie!")
-      @page.attributes.should include("view" => "blog")
+      @page.attributes.should include("view" => "blog.haml")
     end
 
     it "loads the body" do
@@ -83,7 +83,7 @@ EOS
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :blog
+      @page.view_template.should == :blog
     end
   end
 
@@ -123,7 +123,7 @@ EOS
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :blog
+      @page.view_template.should == :blog
     end
   end
 
@@ -147,7 +147,7 @@ EOS
 
     it "loads the attributes" do
       @page.attributes.should have(1).items
-      @page.attributes.should include("view" => :page)
+      @page.attributes.should include("view" => "page.haml")
     end
 
     it "loads the body" do
@@ -159,7 +159,7 @@ EOS
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :page
+      @page.view_template.should == :page
     end
   end
 
@@ -184,7 +184,7 @@ EOS
 
     it "loads the attributes" do
       @page.attributes.should have(1).items
-      @page.attributes.should include("view" => :page)
+      @page.attributes.should include("view" => "page.haml")
     end
 
     it "loads the body" do
@@ -196,7 +196,7 @@ EOS
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :page
+      @page.view_template.should == :page
     end
   end
 
@@ -218,7 +218,7 @@ EOS
 
     it "loads the attributes" do
       @page.attributes.should have(1).items
-      @page.attributes.should include("view" => :page)
+      @page.attributes.should include("view" => "page.haml")
     end
 
     it "loads the body" do
@@ -230,7 +230,7 @@ EOS
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :page
+      @page.view_template.should == :page
     end
   end
 
@@ -253,19 +253,19 @@ EOS
 
     it "loads the attributes" do
       @page.attributes.should have(1).items
-      @page.attributes.should include("view" => :page)
+      @page.attributes.should include("view" => "page.haml")
     end
 
     it "loads the body" do
       @page.body.should be_empty
     end
 
-    it "raises a RuntimeError when converting to HTML" do
+    it "raises an exception when converting to HTML" do
       lambda { @page.to_html }.should raise_exception(RuntimeError,"Unknown content engine -- unknown")
     end
 
     it "determines the view template's base file name" do
-      @page.view.should == :page
+      @page.view_template.should == :page
     end
   end
 

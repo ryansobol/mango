@@ -241,23 +241,27 @@ module Mango
     #
     #   * Read the content page into memory and assign it to the `@content_page` instance variable
     #   * Render the content page's view template file (see `Mango::ContentPages`)
-    #     * A `RuntimeError` is raised if the view template does not exist within `settings.views`
+    #     * An exception is raised if a registered engine for the view template file cannot be
+    #       found or if the view template file cannot be found within `settings.views`.
     #   * Send the rendered page with a 200 HTTP response code and halt execution
     #
-    # In addition, if a `layout.haml` template exists within `settings.views`, the page's view
-    # template is wrapped within this layout when rendered.
+    # In addition, if a `layout` template file exists within `settings.views` and that layout
+    # template file shares the same file extension as the view template, then the page's view
+    # template is wrapped within this layout template when rendered.
     #
-    # For example:
+    # For example, given the following mango application:
     #
     #     |-- content
-    #     |   `-- index.haml
+    #     |   `-- index.markdown
     #     `-- themes
     #         `-- default
     #             `-- views
     #                 |-- layout.haml
     #                 `-- page.haml
     #
-    #     GET /index => 200 content/index.haml +
+    # where the `index.markdown` content page's view template file is `page.haml`, then:
+    #
+    #     GET /index => 200 content/index.markdown +
     #                       themes/default/views/page.haml +
     #                       themes/default/views/layout.haml
     #
@@ -302,12 +306,23 @@ module Mango
 
     ###############################################################################################
 
+    class RegisteredEngineNotFound < RuntimeError; end
+    class ViewTemplateNotFound < RuntimeError; end
+
+    # Supported view template engines
+    TEMPLATE_ENGINES = {
+      Tilt::HamlTemplate => :haml,
+      Tilt::ERBTemplate  => :erb
+    }
+
     private
 
     # Given a URI path, attempts to render a content page, if it exists, and halt
     #
     # @param [String] uri_path
-    # @raise [RuntimeError] Raised when the content page's view template cannot be found
+    # @raise [RegisteredEngineNotFound] Raised when a registered engine for the content page's
+    #   view template cannot be found
+    # @raise [ViewTemplateNotFound] Raised when the content page's view template cannot be found
     #
     def render_content_page!(uri_path)
       content_match     = File.join(settings.content, "*")
@@ -320,11 +335,20 @@ module Mango
         return
       end
 
+      view_template_path = build_view_template_path(@content_page.view)
+
       begin
-        halt haml(@content_page.view)
+        engine = TEMPLATE_ENGINES.fetch(Tilt[@content_page.view])
+      rescue KeyError
+        message = "Cannot find a registered engine for view template file -- #{view_template_path}"
+        raise RegisteredEngineNotFound, message
+      end
+
+      begin
+        halt send(engine, @content_page.view_template)
       rescue Errno::ENOENT
-        view_path = File.expand_path("#{@content_page.view}.haml", settings.views)
-        raise "Unable to find a view template file -- #{view_path}"
+        message = "Cannot find a view template file -- #{view_template_path}"
+        raise ViewTemplateNotFound, message
       end
     end
 
@@ -336,6 +360,15 @@ module Mango
     def build_content_page_path(uri_path)
       uri_path += "index" if directory_path?(uri_path)
       File.expand_path(uri_path, settings.content)
+    end
+
+    # Given a relative view path, build a full path to a potential view template
+    #
+    # @param [String] relative_view_path
+    # @return [String] The path to a potential view template
+    #
+    def build_view_template_path(relative_view_path)
+      File.expand_path(relative_view_path, settings.views)
     end
 
     ###############################################################################################

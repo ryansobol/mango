@@ -1,5 +1,13 @@
 # CHANGES
 
+## v0.6.0 / Not Yet Released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.5.4...v0.6.0)
+
+## Features
+
+  * Add erb.rb view template support [GH#21](https://github.com/ryansobol/mango/issues/21)
+
 ## v0.5.4 / 2011-04-24
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.3...v0.5.4)
