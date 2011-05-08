@@ -11,6 +11,7 @@
 ### Dependencies
 
   * Update [Sinatra](http://www.sinatrarb.com/) to ~> 1.2.6 [GH#14](https://github.com/ryansobol/mango/issues/14)
+  * Update Gemfile.lock for [rspec-core](https://github.com/rspec/rspec-core) 2.5.2 [GH#22](https://github.com/ryansobol/mango/issues/22)
 
 ## v0.5.4 / 2011-04-24
 
