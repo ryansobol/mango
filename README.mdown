@@ -27,15 +27,20 @@ Mango integrates with the writing tools you're already familiar with -- the file
 
 Working with a text editor you already know *saves time*.  And writing and revising content in a file *is often easier* then using the clunky administrator interface of a CMS (e.g. WordPress).  Plus, files *match perfectly* with version control systems, like [Git](http://git-scm.com/), for powerful revision history.  Bonus!
 
+Mango supports the following *easy to write* content formats:
+
+  * [Markdown](http://daringfireball.net/projects/markdown/basics)
+  * [Haml](http://haml-lang.com/tutorial.html)
+
+with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
+
 ### Easy to theme
 
-Mango separates a website's theme from it's content.  This makes it *easy to change* the look-and-feel of a single page or an entire website.  Mango also supports powerful template languages that make it *easy to have uniformity*  with major sections (i.e. headers, footers, navigation, sidebars, etc.) across multiple pages.  The following web and template formats are supported by Mango:
+Mango separates a website's theme from it's content.  This makes it *easy to change* the look-and-feel of a single page or an entire website.  Mango also supports powerful template languages that make it *easy to have uniformity*  with major sections (i.e. headers, footers, navigation, sidebars, etc.) across multiple pages.  In addition to the standard browser formats -- HTML, CSS, and JavaScript --  Mango also supports the following template engines:
 
-  * HAML
-  * HTML
-  * SASS
-  * CSS
-  * JavaScript
+  * [Haml](http://haml-lang.com/)
+  * [erb.rb](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
+  * [Sass](http://sass-lang.com/)
 
 with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
 
@@ -53,7 +58,7 @@ With a strong separation of writing, theming and publishing, Mango applications 
 
 ### Easy to maintain
 
-Mango is a database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/), *upgrading is painless andi backwards-compatible* between patch releases.
+Mango is a database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/), *upgrading is painless and backwards-compatible* between patch releases.
 
 ### Easy to scale
 
@@ -193,10 +198,8 @@ Now that the newly generated Mango application is running, here's how the applic
 
   * First, Mango tries to route an HTTP request to a static file found in `themes/default/public/`.
   * If no static file is found, Mango tries to route the request to a template file.
-    * For routes ending in `.css`, Mango searches for [Sass](http://sass-lang.com/) styles found in `themes/styles/`.
-    * For all other routes:
-      * Mango searches for [Markdown](http://daringfireball.net/projects/markdown/syntax) or [Haml](http://haml-lang.com/) content pages in `content/`.
-      * Mango will also try to wrap the content page within [Haml](http://haml-lang.com/) page and layout templates in `themes/default/views`.
+    * For routes ending in `.css`, Mango searches for a style template in `themes/styles/`.
+    * For all other routes, Mango searches for a content page in `content/` and wraps it within a view template in `themes/default/views`.
   * If no static or template file is found, Mango routes unknown HTTP requests to a customizable 404 page found in `themes/default/views`.
 
 WRITING
