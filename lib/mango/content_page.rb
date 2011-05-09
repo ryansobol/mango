@@ -182,7 +182,7 @@ module Mango
     # @return [Symbol] The view template's base file name.
     #
     def view_template
-      @view_template ||= File.basename(attributes["view"].to_s, '.*').to_sym
+      File.templatize(attributes["view"])
     end
 
     # Adds syntactic suger for reading attributes.

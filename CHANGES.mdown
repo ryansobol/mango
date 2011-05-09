@@ -7,6 +7,7 @@
 ## Features
 
   * Add erb.rb view template support [GH#21](https://github.com/ryansobol/mango/issues/21)
+  * Add erb.rb 404 template support [GH#26](https://github.com/ryansobol/mango/issues/26)
 
 ### Dependencies
 

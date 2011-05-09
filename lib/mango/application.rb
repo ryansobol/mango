@@ -104,7 +104,18 @@ module Mango
   # # 404 Page Not Found with `NOT_FOUND`
   #
   # When a requested URI path cannot be matched with a public file or template file, the error
-  # handler renders the 404 template and sends it with a 404 response.
+  # handler renders the 404 template and sends it with a 404 HTTP response.
+  #
+  # ### Example `GET /page_not_found` request routed to a 404 Haml template
+  #
+  #     |-- content
+  #     |   `-- index.haml
+  #     `-- themes
+  #         `-- default
+  #             `-- views
+  #                 `-- 404.haml
+  #
+  #     GET /page_not_found => 404 themes/default/views/404.haml
   #
   class Application < Sinatra::Base
     set :root, Dir.getwd
@@ -122,11 +133,18 @@ module Mango
     #
     mime_type "", "text/html"
 
-    # Renders the `404.haml` template found within `settings.views` and sends it with 404 HTTP
-    # response.
+    # Supported view template engines
     #
-    # The `404.haml` template is **not** wrapped within the `layout.haml` template when rendered,
-    # even if one exists within `settings.views`.
+    TEMPLATE_ENGINES = {
+      Tilt::HamlTemplate => :haml,
+      Tilt::ERBTemplate  => :erb
+    }
+
+    # Renders the 404 page and sends it with 404 HTTP response.
+    #
+    # The application attempts to render a 404 template stored in `settings.views`. However, it
+    # *will not* render it within a layout template, even if an appropriately named layout template
+    # exists within `settings.views` as well.
     #
     # For example:
     #
@@ -140,7 +158,26 @@ module Mango
     #     GET /page_not_found => 404 themes/default/views/404.haml
     #
     not_found do
-      haml :"404", :layout => false
+      render_404_template!
+    end
+
+    ###############################################################################################
+
+    private
+
+    # With a prioritized list of template engines, attempts to render a 404 template, if one
+    # exists, and halt.
+    #
+    # @see TEMPLATE_ENGINES
+    #
+    def render_404_template!
+      TEMPLATE_ENGINES.values.each do |engine|
+        @preferred_extension = engine.to_s
+        find_template(settings.views, "404", engine) do |file|
+          next unless File.file?(file)
+          halt send(engine, File.templatize(file), :layout => false)
+        end
+      end
     end
 
     # Attempts to render style sheet templates found within `settings.styles`
@@ -308,12 +345,6 @@ module Mango
 
     class RegisteredEngineNotFound < RuntimeError; end
     class ViewTemplateNotFound < RuntimeError; end
-
-    # Supported view template engines
-    TEMPLATE_ENGINES = {
-      Tilt::HamlTemplate => :haml,
-      Tilt::ERBTemplate  => :erb
-    }
 
     private
 
