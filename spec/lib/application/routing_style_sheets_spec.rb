@@ -11,9 +11,9 @@ describe Mango::Application do
 
   #################################################################################################
 
-  describe "GET /styles/screen.css" do
+  describe "GET /styles/sass.css" do
     before(:each) do
-      get "/styles/screen.css"
+      get "/styles/sass.css"
     end
 
     it "returns 200 status code" do
@@ -26,6 +26,41 @@ describe Mango::Application do
 
     it "sends the correct body content" do
       last_response.body.should == <<-EXPECTED
+.main {
+  background-image: url("sass.sass"); }
+
+.content-navigation {
+  border-color: #3bbfce;
+  color: #2ca2af; }
+
+.border {
+  padding: 8px;
+  margin: 8px;
+  border-color: #3bbfce; }
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /styles/scss.css" do
+    before(:each) do
+      get "/styles/scss.css"
+    end
+
+    it "returns 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "sends the correct Content-Type header" do
+      last_response["Content-Type"].should == "text/css;charset=utf-8"
+    end
+
+    it "sends the correct body content" do
+      last_response.body.should == <<-EXPECTED
+.main {
+  background-image: url("scss.scss"); }
+
 .content-navigation {
   border-color: #3bbfce;
   color: #2ca2af; }

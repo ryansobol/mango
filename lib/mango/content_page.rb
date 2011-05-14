@@ -89,10 +89,10 @@ module Mango
   #
   # the `Mango::Application` will attempt to render the content page within the `blog.haml` view
   # template if it exists in the `Mango::Application.settings.views` directory.  The supported view
-  # template engines are defined by `Mango::Application::TEMPLATE_ENGINES`.
+  # template engines are defined by `Mango::Application::VIEW_TEMPLATE_ENGINES`.
   #
   # @see Mango::FlavoredMarkdown
-  # @see Mango::Application::TEMPLATE_ENGINES
+  # @see Mango::Application::VIEW_TEMPLATE_ENGINES
   #
   class ContentPage
     class PageNotFound < RuntimeError; end

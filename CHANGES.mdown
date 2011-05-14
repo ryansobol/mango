@@ -10,6 +10,7 @@
   * Add erb.rb 404 template support [GH#26](https://github.com/ryansobol/mango/issues/26)
   * Add 404 default response [GH#27](https://github.com/ryansobol/mango/issues/27)
   * Add 404.html public file support [GH#28](https://github.com/ryansobol/mango/issues/28)
+  * Add Scss template support [GH#31](https://github.com/ryansobol/mango/issues/31)
 
 ### Dependencies
 

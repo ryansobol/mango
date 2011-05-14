@@ -40,7 +40,7 @@ Mango separates a website's theme from it's content.  This makes it *easy to cha
 
   * [Haml](http://haml-lang.com/)
   * [erb.rb](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
-  * [Sass](http://sass-lang.com/)
+  * [Scss](http://sass-lang.com/) and [Sass](http://sass-lang.com/)
 
 with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
 

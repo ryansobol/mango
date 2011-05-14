@@ -85,11 +85,11 @@ module Mango
   #           |-- security_hole.sass
   #           `-- styles
   #               |-- override.sass
-  #               |-- screen.sass
+  #               |-- screen.scss
   #               `-- subfolder
   #                   `-- screen.sass
   #
-  #     GET /styles/screen.css            => 200 themes/default/styles/screen.sass
+  #     GET /styles/screen.css            => 200 themes/default/styles/screen.scss
   #     GET /styles/subfolder/screen.css  => 200 themes/default/styles/subfolder/screen.sass
   #
   #     GET /styles/reset.css             => 200 themes/default/public/styles/reset.css
@@ -148,9 +148,16 @@ module Mango
 
     # Supported view template engines
     #
-    TEMPLATE_ENGINES = {
+    VIEW_TEMPLATE_ENGINES = {
       Tilt::HamlTemplate => :haml,
       Tilt::ERBTemplate  => :erb
+    }
+
+    # Supported style template engines
+    #
+    STYLE_TEMPLATE_ENGINES = {
+      Tilt::ScssTemplate => :scss,
+      Tilt::SassTemplate => :sass
     }
 
     ###############################################################################################
@@ -179,7 +186,7 @@ module Mango
     # layout template, even if an appropriately named layout template exists within
     # `settings.views`.  If a 404 template is found, the application will:
     #
-    #   * Render the 404 template without a layout template
+    #   * Render the 404 template, without a layout template, as HTML
     #   * Send the rendered 404 template with a 404 HTTP response code
     #   * Halt execution
     #
@@ -228,10 +235,10 @@ module Mango
     # 404 template, if one exists, and halt.
     #
     # @param [String] template_name
-    # @see TEMPLATE_ENGINES
+    # @see VIEW_TEMPLATE_ENGINES
     #
     def render_404_template!(template_name)
-      TEMPLATE_ENGINES.values.each do |engine|
+      VIEW_TEMPLATE_ENGINES.values.each do |engine|
         @preferred_extension = engine.to_s
         find_template(settings.views, template_name, engine) do |file|
           next unless File.file?(file)
@@ -245,7 +252,7 @@ module Mango
     # Attempts to render style sheet templates found within `settings.styles`
     #
     # First, the application attempts to match the URI path with a public CSS file stored in
-    # `settings.public`.  If a public CSS file is found, the handler will:
+    # `settings.public`.  If a public CSS file is found, the application will:
     #
     #   * Send the public CSS file with a 200 HTTP response code
     #   * Halt execution
@@ -261,10 +268,11 @@ module Mango
     #     GET /styles/reset.css => 200 themes/default/public/styles/reset.css
     #
     # If no match is found, the route handler attempts to match the URI path with a style sheet
-    # template stored in `settings.styles`.  If a style sheet template is found, the handler will:
+    # template stored in `settings.styles`.  If a style sheet template is found, the application
+    # will:
     #
-    #   * Convert the style sheet template from Sass to CSS
-    #   * Send the converted style with a 200 HTTP response code
+    #   * Render the style sheet template as CSS
+    #   * Send the rendered style sheet template with a 200 HTTP response code
     #   * Halt execution
     #
     # For example:
@@ -272,9 +280,9 @@ module Mango
     #     `-- themes
     #         `-- default
     #             `-- styles
-    #                 `-- screen.sass
+    #                 `-- screen.scss
     #
-    #     GET /styles/screen.css => 200 themes/default/styles/screen.sass
+    #     GET /styles/screen.css => 200 themes/default/styles/screen.scss
     #
     # **It's intended that requests to public CSS files and requests to style sheet templates share
     # the `/styles/` prefix.**
@@ -290,26 +298,30 @@ module Mango
     # Given a URI path, attempts to render a style sheet, if it exists, and halt
     #
     # @param [String] uri_path
+    # @see STYLE_TEMPLATE_ENGINES
     #
     def render_style_sheet!(uri_path)
       styles_match     = File.join(settings.styles, "*")
       style_sheet_path = build_style_sheet_path(uri_path)
 
       return unless File.fnmatch(styles_match, style_sheet_path)
-      return unless File.file?(style_sheet_path)
 
-      content_type "text/css"
-      halt sass(uri_path.to_sym, :views => settings.styles)
+      STYLE_TEMPLATE_ENGINES.values.each do |engine|
+        @preferred_extension = engine.to_s
+        find_template(settings.styles, uri_path, engine) do |file|
+          next unless File.file?(file)
+          halt send(engine, uri_path.to_sym, :views => settings.styles)
+        end
+      end
     end
 
     # Given a URI path, build a path to a potential style sheet
     #
     # @param [String] uri_path
-    # @param [String] format (defaults to `sass`)
     # @return [String] The path to a potential style sheet
     #
-    def build_style_sheet_path(uri_path, format = "sass")
-      File.expand_path("#{uri_path}.#{format}", settings.styles)
+    def build_style_sheet_path(uri_path)
+      File.expand_path(uri_path, settings.styles)
     end
 
     ###############################################################################################
@@ -332,7 +344,8 @@ module Mango
     #     GET /hello_word.html => 200 themes/default/public/hello_word.html
     #
     # If no match is found, the route handler attempts to match the URI path with a content page
-    # template stored in `settings.content`.  If a content page template is found, the handler will:
+    # template stored in `settings.content`.  If a content page template is found, the application
+    # will:
     #
     #   * Read the content page into memory and assign it to the `@content_page` instance variable
     #   * Render the content page's view template file (see `Mango::ContentPages`)
@@ -419,7 +432,7 @@ module Mango
       view_template_path = build_view_template_path(@content_page.view)
 
       begin
-        engine = TEMPLATE_ENGINES.fetch(Tilt[@content_page.view])
+        engine = VIEW_TEMPLATE_ENGINES.fetch(Tilt[@content_page.view])
       rescue KeyError
         message = "Cannot find a registered engine for view template file -- #{view_template_path}"
         raise RegisteredEngineNotFound, message
