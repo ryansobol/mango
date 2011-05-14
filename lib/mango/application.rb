@@ -104,7 +104,17 @@ module Mango
   # # 404 Page Not Found with `NOT_FOUND`
   #
   # When a requested URI path cannot be matched with a public file or template file, the error
-  # handler attempts to render a 404 template and sends it with a 404 HTTP response.
+  # handler attempts to send a 404 public file or a rendered a 404 template with a 404 HTTP
+  # response.
+  #
+  # ### Example `GET /page_not_found` request routed to a 404 public file
+  #
+  #     `-- themes
+  #         `-- default
+  #             `-- public
+  #                 `-- 404.html
+  #
+  #     GET /page_not_found => 404 themes/default/public/404.html
   #
   # ### Example `GET /page_not_found` request routed to a 404 Haml template
   #
@@ -117,8 +127,8 @@ module Mango
   #
   #     GET /page_not_found => 404 themes/default/views/404.haml
   #
-  # If no 404 template is found, the application sends a basic "Page Not Found" page with a 404
-  # HTTP response.
+  # If no 404 public file or template is found, the application sends a basic "Page Not Found" page
+  # with a 404 HTTP response.
   #
   class Application < Sinatra::Base
     set :root, Dir.getwd
@@ -147,11 +157,31 @@ module Mango
 
     private
 
-    # Renders the 404 page and sends it with 404 HTTP response.
+    # Renders a 404 page with a 404 HTTP response code.
     #
-    # First, the application attempts to render a 404 template stored in `settings.views`. If a 404
-    # template is found, it *will not* render it within a layout template, even if an appropriately
-    # named layout template exists within `settings.views`.
+    # First, the application attempts to render a public 404 file stored in `settings.public`.  If
+    # a public 404 file is found, the application will:
+    #
+    #   * Send the public 404 file with a 404 HTTP response code
+    #   * Halt execution
+    #
+    #  For example:
+    #
+    #     `-- themes
+    #         `-- default
+    #             `-- public
+    #                 `-- 404.html
+    #
+    #     GET /page_not_found => 404 themes/default/public/404.html
+    #
+    # If no match is found, the application attempts to render a 404 template stored in
+    # `settings.views`. If a 404 template is found, the application *will not* render it within a
+    # layout template, even if an appropriately named layout template exists within
+    # `settings.views`.  If a 404 template is found, the application will:
+    #
+    #   * Render the 404 template without a layout template
+    #   * Send the rendered 404 template with a 404 HTTP response code
+    #   * Halt execution
     #
     # For example:
     #
@@ -164,13 +194,34 @@ module Mango
     #
     #     GET /page_not_found => 404 themes/default/views/404.haml
     #
-    # If no 404 template is found, the application sends a basic "Page Not Found" page with a 404
-    # HTTP response.
+    # Finally, if no matches are found, the application sends a basic "Page Not Found" page with a
+    # 404 HTTP response code.
     #
     not_found do
       file_name = "404"
+      render_404_public_file! file_name
       render_404_template! file_name
       "<!DOCTYPE html><title>404 Page Not Found</title><h1>404 Page Not Found</h1>"
+    end
+
+    # Given a file name, attempts to send an public 404 file, if it exists, and halt
+    #
+    # @param [String] file_name
+    #
+    def render_404_public_file!(file_name)
+      four_oh_four_path = build_404_public_file_path(file_name)
+      return unless File.file?(four_oh_four_path)
+      send_file four_oh_four_path
+    end
+
+    # Given a file name, build a path to a potential 404.html file
+    #
+    # @param [String] file_name
+    # @return [String] The path to a potential 404.html file
+    #
+    def build_404_public_file_path(file_name)
+      file_name += ".html"
+      File.expand_path(file_name, settings.public)
     end
 
     # Given a template name, and with a prioritized list of template engines, attempts to render a

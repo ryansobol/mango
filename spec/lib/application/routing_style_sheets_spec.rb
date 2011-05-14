@@ -213,7 +213,7 @@ time, mark, audio, video {
   </head>
   <body>
     <h1>Page not found</h1>
-    <p id='template'>404.haml</p>
+    <p id='template'>404.html</p>
   </body>
 </html>
       EXPECTED
@@ -245,7 +245,7 @@ time, mark, audio, video {
   </head>
   <body>
     <h1>Page not found</h1>
-    <p id='template'>404.haml</p>
+    <p id='template'>404.html</p>
   </body>
 </html>
       EXPECTED
@@ -277,7 +277,7 @@ time, mark, audio, video {
   </head>
   <body>
     <h1>Page not found</h1>
-    <p id='template'>404.haml</p>
+    <p id='template'>404.html</p>
   </body>
 </html>
       EXPECTED
