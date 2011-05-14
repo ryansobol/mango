@@ -104,7 +104,7 @@ module Mango
   # # 404 Page Not Found with `NOT_FOUND`
   #
   # When a requested URI path cannot be matched with a public file or template file, the error
-  # handler renders the 404 template and sends it with a 404 HTTP response.
+  # handler attempts to render a 404 template and sends it with a 404 HTTP response.
   #
   # ### Example `GET /page_not_found` request routed to a 404 Haml template
   #
@@ -116,6 +116,9 @@ module Mango
   #                 `-- 404.haml
   #
   #     GET /page_not_found => 404 themes/default/views/404.haml
+  #
+  # If no 404 template is found, the application sends a basic "Page Not Found" page with a 404
+  # HTTP response.
   #
   class Application < Sinatra::Base
     set :root, Dir.getwd
@@ -146,9 +149,9 @@ module Mango
 
     # Renders the 404 page and sends it with 404 HTTP response.
     #
-    # The application attempts to render a 404 template stored in `settings.views`. However, it
-    # *will not* render it within a layout template, even if an appropriately named layout template
-    # exists within `settings.views` as well.
+    # First, the application attempts to render a 404 template stored in `settings.views`. If a 404
+    # template is found, it *will not* render it within a layout template, even if an appropriately
+    # named layout template exists within `settings.views`.
     #
     # For example:
     #
@@ -161,21 +164,27 @@ module Mango
     #
     #     GET /page_not_found => 404 themes/default/views/404.haml
     #
+    # If no 404 template is found, the application sends a basic "Page Not Found" page with a 404
+    # HTTP response.
+    #
     not_found do
-      render_404_template!
+      file_name = "404"
+      render_404_template! file_name
+      "<!DOCTYPE html><title>404 Page Not Found</title><h1>404 Page Not Found</h1>"
     end
 
-    # With a prioritized list of template engines, attempts to render a 404 template, if one
-    # exists, and halt.
+    # Given a template name, and with a prioritized list of template engines, attempts to render a
+    # 404 template, if one exists, and halt.
     #
+    # @param [String] template_name
     # @see TEMPLATE_ENGINES
     #
-    def render_404_template!
+    def render_404_template!(template_name)
       TEMPLATE_ENGINES.values.each do |engine|
         @preferred_extension = engine.to_s
-        find_template(settings.views, "404", engine) do |file|
+        find_template(settings.views, template_name, engine) do |file|
           next unless File.file?(file)
-          halt send(engine, :"404", :layout => false)
+          halt send(engine, template_name.to_sym, :layout => false)
         end
       end
     end

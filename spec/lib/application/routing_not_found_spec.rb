@@ -11,8 +11,8 @@ describe Mango::Application do
 
   #################################################################################################
 
-  describe ".not_found" do
-    describe "when using Haml template" do
+  describe "not_found" do
+    describe "with a Haml template" do
       before(:all) do
         get "/not_found"
       end
@@ -44,7 +44,7 @@ describe Mango::Application do
 
     ###############################################################################################
 
-    describe "when using erb.rb template" do
+    describe "with an erb.rb template" do
       before(:all) do
         @visible = FIXTURE_ROOT + "themes/default/views/404.haml"
         @hidden  = FIXTURE_ROOT + "themes/default/views/404.haml.hidden"
@@ -79,6 +79,41 @@ describe Mango::Application do
   </body>
 </html>
         EXPECTED
+      end
+    end
+
+    ###############################################################################################
+
+    describe "with no templates" do
+      before(:all) do
+        %w(haml erb).each do |extension|
+          visible = FIXTURE_ROOT + "themes/default/views/404.#{extension}"
+          hidden  = FIXTURE_ROOT + "themes/default/views/404.#{extension}.hidden"
+          FileUtils.move(visible, hidden)
+        end
+
+        get "/not_found"
+      end
+
+      after(:all) do
+        %w(haml erb).each do |extension|
+          visible = FIXTURE_ROOT + "themes/default/views/404.#{extension}"
+          hidden  = FIXTURE_ROOT + "themes/default/views/404.#{extension}.hidden"
+          FileUtils.move(hidden, visible)
+        end
+      end
+
+      it "returns 404 status code" do
+        last_response.should be_not_found
+      end
+
+      it "sends the correct Content-Type header" do
+        last_response["Content-Type"].should == "text/html;charset=utf-8"
+      end
+
+      it "sends the correct body content" do
+        expected = "<!DOCTYPE html><title>404 Page Not Found</title><h1>404 Page Not Found</h1>"
+        last_response.body.should == expected
       end
     end
   end
