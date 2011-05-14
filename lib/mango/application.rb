@@ -144,17 +144,6 @@ module Mango
 
     private
 
-    # Given a URI path, determine whether or no it looks like a directory path
-    #
-    # @param [String] uri_path
-    # @return [Boolean] `true` if the path is empty or has a trailing `/`, otherwise `false`
-    #
-    def directory_path?(uri_path)
-      uri_path.empty? || uri_path[-1] == "/"
-    end
-
-    ###############################################################################################
-
     # Renders the 404 page and sends it with 404 HTTP response.
     #
     # The application attempts to render a 404 template stored in `settings.views`. However, it
@@ -325,7 +314,7 @@ module Mango
     # @param [String] uri_path
     #
     def render_index_file!(uri_path)
-      return unless directory_path?(uri_path)
+      return unless URI.directory?(uri_path)
 
       index_match     = File.join(settings.public, "*")
       index_file_path = build_index_file_path(uri_path)
@@ -390,7 +379,7 @@ module Mango
     # @return [String] The path to a potential content page
     #
     def build_content_page_path(uri_path)
-      uri_path += "index" if directory_path?(uri_path)
+      uri_path += "index" if URI.directory?(uri_path)
       File.expand_path(uri_path, settings.content)
     end
 
