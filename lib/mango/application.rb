@@ -140,6 +140,21 @@ module Mango
       Tilt::ERBTemplate  => :erb
     }
 
+    ###############################################################################################
+
+    private
+
+    # Given a URI path, determine whether or no it looks like a directory path
+    #
+    # @param [String] uri_path
+    # @return [Boolean] `true` if the path is empty or has a trailing `/`, otherwise `false`
+    #
+    def directory_path?(uri_path)
+      uri_path.empty? || uri_path[-1] == "/"
+    end
+
+    ###############################################################################################
+
     # Renders the 404 page and sends it with 404 HTTP response.
     #
     # The application attempts to render a 404 template stored in `settings.views`. However, it
@@ -161,10 +176,6 @@ module Mango
       render_404_template!
     end
 
-    ###############################################################################################
-
-    private
-
     # With a prioritized list of template engines, attempts to render a 404 template, if one
     # exists, and halt.
     #
@@ -179,6 +190,8 @@ module Mango
         end
       end
     end
+
+    ###############################################################################################
 
     # Attempts to render style sheet templates found within `settings.styles`
     #
@@ -225,10 +238,6 @@ module Mango
       not_found
     end
 
-    ###############################################################################################
-
-    private
-
     # Given a URI path, attempts to render a style sheet, if it exists, and halt
     #
     # @param [String] uri_path
@@ -254,7 +263,7 @@ module Mango
       File.expand_path("#{uri_path}.#{format}", settings.styles)
     end
 
-    public
+    ###############################################################################################
 
     # Attempts to render content page templates found within `settings.content`
     #
@@ -311,10 +320,6 @@ module Mango
       not_found
     end
 
-    ###############################################################################################
-
-    private
-
     # Given a URI path, attempts to send an index.html file, if it exists, and halt
     #
     # @param [String] uri_path
@@ -341,12 +346,8 @@ module Mango
       File.expand_path(uri_path, settings.public)
     end
 
-    ###############################################################################################
-
     class RegisteredEngineNotFound < RuntimeError; end
     class ViewTemplateNotFound < RuntimeError; end
-
-    private
 
     # Given a URI path, attempts to render a content page, if it exists, and halt
     #
@@ -400,19 +401,6 @@ module Mango
     #
     def build_view_template_path(relative_view_path)
       File.expand_path(relative_view_path, settings.views)
-    end
-
-    ###############################################################################################
-
-    private
-
-    # Given a URI path, determine whether or no it looks like a directory path
-    #
-    # @param [String] uri_path
-    # @return [Boolean] `true` if the path is empty or has a trailing `/`, otherwise `false`
-    #
-    def directory_path?(uri_path)
-      uri_path.empty? || uri_path[-1] == "/"
     end
   end
 end
