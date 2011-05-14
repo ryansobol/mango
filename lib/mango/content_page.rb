@@ -173,18 +173,6 @@ module Mango
       end
     end
 
-    # Determines the view template's base file name.
-    #
-    # @example
-    #   @content_page.view            #=> "blog.haml"
-    #   @content_page.view_template   #=> :blog
-    #
-    # @return [Symbol] The view template's base file name.
-    #
-    def view_template
-      File.templatize(attributes["view"])
-    end
-
     # Adds syntactic suger for reading attributes.
     #
     # @example

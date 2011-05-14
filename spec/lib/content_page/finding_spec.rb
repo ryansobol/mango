@@ -45,10 +45,6 @@ category:
     it "converts to HTML" do
       @page.to_html.should == "<p>/engines/haml.haml</p>\n"
     end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :page
-    end
   end
 
   #################################################################################################
@@ -92,10 +88,6 @@ category:
 
     it "converts to HTML" do
       @page.to_html.should == "<h3>/engines/md.md</h3>"
-    end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :page
     end
   end
 
@@ -141,10 +133,6 @@ category:
     it "converts to HTML" do
       @page.to_html.should == "<h3>/engines/mdown.mdown</h3>"
     end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :page
-    end
   end
 
   #################################################################################################
@@ -188,10 +176,6 @@ category:
 
     it "converts to HTML" do
       @page.to_html.should == "<h3>/engines/markdown.markdown</h3>"
-    end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :page
     end
   end
 

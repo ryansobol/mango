@@ -39,10 +39,6 @@ EOS
     it "converts to HTML" do
       @page.to_html.should == "<p>So delicious!</p>\n"
     end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :blog
-    end
   end
 
   #################################################################################################
@@ -81,10 +77,6 @@ EOS
     it "converts to HTML" do
       @page.to_html.should == "<h3>Sweet and crumbly!</h3>"
     end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :blog
-    end
   end
 
   #################################################################################################
@@ -121,10 +113,6 @@ EOS
     it "converts to HTML" do
       @page.to_html.should be_empty
     end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :blog
-    end
   end
 
   #################################################################################################
@@ -156,10 +144,6 @@ EOS
 
     it "converts to HTML" do
       @page.to_html.should == "<h3>So delicious!</h3>"
-    end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :page
     end
   end
 
@@ -194,10 +178,6 @@ EOS
     it "converts to HTML" do
       @page.to_html.should be_empty
     end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :page
-    end
   end
 
   #################################################################################################
@@ -227,10 +207,6 @@ EOS
 
     it "converts to HTML" do
       @page.to_html.should be_empty
-    end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :page
     end
   end
 
@@ -262,10 +238,6 @@ EOS
 
     it "raises an exception when converting to HTML" do
       lambda { @page.to_html }.should raise_exception(RuntimeError,"Unknown content engine -- unknown")
-    end
-
-    it "determines the view template's base file name" do
-      @page.view_template.should == :page
     end
   end
 

@@ -175,7 +175,7 @@ module Mango
         @preferred_extension = engine.to_s
         find_template(settings.views, "404", engine) do |file|
           next unless File.file?(file)
-          halt send(engine, File.templatize(file), :layout => false)
+          halt send(engine, :"404", :layout => false)
         end
       end
     end
@@ -366,7 +366,7 @@ module Mango
       end
 
       begin
-        halt send(engine, @content_page.view_template)
+        halt send(engine, @content_page.view.to_s.templatize)
       rescue Errno::ENOENT
         message = "Cannot find a view template file -- #{view_template_path}"
         raise ViewTemplateNotFound, message
