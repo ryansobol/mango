@@ -27,4 +27,22 @@ describe Mango::Application do
       Mango::Application.content.should == (FIXTURE_ROOT + "content").to_s
     end
   end
+
+  #################################################################################################
+
+  describe "constants" do
+    it "defines VIEW_TEMPLATE_ENGINES" do
+      Mango::Application::VIEW_TEMPLATE_ENGINES.should == {
+        Tilt::HamlTemplate => :haml,
+        Tilt::ERBTemplate  => :erb
+      }
+    end
+
+    it "defines STYLE_TEMPLATE_ENGINES" do
+      Mango::Application::STYLE_TEMPLATE_ENGINES.should == {
+        Tilt::ScssTemplate => :scss,
+        Tilt::SassTemplate => :sass
+      }
+    end
+  end
 end

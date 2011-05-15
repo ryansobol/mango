@@ -2,6 +2,8 @@
 require "sinatra/base"
 require "haml"
 require "sass"
+require "erb"
+require "bluecloth"
 
 module Mango
   # It's probably no surprise that `Mango::Application` is a modular **application controller**
@@ -51,18 +53,18 @@ module Mango
   #
   #     |-- content
   #     |   |-- about
-  #     |   |   |-- index.haml
+  #     |   |   |-- index.erb
   #     |   |   `-- us.haml
-  #     |   |-- index.haml
+  #     |   |-- index.markdown
   #     |   |-- override.haml
   #     |   `-- turner+hooch.haml
   #     `-- security_hole.haml
   #
-  #     GET /                      => 200 content/index.haml
-  #     GET /index                 => 200 content/index.haml
-  #     GET /index?foo=bar         => 200 content/index.haml
-  #     GET /about/                => 200 content/about/index.haml
-  #     GET /about/index           => 200 content/about/index.haml
+  #     GET /                      => 200 content/index.markdown
+  #     GET /index                 => 200 content/index.markdown
+  #     GET /index?foo=bar         => 200 content/index.markdown
+  #     GET /about/                => 200 content/about/index.erb
+  #     GET /about/index           => 200 content/about/index.erb
   #     GET /about/us              => 200 content/about/us.haml
   #     GET /turner%2Bhooch        => 200 content/turner+hooch.haml
   #
@@ -216,19 +218,9 @@ module Mango
     # @param [String] file_name
     #
     def render_404_public_file!(file_name)
-      four_oh_four_path = build_404_public_file_path(file_name)
+      four_oh_four_path = File.expand_path("#{file_name}.html", settings.public)
       return unless File.file?(four_oh_four_path)
       send_file four_oh_four_path
-    end
-
-    # Given a file name, build a path to a potential 404.html file
-    #
-    # @param [String] file_name
-    # @return [String] The path to a potential 404.html file
-    #
-    def build_404_public_file_path(file_name)
-      file_name += ".html"
-      File.expand_path(file_name, settings.public)
     end
 
     # Given a template name, and with a prioritized list of template engines, attempts to render a
@@ -238,11 +230,11 @@ module Mango
     # @see VIEW_TEMPLATE_ENGINES
     #
     def render_404_template!(template_name)
-      VIEW_TEMPLATE_ENGINES.values.each do |engine|
-        @preferred_extension = engine.to_s
+      VIEW_TEMPLATE_ENGINES.each do |engine, extension|
+        @preferred_extension = extension.to_s
         find_template(settings.views, template_name, engine) do |file|
           next unless File.file?(file)
-          halt send(engine, template_name.to_sym, :layout => false)
+          halt send(extension, template_name.to_sym, :layout => false)
         end
       end
     end
@@ -302,26 +294,17 @@ module Mango
     #
     def render_style_sheet!(uri_path)
       styles_match     = File.join(settings.styles, "*")
-      style_sheet_path = build_style_sheet_path(uri_path)
+      style_sheet_path = File.expand_path(uri_path, settings.styles)
 
       return unless File.fnmatch(styles_match, style_sheet_path)
 
-      STYLE_TEMPLATE_ENGINES.values.each do |engine|
-        @preferred_extension = engine.to_s
+      STYLE_TEMPLATE_ENGINES.each do |engine, extension|
+        @preferred_extension = extension.to_s
         find_template(settings.styles, uri_path, engine) do |file|
           next unless File.file?(file)
-          halt send(engine, uri_path.to_sym, :views => settings.styles)
+          halt send(extension, uri_path.to_sym, :views => settings.styles)
         end
       end
-    end
-
-    # Given a URI path, build a path to a potential style sheet
-    #
-    # @param [String] uri_path
-    # @return [String] The path to a potential style sheet
-    #
-    def build_style_sheet_path(uri_path)
-      File.expand_path(uri_path, settings.styles)
     end
 
     ###############################################################################################
@@ -390,7 +373,7 @@ module Mango
       return unless URI.directory?(uri_path)
 
       index_match     = File.join(settings.public, "*")
-      index_file_path = build_index_file_path(uri_path)
+      index_file_path = File.expand_path(uri_path + "index.html", settings.public)
 
       return unless File.fnmatch(index_match, index_file_path)
       return unless File.file?(index_file_path)
@@ -398,16 +381,7 @@ module Mango
       send_file index_file_path
     end
 
-    # Given a URI path, build a path to a potential index.html file
-    #
-    # @param [String] uri_path
-    # @return [String] The path to a potential index.html file
-    #
-    def build_index_file_path(uri_path)
-      uri_path += "index.html"
-      File.expand_path(uri_path, settings.public)
-    end
-
+    class ContentPageNotFound < RuntimeError; end
     class RegisteredEngineNotFound < RuntimeError; end
     class ViewTemplateNotFound < RuntimeError; end
 
@@ -419,50 +393,54 @@ module Mango
     # @raise [ViewTemplateNotFound] Raised when the content page's view template cannot be found
     #
     def render_content_page!(uri_path)
+      uri_path += "index" if URI.directory?(uri_path)
+
       content_match     = File.join(settings.content, "*")
-      content_page_path = build_content_page_path(uri_path)
+      content_page_path = File.expand_path(uri_path, settings.content)
       return unless File.fnmatch(content_match, content_page_path)
 
       begin
-        @content_page = Mango::ContentPage.find_by_path(content_page_path)
-      rescue Mango::ContentPage::PageNotFound
+        @content_page = find_content_page(uri_path)
+      rescue ContentPageNotFound
         return
       end
 
-      view_template_path = build_view_template_path(@content_page.view)
+      view_template_path = File.expand_path(@content_page.view, settings.views)
 
       begin
         engine = VIEW_TEMPLATE_ENGINES.fetch(Tilt[@content_page.view])
       rescue KeyError
-        message = "Cannot find a registered engine for view template file -- #{view_template_path}"
+        message = "Cannot find registered engine for view template file -- #{view_template_path}"
         raise RegisteredEngineNotFound, message
       end
 
       begin
         halt send(engine, @content_page.view.to_s.templatize)
       rescue Errno::ENOENT
-        message = "Cannot find a view template file -- #{view_template_path}"
+        message = "Cannot find view template file -- #{view_template_path}"
         raise ViewTemplateNotFound, message
       end
     end
 
-    # Given a URI path, build a path to a potential content page
+    # Given a URI path, creates a new `ContentPage` instance by searching for and reading a content
+    # file from disk. Content files are searched consecutively until a page with a supported
+    # content page template engine is found.
     #
     # @param [String] uri_path
-    # @return [String] The path to a potential content page
+    # @raise [ContentPageNotFound] Raised when a content page cannot be found for the uri path
+    # @return [ContentPage] A new instance is created and returned when found
+    # @see ContentPage::TEMPLATE_ENGINES
     #
-    def build_content_page_path(uri_path)
-      uri_path += "index" if URI.directory?(uri_path)
-      File.expand_path(uri_path, settings.content)
-    end
+    def find_content_page(uri_path)
+      ContentPage::TEMPLATE_ENGINES.each do |engine, extension|
+        @preferred_extension = extension.to_s
+        find_template(settings.content, uri_path, engine) do |file|
+          next unless File.file?(file)
+          return ContentPage.new(File.read(file), :engine => engine)
+        end
+      end
 
-    # Given a relative view path, build a full path to a potential view template
-    #
-    # @param [String] relative_view_path
-    # @return [String] The path to a potential view template
-    #
-    def build_view_template_path(relative_view_path)
-      File.expand_path(relative_view_path, settings.views)
+      raise ContentPageNotFound, "Cannot find content page for path -- #{uri_path}"
     end
   end
 end

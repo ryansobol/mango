@@ -12,7 +12,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET (empty String)" do
-    before(:each) do
+    before(:all) do
       get ""
     end
 
@@ -47,7 +47,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /" do
-    before(:each) do
+    before(:all) do
       get "/"
     end
 
@@ -82,7 +82,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /index" do
-    before(:each) do
+    before(:all) do
       get "/index"
     end
 
@@ -117,7 +117,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /index?foo=bar" do
-    before(:each) do
+    before(:all) do
       get "/index?foo=bar"
     end
 
@@ -152,7 +152,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /about/" do
-    before(:each) do
+    before(:all) do
       get "/about/"
     end
 
@@ -187,7 +187,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /about/index" do
-    before(:each) do
+    before(:all) do
       get "/about/index"
     end
 
@@ -222,7 +222,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /about/us" do
-    before(:each) do
+    before(:all) do
       get "/about/us"
     end
 
@@ -257,7 +257,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /turner%2Bhooch" do
-    before(:each) do
+    before(:all) do
       get "/turner%2Bhooch"
     end
 
@@ -292,7 +292,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /view_engines/erb" do
-    before(:each) do
+    before(:all) do
       get "/view_engines/erb"
     end
 
@@ -330,7 +330,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /page_not_found" do
-    before(:each) do
+    before(:all) do
       get "/page_not_found"
     end
 
@@ -364,7 +364,7 @@ describe Mango::Application do
   describe "GET /page_with_unregistered_view" do
     it "raises an exception" do
       path    = FIXTURE_ROOT + "themes/default/views/unregistered.extension"
-      message = "Cannot find a registered engine for view template file -- #{path}"
+      message = "Cannot find registered engine for view template file -- #{path}"
       lambda {
         get "/page_with_unregistered_view"
       }.should raise_exception(Mango::Application::RegisteredEngineNotFound, message)
@@ -376,7 +376,7 @@ describe Mango::Application do
   describe "GET /page_with_missing_view" do
     it "raises an exception" do
       path    = FIXTURE_ROOT + "themes/default/views/missing.haml"
-      message = "Cannot find a view template file -- #{path}"
+      message = "Cannot find view template file -- #{path}"
       lambda {
         get "/page_with_missing_view"
       }.should raise_exception(Mango::Application::ViewTemplateNotFound, message)
@@ -386,7 +386,7 @@ describe Mango::Application do
   #################################################################################################
 
   describe "GET /../security_hole" do
-    before(:each) do
+    before(:all) do
       get "/../security_hole"
     end
 
@@ -409,6 +409,146 @@ describe Mango::Application do
   <body>
     <h1>Page not found</h1>
     <p id='template'>404.html</p>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /engines/haml" do
+    before(:all) do
+      get "/engines/haml"
+    end
+
+    it "returns 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "sends the correct Content-Type header" do
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
+    end
+
+    it "sends the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>layout.haml</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <p id='template'>page.haml</p>
+    <div id='content'>
+      <p>/engines/haml.haml</p>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /engines/md" do
+    before(:all) do
+      get "/engines/md"
+    end
+
+    it "returns 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "sends the correct Content-Type header" do
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
+    end
+
+    it "sends the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>layout.haml</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <p id='template'>page.haml</p>
+    <div id='content'>
+      <h3>/engines/md.md</h3>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /engines/mkd" do
+    before(:all) do
+      get "/engines/mkd"
+    end
+
+    it "returns 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "sends the correct Content-Type header" do
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
+    end
+
+    it "sends the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>layout.haml</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <p id='template'>page.haml</p>
+    <div id='content'>
+      <h3>/engines/mkd.mkd</h3>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /engines/erb" do
+    before(:all) do
+      get "/engines/erb"
+    end
+
+    it "returns 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "sends the correct Content-Type header" do
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
+    end
+
+    it "sends the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>layout.haml</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <p id='template'>page.haml</p>
+    <div id='content'>
+      <p>/engines/erb.erb</p>
+    </div>
   </body>
 </html>
       EXPECTED

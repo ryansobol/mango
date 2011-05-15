@@ -1,7 +1,5 @@
 # encoding: UTF-8
 
-require "bluecloth"
-require "haml"
 require "yaml"
 
 module Mango
@@ -40,14 +38,10 @@ module Mango
   #
   # ### The Body
   #
-  # The body of a content file may be written using one of the following human-friendly formats:
-  #
-  #   * [Markdown](http://daringfireball.net/projects/markdown/syntax) extended with
-  #     `Mango::FlavoredMarkdown`
-  #   * [Haml](http://haml-lang.com/)
-  #
-  # The content file's extension determines the body's formatting.  For a complete list of content
-  # file formats and their extensions, see `Mango::ContentPage::CONTENT_ENGINES`
+  # The body of a content file can be written in many human and designer friendly formats.  It's the
+  # content file's extension that determines the format, and therefore, the template engine used to
+  # convert the body into HTML.  For a list of supported content page template engines, and their
+  # formats, see `Mango::ContentPage::TEMPLATE_ENGINES`.
   #
   # `ContentPage` instances are expected to be passed along into the view template they define.
   # Once in that scope, the instance can convert its body to HTML with the `#to_html` method:
@@ -95,19 +89,20 @@ module Mango
   # @see Mango::Application::VIEW_TEMPLATE_ENGINES
   #
   class ContentPage
-    class PageNotFound < RuntimeError; end
-
-    # Known content formats and their associated file extensions
-    CONTENT_ENGINES = {
-      :markdown => ["md", "mdown", "markdown"],
-      :haml     => ["haml"]
+    # Supported content page template engines
+    #
+    TEMPLATE_ENGINES = {
+      Tilt::BlueClothTemplate => :markdown,
+      Tilt::HamlTemplate      => :haml,
+      Tilt::ERBTemplate       => :erb
     }
 
     # Default values for various accessors
+    #
     DEFAULT = {
-      :attributes     => { "view" => "page.haml" },
-      :body           => "",
-      :content_engine => :markdown
+      :attributes => { "view" => "page.haml" },
+      :body       => "",
+      :engine     => TEMPLATE_ENGINES.key(:markdown)
     }
 
     # `String`
@@ -117,18 +112,26 @@ module Mango
     # `String`
     attr_reader :body
     # `Symbol`
-    attr_reader :content_engine
+    attr_reader :engine
+    # `Tilt::Template`
+    attr_reader :template
 
     # Creates a new instance by extracting the body and attributes from raw data.  Any extracted
     # components found are merged with their defaults.
     #
     # @param [String] data
     # @param [Hash] options
-    # @option options [Symbol] :content_engine See `CONTENT_ENGINES` and `DEFAULT[:content_engine]`
+    # @option options [Symbol] :engine See `TEMPLATE_ENGINES` and `DEFAULT[:engine]`
+    # @raise [ArgumentError] Raised when registered content engine cannot be found
     #
     def initialize(data, options = {})
-      @data           = data
-      @content_engine = options.delete(:content_engine) || DEFAULT[:content_engine]
+      @engine = options.delete(:engine) || DEFAULT[:engine]
+
+      unless TEMPLATE_ENGINES.include?(engine)
+        raise ArgumentError, "Cannot find registered content engine -- #{engine}"
+      end
+
+      @data = data
 
       if self.data =~ /^(---\s*\n.*?\n?)^(---\s*$\n?)/m
         @attributes = DEFAULT[:attributes].merge(YAML.load($1) || {})
@@ -137,40 +140,17 @@ module Mango
         @attributes = DEFAULT[:attributes]
         @body       = self.data || DEFAULT[:body]
       end
+
+      @body     = FlavoredMarkdown.shake(body) if engine == TEMPLATE_ENGINES.key(:markdown)
+      @template = engine.new { body }
     end
 
-    # Create a new instance by searching for and reading a content file from disk. Content files
-    # are searched consecutively until a page with known content extension is found.
+    # Renders the `Tilt` template as HTML.
     #
-    # @param [String] path_without_extension
-    # @raise [PageNotFound] Raised when a content page cannot be found
-    # @return [ContentPage] A new instance is created and returned when found
-    #
-    def self.find_by_path(path_without_extension)
-      CONTENT_ENGINES.each_pair do |content_engine, extensions|
-        extensions.each do |extension|
-          path = "#{path_without_extension}.#{extension}"
-          return new(File.read(path), :content_engine => content_engine) if File.exist?(path)
-        end
-      end
-
-      raise PageNotFound, "Unable to find content page for path -- #{path_without_extension}"
-    end
-
-    # Given a content engine, converts the body to HTML.
-    #
-    # @raise [RuntimeError] Raised when content engine is unknown
-    # @return [String] HTML from the conversion
+    # @return [String]
     #
     def to_html
-      case content_engine
-      when :markdown
-        BlueCloth.new(Mango::FlavoredMarkdown.shake(body)).to_html
-      when :haml
-        Haml::Engine.new(body).to_html
-      else
-        raise "Unknown content engine -- #{content_engine}"
-      end
+      template.render
     end
 
     # Adds syntactic suger for reading attributes.
@@ -186,6 +166,5 @@ module Mango
       key = method_name.to_s
       attributes.has_key?(key) ? attributes[key] : super
     end
-
   end
 end

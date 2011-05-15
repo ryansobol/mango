@@ -31,6 +31,7 @@ Mango supports the following *easy to write* content formats:
 
   * [Markdown](http://daringfireball.net/projects/markdown/basics)
   * [Haml](http://haml-lang.com/tutorial.html)
+  * [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
 
 with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
 
