@@ -442,6 +442,7 @@ describe Mango::Application do
     <h1>Welcome to Mango!</h1>
     <p id='template'>page.haml</p>
     <div id='content'>
+      <p>engines haml</p>
       <p>/engines/haml.haml</p>
     </div>
   </body>
@@ -547,6 +548,7 @@ describe Mango::Application do
     <h1>Welcome to Mango!</h1>
     <p id='template'>page.haml</p>
     <div id='content'>
+      <p>engines erb</p>
       <p>/engines/erb.erb</p>
     </div>
   </body>

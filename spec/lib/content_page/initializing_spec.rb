@@ -2,255 +2,424 @@
 require "spec_helper"
 
 describe Mango::ContentPage do
-
-  #################################################################################################
-
-  describe "initializing with attributes and Haml body" do
+  describe "given data with header and Haml body, using the Haml engine" do
     before(:all) do
       @expected_data = <<-EOS
 ---
-title: Delicious Cake!
+title: Delicious Cake
 view: blog.haml
+data: Will not persist
+content: Will also not persist
 ---
+%h1= page.title
 %p So delicious!
-EOS
+%p= page.view
+%p= page.content
+%p= page.data
+%p= page.body
+      EOS
       @expected_engine = Tilt::HamlTemplate
-      @page = Mango::ContentPage.new(@expected_data, :engine => @expected_engine)
+      @page = Mango::ContentPage.new(:data => @expected_data, :engine => @expected_engine)
     end
 
-    it "saves the data" do
-      @page.data.should == @expected_data
+    it "has the correct number of attributes" do
+      @page.attributes.should have(6).items
     end
 
-    it "uses the correct engine" do
+    it "has the correct title attribute" do
+      @page.title.should == "Delicious Cake"
+    end
+
+    it "has the correct view attribute" do
+      @page.view.should == "blog.haml"
+    end
+
+    it "has the correct engine attribute" do
       @page.engine.should == @expected_engine
     end
 
-    it "loads the attributes" do
-      @page.attributes.should have(2).items
-      @page.attributes.should include("title" => "Delicious Cake!")
-      @page.attributes.should include("view" => "blog.haml")
+    it "has the correct data attribute" do
+      @page.data.should == @expected_data
     end
 
-    it "loads the body" do
-      @page.body.should == "%p So delicious!\n"
+    it "has the correct body attribute" do
+      @page.body.should == <<-EOS
+%h1= page.title
+%p So delicious!
+%p= page.view
+%p= page.content
+%p= page.data
+%p= page.body
+      EOS
     end
 
-    it "converts to HTML" do
-      @page.to_html.should == "<p>So delicious!</p>\n"
+    it "has the correct content attribute" do
+      @page.content.should == <<-EOS
+<h1>Delicious Cake</h1>
+<p>So delicious!</p>
+<p>blog.haml</p>
+<p></p>
+<p>
+  ---
+  title: Delicious Cake
+  view: blog.haml
+  data: Will not persist
+  content: Will also not persist
+  ---
+  %h1= page.title
+  %p So delicious!
+  %p= page.view
+  %p= page.content
+  %p= page.data
+  %p= page.body
+</p>
+<p>
+  %h1= page.title
+  %p So delicious!
+  %p= page.view
+  %p= page.content
+  %p= page.data
+  %p= page.body
+</p>
+      EOS
     end
   end
 
   #################################################################################################
 
-  describe "initializing with attributes and Markdown body" do
+  describe "given data with header and Markdown body, using the Markdown engine" do
     before(:all) do
       @expected_data = <<-EOS
 ---
-title: Chocolate Pie!
+title: Chocolate Pie
 view: blog.haml
 ---
 ### Sweet and crumbly!
-EOS
+      EOS
       @expected_engine = Tilt::BlueClothTemplate
-      @page = Mango::ContentPage.new(@expected_data, :engine => @expected_engine)
+      @page = Mango::ContentPage.new(:data => @expected_data, :engine => @expected_engine)
     end
 
-    it "saves the data" do
-      @page.data.should == @expected_data
+    it "has the correct number of attributes" do
+      @page.attributes.should have(6).items
     end
 
-    it "uses the correct engine" do
+    it "has the correct title attribute" do
+      @page.title.should == "Chocolate Pie"
+    end
+
+    it "has the correct view attribute" do
+      @page.view.should == "blog.haml"
+    end
+
+    it "has the correct engine attribute" do
       @page.engine.should == @expected_engine
     end
 
-    it "loads the attributes" do
-      @page.attributes.should have(2).items
-      @page.attributes.should include("title" => "Chocolate Pie!")
-      @page.attributes.should include("view" => "blog.haml")
+    it "has the correct data attribute" do
+      @page.data.should == @expected_data
     end
 
-    it "loads the body" do
+    it "has the correct body attribute" do
       @page.body.should == "### Sweet and crumbly!\n"
     end
 
-    it "converts to HTML" do
-      @page.to_html.should == "<h3>Sweet and crumbly!</h3>"
+    it "has the correct content attribute" do
+      @page.content.should == "<h3>Sweet and crumbly!</h3>"
     end
   end
 
   #################################################################################################
 
-  describe "initializing with attributes and erb.rb body" do
+  describe "given data with header and ERB body, using the ERB engine" do
     before(:all) do
       @expected_data = <<-EOS
 ---
-title: Cake Pops!
+title: Cake Pops
 view: blog.haml
 ---
-Did you mean <%= 'crack' %> pops?
-EOS
+<h1><%= page.title %></h1>
+<p>Did you mean <%= 'crack' %> pops?</p>
+<p><%= page.view %></p>
+<p><%= page.content %></p>
+<pre>
+<%= page.data %>
+</pre>
+<pre>
+<%= page.body %>
+</pre>
+      EOS
       @expected_engine = Tilt::ERBTemplate
-      @page = Mango::ContentPage.new(@expected_data, :engine => @expected_engine)
+      @page = Mango::ContentPage.new(:data => @expected_data, :engine => @expected_engine)
     end
 
-    it "saves the data" do
-      @page.data.should == @expected_data
+    it "has the correct number of attributes" do
+      @page.attributes.should have(6).items
     end
 
-    it "uses the correct engine" do
+    it "has the correct title attribute" do
+      @page.title.should == "Cake Pops"
+    end
+
+    it "has the correct view attribute" do
+      @page.view.should == "blog.haml"
+    end
+
+    it "has the correct engine attribute" do
       @page.engine.should == @expected_engine
     end
 
-    it "loads the attributes" do
-      @page.attributes.should have(2).items
-      @page.attributes.should include("title" => "Cake Pops!")
-      @page.attributes.should include("view" => "blog.haml")
-    end
-
-    it "loads the body" do
-      @page.body.should == "Did you mean <%= 'crack' %> pops?\n"
-    end
-
-    it "converts to HTML" do
-      @page.to_html.should == "Did you mean crack pops?\n"
-    end
-  end
-
-  #################################################################################################
-
-  describe "initializing with just attributes" do
-    before(:all) do
-      @expected_data = <<-EOS
----
-title: Delicious Cake!
-view: blog.haml
----
-EOS
-      @page = Mango::ContentPage.new(@expected_data)
-    end
-
-    it "saves the data" do
+    it "has the correct data attribute" do
       @page.data.should == @expected_data
     end
 
-    it "uses the default engine" do
-      @page.engine.should == Mango::ContentPage::DEFAULT[:engine]
+    it "has the correct body attribute" do
+      @page.body.should == <<-EOS
+<h1><%= page.title %></h1>
+<p>Did you mean <%= 'crack' %> pops?</p>
+<p><%= page.view %></p>
+<p><%= page.content %></p>
+<pre>
+<%= page.data %>
+</pre>
+<pre>
+<%= page.body %>
+</pre>
+      EOS
     end
 
-    it "loads the attributes" do
-      @page.attributes.should have(2).items
-      @page.attributes.should include("title" => "Delicious Cake!")
-      @page.attributes.should include("view" => "blog.haml")
-    end
-
-    it "loads the body" do
-      @page.body.should be_empty
-    end
-
-    it "converts to HTML" do
-      @page.to_html.should be_empty
+    it "has the correct content attribute" do
+      @page.content.should == <<-EOS
+<h1>Cake Pops</h1>
+<p>Did you mean crack pops?</p>
+<p>blog.haml</p>
+<p></p>
+<pre>
+---
+title: Cake Pops
+view: blog.haml
+---
+<h1><%= page.title %></h1>
+<p>Did you mean <%= 'crack' %> pops?</p>
+<p><%= page.view %></p>
+<p><%= page.content %></p>
+<pre>
+<%= page.data %>
+</pre>
+<pre>
+<%= page.body %>
+</pre>
+</pre>
+<pre>
+<h1><%= page.title %></h1>
+<p>Did you mean <%= 'crack' %> pops?</p>
+<p><%= page.view %></p>
+<p><%= page.content %></p>
+<pre>
+<%= page.data %>
+</pre>
+<pre>
+<%= page.body %>
+</pre>
+</pre>
+      EOS
     end
   end
 
   #################################################################################################
 
-  describe "initializing with just body using the default content engine" do
+  describe "given data with header only, using the default engine" do
+    before(:all) do
+      @expected_data = <<-EOS
+---
+title: Delicious Cake
+view: blog.haml
+---
+      EOS
+      @page = Mango::ContentPage.new(:data => @expected_data)
+    end
+
+    it "has the correct number of attributes" do
+      @page.attributes.should have(6).items
+    end
+
+    it "has the correct title attribute" do
+      @page.title.should == "Delicious Cake"
+    end
+
+    it "has the correct view attribute" do
+      @page.view.should == "blog.haml"
+    end
+
+    it "has the correct engine attribute" do
+      @page.engine.should == Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"]
+    end
+
+    it "has the correct data attribute" do
+      @page.data.should == @expected_data
+    end
+
+    it "has the correct body attribute" do
+      @page.body.should be_empty
+    end
+
+    it "has the correct content attribute" do
+      @page.content.should be_empty
+    end
+  end
+
+  #################################################################################################
+
+  describe "given data with Markdown body only, using the default engine" do
     before(:all) do
       @expected_data = <<-EOS
 ### So delicious!
 EOS
-      @page = Mango::ContentPage.new(@expected_data)
+      @page = Mango::ContentPage.new(:data => @expected_data)
     end
 
-    it "saves the data" do
+    it "has the correct number of attributes" do
+      @page.attributes.should have(5).items
+    end
+
+    it "has the correct view attribute" do
+      @page.view.should == "page.haml"
+    end
+
+    it "has the correct engine attribute" do
+      @page.engine.should == Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"]
+    end
+
+    it "has the correct data attribute" do
       @page.data.should == @expected_data
     end
 
-    it "uses the default engine" do
-      @page.engine.should == Mango::ContentPage::DEFAULT[:engine]
+    it "has the correct body attribute" do
+      @page.body.should == @expected_data
     end
 
-    it "loads the attributes" do
-      @page.attributes.should have(1).items
-      @page.attributes.should include("view" => "page.haml")
-    end
-
-    it "loads the body" do
-      @page.body.should == "### So delicious!\n"
-    end
-
-    it "converts to HTML" do
-      @page.to_html.should == "<h3>So delicious!</h3>"
+    it "has the correct content attribute" do
+      @page.content.should == "<h3>So delicious!</h3>"
     end
   end
 
   #################################################################################################
 
-  describe "initializing with empty attributes and body" do
+  describe "given data with empty header only, using the default engine" do
     before(:all) do
       @expected_data = <<-EOS
 ---
 ---
 EOS
-      @page = Mango::ContentPage.new(@expected_data)
+      @page = Mango::ContentPage.new(:data => @expected_data)
     end
 
     it "saves the data" do
       @page.data.should == @expected_data
     end
 
-    it "uses the default engine" do
-      @page.engine.should == Mango::ContentPage::DEFAULT[:engine]
+    it "has the correct number of attributes" do
+      @page.attributes.should have(5).items
     end
 
-    it "loads the attributes" do
-      @page.attributes.should have(1).items
-      @page.attributes.should include("view" => "page.haml")
+    it "has the correct view attribute" do
+      @page.view.should == "page.haml"
     end
 
-    it "loads the body" do
+    it "has the correct engine attribute" do
+      @page.engine.should == Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"]
+    end
+
+    it "has the correct data attribute" do
+      @page.data.should == @expected_data
+    end
+
+    it "has the correct body attribute" do
       @page.body.should be_empty
     end
 
-    it "converts to HTML" do
-      @page.to_html.should be_empty
+    it "has the correct content attribute" do
+      @page.content.should be_empty
     end
   end
 
   #################################################################################################
 
-  describe "initializing with nil" do
+  describe "given no data" do
     before(:all) do
-      @expected_data = nil
-      @page = Mango::ContentPage.new(@expected_data)
+      @page = Mango::ContentPage.new
     end
 
     it "saves the data" do
-      @page.data.should == @expected_data
+      @page.data.should == ""
     end
 
-    it "uses the default engine" do
-      @page.engine.should == Mango::ContentPage::DEFAULT[:engine]
+    it "has the correct number of attributes" do
+      @page.attributes.should have(5).items
     end
 
-    it "loads the attributes" do
-      @page.attributes.should have(1).items
-      @page.attributes.should include("view" => "page.haml")
+    it "has the correct view attribute" do
+      @page.view.should == "page.haml"
     end
 
-    it "loads the body" do
+    it "has the correct engine attribute" do
+      @page.engine.should == Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"]
+    end
+
+    it "has the correct data attribute" do
+      @page.data.should be_empty
+    end
+
+    it "has the correct body attribute" do
       @page.body.should be_empty
     end
 
-    it "converts to HTML" do
-      @page.to_html.should be_empty
+    it "has the correct content attribute" do
+      @page.content.should be_empty
     end
   end
 
   #################################################################################################
 
-  describe "initializing with unknown content engine" do
+  describe "given data with an invalid title attribute within the header" do
+    before(:all) do
+      @expected_data = <<-EOS
+---
+title: WARNING: This needs quotes
+---
+EOS
+    end
+
+    it "raises an exception" do
+      expected_message = "syntax error on line 1, col 15: `title: WARNING: This needs quotes'"
+      lambda {
+        Mango::ContentPage.new(:data => @expected_data)
+      }.should raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
+    end
+  end
+
+  #################################################################################################
+
+  describe "given data with an invalid header" do
+    before(:all) do
+      @expected_data = <<-EOS
+---
+This is not a Hash
+---
+EOS
+    end
+
+    it "raises an exception" do
+      expected_message = 'Cannot parse header -- "This is not a Hash"'
+      lambda {
+        Mango::ContentPage.new(:data => @expected_data)
+      }.should raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
+    end
+  end
+
+  #################################################################################################
+
+  describe "given no data, using an unknown engine" do
     before(:all) do
       @unknown_engine = :unknown
     end
@@ -258,14 +427,14 @@ EOS
     it "raises an exception" do
       expected_message = "Cannot find registered content engine -- unknown"
       lambda {
-        @page = Mango::ContentPage.new(nil, :engine => @unknown_engine)
+        Mango::ContentPage.new(:engine => @unknown_engine)
       }.should raise_exception(ArgumentError, expected_message)
     end
   end
 
   #################################################################################################
 
-  describe "initializing with seasonable Markdown body" do
+  describe "given data with seasonable Markdown body, using the default engine" do
     before(:all) do
       data = <<-EOS
 Mango is like a drug.
@@ -274,10 +443,10 @@ until there is no Mango left.
 Not even for Mango!
       EOS
 
-      @page = Mango::ContentPage.new(data)
+      @page = Mango::ContentPage.new(:data => data)
     end
 
-    it "seasons the rendered markup with Mango::FlavoredMarkdown" do
+    it "seasons the data before rendering the content" do
       expected = <<-EOS
 <p>Mango is like a drug.<br/>
 You must have more and more and more of the Mango<br/>
@@ -285,7 +454,7 @@ until there is no Mango left.<br/>
 Not even for Mango!</p>
       EOS
 
-      @page.to_html.should == expected.strip
+      @page.content.should == expected.strip
     end
   end
 end

@@ -2,6 +2,10 @@
 require "spec_helper"
 
 describe Mango::ContentPage do
+  it "inherits from BasicObject" do
+    Mango::ContentPage.superclass.should == BasicObject
+  end
+
   describe "constants" do
     it "defines TEMPLATE_ENGINES" do
       Mango::ContentPage::TEMPLATE_ENGINES.should == {
@@ -11,11 +15,10 @@ describe Mango::ContentPage do
       }
     end
 
-    it "defines DEFAULT" do
-      Mango::ContentPage::DEFAULT.should == {
-        :attributes => { "view"=>"page.haml" },
-        :body       => "",
-        :engine     => Tilt::BlueClothTemplate
+    it "defines DEFAULT_ATTRIBUTES" do
+      Mango::ContentPage::DEFAULT_ATTRIBUTES.should == {
+        "engine" => Mango::ContentPage::TEMPLATE_ENGINES.key(:markdown),
+        "view"   => "page.haml"
       }
     end
   end
@@ -24,12 +27,13 @@ describe Mango::ContentPage do
 
   describe "attribute syntactic sugar" do
     before(:all) do
-      @page = Mango::ContentPage.new <<-EOS
+      data = <<-EOS
 ---
 title: Syntactic Sugar Makes Life Sweeter
 view: template.haml
 ---
 EOS
+      @page = Mango::ContentPage.new(:data => data)
     end
 
     it "sweetens the title attribute" do

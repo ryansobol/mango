@@ -78,5 +78,12 @@ module Mango
       text
     end
 
+    # Destructively replaces the value of `text` with a shake of `FlavoredMarkdown` text
+    #
+    # @param [String] text
+    # @see FlavoredMarkdown.shake
+    def self.shake!(text)
+      text.replace shake(text)
+    end
   end
 end

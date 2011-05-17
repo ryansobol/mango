@@ -2,9 +2,6 @@
 require "spec_helper"
 
 describe Mango::FlavoredMarkdown do
-
-  #################################################################################################
-
   describe ".shake" do
     it "doesn't touch single underscores inside words" do
       Mango::FlavoredMarkdown.shake("foo_bar").should == "foo_bar"
@@ -49,4 +46,22 @@ describe Mango::FlavoredMarkdown do
     end
   end
 
+  #################################################################################################
+
+  describe ".shake!" do
+    before(:all) do
+      @original_data = "foo_bar_baz"
+      @original_id   = @original_data.object_id
+
+      Mango::FlavoredMarkdown.shake!(@original_data)
+    end
+
+    it "flavors the original data" do
+      @original_data.should == "foo\\_bar\\_baz"
+    end
+
+    it "flavors the original data in-place" do
+      @original_data.object_id.should == @original_id
+    end
+  end
 end

@@ -11,6 +11,7 @@
   * Add 404 default response [GH#27](https://github.com/ryansobol/mango/issues/27)
   * Add 404.html public file support [GH#28](https://github.com/ryansobol/mango/issues/28)
   * Add Scss template support [GH#31](https://github.com/ryansobol/mango/issues/31)
+  * Use ContentPage as template local `page` variable [GH#34](https://github.com/ryansobol/mango/issues/34)
 
 ### Dependencies
 

@@ -1,16 +1,15 @@
 # encoding: UTF-8
 
+require "english"
 require "yaml"
 
 module Mango
   # `ContentPage` is a **model** class.  An instance of `ContentPage` is the representation of a
   # single content file.  The primary responsiblity of `ContentPage` is to manage the conversion of
-  # user-generated data into HTML.  It accomplishes this task by utilizing 3rd-party content
-  # engines, which convert easy-to-read, easy-to-write plain text and markup into structurally
-  # valid HTML.
+  # user-generated data into markup like HTML.  It accomplishes this task by utilizing a variety of
+  # content engines.
   #
-  # `ContentPage` instances have two primary components -- **a body** and some **attributes**.
-  # Each component is defined within a single content file.
+  # A `ContentPage` file contains **a body** and possibly **a header**.
   #
   # ### Example content file
   #
@@ -29,50 +28,43 @@ module Mango
   # Mangos aside, let's bring attention to a few important facets of this example and content files
   # in general.
   #
-  # 1. Content pages are stored as files on disk.  Here, the file name is `mango_poem.markdown`.
-  # 2. Attributes are defined first, embedded within triple-dashed ("---") dividers.
-  # 3. The body comes second, nestled comfortably below the attributes header.
-  # 4. Attributes are key-value pairs, defined with [YAML](http://www.yaml.org/) formatting.
-  # 5. The body, in this example, is plain-text.  Because of the file extension, it's interpretted
-  #    as Markdown.
+  # 1. A content page is stored as file on disk.  Here, the file name is `mango_poem.markdown`.
+  # 2. The header is defined first, embedded within triple-dashed ("---") dividers.
+  # 3. The body comes second, nestled comfortably below the header.
+  # 4. The header is composed of key-value attribute pairs in [YAML](http://www.yaml.org/) format.
+  # 5. The file's extension signals that the body should treated as Markdown.
+  #
+  # ### The Header
+  #
+  # The header is composed of key-value attribute pairs in [YAML](http://www.yaml.org/) format.
+  #
+  # Each `ContentPage` instance is passed into their body and view templates as the `page` local
+  # variable.  For example, this is how to access the header attributes of a content page inside an
+  # ERB template:
+  #
+  #     <h1><%= page.title %></h1>
   #
   # ### The Body
   #
   # The body of a content file can be written in many human and designer friendly formats.  It's the
   # content file's extension that determines the format, and therefore, the template engine used to
-  # convert the body into HTML.  For a list of supported content page template engines, and their
-  # formats, see `Mango::ContentPage::TEMPLATE_ENGINES`.
+  # convert the body into markup like HTML.  For a list of supported content page template engines,
+  # and their formats, see `Mango::ContentPage::TEMPLATE_ENGINES`.
   #
-  # `ContentPage` instances are expected to be passed along into the view template they define.
-  # Once in that scope, the instance can convert its body to HTML with the `#to_html` method:
+  # Each `ContentPage` instance is passed into their body and view templates as the `page` local
+  # variable.  For example, this is how to access the raw data, unrendered body, and rendered
+  # content of a content page inside an ERB template:
   #
-  #     @content_page.to_html
-  #
-  # ### The Attributes
-  #
-  # Attributes are key-value pairs, defined with [YAML](http://www.yaml.org/) formatting.
-  #
-  # Syntactic sugar has been added for accessing attribtues.  For example:
-  #
-  #     @content_page.attributes["title"]
-  #
-  # can be shortened to
-  #
-  #     @content_page.title
-  #
-  # Again, `ContentPage` instances are expected to be passed along into the view template they
-  # define.  With a `@content_page` instance in scope, accessing attributes inside a Haml template
-  # works like this:
-  #
-  #     %title
-  #       = @content_page.title
+  #     <p><%= page.data %></p>
+  #     <p><%= page.body %></p>
+  #     <p><%= page.content %></p>
   #
   # ### The View Attribute and Template
   #
-  # All `ContentPage` instances have a `view` attribute, even if one is not explicitly declared in
+  # Each `ContentPage` instance has a `view` attribute, even if one is not explicitly declared in
   # the content file.  This attribute is essential as it guides the `Mango::Application` to render
   # the correct view template file.  The default view template file name is defined by
-  # `Mango::ContentPage::DEFAULT[:attributes]`.
+  # `Mango::ContentPage::DEFAULT_ATTRIBUTES`.
   #
   # When declaring an explicit view template, the relative file name is required.  For example,
   # given the following content page:
@@ -81,82 +73,83 @@ module Mango
   #     view: blog.haml
   #     ---
   #
-  # the `Mango::Application` will attempt to render the content page within the `blog.haml` view
+  # The `Mango::Application` will attempt to render the content page within the `blog.haml` view
   # template if it exists in the `Mango::Application.settings.views` directory.  The supported view
   # template engines are defined by `Mango::Application::VIEW_TEMPLATE_ENGINES`.
   #
-  # @see Mango::FlavoredMarkdown
-  # @see Mango::Application::VIEW_TEMPLATE_ENGINES
+  # @see FlavoredMarkdown
+  # @see Application::VIEW_TEMPLATE_ENGINES
   #
-  class ContentPage
+  class ContentPage < BasicObject
+    class InvalidHeaderError < ::RuntimeError; end
+
     # Supported content page template engines
     #
     TEMPLATE_ENGINES = {
-      Tilt::BlueClothTemplate => :markdown,
-      Tilt::HamlTemplate      => :haml,
-      Tilt::ERBTemplate       => :erb
+      ::Tilt::BlueClothTemplate => :markdown,
+      ::Tilt::HamlTemplate      => :haml,
+      ::Tilt::ERBTemplate       => :erb
     }
 
-    # Default values for various accessors
+    # Default key-value attribute pairs
     #
-    DEFAULT = {
-      :attributes => { "view" => "page.haml" },
-      :body       => "",
-      :engine     => TEMPLATE_ENGINES.key(:markdown)
+    DEFAULT_ATTRIBUTES = {
+      "engine" => TEMPLATE_ENGINES.key(:markdown),
+      "view"   => "page.haml"
     }
 
-    # `String`
-    attr_reader :data
     # `Hash`
     attr_reader :attributes
-    # `String`
-    attr_reader :body
-    # `Symbol`
-    attr_reader :engine
-    # `Tilt::Template`
-    attr_reader :template
 
     # Creates a new instance by extracting the body and attributes from raw data.  Any extracted
     # components found are merged with their defaults.
     #
-    # @param [String] data
     # @param [Hash] options
-    # @option options [Symbol] :engine See `TEMPLATE_ENGINES` and `DEFAULT[:engine]`
+    # @option options [String] :data Cotains a body and possibly a YAML header
+    # @option options [Symbol] :engine See `TEMPLATE_ENGINES` and `DEFAULT_ATTRIBUTES["engine"]`
     # @raise [ArgumentError] Raised when registered content engine cannot be found
+    # @raise [InvalidHeaderError] Raised when YAML header is invalid
     #
-    def initialize(data, options = {})
-      @engine = options.delete(:engine) || DEFAULT[:engine]
+    def initialize(options = {})
+      data   = options[:data]   || ""
+      engine = options[:engine] || DEFAULT_ATTRIBUTES["engine"]
 
       unless TEMPLATE_ENGINES.include?(engine)
-        raise ArgumentError, "Cannot find registered content engine -- #{engine}"
+        ::Kernel.raise ::ArgumentError, "Cannot find registered content engine -- #{engine}"
       end
 
-      @data = data
+      @attributes = DEFAULT_ATTRIBUTES.dup
 
-      if self.data =~ /^(---\s*\n.*?\n?)^(---\s*$\n?)/m
-        @attributes = DEFAULT[:attributes].merge(YAML.load($1) || {})
-        @body       = self.data[($1.size + $2.size)..-1]
+      @attributes["body"] = if data =~ /^(---\s*\n.*?\n?)^(---\s*$\n?)/m
+        begin
+          header = ::YAML.load($1) || {}
+        rescue ::Exception => e
+          ::Kernel.raise InvalidHeaderError, e.message
+        end
+
+        begin
+          @attributes.merge!(header)
+        rescue
+          ::Kernel.raise InvalidHeaderError, "Cannot parse header -- #{header.inspect}"
+        end
+
+        $POSTMATCH
       else
-        @attributes = DEFAULT[:attributes]
-        @body       = self.data || DEFAULT[:body]
+        data
       end
 
-      @body     = FlavoredMarkdown.shake(body) if engine == TEMPLATE_ENGINES.key(:markdown)
-      @template = engine.new { body }
+      FlavoredMarkdown.shake!(@attributes["body"]) if engine == TEMPLATE_ENGINES.key(:markdown)
+      @attributes.merge!("engine" => engine, "data" => data, "content" => nil)
+
+      @attributes["content"] = engine.new { @attributes["body"] }.render(nil, :page => self)
     end
 
-    # Renders the `Tilt` template as HTML.
-    #
-    # @return [String]
-    #
-    def to_html
-      template.render
-    end
+    private
 
     # Adds syntactic suger for reading attributes.
     #
     # @example
-    #   @content_page.title == @content_page.attributes["title"]
+    #   page.title == page.attributes["title"]
     #
     # @param [Symbol] method_name
     # @raise [NoMethodError] Raised when there is no method name key in attributes

@@ -120,15 +120,16 @@ Credits
       (RUNNER_ROOT + "content").should be_a_directory
     end
 
-    it "generates content/index.md" do
-      expected = RUNNER_ROOT + "content/index.md"
+    it "generates content/index.erb" do
+      expected = RUNNER_ROOT + "content/index.erb"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 ---
 title: Congratulations!
 ---
+<h1><%= page.title %></h1>
 
-## You did it!
+<h2>You did it!</h2>
       EOS
     end
 
@@ -347,7 +348,7 @@ h2
 %html
   %head
     %meta{ :charset => "utf-8" }
-    %title= "Mango: \#{@content_page.title}"
+    %title= "Mango: \#{page.title}"
     %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "http://fonts.googleapis.com/css?family=Lobster" }
     %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/reset.css" }
     %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/screen.css" }
@@ -370,9 +371,7 @@ h2
       expected = RUNNER_ROOT + "themes/default/views/page.haml"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
-%h1= @content_page.title
-
-= @content_page.to_html
+= page.content
       EOS
     end
 

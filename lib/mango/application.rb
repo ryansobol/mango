@@ -330,7 +330,7 @@ module Mango
     # template stored in `settings.content`.  If a content page template is found, the application
     # will:
     #
-    #   * Read the content page into memory and assign it to the `@content_page` instance variable
+    #   * Read the content page from disk and render the data in memory
     #   * Render the content page's view template file (see `Mango::ContentPages`)
     #     * An exception is raised if a registered engine for the view template file cannot be
     #       found or if the view template file cannot be found within `settings.views`.
@@ -400,22 +400,22 @@ module Mango
       return unless File.fnmatch(content_match, content_page_path)
 
       begin
-        @content_page = find_content_page(uri_path)
+        content_page = find_content_page(uri_path)
       rescue ContentPageNotFound
         return
       end
 
-      view_template_path = File.expand_path(@content_page.view, settings.views)
+      view_template_path = File.expand_path(content_page.view, settings.views)
 
       begin
-        engine = VIEW_TEMPLATE_ENGINES.fetch(Tilt[@content_page.view])
+        engine = VIEW_TEMPLATE_ENGINES.fetch(Tilt[content_page.view])
       rescue KeyError
         message = "Cannot find registered engine for view template file -- #{view_template_path}"
         raise RegisteredEngineNotFound, message
       end
 
       begin
-        halt send(engine, @content_page.view.to_s.templatize)
+        halt send(engine, content_page.view.to_s.templatize, :locals => { :page => content_page })
       rescue Errno::ENOENT
         message = "Cannot find view template file -- #{view_template_path}"
         raise ViewTemplateNotFound, message
@@ -436,7 +436,7 @@ module Mango
         @preferred_extension = extension.to_s
         find_template(settings.content, uri_path, engine) do |file|
           next unless File.file?(file)
-          return ContentPage.new(File.read(file), :engine => engine)
+          return ContentPage.new(:data => File.read(file), :engine => engine)
         end
       end
 

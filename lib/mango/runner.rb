@@ -30,7 +30,7 @@ module Mango
       content_root = File.join(self.destination_root, "content")
       empty_directory(content_root)
 
-      copy_file("content/index.md")
+      copy_file("content/index.erb")
     end
 
     def build_themes_path
