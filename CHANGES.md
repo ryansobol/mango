@@ -23,6 +23,7 @@
   * Unignore .rvmrc [GH#16](https://github.com/ryansobol/mango/issues/16)
   * Move `Mango::Application#directory_path?` to `URI.directory?` [GH#29](https://github.com/ryansobol/mango/issues/29)
   * Move `File.templatize` to `String#templatize` and simplify usage [GH#30](https://github.com/ryansobol/mango/issues/30)
+  * Rename all `.mdown` files to `.md` [GH#37](https://github.com/ryansobol/mango/issues/37)
 
 ## v0.5.4 / 2011-04-24
 

@@ -11,9 +11,9 @@ describe Mango do
       Mango::VERSION.should == @expected
     end
 
-    it "is correct for the README.mdown file" do
+    it "is correct for the README.md file" do
       Dir.chdir(PROJECT_ROOT) do
-        readme = File.read("README.mdown", 50)
+        readme = File.read("README.md", 50)
         match  = /^Mango release (\d+\.\d+\.\d+\.?\w*)/.match(readme)
         match.captures.first.should == @expected
       end
