@@ -14,7 +14,6 @@ describe Mango::Dependencies do
       expected = {
         :"rack/test"            => :"rack-test",
         :"rspec/core/rake_task" => :"rspec-core",
-        :"yard/sinatra"         => :"yard-sinatra"
       }
       Mango::Dependencies::FILE_NAME_TO_GEM_NAME.should == expected
     end

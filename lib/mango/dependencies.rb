@@ -15,11 +15,11 @@ module Mango
   # developer-friendly warnings from rescued `LoadError` exceptions raised by missing
   # development RubyGem dependencies.
   #
-  # @example Simple usage with the YARD gem
+  # @example Simple usage with the rspec-core gem
   #   Mango::Dependencies.warn_at_exit
   #   begin
-  #     require "yard"
-  #     YARD::Rake::YardocTask.new(:yard)
+  #     require "rspec/core/rake_task"
+  #     RSpec::Core::RakeTask.new(:spec)
   #   rescue LoadError => e
   #     Mango::Dependencies.create_warning_for(e)
   #   end
@@ -32,7 +32,6 @@ module Mango
     FILE_NAME_TO_GEM_NAME = {
       :"rack/test"            => :"rack-test",
       :"rspec/core/rake_task" => :"rspec-core",
-      :"yard/sinatra"         => :"yard-sinatra"
     }
 
     # Checks that the version of the current Ruby process matches the one of the

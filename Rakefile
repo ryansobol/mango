@@ -15,19 +15,6 @@ end
 
 ###################################################################################################
 
-begin
-  require "yard"
-  require "bluecloth" # for Markdown support
-  require "yard/sinatra" # for Sinatra support
-  YARD::Rake::YardocTask.new(:yard) do |t|
-    t.options += ["--title", "Mango #{Mango::VERSION} Documentation"]
-  end
-rescue LoadError => e
-  Mango::Dependencies.create_warning_for(e)
-end
-
-###################################################################################################
-
 namespace :gem do
   desc "Builds a gem from the current project's Gem::Specification"
   task :build do
