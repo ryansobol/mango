@@ -32,6 +32,7 @@ Mango supports the following *easy to write* content formats:
   * [Markdown](http://daringfireball.net/projects/markdown/basics)
   * [Haml](http://haml-lang.com/tutorial.html)
   * [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
+  * [Liquid](https://github.com/tobi/liquid/wiki)
 
 with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
 
@@ -40,8 +41,9 @@ with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the wa
 Mango separates a website's theme from it's content.  This makes it *easy to change* the look-and-feel of a single page or an entire website.  Mango also supports powerful template languages that make it *easy to have uniformity*  with major sections (i.e. headers, footers, navigation, sidebars, etc.) across multiple pages.  In addition to the standard browser formats -- HTML, CSS, and JavaScript --  Mango also supports the following template engines:
 
   * [Haml](http://haml-lang.com/)
-  * [erb.rb](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
+  * [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
   * [Scss](http://sass-lang.com/) and [Sass](http://sass-lang.com/)
+  * [Liquid](https://github.com/tobi/liquid/wiki)
 
 with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
 
@@ -84,6 +86,7 @@ REQUIREMENTS
   * [Haml](http://haml-lang.com/) ~> 3.1.1
   * [Sass](http://sass-lang.com/) ~> 3.1.1
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
+  * [Liquid](http://www.liquidmarkup.org/) ~> 2.2.2
   * [Thor](https://github.com/wycats/thor) ~> 0.14.6
 
 ### Optional development dependencies

@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "sinatra",   "~> 1.2.6"
   s.add_runtime_dependency "haml",      "~> 3.1.1"
   s.add_runtime_dependency "sass",      "~> 3.1.1"
+  s.add_runtime_dependency "liquid",    "~> 2.2.2"
   s.add_runtime_dependency "bluecloth", "~> 2.1.0"
   s.add_runtime_dependency "thor",      "~> 0.14.6"
 

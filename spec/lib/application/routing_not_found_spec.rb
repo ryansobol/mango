@@ -90,7 +90,7 @@ describe Mango::Application do
 
     ###############################################################################################
 
-    describe "with an erb.rb template" do
+    describe "with an ERB template" do
       before(:all) do
         %w(html).each do |extension|
           visible = FIXTURE_ROOT + "themes/default/public/404.#{extension}"

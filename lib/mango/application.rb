@@ -3,6 +3,7 @@ require "sinatra/base"
 require "haml"
 require "sass"
 require "erb"
+require "liquid"
 require "bluecloth"
 
 module Mango
@@ -151,8 +152,9 @@ module Mango
     # Supported view template engines
     #
     VIEW_TEMPLATE_ENGINES = {
-      Tilt::HamlTemplate => :haml,
-      Tilt::ERBTemplate  => :erb
+      Tilt::HamlTemplate   => :haml,
+      Tilt::ERBTemplate    => :erb,
+      Tilt::LiquidTemplate => :liquid
     }
 
     # Supported style template engines

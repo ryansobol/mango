@@ -8,12 +8,14 @@ describe Mango::ContentPage do
 ---
 title: Delicious Cake
 view: blog.haml
+engine: Will not persist
 data: Will not persist
 content: Will also not persist
 ---
 %h1= page.title
 %p So delicious!
 %p= page.view
+%p= page.engine
 %p= page.content
 %p= page.data
 %p= page.body
@@ -47,6 +49,7 @@ content: Will also not persist
 %h1= page.title
 %p So delicious!
 %p= page.view
+%p= page.engine
 %p= page.content
 %p= page.data
 %p= page.body
@@ -58,17 +61,20 @@ content: Will also not persist
 <h1>Delicious Cake</h1>
 <p>So delicious!</p>
 <p>blog.haml</p>
+<p>#{@expected_engine}</p>
 <p></p>
 <p>
   ---
   title: Delicious Cake
   view: blog.haml
+  engine: Will not persist
   data: Will not persist
   content: Will also not persist
   ---
   %h1= page.title
   %p So delicious!
   %p= page.view
+  %p= page.engine
   %p= page.content
   %p= page.data
   %p= page.body
@@ -77,6 +83,7 @@ content: Will also not persist
   %h1= page.title
   %p So delicious!
   %p= page.view
+  %p= page.engine
   %p= page.content
   %p= page.data
   %p= page.body
@@ -221,6 +228,109 @@ view: blog.haml
 <pre>
 <%= page.body %>
 </pre>
+</pre>
+      EOS
+    end
+  end
+
+  #################################################################################################
+
+  describe "given data with header and Liquid body, using the Liquid engine" do
+    before(:all) do
+      @expected_data = <<-EOS
+---
+title: Cake Pops
+view: blog.liquid
+---
+<h1>{{ page.title }}</h1>
+<p>Did you mean {{ 'crack' }} pops?</p>
+<p>{{ page.view }}</p>
+<p>{{ page.content }}</p>
+<pre>
+{{ page.data }}
+</pre>
+<pre>
+{{ page.body }}
+</pre>
+      EOS
+      @expected_engine = Tilt::LiquidTemplate
+      @page = Mango::ContentPage.new(:data => @expected_data, :engine => @expected_engine)
+    end
+
+    it "has the correct number of attributes" do
+      @page.attributes.should have(6).items
+    end
+
+    it "converts itself to liquid format" do
+      @page.attributes.should == @page.to_liquid
+    end
+
+    it "has the correct title attribute" do
+      @page.title.should == "Cake Pops"
+    end
+
+    it "has the correct view attribute" do
+      @page.view.should == "blog.liquid"
+    end
+
+    it "has the correct engine attribute" do
+      @page.engine.should == @expected_engine
+    end
+
+    it "has the correct data attribute" do
+      @page.data.should == @expected_data
+    end
+
+    it "has the correct body attribute" do
+      @page.body.should == <<-EOS
+<h1>{{ page.title }}</h1>
+<p>Did you mean {{ 'crack' }} pops?</p>
+<p>{{ page.view }}</p>
+<p>{{ page.content }}</p>
+<pre>
+{{ page.data }}
+</pre>
+<pre>
+{{ page.body }}
+</pre>
+      EOS
+    end
+
+    it "has the correct content attribute" do
+      @page.content.should == <<-EOS
+<h1>Cake Pops</h1>
+<p>Did you mean crack pops?</p>
+<p>blog.liquid</p>
+<p></p>
+<pre>
+---
+title: Cake Pops
+view: blog.liquid
+---
+<h1>{{ page.title }}</h1>
+<p>Did you mean {{ 'crack' }} pops?</p>
+<p>{{ page.view }}</p>
+<p>{{ page.content }}</p>
+<pre>
+{{ page.data }}
+</pre>
+<pre>
+{{ page.body }}
+</pre>
+
+</pre>
+<pre>
+<h1>{{ page.title }}</h1>
+<p>Did you mean {{ 'crack' }} pops?</p>
+<p>{{ page.view }}</p>
+<p>{{ page.content }}</p>
+<pre>
+{{ page.data }}
+</pre>
+<pre>
+{{ page.body }}
+</pre>
+
 </pre>
       EOS
     end

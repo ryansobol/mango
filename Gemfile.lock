@@ -5,6 +5,7 @@ PATH
       bluecloth (~> 2.1.0)
       bundler (~> 1.0.7)
       haml (~> 3.1.1)
+      liquid (~> 2.2.2)
       rack (~> 1.2.2)
       sass (~> 3.1.1)
       sinatra (~> 1.2.6)
@@ -16,6 +17,7 @@ GEM
     bluecloth (2.1.0)
     diff-lcs (1.1.2)
     haml (3.1.1)
+    liquid (2.2.2)
     rack (1.2.2)
     rack-test (0.5.7)
       rack (>= 1.0)
@@ -44,6 +46,7 @@ DEPENDENCIES
   bluecloth (~> 2.1.0)
   bundler (~> 1.0.7)
   haml (~> 3.1.1)
+  liquid (~> 2.2.2)
   mango!
   rack (~> 1.2.2)
   rack-test (~> 0.5.7)

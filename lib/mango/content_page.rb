@@ -80,15 +80,16 @@ module Mango
   # @see FlavoredMarkdown
   # @see Application::VIEW_TEMPLATE_ENGINES
   #
-  class ContentPage < BasicObject
-    class InvalidHeaderError < ::RuntimeError; end
+  class ContentPage
+    class InvalidHeaderError < RuntimeError; end
 
     # Supported content page template engines
     #
     TEMPLATE_ENGINES = {
-      ::Tilt::BlueClothTemplate => :markdown,
-      ::Tilt::HamlTemplate      => :haml,
-      ::Tilt::ERBTemplate       => :erb
+      Tilt::BlueClothTemplate => :markdown,
+      Tilt::HamlTemplate      => :haml,
+      Tilt::ERBTemplate       => :erb,
+      Tilt::LiquidTemplate    => :liquid
     }
 
     # Default key-value attribute pairs
@@ -98,8 +99,10 @@ module Mango
       "view"   => "page.haml"
     }
 
-    # `Hash`
+    # `Hash` containing the engine, data, body, content, and any header key-value pairs
+    #
     attr_reader :attributes
+    alias :to_liquid :attributes
 
     # Creates a new instance by extracting the body and attributes from raw data.  Any extracted
     # components found are merged with their defaults.
@@ -115,22 +118,22 @@ module Mango
       engine = options[:engine] || DEFAULT_ATTRIBUTES["engine"]
 
       unless TEMPLATE_ENGINES.include?(engine)
-        ::Kernel.raise ::ArgumentError, "Cannot find registered content engine -- #{engine}"
+        raise ArgumentError, "Cannot find registered content engine -- #{engine}"
       end
 
       @attributes = DEFAULT_ATTRIBUTES.dup
 
       @attributes["body"] = if data =~ /^(---\s*\n.*?\n?)^(---\s*$\n?)/m
         begin
-          header = ::YAML.load($1) || {}
-        rescue ::Exception => e
-          ::Kernel.raise InvalidHeaderError, e.message
+          header = YAML.load($1) || {}
+        rescue Exception => e
+          raise InvalidHeaderError, e.message
         end
 
         begin
           @attributes.merge!(header)
         rescue
-          ::Kernel.raise InvalidHeaderError, "Cannot parse header -- #{header.inspect}"
+          raise InvalidHeaderError, "Cannot parse header -- #{header.inspect}"
         end
 
         $POSTMATCH
@@ -155,7 +158,7 @@ module Mango
     # @raise [NoMethodError] Raised when there is no method name key in attributes
     # @return [Object] Value of the method name attribute
     #
-    def method_missing(method_name)
+    def method_missing(method_name, *args, &block)
       key = method_name.to_s
       attributes.has_key?(key) ? attributes[key] : super
     end

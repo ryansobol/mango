@@ -2,16 +2,13 @@
 require "spec_helper"
 
 describe Mango::ContentPage do
-  it "inherits from BasicObject" do
-    Mango::ContentPage.superclass.should == BasicObject
-  end
-
   describe "constants" do
     it "defines TEMPLATE_ENGINES" do
       Mango::ContentPage::TEMPLATE_ENGINES.should == {
         Tilt::BlueClothTemplate => :markdown,
         Tilt::HamlTemplate      => :haml,
-        Tilt::ERBTemplate       => :erb
+        Tilt::ERBTemplate       => :erb,
+        Tilt::LiquidTemplate    => :liquid
       }
     end
 

@@ -33,8 +33,9 @@ describe Mango::Application do
   describe "constants" do
     it "defines VIEW_TEMPLATE_ENGINES" do
       Mango::Application::VIEW_TEMPLATE_ENGINES.should == {
-        Tilt::HamlTemplate => :haml,
-        Tilt::ERBTemplate  => :erb
+        Tilt::HamlTemplate   => :haml,
+        Tilt::ERBTemplate    => :erb,
+        Tilt::LiquidTemplate => :liquid
       }
     end
 

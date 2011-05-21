@@ -329,6 +329,45 @@ describe Mango::Application do
 
   #################################################################################################
 
+  describe "GET /view_engines/liquid" do
+    before(:all) do
+      get "/view_engines/liquid"
+    end
+
+    it "returns 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "sends the correct Content-Type header" do
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
+    end
+
+    it "sends the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>layout.liquid</title>
+  </head>
+  <body>
+<h1>Welcome to Mango!</h1>
+
+<p id="template">page.liquid</p>
+
+<div id="content">
+  <p>/view_engines/liquid.haml</p>
+
+</div>
+
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
   describe "GET /page_not_found" do
     before(:all) do
       get "/page_not_found"
@@ -550,6 +589,42 @@ describe Mango::Application do
     <div id='content'>
       <p>engines erb</p>
       <p>/engines/erb.erb</p>
+    </div>
+  </body>
+</html>
+      EXPECTED
+    end
+  end
+
+  #################################################################################################
+
+  describe "GET /engines/liquid" do
+    before(:all) do
+      get "/engines/liquid"
+    end
+
+    it "returns 200 status code" do
+      last_response.should be_ok
+    end
+
+    it "sends the correct Content-Type header" do
+      last_response["Content-Type"].should == "text/html;charset=utf-8"
+    end
+
+    it "sends the correct body content" do
+      last_response.body.should == <<-EXPECTED
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>layout.haml</title>
+  </head>
+  <body>
+    <h1>Welcome to Mango!</h1>
+    <p id='template'>page.haml</p>
+    <div id='content'>
+      <p>engines liquid</p>
+      <p>/engines/liquid.liquid</p>
     </div>
   </body>
 </html>
