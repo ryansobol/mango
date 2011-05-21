@@ -18,83 +18,60 @@ module Mango
       copy_file("Gemfile")
       copy_file("README.md")
 
-      build_content_path
-      build_themes_path
+      copy_content
+      copy_themes
     end
 
     ###############################################################################################
 
     protected
 
-    def build_content_path
-      content_root = File.join(self.destination_root, "content")
-      empty_directory(content_root)
-
+    def copy_content
       copy_file("content/index.erb")
     end
 
-    def build_themes_path
-      themes_root = File.join(self.destination_root, "themes")
-      empty_directory(themes_root)
-
-      default_root = File.join(themes_root, "default")
-      empty_directory(default_root)
-
-      build_public_path default_root
-      build_styles_path default_root
-      build_views_path default_root
+    def copy_themes
+      copy_javascript_templates
+      copy_public_files
+      copy_stylesheet_templates
+      copy_view_templates
     end
 
     ###############################################################################################
 
     protected
 
-    def build_public_path(destination)
-      public_root = File.join(destination, "public")
-      empty_directory(public_root)
-
+    def copy_public_files
       create_file("themes/default/public/favicon.ico")
       copy_file("themes/default/public/robots.txt")
 
-      build_public_images_path public_root
-      build_public_javascripts_path public_root
-      build_public_styles_path public_root
+      copy_image_files
+      copy_javascript_files
+      copy_stylesheet_files
     end
 
-    def build_public_images_path(destination)
-      public_images_root = File.join(destination, "images")
-      empty_directory(public_images_root)
-
+    def copy_image_files
       copy_file("themes/default/public/images/particles.gif")
     end
 
-    def build_public_javascripts_path(destination)
-      public_javascripts_root = File.join(destination, "javascripts")
-      empty_directory(public_javascripts_root)
-
+    def copy_javascript_files
       copy_file("themes/default/public/javascripts/fireworks.js")
-      copy_file("themes/default/public/javascripts/timer.js")
     end
 
-    def build_public_styles_path(destination)
-      public_styles_root = File.join(destination, "styles")
-      empty_directory(public_styles_root)
-
-      copy_file("themes/default/public/styles/fireworks.css")
-      copy_file("themes/default/public/styles/reset.css")
+    def copy_stylesheet_files
+      copy_file("themes/default/public/stylesheets/fireworks.css")
+      copy_file("themes/default/public/stylesheets/reset.css")
     end
 
-    def build_styles_path(destination)
-      styles_root = File.join(destination, "styles")
-      empty_directory(styles_root)
-
-      copy_file("themes/default/styles/screen.sass")
+    def copy_javascript_templates
+      copy_file("themes/default/javascripts/timer.coffee")
     end
 
-    def build_views_path(destination)
-      views_root = File.join(destination, "views")
-      empty_directory(views_root)
+    def copy_stylesheet_templates
+      copy_file("themes/default/stylesheets/screen.sass")
+    end
 
+    def copy_view_templates
       copy_file("themes/default/views/404.haml")
       copy_file("themes/default/views/layout.haml")
       copy_file("themes/default/views/page.haml")

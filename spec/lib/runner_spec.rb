@@ -60,7 +60,6 @@ describe Mango::Runner do
       expected.should be_a_file
       File.read(expected).should == <<-EOS
 .DS_Store
-.rvmrc
 .bundle
       EOS
     end
@@ -145,6 +144,25 @@ title: Congratulations!
 
     ###############################################################################################
 
+    it "generates themes/default/javascripts" do
+      (RUNNER_ROOT + "themes/default/javascripts").should be_a_directory
+    end
+
+    it "generates themes/default/javascripts/timer.coffee" do
+      expected = RUNNER_ROOT + "themes/default/javascripts/timer.coffee"
+      expected.should be_a_file
+      File.read(expected).should == <<-EOS
+fire = ->
+  gap = Math.floor(Math.random() * 1201) + 600
+  setTimeout(fire, gap)
+  createFirework(30,125,7,5,null,null,null,null,false,true)
+
+window.onload = fire
+      EOS
+    end
+
+    ###############################################################################################
+
     it "generates themes/default/public" do
       (RUNNER_ROOT + "themes/default/public").should be_a_directory
     end
@@ -191,36 +209,22 @@ title: Congratulations!
       File.read(expected).size.should == 17167
     end
 
-    it "generates themes/default/public/javascripts/timer.js" do
-      expected = RUNNER_ROOT + "themes/default/public/javascripts/timer.js"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
-function fire() {
-  var gap = Math.floor(Math.random() * 1201) + 600;
-  setTimeout("fire()", gap);
-  createFirework(30,125,7,5,null,null,null,null,false,true);
-}
-      EOS
-    end
-
     ###############################################################################################
 
-    it "generates themes/default/public/styles" do
-      (RUNNER_ROOT + "themes/default/public/styles").should be_a_directory
+    it "generates themes/default/public/stylesheets" do
+      (RUNNER_ROOT + "themes/default/public/stylesheets").should be_a_directory
     end
 
-    it "generates themes/default/public/styles/fireworks.css" do
-      expected = RUNNER_ROOT + "themes/default/public/styles/fireworks.css"
+    it "generates themes/default/public/stylesheets/fireworks.css" do
+      expected = RUNNER_ROOT + "themes/default/public/stylesheets/fireworks.css"
       expected.should be_a_file
       File.read(expected).size.should == 717
     end
 
-    it "generates themes/default/public/styles/reset.css" do
-      expected = RUNNER_ROOT + "themes/default/public/styles/reset.css"
+    it "generates themes/default/public/stylesheets/reset.css" do
+      expected = RUNNER_ROOT + "themes/default/public/stylesheets/reset.css"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
-@charset "UTF-8";
-
 /* v1.0 | 20080212 */
 
 html, body, div, span, applet, object, iframe,
@@ -278,16 +282,14 @@ table {
 
     ###############################################################################################
 
-    it "generates themes/default/styles" do
-      (RUNNER_ROOT + "themes/default/styles").should be_a_directory
+    it "generates themes/default/stylesheets" do
+      (RUNNER_ROOT + "themes/default/stylesheets").should be_a_directory
     end
 
-    it "generates themes/default/styles/screen.sass" do
-      expected = RUNNER_ROOT + "themes/default/styles/screen.sass"
+    it "generates themes/default/stylesheets/screen.sass" do
+      expected = RUNNER_ROOT + "themes/default/stylesheets/screen.sass"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
-@charset "UTF-8"
-
 body
   background-color: #D05C12
   font-family: "Lobster", arial, serif
@@ -350,12 +352,12 @@ h2
     %meta{ :charset => "utf-8" }
     %title= "Mango: \#{page.title}"
     %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "http://fonts.googleapis.com/css?family=Lobster" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/reset.css" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/screen.css" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/fireworks.css" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/reset.css" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/screen.css" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/fireworks.css" }
     %script{ :type => "text/javascript", :src => "/javascripts/fireworks.js"}
     %script{ :type => "text/javascript", :src => "/javascripts/timer.js"}
-  %body{ :onload => "fire();" }
+  %body
     %div#fireworks-template
       %div#fw.firework
       %div#fp.fireworkParticle

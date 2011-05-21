@@ -34,7 +34,7 @@ Mango supports the following *easy to write* content formats:
   * [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
   * [Liquid](https://github.com/tobi/liquid/wiki)
 
-with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
+Don't see your favorite content format?  [Patches are welcomed](https://github.com/ryansobol/mango/issues)
 
 ### Easy to theme
 
@@ -42,10 +42,11 @@ Mango separates a website's theme from it's content.  This makes it *easy to cha
 
   * [Haml](http://haml-lang.com/)
   * [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
-  * [Scss](http://sass-lang.com/) and [Sass](http://sass-lang.com/)
   * [Liquid](https://github.com/tobi/liquid/wiki)
+  * [Scss](http://sass-lang.com/) and [Sass](http://sass-lang.com/)
+  * [CoffeeScript](http://jashkenas.github.com/coffee-script/)
 
-with [more](https://github.com/sinatra/sinatra/blob/1.1.0/CHANGES#L12) on the way.
+Don't see your favorite template engine?  [Patches are welcomed](https://github.com/ryansobol/mango/issues)
 
 ### Easy to publish
 
@@ -87,6 +88,7 @@ REQUIREMENTS
   * [Sass](http://sass-lang.com/) ~> 3.1.1
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
   * [Liquid](http://www.liquidmarkup.org/) ~> 2.2.2
+  * [CoffeeScript](http://jashkenas.github.com/coffee-script/) ~> 2.2.0
   * [Thor](https://github.com/wycats/thor) ~> 0.14.6
 
 ### Optional development dependencies
@@ -175,21 +177,22 @@ Now that the newly generated Mango application is running, here's how the applic
     ├── README.md
     ├── config.ru
     ├── content
-    │   └── index.md
+    │   └── index.erb
     └── themes
         └── default
+            ├── javascripts
+            │   └── timer.coffee
             ├── public
             │   ├── favicon.ico
             │   ├── images
             │   │   └── particles.gif
             │   ├── javascripts
-            │   │   ├── fireworks.js
-            │   │   └── timer.js
+            │   │   └── fireworks.js
             │   ├── robots.txt
-            │   └── styles
+            │   └── stylesheets
             │       ├── fireworks.css
             │       └── reset.css
-            ├── styles
+            ├── stylesheets
             │   └── screen.sass
             └── views
                 ├── 404.haml
@@ -202,7 +205,8 @@ Now that the newly generated Mango application is running, here's how the applic
 
   * First, Mango tries to route an HTTP request to a static file found in `themes/default/public/`.
   * If no static file is found, Mango tries to route the request to a template file.
-    * For routes ending in `.css`, Mango searches for a style template in `themes/styles/`.
+    * For routes ending in `.js`, Mango searches for a stylesheet template in `themes/javascripts/`.
+    * For routes ending in `.css`, Mango searches for a stylesheet template in `themes/stylesheets/`.
     * For all other routes, Mango searches for a content page in `content/` and wraps it within a view template in `themes/default/views`.
   * If no static or template file is found, Mango routes unknown HTTP requests to a customizable 404 page found in either `themes/default/public` or `themes/default/views`.
 

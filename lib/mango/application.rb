@@ -5,6 +5,7 @@ require "sass"
 require "erb"
 require "liquid"
 require "bluecloth"
+require "coffee_script"
 
 module Mango
   # It's probably no surprise that `Mango::Application` is a modular **application controller**
@@ -15,10 +16,11 @@ module Mango
   # For **every HTTP request**, the application will first attempt to match the request URI path to
   # a public file found within `settings.public` and send that file with a 200 response code.
   #
-  # In addition to serving static assets, the application has two dynamic route handlers:
+  # In addition to serving static assets, the application has these dynamic route handlers:
   #
   #   * Content page templates with `GET *`
-  #   * Style sheet templates with `GET /styles/*.css`
+  #   * JavaScript templates with `GET /javascripts/*.js`
+  #   * Stylesheet templates with `GET /stylesheets/*.css`
   #
   # and one error handler:
   #
@@ -26,7 +28,7 @@ module Mango
   #
   # # Serving public files found within `settings.public`
   #
-  # ### Example requests routed to public files (with potential security holes)
+  # ### Example requests routed to public files
   #
   #     |-- content
   #     |   `-- override.haml
@@ -50,7 +52,7 @@ module Mango
   #
   # # Content page templates with `GET *`
   #
-  # ### Example `GET *` requests routed to content pages (with potential security holes)
+  # ### Example `GET *` requests routed to content page templates
   #
   #     |-- content
   #     |   |-- about
@@ -72,37 +74,69 @@ module Mango
   #     GET /page_not_found        => pass to NOT_FOUND error handler
   #     GET /../security_hole      => pass to NOT_FOUND error handler
   #
-  # # Style sheet templates with `GET /styles/*.css`
+  # # JavaScript templates with `GET /javascripts/*.js`
   #
-  # ### Example `GET /styles/*.css` requests routed to style sheets (with potential security holes)
+  # ### Example `GET /javascripts/*.js` requests routed to JavaScript files and templates
+  #
+  #     `-- themes
+  #       `-- default
+  #           |-- javascripts
+  #           |   |-- override.coffee
+  #           |   |-- siblings.coffee
+  #           |   `-- songs
+  #           |       `-- happy.coffee
+  #           |-- public
+  #           |   |-- root.js
+  #           |   `-- stylesheets
+  #           |       |-- econ.js
+  #           |       |-- math
+  #           |       |  `-- opposite.js
+  #           |       `-- override.js
+  #           `-- security_hole.js
+  #
+  #     GET /javascripts/siblings.js    => 200 themes/default/stylesheets/siblings.coffee
+  #     GET /javascripts/songs/happy.js => 200 themes/default/stylesheets/songs/happy.coffee
+  #
+  #     GET /javascripts/econ.js          => 200 themes/default/public/javascripts/econ.js
+  #     GET /javascripts/override.js      => 200 themes/default/public/javascripts/override.js
+  #     GET /root.js                      => 200 themes/default/public/root.js
+  #     GET /javascripts/math/opposite.js => 200 themes/default/public/javascripts/math/opposite.js
+  #
+  #     GET /javascripts/not_found.js        => pass to NOT_FOUND error handler
+  #     GET /siblings.js                     => pass to NOT_FOUND error handler
+  #     GET /javascripts/../security_hole.js => pass to NOT_FOUND error handler
+  #
+  # # Stylesheet templates with `GET /stylesheets/*.css`
+  #
+  # ### Example `GET /stylesheets/*.css` requests routed to stylesheets files and templates
   #
   #     `-- themes
   #       `-- default
   #           |-- public
   #           |   |-- default.css
-  #           |   `-- styles
+  #           |   `-- stylesheets
   #           |       |-- override.css
   #           |       |-- reset.css
-  #           |       `-- subfolder
-  #           |           `-- another.css
+  #           |       `-- folder
+  #           |           `-- print.css
   #           |-- security_hole.sass
-  #           `-- styles
+  #           `-- stylesheets
   #               |-- override.sass
   #               |-- screen.scss
-  #               `-- subfolder
-  #                   `-- screen.sass
+  #               `-- folder
+  #                   `-- mobile.sass
   #
-  #     GET /styles/screen.css            => 200 themes/default/styles/screen.scss
-  #     GET /styles/subfolder/screen.css  => 200 themes/default/styles/subfolder/screen.sass
+  #     GET /stylesheets/screen.css        => 200 themes/default/stylesheets/screen.scss
+  #     GET /stylesheets/folder/mobile.css => 200 themes/default/stylesheets/folder/mobile.sass
   #
-  #     GET /styles/reset.css             => 200 themes/default/public/styles/reset.css
-  #     GET /styles/override.css          => 200 themes/default/public/styles/override.css
+  #     GET /stylesheets/reset.css        => 200 themes/default/public/stylesheets/reset.css
+  #     GET /stylesheets/override.css     => 200 themes/default/public/stylesheets/override.css
   #     GET /default.css                  => 200 themes/default/public/default.css
-  #     GET /styles/subfolder/another.css => 200 themes/default/public/styles/subfolder/another.css
+  #     GET /stylesheets/folder/print.css => 200 themes/default/public/stylesheets/folder/print.css
   #
-  #     GET /styles/style_not_found.css  => pass to NOT_FOUND error handler
-  #     GET /screen.css                  => pass to NOT_FOUND error handler
-  #     GET /styles/../security_hole.css => pass to NOT_FOUND error handler
+  #     GET /stylesheets/not_found.css        => pass to NOT_FOUND error handler
+  #     GET /screen.css                       => pass to NOT_FOUND error handler
+  #     GET /stylesheets/../security_hole.css => pass to NOT_FOUND error handler
   #
   # # 404 Page Not Found with `NOT_FOUND`
   #
@@ -136,10 +170,12 @@ module Mango
   class Application < Sinatra::Base
     set :root, Dir.getwd
     set :theme, "default"
-    set :views, lambda { File.join(root, "themes", theme, "views") }
-    set :public, lambda { File.join(root, "themes", theme, "public") }
-    set :styles, lambda { File.join(root, "themes", theme, "styles") }
-    set :content, lambda { File.join(root, "content") }
+
+    set :javascripts, lambda { File.join(root, "themes", theme, "javascripts") }
+    set :public,      lambda { File.join(root, "themes", theme, "public") }
+    set :stylesheets, lambda { File.join(root, "themes", theme, "stylesheets") }
+    set :views,       lambda { File.join(root, "themes", theme, "views") }
+    set :content,     lambda { File.join(root, "content") }
 
     configure :development do
       use Mango::Rack::Debugger
@@ -149,19 +185,25 @@ module Mango
     #
     mime_type "", "text/html"
 
+    # Supported JavaScript template engines
+    #
+    JAVASCRIPT_TEMPLATE_ENGINES = {
+      Tilt::CoffeeScriptTemplate => :coffee
+    }
+
+    # Supported stylesheet template engines
+    #
+    STYLESHEET_TEMPLATE_ENGINES = {
+      Tilt::ScssTemplate => :scss,
+      Tilt::SassTemplate => :sass
+    }
+
     # Supported view template engines
     #
     VIEW_TEMPLATE_ENGINES = {
       Tilt::HamlTemplate   => :haml,
       Tilt::ERBTemplate    => :erb,
       Tilt::LiquidTemplate => :liquid
-    }
-
-    # Supported style template engines
-    #
-    STYLE_TEMPLATE_ENGINES = {
-      Tilt::ScssTemplate => :scss,
-      Tilt::SassTemplate => :sass
     }
 
     ###############################################################################################
@@ -243,12 +285,12 @@ module Mango
 
     ###############################################################################################
 
-    # Attempts to render style sheet templates found within `settings.styles`
+    # Attempts to render JavaScript templates found within `settings.javascripts`
     #
-    # First, the application attempts to match the URI path with a public CSS file stored in
-    # `settings.public`.  If a public CSS file is found, the application will:
+    # First, the application attempts to match the URI path with a public JavaScript file stored in
+    # `settings.public`.  If a public JavaScript file is found, the application will:
     #
-    #   * Send the public CSS file with a 200 HTTP response code
+    #   * Send the public JavaScript file with a 200 HTTP response code
     #   * Halt execution
     #
     #  For example:
@@ -256,55 +298,123 @@ module Mango
     #     `-- themes
     #         `-- default
     #             `-- public
-    #                 `-- styles
-    #                     `-- reset.css
+    #                 `-- javascripts
+    #                     `-- jquery.js
     #
-    #     GET /styles/reset.css => 200 themes/default/public/styles/reset.css
+    #     GET /javascripts/jquery.js => 200 themes/default/public/javascripts/jquery.js
     #
-    # If no match is found, the route handler attempts to match the URI path with a style sheet
-    # template stored in `settings.styles`.  If a style sheet template is found, the application
-    # will:
+    # If no match is found, the route handler attempts to match the URI path with a JavaScript
+    # template stored in `settings.javascripts`.  If a JavaScript template is found, the
+    # application will:
     #
-    #   * Render the style sheet template as CSS
-    #   * Send the rendered style sheet template with a 200 HTTP response code
+    #   * Render the template as Javascript
+    #   * Send the rendered template with a 200 HTTP response code
     #   * Halt execution
     #
     # For example:
     #
     #     `-- themes
     #         `-- default
-    #             `-- styles
-    #                 `-- screen.scss
+    #             `-- javascripts
+    #                 `-- bundle.coffee
     #
-    #     GET /styles/screen.css => 200 themes/default/styles/screen.scss
+    #     GET /javascripts/bundle.js => 200 themes/default/javascripts/bundle.coffee
     #
-    # **It's intended that requests to public CSS files and requests to style sheet templates share
-    # the `/styles/` prefix.**
+    # **It's intended that requests to public JavaScript files and requests to JavaScript templates
+    # share the `/javascripts/` prefix.**
     #
     # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
     # handler.
     #
-    get "/styles/*.css" do |uri_path|
-      render_style_sheet! uri_path
+    get "/javascripts/*.js" do |uri_path|
+      render_javascript_template! uri_path
       not_found
     end
 
-    # Given a URI path, attempts to render a style sheet, if it exists, and halt
+    # Given a URI path, attempts to render a JavaScript template, if it exists, and halt
     #
     # @param [String] uri_path
-    # @see STYLE_TEMPLATE_ENGINES
+    # @see JAVASCRIPT_TEMPLATE_ENGINES
     #
-    def render_style_sheet!(uri_path)
-      styles_match     = File.join(settings.styles, "*")
-      style_sheet_path = File.expand_path(uri_path, settings.styles)
+    def render_javascript_template!(uri_path)
+      javascript_match = File.join(settings.javascripts, "*")
+      javascript_path  = File.expand_path(uri_path, settings.javascripts)
 
-      return unless File.fnmatch(styles_match, style_sheet_path)
+      return unless File.fnmatch(javascript_match, javascript_path)
 
-      STYLE_TEMPLATE_ENGINES.each do |engine, extension|
+      JAVASCRIPT_TEMPLATE_ENGINES.each do |engine, extension|
         @preferred_extension = extension.to_s
-        find_template(settings.styles, uri_path, engine) do |file|
+        find_template(settings.javascripts, uri_path, engine) do |file|
           next unless File.file?(file)
-          halt send(extension, uri_path.to_sym, :views => settings.styles)
+          halt send(extension, uri_path.to_sym, :views => settings.javascripts)
+        end
+      end
+    end
+
+    ###############################################################################################
+
+    # Attempts to render stylesheet templates found within `settings.stylesheets`
+    #
+    # First, the application attempts to match the URI path with a public stylesheet file stored in
+    # `settings.public`.  If a public stylesheet file is found, the application will:
+    #
+    #   * Send the public stylesheet file with a 200 HTTP response code
+    #   * Halt execution
+    #
+    #  For example:
+    #
+    #     `-- themes
+    #         `-- default
+    #             `-- public
+    #                 `-- stylesheets
+    #                     `-- reset.css
+    #
+    #     GET /stylesheets/reset.css => 200 themes/default/public/stylesheets/reset.css
+    #
+    # If no match is found, the route handler attempts to match the URI path with a stylesheet
+    # template stored in `settings.stylesheets`.  If a stylesheet template is found, the
+    # application will:
+    #
+    #   * Render the template as CSS
+    #   * Send the rendered template with a 200 HTTP response code
+    #   * Halt execution
+    #
+    # For example:
+    #
+    #     `-- themes
+    #         `-- default
+    #             `-- stylesheets
+    #                 `-- screen.scss
+    #
+    #     GET /stylesheets/screen.css => 200 themes/default/stylesheets/screen.scss
+    #
+    # **It's intended that requests to public stylesheet files and requests to stylesheet templates
+    # share the `/stylesheets/` prefix.**
+    #
+    # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
+    # handler.
+    #
+    get "/stylesheets/*.css" do |uri_path|
+      render_stylesheet_template! uri_path
+      not_found
+    end
+
+    # Given a URI path, attempts to render a stylesheet template, if it exists, and halt
+    #
+    # @param [String] uri_path
+    # @see STYLESHEET_TEMPLATE_ENGINES
+    #
+    def render_stylesheet_template!(uri_path)
+      stylesheet_match = File.join(settings.stylesheets, "*")
+      stylesheet_path  = File.expand_path(uri_path, settings.stylesheets)
+
+      return unless File.fnmatch(stylesheet_match, stylesheet_path)
+
+      STYLESHEET_TEMPLATE_ENGINES.each do |engine, extension|
+        @preferred_extension = extension.to_s
+        find_template(settings.stylesheets, uri_path, engine) do |file|
+          next unless File.file?(file)
+          halt send(extension, uri_path.to_sym, :views => settings.stylesheets)
         end
       end
     end

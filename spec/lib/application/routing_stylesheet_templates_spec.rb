@@ -11,9 +11,9 @@ describe Mango::Application do
 
   #################################################################################################
 
-  describe "GET /styles/sass.css" do
-    before(:each) do
-      get "/styles/sass.css"
+  describe "GET /stylesheets/sass.css" do
+    before(:all) do
+      get "/stylesheets/sass.css"
     end
 
     it "returns 200 status code" do
@@ -43,9 +43,9 @@ describe Mango::Application do
 
   #################################################################################################
 
-  describe "GET /styles/scss.css" do
-    before(:each) do
-      get "/styles/scss.css"
+  describe "GET /stylesheets/scss.css" do
+    before(:all) do
+      get "/stylesheets/scss.css"
     end
 
     it "returns 200 status code" do
@@ -75,9 +75,9 @@ describe Mango::Application do
 
   #################################################################################################
 
-  describe "GET /styles/subfolder/screen.css" do
-    before(:each) do
-      get "/styles/subfolder/screen.css"
+  describe "GET /stylesheets/subfolder/screen.css" do
+    before(:all) do
+      get "/stylesheets/subfolder/screen.css"
     end
 
     it "returns 200 status code" do
@@ -105,9 +105,9 @@ li {
 
   #################################################################################################
 
-  describe "GET /styles/reset.css" do
-    before(:each) do
-      get "/styles/reset.css"
+  describe "GET /stylesheets/reset.css" do
+    before(:all) do
+      get "/stylesheets/reset.css"
     end
 
     it "returns 200 status code" do
@@ -153,9 +153,9 @@ time, mark, audio, video {
 
   #################################################################################################
 
-  describe "GET /styles/override.css" do
-    before(:each) do
-      get "/styles/override.css"
+  describe "GET /stylesheets/override.css" do
+    before(:all) do
+      get "/stylesheets/override.css"
     end
 
     it "returns 200 status code" do
@@ -178,7 +178,7 @@ time, mark, audio, video {
   #################################################################################################
 
   describe "GET /default.css" do
-    before(:each) do
+    before(:all) do
       get "/default.css"
     end
 
@@ -201,9 +201,9 @@ time, mark, audio, video {
 
   #################################################################################################
 
-  describe "GET /styles/subfolder/another.css" do
-    before(:each) do
-      get "/styles/subfolder/another.css"
+  describe "GET /stylesheets/subfolder/another.css" do
+    before(:all) do
+      get "/stylesheets/subfolder/another.css"
     end
 
     it "returns 200 status code" do
@@ -225,9 +225,9 @@ time, mark, audio, video {
 
   #################################################################################################
 
-  describe "GET /styles/style_not_found.css" do
-    before(:each) do
-      get "/styles/style_not_found.css"
+  describe "GET /stylesheets/not_found.css" do
+    before(:all) do
+      get "/stylesheets/not_found.css"
     end
 
     it "returns 404 status code" do
@@ -258,7 +258,7 @@ time, mark, audio, video {
   #################################################################################################
 
   describe "GET /screen.css" do
-    before(:each) do
+    before(:all) do
       get "/screen.css"
     end
 
@@ -289,9 +289,9 @@ time, mark, audio, video {
 
   #################################################################################################
 
-  describe "GET /styles/../security_hole.css" do
-    before(:each) do
-      get "/styles/../security_hole.css"
+  describe "GET /stylesheets/../security_hole.css" do
+    before(:all) do
+      get "/stylesheets/../security_hole.css"
     end
 
     it "returns 404 status code" do
@@ -318,5 +318,4 @@ time, mark, audio, video {
       EXPECTED
     end
   end
-
 end

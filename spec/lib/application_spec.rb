@@ -19,8 +19,12 @@ describe Mango::Application do
       Mango::Application.public.should == (FIXTURE_ROOT + "themes/default/public").to_s
     end
 
-    it "styles should be app_root/themes/default/styles/" do
-      Mango::Application.styles.should == (FIXTURE_ROOT + "themes/default/styles").to_s
+    it "styles should be app_root/themes/default/stylesheets/" do
+      Mango::Application.stylesheets.should == (FIXTURE_ROOT + "themes/default/stylesheets").to_s
+    end
+
+    it "styles should be app_root/themes/default/javascripts/" do
+      Mango::Application.javascripts.should == (FIXTURE_ROOT + "themes/default/javascripts").to_s
     end
 
     it "content should be app_root/content/" do
@@ -31,18 +35,24 @@ describe Mango::Application do
   #################################################################################################
 
   describe "constants" do
+    it "defines JAVASCRIPT_TEMPLATE_ENGINES" do
+      Mango::Application::JAVASCRIPT_TEMPLATE_ENGINES.should == {
+        Tilt::CoffeeScriptTemplate => :coffee
+      }
+    end
+
+    it "defines STYLESHEET_TEMPLATE_ENGINES" do
+      Mango::Application::STYLESHEET_TEMPLATE_ENGINES.should == {
+        Tilt::ScssTemplate => :scss,
+        Tilt::SassTemplate => :sass
+      }
+    end
+
     it "defines VIEW_TEMPLATE_ENGINES" do
       Mango::Application::VIEW_TEMPLATE_ENGINES.should == {
         Tilt::HamlTemplate   => :haml,
         Tilt::ERBTemplate    => :erb,
         Tilt::LiquidTemplate => :liquid
-      }
-    end
-
-    it "defines STYLE_TEMPLATE_ENGINES" do
-      Mango::Application::STYLE_TEMPLATE_ENGINES.should == {
-        Tilt::ScssTemplate => :scss,
-        Tilt::SassTemplate => :sass
       }
     end
   end

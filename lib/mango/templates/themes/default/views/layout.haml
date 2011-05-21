@@ -4,12 +4,12 @@
     %meta{ :charset => "utf-8" }
     %title= "Mango: #{page.title}"
     %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "http://fonts.googleapis.com/css?family=Lobster" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/reset.css" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/screen.css" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/styles/fireworks.css" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/reset.css" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/screen.css" }
+    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/fireworks.css" }
     %script{ :type => "text/javascript", :src => "/javascripts/fireworks.js"}
     %script{ :type => "text/javascript", :src => "/javascripts/timer.js"}
-  %body{ :onload => "fire();" }
+  %body
     %div#fireworks-template
       %div#fw.firework
       %div#fp.fireworkParticle
