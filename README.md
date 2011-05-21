@@ -81,7 +81,7 @@ REQUIREMENTS
   * [Bundler](http://gembundler.com/) ~> 1.0.7
   * [Rack](http://rack.rubyforge.org/) ~> 1.2.2
   * [Sinatra](http://www.sinatrarb.com/) ~> 1.2.6
-  * [Haml](http://haml-lang.com/) ~> 3.0.25
+  * [Haml](http://haml-lang.com/) ~> 3.1.1
   * [Sass](http://sass-lang.com/) ~> 3.1.1
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
   * [Thor](https://github.com/wycats/thor) ~> 0.14.6

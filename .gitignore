@@ -1,5 +1,6 @@
 .DS_Store
 .bundle
+.sass-cache
 .yardoc
 *.gem
 *.tmproj

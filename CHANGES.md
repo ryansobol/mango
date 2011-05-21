@@ -18,6 +18,7 @@
   * Update [Sinatra](http://www.sinatrarb.com/) to ~> 1.2.6 [GH#14](https://github.com/ryansobol/mango/issues/14)
   * Update [RSpec](http://rspec.info/) to ~> 2.6.0 [GH#32](https://github.com/ryansobol/mango/issues/32)
   * Add [Sass](http://sass-lang.com/) ~> 3.1.1 [GH#24](https://github.com/ryansobol/mango/issues/24)
+  * Update [Haml](http://haml-lang.com/) to ~> 3.1.1 [GH#23](https://github.com/ryansobol/mango/issues/23)
 
 ### Chores
 
