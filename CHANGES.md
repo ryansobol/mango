@@ -10,11 +10,11 @@
   * Add ERB 404 template support [GH#26](https://github.com/ryansobol/mango/issues/26)
   * Add 404 default response [GH#27](https://github.com/ryansobol/mango/issues/27)
   * Add 404.html public file support [GH#28](https://github.com/ryansobol/mango/issues/28)
-  * Add Scss template support [GH#31](https://github.com/ryansobol/mango/issues/31)
-  * Add ERB content page template support [GH#33](https://github.com/ryansobol/mango/issues/33)
+  * Add Scss stylesheet template support [GH#31](https://github.com/ryansobol/mango/issues/31)
+  * Add ERB content page support [GH#33](https://github.com/ryansobol/mango/issues/33)
   * Use ContentPage as local `page` variable within content page and view templates [GH#34](https://github.com/ryansobol/mango/issues/34)
   * Add Liquid content page, view template, and 404 template support [GH#40](https://github.com/ryansobol/mango/issues/40)
-  * Add CoffeeScript support [GH#36](https://github.com/ryansobol/mango/issues/36)
+  * Add CoffeeScript support and JavaScript route handler [GH#36](https://github.com/ryansobol/mango/issues/36)
 
 ### Dependencies
 
