@@ -14,6 +14,7 @@
   * Add ERB content page template support [GH#33](https://github.com/ryansobol/mango/issues/33)
   * Use ContentPage as local `page` variable within content page and view templates [GH#34](https://github.com/ryansobol/mango/issues/34)
   * Add Liquid content page and view template support [GH#40](https://github.com/ryansobol/mango/issues/40)
+  * Add CoffeeScript support [GH#36](https://github.com/ryansobol/mango/issues/36)
 
 ### Dependencies
 
