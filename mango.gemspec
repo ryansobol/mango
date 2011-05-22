@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "thor",          "~> 0.14.6"
 
   s.add_development_dependency "rspec",         "~> 2.6.0"
-  s.add_development_dependency "rack-test",     "~> 0.5.7"
+  s.add_development_dependency "rack-test",     "~> 0.6.0"
   s.add_development_dependency "yard",          "~> 0.6.8"
   s.add_development_dependency "bluecloth",     "~> 2.1.0"
   s.add_development_dependency "yard-sinatra",  "~> 0.5.1"
