@@ -30,6 +30,7 @@
   * Move `File.templatize` to `String#templatize` and simplify usage [GH#30](https://github.com/ryansobol/mango/issues/30)
   * Rename all `.mdown` files to `.md` [GH#37](https://github.com/ryansobol/mango/issues/37)
   * Remove the `yard` task from the Rakefile [GH#6](https://github.com/ryansobol/mango/issues/6)
+  * Add spec coverage for 404.liquid route handling [GH#42](https://github.com/ryansobol/mango/issues/42)
 
 ## v0.5.4 / 2011-04-24
 
