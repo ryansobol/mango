@@ -25,21 +25,21 @@ describe Mango::Application do
     end
 
     it "sends the correct body content" do
-      expected = <<-EXPECTED
-var kids;
-kids = {
-  brother: {
-    name: "Max",
-    age: 11
-  },
-  sister: {
-    name: "Ida",
-    age: 9
-  }
-};
+      last_response.body.should == <<-EXPECTED
+(function() {
+  var kids;
+  kids = {
+    brother: {
+      name: "Max",
+      age: 11
+    },
+    sister: {
+      name: "Ida",
+      age: 9
+    }
+  };
+}).call(this);
       EXPECTED
-
-      last_response.body.should == expected.strip
     end
   end
 
@@ -59,16 +59,16 @@ kids = {
     end
 
     it "sends the correct body content" do
-      expected = <<-EXPECTED
-if (happy && knowsIt) {
-  clapsHands();
-  chaChaCha();
-} else {
-  showIt();
-}
+      last_response.body.should == <<-EXPECTED
+(function() {
+  if (happy && knowsIt) {
+    clapsHands();
+    chaChaCha();
+  } else {
+    showIt();
+  }
+}).call(this);
       EXPECTED
-
-      last_response.body.should == expected.strip
     end
   end
 
