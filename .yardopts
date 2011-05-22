@@ -1,6 +1,4 @@
---output-dir ./yardoc
 --markup markdown
---plugin yard-sinatra
 -
 LICENSE
 CHANGES.md

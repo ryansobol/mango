@@ -23,6 +23,7 @@
   * Add Sass ~> 3.1.1 [GH#24](https://github.com/ryansobol/mango/issues/24)
   * Update Haml to ~> 3.1.1 [GH#23](https://github.com/ryansobol/mango/issues/23)
   * Update Rack::Test to ~> 0.6.0 [GH#25](https://github.com/ryansobol/mango/issues/25)
+  * Update YARD to ~> 0.7.1 [GH#38](https://github.com/ryansobol/mango/issues/38)
 
 ### Chores
 

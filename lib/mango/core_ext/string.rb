@@ -1,5 +1,7 @@
 # encoding: UTF-8
 
+# Extentions to the core `String` class
+#
 class String
   # Convert a file name to a Sinatra-compliant template name
   #

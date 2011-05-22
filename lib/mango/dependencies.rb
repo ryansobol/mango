@@ -27,8 +27,10 @@ module Mango
   # @see Mango::Dependencies.create_warning_for
   # @see Mango::Dependencies.warn_at_exit
   module Dependencies
+    # A short list of supported Ruby versions
     SUPPORTED_RUBY_VERSIONS = ["1.9.2"]
 
+    # Maps file names to gem name
     FILE_NAME_TO_GEM_NAME = {
       :"rack/test"            => :"rack-test",
       :"rspec/core/rake_task" => :"rspec-core",

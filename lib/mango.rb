@@ -10,3 +10,6 @@ require_relative "mango/rack/debugger"
 require_relative "mango/application"
 require_relative "mango/flavored_markdown"
 require_relative "mango/content_page"
+
+# @see http://en.wikipedia.org/wiki/Mango
+module Mango; end

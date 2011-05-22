@@ -1,5 +1,7 @@
 # encoding: UTF-8
 
+# Extentions to the core `URI` module
+#
 module URI
   # Given a URI path, determine whether or no it looks like a directory path
   #

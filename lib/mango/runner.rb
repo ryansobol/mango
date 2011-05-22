@@ -2,6 +2,10 @@
 require "thor"
 
 module Mango
+  # `Mango::Runner` is a `Thor` class and is used in combination with the `bin/mango` executable.
+  #
+  # @see https://github.com/wycats/thor/wiki
+  #
   class Runner < Thor
     include Thor::Actions
 
@@ -10,8 +14,10 @@ module Mango
     source_root File.expand_path("templates", File.dirname(__FILE__))
 
     desc "create /path/to/your/app", "Creates a new Mango application at the specified path"
-    def create(destination)
-      self.destination_root = destination
+    # Creates a new Mango application at the specified path
+    # @param [String] path
+    def create(path)
+      self.destination_root = path
 
       copy_file(".gitignore")
       copy_file("config.ru")
@@ -39,8 +45,6 @@ module Mango
 
     ###############################################################################################
 
-    protected
-
     def copy_public_files
       create_file("themes/default/public/favicon.ico")
       copy_file("themes/default/public/robots.txt")
@@ -62,6 +66,8 @@ module Mango
       copy_file("themes/default/public/stylesheets/fireworks.css")
       copy_file("themes/default/public/stylesheets/reset.css")
     end
+
+    ###############################################################################################
 
     def copy_javascript_templates
       copy_file("themes/default/javascripts/timer.coffee")

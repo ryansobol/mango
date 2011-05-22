@@ -168,38 +168,48 @@ module Mango
   # with a 404 HTTP response.
   #
   class Application < Sinatra::Base
-    set :root, Dir.getwd
-    set :theme, "default"
-
+    # @macro [attach] sinatra.set
+    #   Defines `settings.$1`
+    #   @attribute
+    #   @overload $*
+    #   @return [String]
+    set :root,        Dir.getwd
+    set :theme,       "default"
     set :javascripts, lambda { File.join(root, "themes", theme, "javascripts") }
     set :public,      lambda { File.join(root, "themes", theme, "public") }
     set :stylesheets, lambda { File.join(root, "themes", theme, "stylesheets") }
     set :views,       lambda { File.join(root, "themes", theme, "views") }
     set :content,     lambda { File.join(root, "content") }
 
+    # @macro [attach] sinatra.mime_type
+    #   Registers `$2` as the mime type for static files ending with `$1`
+    #   @scope class
+    #   @attribute
+    #   @overload $*
+    #   @return [String]
+    mime_type "", "text/html"
+
+    # @macro [attach] sinatra.configure
+    #   Run once, at startup, when the environment is set to `${1--1}`
+    #   @scope class
+    #   @attribute
+    #   @overload configure ${1--1}
     configure :development do
       use Mango::Rack::Debugger
     end
 
-    # For static files that don't have an extension, send the file as HTML content
-    #
-    mime_type "", "text/html"
-
     # Supported JavaScript template engines
-    #
     JAVASCRIPT_TEMPLATE_ENGINES = {
       Tilt::CoffeeScriptTemplate => :coffee
     }
 
     # Supported stylesheet template engines
-    #
     STYLESHEET_TEMPLATE_ENGINES = {
       Tilt::ScssTemplate => :scss,
       Tilt::SassTemplate => :sass
     }
 
     # Supported view template engines
-    #
     VIEW_TEMPLATE_ENGINES = {
       Tilt::HamlTemplate   => :haml,
       Tilt::ERBTemplate    => :erb,
@@ -249,6 +259,9 @@ module Mango
     #
     # Finally, if no matches are found, the application sends a basic "Page Not Found" page with a
     # 404 HTTP response code.
+    #
+    # @method not_found
+    # @visibility public
     #
     not_found do
       file_name = "404"
@@ -326,6 +339,11 @@ module Mango
     # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
     # handler.
     #
+    # @macro [attach] sinatra.get
+    #   @overload get "$1"
+    #   @visibility public
+    # @method get_js
+    #
     get "/javascripts/*.js" do |uri_path|
       render_javascript_template! uri_path
       not_found
@@ -393,6 +411,8 @@ module Mango
     #
     # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
     # handler.
+    #
+    # @method get_css
     #
     get "/stylesheets/*.css" do |uri_path|
       render_stylesheet_template! uri_path
@@ -471,6 +491,8 @@ module Mango
     # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
     # handler.
     #
+    # @method get_all
+    #
     get "/*" do |uri_path|
       render_index_file! uri_path
       render_content_page! uri_path
@@ -493,8 +515,14 @@ module Mango
       send_file index_file_path
     end
 
+    # Raised when a content page is not found on disk
     class ContentPageNotFound < RuntimeError; end
+
+    # Raised when a registered engine for the content page's view template cannot be found in
+    # `VIEW_TEMPLATE_ENGINES`
     class RegisteredEngineNotFound < RuntimeError; end
+
+    # Raised when the content page's view template cannot be found on disk
     class ViewTemplateNotFound < RuntimeError; end
 
     # Given a URI path, attempts to render a content page, if it exists, and halt

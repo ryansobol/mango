@@ -96,7 +96,7 @@ REQUIREMENTS
   * [Rake](http://rake.rubyforge.org/) ~> 0.8.7 (bundled with Ruby)
   * [Rack::Test](https://github.com/brynary/rack-test) ~> 0.6.0
   * [RSpec](http://rspec.info/) ~> 2.6.0
-  * [YARD](http://yardoc.org/) ~> 0.6.8
+  * [YARD](http://yardoc.org/) ~> 0.7.1
   * [YARD::Sinatra](https://github.com/rkh/yard-sinatra) ~> 0.5.1
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
 

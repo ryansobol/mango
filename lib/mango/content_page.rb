@@ -81,10 +81,10 @@ module Mango
   # @see Application::VIEW_TEMPLATE_ENGINES
   #
   class ContentPage
+    # @see http://goo.gl/z2Zzk
     class InvalidHeaderError < RuntimeError; end
 
     # Supported content page template engines
-    #
     TEMPLATE_ENGINES = {
       Tilt::BlueClothTemplate => :markdown,
       Tilt::HamlTemplate      => :haml,
@@ -93,14 +93,13 @@ module Mango
     }
 
     # Default key-value attribute pairs
-    #
     DEFAULT_ATTRIBUTES = {
       "engine" => TEMPLATE_ENGINES.key(:markdown),
       "view"   => "page.haml"
     }
 
-    # `Hash` containing the engine, data, body, content, and any header key-value pairs
-    #
+    # Contains the engine, data, body, content, view, and any header key-value pairs
+    # @return [Hash]
     attr_reader :attributes
     alias :to_liquid :attributes
 
@@ -108,7 +107,7 @@ module Mango
     # components found are merged with their defaults.
     #
     # @param [Hash] options
-    # @option options [String] :data Cotains a body and possibly a YAML header
+    # @option options [String] :data Contains a body and possibly a YAML header
     # @option options [Symbol] :engine See `TEMPLATE_ENGINES` and `DEFAULT_ATTRIBUTES["engine"]`
     # @raise [ArgumentError] Raised when registered content engine cannot be found
     # @raise [InvalidHeaderError] Raised when YAML header is invalid
@@ -155,6 +154,8 @@ module Mango
     #   page.title == page.attributes["title"]
     #
     # @param [Symbol] method_name
+    # @param [Array] args
+    # @param [Proc] block
     # @raise [NoMethodError] Raised when there is no method name key in attributes
     # @return [Object] Value of the method name attribute
     #
