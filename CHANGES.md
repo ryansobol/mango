@@ -37,6 +37,7 @@
   * Update tilt to 1.3.1 [GH#43](https://github.com/ryansobol/mango/issues/43)
   * Update LICENSE copyright to 2011 [GH#47](https://github.com/ryansobol/mango/issues/47)
   * Update rspec-core to 2.6.3 [GH#46](https://github.com/ryansobol/mango/issues/46)
+  * Update Tilt to 1.3.2 [GH#45](https://github.com/ryansobol/mango/issues/45)
 
 ## v0.5.4 / 2011-04-24
 
