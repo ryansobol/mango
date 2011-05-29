@@ -35,6 +35,7 @@
   * Add spec coverage for 404.liquid route handling [GH#42](https://github.com/ryansobol/mango/issues/42)
   * Update rspec-core to 2.6.2 [GH#41](https://github.com/ryansobol/mango/issues/41)
   * Update tilt to 1.3.1 [GH#43](https://github.com/ryansobol/mango/issues/43)
+  * Update LICENSE copyright to 2011 [GH#47](https://github.com/ryansobol/mango/issues/47)
 
 ## v0.5.4 / 2011-04-24
 
