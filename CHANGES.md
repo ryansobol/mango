@@ -4,6 +4,10 @@
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.1...v0.6.2)
 
+## Dependencies
+
+  * Update rack to ~> 1.2.3 [GH#63](https://github.com/ryansobol/mango/issues/63)
+
 ## Documentation
 
   * Touch up the README.md [GH#62](https://github.com/ryansobol/mango/issues/62)
