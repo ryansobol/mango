@@ -9,6 +9,10 @@
   * Remove "english" dependency [GH#57](https://github.com/ryansobol/mango/issues/57)
   * Add .sass-cache to generated .gitignore [GH#54](https://github.com/ryansobol/mango/issues/54)
 
+## Chores
+
+  * Update rack to 1.2.3 [GH#55](https://github.com/ryansobol/mango/issues/55)
+
 ## v0.6.0 / 2011-05-29
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.4...v0.6.0)
