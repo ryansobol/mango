@@ -38,6 +38,7 @@
   * Update LICENSE copyright to 2011 [GH#47](https://github.com/ryansobol/mango/issues/47)
   * Update rspec-core to 2.6.3 [GH#46](https://github.com/ryansobol/mango/issues/46)
   * Update Tilt to 1.3.2 [GH#45](https://github.com/ryansobol/mango/issues/45)
+  * Update multi_json to 1.0.3 [GH#53](https://github.com/ryansobol/mango/issues/53)
 
 ## v0.5.4 / 2011-04-24
 
