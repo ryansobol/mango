@@ -4,6 +4,10 @@
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.1...v0.6.2)
 
+## Documentation
+
+  * Touch up the README.md [GH#62](https://github.com/ryansobol/mango/issues/62)
+
 ## Legal
 
   * Update copyright to 2011 in README.md [GH#60](https://github.com/ryansobol/mango/issues/60)

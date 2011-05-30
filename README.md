@@ -82,7 +82,7 @@ REQUIREMENTS
   * [Ruby](http://www.ruby-lang.org/) ~> 1.9.2 ([RVM](http://rvm.beginrescueend.com/) recommended)
   * [RubyGems](https://rubygems.org/) >= 1.3.7 (bundled with Ruby)
   * [Bundler](http://gembundler.com/) ~> 1.0.7
-  * [Rack](http://rack.rubyforge.org/) ~> 1.2.2
+  * [Rack](http://rack.rubyforge.org/) ~> 1.2.3
   * [Sinatra](http://www.sinatrarb.com/) ~> 1.2.6
   * [Haml](http://haml-lang.com/) ~> 3.1.1
   * [Sass](http://sass-lang.com/) ~> 3.1.1
@@ -97,7 +97,6 @@ REQUIREMENTS
   * [Rack::Test](https://github.com/brynary/rack-test) ~> 0.6.0
   * [RSpec](http://rspec.info/) ~> 2.6.0
   * [YARD](http://yardoc.org/) ~> 0.7.1
-  * [YARD::Sinatra](https://github.com/rkh/yard-sinatra) ~> 0.5.1
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
 
 INSTALLING
@@ -108,7 +107,7 @@ INSTALLING
 I highly recommend [RVM](http://rvm.beginrescueend.com/) by Wayne E. Seguin.  It trivializes managing multiple versions of Ruby on one machine.
 
     $ ruby -v
-    ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-darwin10.4.0]
+    ruby 1.9.2p180 (2011-02-18 revision 30909) [x86_64-darwin10.7.0]
 
 **TIP:** The revision and arch-type may differ on your machine.
 
