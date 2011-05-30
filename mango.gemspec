@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project         = "mango"
 
   s.add_runtime_dependency "bundler",       "~> 1.0.7"
-  s.add_runtime_dependency "rack",          "~> 1.2.3"
+  s.add_runtime_dependency "rack",          "~> 1.2.2"
   s.add_runtime_dependency "sinatra",       "~> 1.2.6"
   s.add_runtime_dependency "haml",          "~> 3.1.1"
   s.add_runtime_dependency "sass",          "~> 3.1.1"
