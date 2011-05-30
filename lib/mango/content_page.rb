@@ -1,6 +1,5 @@
 # encoding: UTF-8
 
-require "english"
 require "yaml"
 
 module Mango
@@ -135,7 +134,7 @@ module Mango
           raise InvalidHeaderError, "Cannot parse header -- #{header.inspect}"
         end
 
-        $POSTMATCH
+        $'  # aka $POSTMATCH
       else
         data
       end

@@ -1,5 +1,13 @@
 # CHANGES
 
+## v0.6.1 / Not Yet Released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.6.0...v0.6.1)
+
+## Bugs
+
+  * Remove "english" dependency [GH#57](https://github.com/ryansobol/mango/issues/57)
+
 ## v0.6.0 / 2011-05-29
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.4...v0.6.0)
