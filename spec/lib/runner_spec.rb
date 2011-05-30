@@ -80,7 +80,7 @@ run Mango::Application
       File.read(expected).should == <<-EOS
 # encoding: UTF-8
 source "http://rubygems.org"
-gem "mango", "~> 0.5.4"
+gem "mango", "~> 0.6.0"
       EOS
     end
 

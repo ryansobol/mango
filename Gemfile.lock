@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mango (0.5.4)
+    mango (0.6.0)
       bluecloth (~> 2.1.0)
       bundler (~> 1.0.7)
       coffee-script (~> 2.2.0)
