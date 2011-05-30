@@ -7,6 +7,7 @@
 ## Bugs
 
   * Remove "english" dependency [GH#57](https://github.com/ryansobol/mango/issues/57)
+  * Add .sass-cache to generated .gitignore [GH#54](https://github.com/ryansobol/mango/issues/54)
 
 ## v0.6.0 / 2011-05-29
 
