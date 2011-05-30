@@ -61,6 +61,7 @@ describe Mango::Runner do
       File.read(expected).should == <<-EOS
 .DS_Store
 .bundle
+.sass-cache
       EOS
     end
 
