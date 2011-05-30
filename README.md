@@ -1,4 +1,4 @@
-Mango release 0.6.0 (May 29, 2011)
+Mango release 0.6.1 (May 29, 2011)
 ==================================
 
 Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
@@ -128,7 +128,7 @@ Simply edit the gem version in your application's `Gemfile` and re-install with 
     $ cat Gemfile
     # encoding: UTF-8
     source "http://rubygems.org"
-    gem "mango", "~> 0.6.0"
+    gem "mango", "~> 0.6.1"
     $ bundle install
 
 **TIP:** If you're working in the insolation of an [RVM gemset](http://rvm.beginrescueend.com/gemsets/basics/), type `gem clean` to uninstall outdated gems.
