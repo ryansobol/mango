@@ -1,7 +1,7 @@
 Mango release 0.6.1 (May 29, 2011)
 ==================================
 
-Copyright (c) 2010 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
+Copyright (c) 2011 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
   * **Demo Application** : [http://mango-fireworks.heroku.com/](http://mango-fireworks.heroku.com/)
   * **Source Code**: [https://github.com/ryansobol/mango](https://github.com/ryansobol/mango)

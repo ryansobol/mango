@@ -1,5 +1,13 @@
 # CHANGES
 
+## v0.6.2 / Not Yet Released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.6.1...v0.6.2)
+
+## Legal
+
+  * Update copyright to 2011 in README.md [GH#60](https://github.com/ryansobol/mango/issues/60)
+
 ## v0.6.1 / 2011-05-29
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.0...v0.6.1)
