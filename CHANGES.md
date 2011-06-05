@@ -4,6 +4,10 @@
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.1...v0.6.2)
 
+## Bugs
+
+  * Allow view templates nested within directories [GH#65](https://github.com/ryansobol/mango/issues/65)
+
 ## Dependencies
 
   * Update rack to ~> 1.2.3 [GH#63](https://github.com/ryansobol/mango/issues/63)
