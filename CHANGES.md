@@ -7,6 +7,7 @@
 ## Bugs
 
   * Allow view templates nested within directories [GH#65](https://github.com/ryansobol/mango/issues/65)
+  * Pass to next matching route for all get route handlers [GH#64](https://github.com/ryansobol/mango/issues/64)
 
 ## Dependencies
 

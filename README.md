@@ -207,7 +207,8 @@ Now that the newly generated Mango application is running, here's how the applic
     * For routes ending in `.js`, Mango searches for a stylesheet template in `themes/javascripts/`.
     * For routes ending in `.css`, Mango searches for a stylesheet template in `themes/stylesheets/`.
     * For all other routes, Mango searches for a content page in `content/` and wraps it within a view template in `themes/default/views`.
-  * If no static or template file is found, Mango routes unknown HTTP requests to a customizable 404 page found in either `themes/default/public` or `themes/default/views`.
+  * If no static or template file is found, Mango tries to route the request to a custom route handler if one exists.
+  * Finally, Mango routes unknown HTTP requests to a customizable 404 page found in either `themes/default/public` or `themes/default/views`.
 
 WRITING
 -------

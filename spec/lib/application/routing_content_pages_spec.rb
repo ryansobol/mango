@@ -668,4 +668,32 @@ describe Mango::Application do
       EXPECTED
     end
   end
+
+  #################################################################################################
+
+  context "given an additional GET route handler to Mango::Application" do
+    class Mango::Application
+      get "/route/addition" do
+        "/route/addition isolated and handled"
+      end
+    end
+
+    describe "GET /route/addition" do
+      before(:all) do
+        get "/route/addition"
+      end
+
+      it "returns 200 status code" do
+        last_response.should be_ok
+      end
+
+      it "sends the correct Content-Type header" do
+        last_response["Content-Type"].should == "text/html;charset=utf-8"
+      end
+
+      it "sends the correct body content" do
+        last_response.body.should == "/route/addition isolated and handled"
+      end
+    end
+  end
 end

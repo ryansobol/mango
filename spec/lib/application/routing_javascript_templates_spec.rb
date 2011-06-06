@@ -275,4 +275,32 @@ if (opposite) {
       EXPECTED
     end
   end
+
+  #################################################################################################
+
+  context "given an additional GET route handler to Mango::Application" do
+    class Mango::Application
+      get "/javascripts/addition.js" do
+        "/javascripts/addition.js isolated and handled"
+      end
+    end
+
+    describe "GET /javascripts/addition.js" do
+      before(:all) do
+        get "/javascripts/addition.js"
+      end
+
+      it "returns 200 status code" do
+        last_response.should be_ok
+      end
+
+      it "sends the correct Content-Type header" do
+        last_response["Content-Type"].should == "text/html;charset=utf-8"
+      end
+
+      it "sends the correct body content" do
+        last_response.body.should == "/javascripts/addition.js isolated and handled"
+      end
+    end
+  end
 end

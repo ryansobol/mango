@@ -18,7 +18,7 @@ module Mango
   #
   # In addition to serving static assets, the application has these dynamic route handlers:
   #
-  #   * Content page templates with `GET *`
+  #   * Content page templates with `GET /*`
   #   * JavaScript templates with `GET /javascripts/*.js`
   #   * Stylesheet templates with `GET /stylesheets/*.css`
   #
@@ -50,9 +50,9 @@ module Mango
   #
   #     GET /../security_hole.txt  => pass to NOT_FOUND error handler
   #
-  # # Content page templates with `GET *`
+  # # Content page templates with `GET /*`
   #
-  # ### Example `GET *` requests routed to content page templates
+  # ### Example `GET /*` requests routed to content page templates
   #
   #     |-- content
   #     |   |-- about
@@ -71,8 +71,10 @@ module Mango
   #     GET /about/us              => 200 content/about/us.haml
   #     GET /turner%2Bhooch        => 200 content/turner+hooch.haml
   #
-  #     GET /page_not_found        => pass to NOT_FOUND error handler
-  #     GET /../security_hole      => pass to NOT_FOUND error handler
+  #     GET /page_not_found        => pass to another matching route or to the NOT_FOUND error
+  #                                   handler if none exists
+  #     GET /../security_hole      => pass to another matching route or to the NOT_FOUND error
+  #                                   handler if none exists
   #
   # # JavaScript templates with `GET /javascripts/*.js`
   #
@@ -102,9 +104,12 @@ module Mango
   #     GET /root.js                      => 200 themes/default/public/root.js
   #     GET /javascripts/math/opposite.js => 200 themes/default/public/javascripts/math/opposite.js
   #
-  #     GET /javascripts/not_found.js        => pass to NOT_FOUND error handler
-  #     GET /siblings.js                     => pass to NOT_FOUND error handler
-  #     GET /javascripts/../security_hole.js => pass to NOT_FOUND error handler
+  #     GET /javascripts/not_found.js        => pass to another matching route or to the NOT_FOUND
+  #                                             error handler if none exists
+  #     GET /siblings.js                     => pass to another matching route or to the NOT_FOUND
+  #                                             error handler if none exists
+  #     GET /javascripts/../security_hole.js => pass to another matching route or to the NOT_FOUND
+  #                                             error handler if none exists
   #
   # # Stylesheet templates with `GET /stylesheets/*.css`
   #
@@ -134,15 +139,18 @@ module Mango
   #     GET /default.css                  => 200 themes/default/public/default.css
   #     GET /stylesheets/folder/print.css => 200 themes/default/public/stylesheets/folder/print.css
   #
-  #     GET /stylesheets/not_found.css        => pass to NOT_FOUND error handler
-  #     GET /screen.css                       => pass to NOT_FOUND error handler
-  #     GET /stylesheets/../security_hole.css => pass to NOT_FOUND error handler
+  #     GET /stylesheets/not_found.css        => pass to another matching route or to the NOT_FOUND
+  #                                              error handler if none exists
+  #     GET /screen.css                       => pass to another matching route or to the NOT_FOUND
+  #                                              error handler if none exists
+  #     GET /stylesheets/../security_hole.css => pass to another matching route or to the NOT_FOUND
+  #                                              error handler if none exists
   #
   # # 404 Page Not Found with `NOT_FOUND`
   #
-  # When a requested URI path cannot be matched with a public file or template file, the error
-  # handler attempts to send a 404 public file or a rendered a 404 template with a 404 HTTP
-  # response.
+  # When a requested URI path cannot be matched with a public file or template file, and cannot be
+  # matched to another route, the error handler attempts to send a 404 public file or a rendered a
+  # 404 template file with a 404 HTTP response.
   #
   # ### Example `GET /page_not_found` request routed to a 404 public file
   #
@@ -336,8 +344,8 @@ module Mango
     # **It's intended that requests to public JavaScript files and requests to JavaScript templates
     # share the `/javascripts/` prefix.**
     #
-    # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
-    # handler.
+    # Finally, if no matches are found, execution is passed to the next matching route handler if
+    # one exists.  Otherwise, execution is passed to the `NOT_FOUND` error handler.
     #
     # @macro [attach] sinatra.get
     #   @overload get "$1"
@@ -346,7 +354,7 @@ module Mango
     #
     get "/javascripts/*.js" do |uri_path|
       render_javascript_template! uri_path
-      not_found
+      pass
     end
 
     # Given a URI path, attempts to render a JavaScript template, if it exists, and halt
@@ -409,14 +417,14 @@ module Mango
     # **It's intended that requests to public stylesheet files and requests to stylesheet templates
     # share the `/stylesheets/` prefix.**
     #
-    # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
-    # handler.
+    # Finally, if no matches are found, execution is passed to the next matching route handler if
+    # one exists.  Otherwise, execution is passed to the `NOT_FOUND` error handler.
     #
     # @method get_css
     #
     get "/stylesheets/*.css" do |uri_path|
       render_stylesheet_template! uri_path
-      not_found
+      pass
     end
 
     # Given a URI path, attempts to render a stylesheet template, if it exists, and halt
@@ -488,15 +496,15 @@ module Mango
     #                       themes/default/views/page.haml +
     #                       themes/default/views/layout.haml
     #
-    # Finally, if no matches are found, the route handler passes execution to the `NOT_FOUND` error
-    # handler.
+    # Finally, if no matches are found, execution is passed to the next matching route handler if
+    # one exists.  Otherwise, execution is passed to the `NOT_FOUND` error handler.
     #
     # @method get_all
     #
     get "/*" do |uri_path|
       render_index_file! uri_path
       render_content_page! uri_path
-      not_found
+      pass
     end
 
     # Given a URI path, attempts to send an index.html file, if it exists, and halt

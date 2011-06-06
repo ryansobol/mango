@@ -318,4 +318,32 @@ time, mark, audio, video {
       EXPECTED
     end
   end
+
+  #################################################################################################
+
+  context "given an additional GET route handler to Mango::Application" do
+    class Mango::Application
+      get "/stylesheets/addition.css" do
+        "/stylesheets/addition.css isolated and handled"
+      end
+    end
+
+    describe "GET /stylesheets/addition.css" do
+      before(:all) do
+        get "/stylesheets/addition.css"
+      end
+
+      it "returns 200 status code" do
+        last_response.should be_ok
+      end
+
+      it "sends the correct Content-Type header" do
+        last_response["Content-Type"].should == "text/html;charset=utf-8"
+      end
+
+      it "sends the correct body content" do
+        last_response.body.should == "/stylesheets/addition.css isolated and handled"
+      end
+    end
+  end
 end
