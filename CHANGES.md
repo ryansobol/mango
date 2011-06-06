@@ -14,6 +14,10 @@
   * Update rack to ~> 1.2.3 [GH#63](https://github.com/ryansobol/mango/issues/63)
   * Add therubyracer-heroku = 0.8.1.pre3 [GH#59](https://github.com/ryansobol/mango/issues/59)
 
+## Chores
+
+  * Remove rspec task from Rakefile [GH51](https://github.com/ryansobol/mango/issues/51)
+
 ## Documentation
 
   * Touch up the README.md [GH#62](https://github.com/ryansobol/mango/issues/62)

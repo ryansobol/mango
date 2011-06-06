@@ -1,19 +1,5 @@
 # encoding: UTF-8
 require File.expand_path("lib/mango", File.dirname(__FILE__))
-Mango::Dependencies.warn_at_exit
-
-###################################################################################################
-
-begin
-  require "rspec/core/rake_task"
-  require "rack/test" # for Rack support
-  RSpec::Core::RakeTask.new(:spec)
-  task :default => :spec
-rescue LoadError => e
-  Mango::Dependencies.create_warning_for(e)
-end
-
-###################################################################################################
 
 namespace :gem do
   desc "Builds a gem from the current project's Gem::Specification"
