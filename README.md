@@ -82,6 +82,7 @@ REQUIREMENTS
   * [Ruby](http://www.ruby-lang.org/) ~> 1.9.2 ([RVM](http://rvm.beginrescueend.com/) recommended)
   * [RubyGems](https://rubygems.org/) >= 1.3.7 (bundled with Ruby)
   * [Bundler](http://gembundler.com/) ~> 1.0.7
+  * [Thor](https://github.com/wycats/thor) ~> 0.14.6
   * [Rack](http://rack.rubyforge.org/) ~> 1.2.3
   * [Sinatra](http://www.sinatrarb.com/) ~> 1.2.6
   * [Haml](http://haml-lang.com/) ~> 3.1.1
@@ -89,7 +90,7 @@ REQUIREMENTS
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
   * [Liquid](http://www.liquidmarkup.org/) ~> 2.2.2
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/) ~> 2.2.0
-  * [Thor](https://github.com/wycats/thor) ~> 0.14.6
+  * [TheRubyRacer for Heroku](https://github.com/pwim/therubyracer-heroku) = 0.8.1.pre3
 
 ### Optional development dependencies
 
