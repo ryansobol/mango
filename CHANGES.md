@@ -1,5 +1,13 @@
 # CHANGES
 
+## v0.6.3 / Not Yet Released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.6.2...v0.6.3)
+
+## Documentation
+
+* Improve Features section of the README.md [GH#71](https://github.com/ryansobol/mango/issues/71)
+
 ## v0.6.2 / 2011-06-06
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.1...v0.6.2)

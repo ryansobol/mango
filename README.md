@@ -12,33 +12,31 @@ Copyright (c) 2011 Ryan Sobol. Licensed under the MIT license.  Please see the {
 SYNOPSIS
 --------
 
-**Mango is a dynamic, database-free, and open source website framework that is designed to make life easier for small teams of designers, developers, and content writers.**
+**Mango is a dynamic, database-free, and open source website framework that is designed to make life easier for small teams of developers, designers, and writers.**
 
 FEATURES
 --------
 
-### Easy to install
-
-Mango installs as a [RubyGem](https://rubygems.org/gems/mango) and contains all the necessary components to get a basic website up-and-running in seconds.
+Mango eliminates the barriers to collaboration by decoupling from one another the activities of writing, theming, publishing, extending, and maintaining a website.  Mango websites are also decoupled from a database, and instead utilize file-based storage and "convention over configuration".
 
 ### Easy to write
 
-Mango integrates with the writing tools you're already familiar with -- the file system and your favorite text editor.
+Writing and revising copy using the clunky administrator interface of a CMS is painful.  Which is why it's common for people to work in a text editor and then copy-and-paste their changes back into the CMS.
 
-Working with a text editor you already know *saves time*.  And writing and revising content in a file *is often easier* then using the clunky administrator interface of a CMS (e.g. WordPress).  Plus, files *match perfectly* with version control systems, like [Git](http://git-scm.com/), for powerful revision history.  Bonus!
+Mango leverages the writing tools you're already familiar with -- the file system and your favorite text editor.  As a bonus, files match perfectly with version control systems, like [Git](http://git-scm.com/), making for powerful revision history.
 
-Mango supports the following *easy to write* content formats:
+Mango supports the following content formats:
 
   * [Markdown](http://daringfireball.net/projects/markdown/basics)
   * [Haml](http://haml-lang.com/tutorial.html)
   * [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
   * [Liquid](https://github.com/tobi/liquid/wiki)
 
-Don't see your favorite content format?  [Patches are welcomed](https://github.com/ryansobol/mango/issues)
+Don't see your favorite content format?  [Patches are welcome](https://github.com/ryansobol/mango/issues)
 
 ### Easy to theme
 
-Mango separates a website's theme from it's content.  This makes it *easy to change* the look-and-feel of a single page or an entire website.  Mango also supports powerful template languages that make it *easy to have uniformity*  with major sections (i.e. headers, footers, navigation, sidebars, etc.) across multiple pages.  In addition to the standard browser formats -- HTML, CSS, and JavaScript --  Mango also supports the following template engines:
+Mango separates a website's theme from it's content.  Using a powerful and flexible template system, Mango facilitates both uniformity of major sections and individuality of content presentation.  In addition to the standard browser formats -- HTML, CSS, and JavaScript --  Mango also supports the following template formats:
 
   * [Haml](http://haml-lang.com/)
   * [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
@@ -46,31 +44,36 @@ Mango separates a website's theme from it's content.  This makes it *easy to cha
   * [Scss](http://sass-lang.com/) and [Sass](http://sass-lang.com/)
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/)
 
-Don't see your favorite template engine?  [Patches are welcomed](https://github.com/ryansobol/mango/issues)
+Don't see your favorite template formats?  [Patches are welcome](https://github.com/ryansobol/mango/issues)
 
 ### Easy to publish
 
-Mango applications are dead-simple to publish.  Mango was designed to support a wide variety of publishing tools like:
+Mango websites are dead-simple to publish.  Mango supports a wide variety of publishing tools like:
 
+  * Cutting-edge cloud deploying with [Git](http://git-scm.com/) and [Heroku](http://heroku.com/)
   * Single target, drag-and-drop secure FTP uploading
   * Multiple target, automated deploying with [Capistrano](https://github.com/capistrano/capistrano)
-  * Cutting-edge cloud deploying with [Git](http://git-scm.com/) and [Heroku](http://heroku.com/)
 
-### Easy to collaborate
+### Easy to extend
 
-With a strong separation of writing, theming and publishing, Mango applications are *designed to be shared* with content writers, web designers, and web developers.  But the beauty of Mango is that its simple, file-based approach *appeals to both veterans and newcomers*.  In addition, Mango has an emphasis on *accurate documentation*.  Mango understands that getting up and running quickly is critical for domain-specific experts.
+Mango is related to a family of tools called static website generators.  One killer feature missing from Mango's cousins is the ability to dynamically process HTTP requests on the server.
+
+Mango websites leverage the [Sinatra](http://www.sinatrarb.com/) framework to connect web requests to content pages on-the-fly.  Additionally, developers can enhance a Mango website to intercept specific web requests and dynamically customize the HTTP response, communicate with other Internet services, or serve unique content.
+
+With Mango and server-side processing you can:
+
+  * Redirect the browser
+  * Cache static assets in the browser
+  * Connect with browser frameworks, like [Backbone.js](http://documentcloud.github.com/backbone/), over AJAX
+  * Send e-mails via a contact form
+  * Subscribe customers to a newsletter
+  * Detect mobile devices
+  * Detect geographic locations
+  * Translate content to native languages
 
 ### Easy to maintain
 
-Mango is a database-less web framework.  With no database to install, configure, or manage, the maintenance needed to keep your website in working order is *drastically reduced*.  And because Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/), *upgrading is painless and backwards-compatible* between patch releases.
-
-### Easy to scale
-
-Mango application's are *built for speed*.  With minimal server side scripting and zero database queries, Mango is *lightening fast* and the user experience is snappy.
-
-### Easy on the wallet
-
-Mango is *free* and open source software.
+Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/).  In concert with Bundler, upgrading a Mango website is painless and backwards-compatible between patch releases.
 
 REQUIREMENTS
 ------------
@@ -117,11 +120,11 @@ Mango, and all its necessary components, are packaged as RubyGems for easy distr
 
     $ gem install mango
 
-**TIP:** If you're not using [RVM](http://rvm.beginrescueend.com/), you *may* want to prepend the `gem` command with `sudo`.
+**TIP:** If you're not using [RVM](http://rvm.beginrescueend.com/), you may want to prepend the `gem` command with `sudo`.
 
-### Upgrading a Mango application
+### Upgrading a Mango website
 
-Simply edit the gem version in your application's `Gemfile` and re-install with [Bundler](http://gembundler.com/).
+Simply edit the gem version in your website's `Gemfile` and re-install with [Bundler](http://gembundler.com/).
 
     $ cd /path/to/your/app
     $ cat Gemfile
@@ -135,15 +138,15 @@ Simply edit the gem version in your application's `Gemfile` and re-install with 
 GETTING STARTED
 ---------------
 
-### Generating a Mango application
+### Generating a Mango website
 
-With Mango installed, the `mango` command will generate a new application.
+With Mango installed, the `mango` command will generate a new website.
 
     $ mango create /path/to/your/app
 
-### Starting the application
+### Starting the web-server
 
-Mango applications are compatible with any [Rack supported web-server](http://rack.rubyforge.org/doc/).  The `rackup` command will start a web-server (default: WEBrick) listening at `http://0.0.0.0:9292`.
+Mango websites are compatible with any [Rack supported web-server](http://rack.rubyforge.org/doc/).  The `rackup` command will start a web-server (default: WEBrick) listening at `http://0.0.0.0:9292`.
 
     $ cd /path/to/your/app
     $ rackup
@@ -166,9 +169,9 @@ If you prefer an alternative web-server (e.g. `thin`), simply install the gem an
 
 **TIP:** To see a list of all the `rackup` command-line options, use the `--help` option.
 
-### Generated application structure
+### Generated website structure
 
-Now that the newly generated Mango application is running, here's how the application is structured.
+Now that the newly generated Mango website is running, here's how the website is structured.
 
     $ tree /path/to/your/app
     /path/to/your/app
@@ -213,29 +216,21 @@ Now that the newly generated Mango application is running, here's how the applic
 WRITING
 -------
 
-Coming soon.  [Patches are welcomed](https://github.com/ryansobol/mango/issues#issue/2).
+Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/2).
 
 THEMING
 -------
 
-Coming soon.  [Patches are welcomed](https://github.com/ryansobol/mango/issues#issue/3).
+Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/3).
 
 PUBLISHING
 ----------
 
-### Deploying to a single target with secure FTP uploads
-
-Coming soon.  [Patches are welcomed](https://github.com/ryansobol/mango/issues#issue/4).
-
-### Deploying to multiple targets with Capistrano
-
-Coming soon.  [Patches are welcomed](https://github.com/ryansobol/mango/issues#issue/5).
-
 ### Deploying to the cloud with Heroku
 
-Heroku (pronounced her-OH-koo) is a cloud platform for Ruby-powered web applications.  Heroku lets app developers spend 100% of their time on their application code, not managing servers, deployment, ongoing operations, or scaling.  And best of all, Mango applications can leverage this power with their *free* [Blossom tier](http://heroku.com/pricing).
+Heroku (pronounced her-OH-koo) is a cloud platform for Ruby-powered web applications.  Heroku lets app developers spend 100% of their time on their application code, not managing servers, deployment, ongoing operations, or scaling.  And best of all, Mango websites can leverage this power with their free [Blossom tier](http://heroku.com/pricing).
 
-If you haven't done so already, prepare your Mango application with Git.  Just initialize a new Git repository, add the project directory, and commit.
+If you haven't done so already, prepare your Mango website with Git.  Just initialize a new Git repository, add the project directory, and commit.
 
     $ cd /path/to/your/app
     $ git init
@@ -255,11 +250,24 @@ Finally, [deploy](http://docs.heroku.com/git) the heroku app.  If you've followe
 
     $ git push heroku master
 
-Now, bask in the glory of your *live application* in the cloud.
+Now, bask in the glory of your live website in the cloud.
 
     $ heroku open
 
 **TIP:** Like the entire the platform, the `heroku` command-line tool has [great documentation](http://docs.heroku.com/heroku-command).
+
+### Deploying to a single target with secure FTP uploads
+
+Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/4).
+
+### Deploying to multiple targets with Capistrano
+
+Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/5).
+
+EXTENDING
+---------
+
+Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/73).
 
 PHILOSOPHY
 ----------
@@ -285,7 +293,7 @@ Is Mango not behaving like you expect it should?  Please forgive me.  Submit a r
 
 ### Submitting Patches
 
-Is Mango not behaving like you need?  Patches are always welcomed and appreciated.  [Report your issue](https://github.com/ryansobol/mango/issues) to make sure we're not duplicating any work and go to town.  Alternatively, you can lend a hand on [existing issues](https://github.com/ryansobol/mango/issues).
+Is Mango not behaving like you need?  Patches are always welcome and appreciated.  [Report your issue](https://github.com/ryansobol/mango/issues) to make sure we're not duplicating any work and go to town.  Alternatively, you can lend a hand on [existing issues](https://github.com/ryansobol/mango/issues).
 
 Once you've been assigned an issue, the process for contributing your work back to the source is straight-forward.
 
