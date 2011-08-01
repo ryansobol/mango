@@ -7,6 +7,7 @@
 ## Documentation
 
 * Improve Features section of the README.md [GH#71](https://github.com/ryansobol/mango/issues/71)
+* Update the WRITING section of the README.md [GH#2](https://github.com/ryansobol/mango/issues/2)
 
 ## v0.6.2 / 2011-06-06
 

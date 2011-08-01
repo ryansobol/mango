@@ -8,7 +8,7 @@ module Mango
   # user-generated data into markup like HTML.  It accomplishes this task by utilizing a variety of
   # content engines.
   #
-  # A `ContentPage` file contains **a body** and possibly **a header**.
+  # A `ContentPage` file contains two optional components -- a body and a header.
   #
   # ### Example content file
   #
@@ -24,14 +24,14 @@ module Mango
   #     until there is no Mango left.
   #     Not even for Mango!
   #
-  # Mangos aside, let's bring attention to a few important facets of this example and content files
-  # in general.
+  # Mangos aside, the above example highlights the key facets of writing a content page.
   #
-  # 1. A content page is stored as file on disk.  Here, the file name is `mango_poem.markdown`.
-  # 2. The header is defined first, embedded within triple-dashed ("---") dividers.
+  # 1. A content page is stored as a file in the `content` directory  Here, the file name is
+  #    `mango_poem.markdown`.
+  # 2. The header, if defined, comes first and is embedded within triple-dashed `---` dividers.
   # 3. The body comes second, nestled comfortably below the header.
   # 4. The header is composed of key-value attribute pairs in [YAML](http://www.yaml.org/) format.
-  # 5. The file's extension signals that the body should treated as Markdown.
+  # 5. The file's extension signals that the body should be treated as Markdown.
   #
   # ### The Header
   #
@@ -45,14 +45,14 @@ module Mango
   #
   # ### The Body
   #
-  # The body of a content file can be written in many human and designer friendly formats.  It's the
-  # content file's extension that determines the format, and therefore, the template engine used to
+  # The body of a content file supports many writer and designer friendly formats.  The content
+  # file's extension determines the body's format, and therefore, the template engine used to
   # convert the body into markup like HTML.  For a list of supported content page template engines,
   # and their formats, see `Mango::ContentPage::TEMPLATE_ENGINES`.
   #
   # Each `ContentPage` instance is passed into their body and view templates as the `page` local
-  # variable.  For example, this is how to access the raw data, unrendered body, and rendered
-  # content of a content page inside an ERB template:
+  # variable.  For example, this is how to access the complete data, pre-rendered body, and
+  # rendered content of a content page inside an ERB template:
   #
   #     <p><%= page.data %></p>
   #     <p><%= page.body %></p>

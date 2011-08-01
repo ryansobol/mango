@@ -216,7 +216,89 @@ Now that the newly generated Mango website is running, here's how the website is
 WRITING
 -------
 
-Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/2).
+Authors write and revise copy in text file called a content page.  A content page contains two optional components -- a body and a header.  Though optional, the majority of authors will utilize both components.
+
+For example, the Mango website generator produces the following content page:
+
+    $ cat content/index.erb
+    ---
+    title: Congratulations!
+    ---
+    <h1><%= page.title %></h1>
+    
+    <h2>You did it!</h2>
+
+The above example highlights the key facets of writing a content page.
+
+  1. A content page is stored as a file in the `content` directory.  Here, the file name is `index.erb`.
+  2. The header, if defined, comes first and is embedded within triple-dashed `---` dividers.
+  3. The body comes second, nestled comfortably below the header.
+  4. The header is composed of key-value attribute pairs in [YAML](http://www.yaml.org/) format.
+  5. The file's extension signals that the body should be treated as ERB.
+
+### The Header
+
+The header is composed of key-value attribute pairs in [YAML](http://www.yaml.org/) format.  Utilizing the `page` local variable, attribute data is available within the content page's body and view template.
+
+In the previous example, the message `Congratulations!` is substituted for `<%= page.title %>` whenever the content page is rendered.
+
+### The Body
+
+The body of a content page supports many writer and designer friendly formats.  The content page's file extension determines the body's format.  Rendering a content page converts the body to HTML.
+
+Mango supports the following body formats:
+
+  * [Markdown](http://daringfireball.net/projects/markdown/basics)
+  * [Haml](http://haml-lang.com/tutorial.html)
+  * [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html)
+  * [Liquid](https://github.com/tobi/liquid/wiki)
+
+### The Data and Body Attributes
+
+A handful of attributes are automatically inserted into every content page and **cannot** be altered in the header.  Two such attributes are `data` and `body` which contain a content page's data and pre-rendered body respectively.
+
+For example, given the following content page:
+
+    ---
+    title: Congratulations!
+    ---
+    <h1><%= page.title %></h1>
+    
+    <h2>You did it!</h2>
+
+Calling `<%= page.data %>` would yield:
+
+    ---
+    title: Congratulations!
+    ---
+    <h1><%= page.title %></h1>
+    
+    <h2>You did it!</h2>
+
+and calling `<%= page.body %>` would yield:
+
+    <h1><%= page.title %></h1>
+    
+    <h2>You did it!</h2>
+
+### The Content Attribute
+
+The `content` attribute contains the rendered body of a content page.  Like the `data` and `body` attributes, the `content` attribute is automatically inserted into every content page and **cannot** be altered in the header.  The rendered body contained within the `content` attribute is **only** available inside a view template.
+
+For example, given the following content page:
+
+    ---
+    title: Congratulations!
+    ---
+    <h1><%= page.title %></h1>
+    
+    <h2>You did it!</h2>
+
+Calling `<%= page.content %>` in a view template would yield:
+
+    <h1>Congratulations!</h1>
+    
+    <h2>You did it!</h2>
 
 THEMING
 -------
