@@ -133,7 +133,7 @@ Simply edit the gem version in your website's `Gemfile` and re-install with [Bun
     gem "mango", "~> 0.6.3"
     $ bundle install
 
-**TIP:** If you're working in the insolation of an [RVM gemset](http://rvm.beginrescueend.com/gemsets/basics/), type `gem clean` to uninstall outdated gems.
+**TIP:** If you're working in the isolation of an [RVM gemset](http://rvm.beginrescueend.com/gemsets/basics/), type `gem clean` to uninstall outdated gems.
 
 GETTING STARTED
 ---------------
