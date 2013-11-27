@@ -1,59 +1,67 @@
 # CHANGES
 
+## v0.7.0 / Not Yet Released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.6.3...v0.7.0)
+
+
 ## v0.6.3 / 2013-11-28
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.2...v0.6.3)
 
-## Documentation
+### Documentation
 
 * Improve Features section of the README.md [GH#71](https://github.com/ryansobol/mango/issues/71)
 * Update the WRITING section of the README.md [GH#2](https://github.com/ryansobol/mango/issues/2)
 * insolation v. isolation [GH#74](https://github.com/ryansobol/mango/issues/74) (TrevorBramble)
 
+
 ## v0.6.2 / 2011-06-06
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.1...v0.6.2)
 
-## Bugs
+### Bugs
 
   * Allow view templates nested within directories [GH#65](https://github.com/ryansobol/mango/issues/65)
   * Pass to next matching route for all get route handlers [GH#64](https://github.com/ryansobol/mango/issues/64)
 
-## Dependencies
+### Dependencies
 
   * Update rack to ~> 1.2.3 [GH#63](https://github.com/ryansobol/mango/issues/63)
   * Add therubyracer-heroku = 0.8.1.pre3 [GH#59](https://github.com/ryansobol/mango/issues/59)
 
-## Chores
+### Chores
 
   * Remove rspec task from Rakefile [GH51](https://github.com/ryansobol/mango/issues/51)
 
-## Documentation
+### Documentation
 
   * Touch up the README.md [GH#62](https://github.com/ryansobol/mango/issues/62)
 
-## Legal
+### Legal
 
   * Update copyright to 2011 in README.md [GH#60](https://github.com/ryansobol/mango/issues/60)
+
 
 ## v0.6.1 / 2011-05-29
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.0...v0.6.1)
 
-## Bugs
+### Bugs
 
   * Remove "english" dependency [GH#57](https://github.com/ryansobol/mango/issues/57)
   * Add .sass-cache to generated .gitignore [GH#54](https://github.com/ryansobol/mango/issues/54)
 
-## Chores
+### Chores
 
   * Update rack to 1.2.3 [GH#55](https://github.com/ryansobol/mango/issues/55)
+
 
 ## v0.6.0 / 2011-05-29
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.4...v0.6.0)
 
-## Features
+### Features
 
   * Add ERB view template support [GH#21](https://github.com/ryansobol/mango/issues/21)
   * Add ERB 404 template support [GH#26](https://github.com/ryansobol/mango/issues/26)
@@ -89,11 +97,12 @@
   * Update Tilt to 1.3.2 [GH#45](https://github.com/ryansobol/mango/issues/45)
   * Update multi_json to 1.0.3 [GH#53](https://github.com/ryansobol/mango/issues/53)
 
+
 ## v0.5.4 / 2011-04-24
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.3...v0.5.4)
 
-## Bugs
+### Bugs
 
   * Prevent gem building when unclean working directory [GH#9](https://github.com/ryansobol/mango/issues/9)
 
@@ -118,6 +127,7 @@
   * Update all GitHub URLS to https [GH#15](https://github.com/ryansobol/mango/issues/15)
   * Update CHANGES.mdown format [GH#13](https://github.com/ryansobol/mango/issues/13)
 
+
 ## v0.5.3 / 2011-04-15
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.2...v0.5.3)
@@ -125,6 +135,7 @@
 ### Bugs
 
   * Fixed "no such file to load -- lib/mango/rack/static_assets_cache" bug
+
 
 ## v0.5.2 / 2011-04-15
 
@@ -134,6 +145,7 @@
 
   * Updated [RubyGems](https://rubygems.org/) dependency to >= 1.3.7
 
+
 ## v0.5.1 / 2010-11-01
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.5.0...v0.5.1)
@@ -142,6 +154,7 @@
 
   * Updated [Bundler](http://gembundler.com/) dependency to ~> 1.0.0 to improve Heroku compatibility
   * Updated README.mdown to better present the Semantic Versioning of dependencies (documentation change only)
+
 
 ## v0.5.0 / 2010-10-31
 
@@ -176,6 +189,7 @@
   * The NOT_FOUND handler no longer renders the 404 template within a layout template.
   * Improved install-time and run-time error messages for Ruby 1.8 environments
 
+
 ## v0.4.0 / 2010-08-30
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.3.0...v0.4.0)
@@ -193,6 +207,7 @@
   * Updated [Haml](http://haml-lang.com/) to 3.0.18
   * Updated [YARD::Sinatra](https://github.com/rkh/yard-sinatra) to 0.5.0
   * Added [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.0.7 as a required dependency
+
 
 ## v0.3.0 / 2010-06-25
 
@@ -215,12 +230,14 @@
   * Fixed Regex when parsing LoadError messages on missing development dependencies
   * Fixed rspec gem name detection when requiring spec/rake/spectask in the Rakefile
 
+
 ## v0.2.1 / 2010-06-23
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.2.0...v0.2.1)
 
   * Refactored the application to reduce its code size and increase its maintainability
   * Improved the application's documentation and tests with additional HTTP routing examples
+
 
 ## v0.2.0 / 2010-06-19
 
@@ -230,11 +247,13 @@
   * Then it tries to route HTTP requests to Haml content pages
   * Finally, it routes unknown HTTP requests to a customizable 404 page
 
+
 ## v0.1.1 / 2010-06-15
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.1.0...v0.1.1)
 
   * Reserved the 'mango' namespace on RubyGems.org!
+
 
 ## v0.1.0 / 2010-06-15
 
@@ -244,6 +263,7 @@
   * Then it routes unknown HTTP requests to a customizable 404 page
   * Wraps content pages within a customizable Haml template and layout
   * Supports any Rack-based application server (e.g. Phusion Passenger, thin, mongrel, webrick, etc.)
+
 
 ## v0.0.1 / 2010-06-12
 
