@@ -84,7 +84,7 @@ REQUIREMENTS
 
   * [Ruby](http://www.ruby-lang.org/) ~> 1.9.2 ([RVM](http://rvm.beginrescueend.com/) recommended)
   * [RubyGems](https://rubygems.org/) >= 1.3.7 (bundled with Ruby)
-  * [Bundler](http://gembundler.com/) ~> 1.0.7
+  * [Bundler](http://gembundler.com/) ~> 1.3.5
   * [Thor](https://github.com/wycats/thor) ~> 0.14.6
   * [Rack](http://rack.rubyforge.org/) ~> 1.2.3
   * [Sinatra](http://www.sinatrarb.com/) ~> 1.2.6

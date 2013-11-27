@@ -4,9 +4,10 @@
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.3...v0.7.0)
 
-### Bugs
+### Dependencies
 
-* Remove therubyracer-heroku dependency [GH#75](https://github.com/ryansobol/mango/issues/75)
+* Remove therubyracer-heroku [GH#75](https://github.com/ryansobol/mango/issues/75)
+* Upgrade bundler to v1.3.5 [GH#77](https://github.com/ryansobol/mango/issues/77)
 
 
 ## v0.6.3 / 2013-11-28
