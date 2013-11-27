@@ -1,7 +1,7 @@
-Mango release 0.6.2 (June 6, 2011)
-==================================
+Mango release 0.6.3 (November 28, 2013)
+=======================================
 
-Copyright (c) 2011 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
+Copyright (c) 2013 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
   * **Demo Application** : [http://mango-fireworks.heroku.com/](http://mango-fireworks.heroku.com/)
   * **Source Code**: [https://github.com/ryansobol/mango](https://github.com/ryansobol/mango)
@@ -130,7 +130,7 @@ Simply edit the gem version in your website's `Gemfile` and re-install with [Bun
     $ cat Gemfile
     # encoding: UTF-8
     source "http://rubygems.org"
-    gem "mango", "~> 0.6.2"
+    gem "mango", "~> 0.6.3"
     $ bundle install
 
 **TIP:** If you're working in the insolation of an [RVM gemset](http://rvm.beginrescueend.com/gemsets/basics/), type `gem clean` to uninstall outdated gems.
@@ -225,7 +225,7 @@ For example, the Mango website generator produces the following content page:
     title: Congratulations!
     ---
     <h1><%= page.title %></h1>
-    
+
     <h2>You did it!</h2>
 
 The above example highlights the key facets of writing a content page.
@@ -263,7 +263,7 @@ For example, given the following content page:
     title: Congratulations!
     ---
     <h1><%= page.title %></h1>
-    
+
     <h2>You did it!</h2>
 
 Calling `<%= page.data %>` would yield:
@@ -272,13 +272,13 @@ Calling `<%= page.data %>` would yield:
     title: Congratulations!
     ---
     <h1><%= page.title %></h1>
-    
+
     <h2>You did it!</h2>
 
 and calling `<%= page.body %>` would yield:
 
     <h1><%= page.title %></h1>
-    
+
     <h2>You did it!</h2>
 
 ### The Content Attribute
@@ -291,13 +291,13 @@ For example, given the following content page:
     title: Congratulations!
     ---
     <h1><%= page.title %></h1>
-    
+
     <h2>You did it!</h2>
 
 Calling `<%= page.content %>` in a view template would yield:
 
     <h1>Congratulations!</h1>
-    
+
     <h2>You did it!</h2>
 
 THEMING

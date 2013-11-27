@@ -1,6 +1,6 @@
 # CHANGES
 
-## v0.6.3 / Not Yet Released
+## v0.6.3 / 2013-11-28
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.2...v0.6.3)
 
@@ -8,6 +8,7 @@
 
 * Improve Features section of the README.md [GH#71](https://github.com/ryansobol/mango/issues/71)
 * Update the WRITING section of the README.md [GH#2](https://github.com/ryansobol/mango/issues/2)
+* insolation v. isolation [GH#74](https://github.com/ryansobol/mango/issues/74) (TrevorBramble)
 
 ## v0.6.2 / 2011-06-06
 
