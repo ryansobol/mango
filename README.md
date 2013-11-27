@@ -93,7 +93,6 @@ REQUIREMENTS
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
   * [Liquid](http://www.liquidmarkup.org/) ~> 2.2.2
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/) ~> 2.2.0
-  * [TheRubyRacer for Heroku](https://github.com/pwim/therubyracer-heroku) = 0.8.1.pre3
 
 ### Optional development dependencies
 
