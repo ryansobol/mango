@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require "spec_helper"
 require PROJECT_ROOT + "lib/mango/runner"
 
@@ -69,7 +68,6 @@ describe Mango::Runner do
       expected = RUNNER_ROOT + "config.ru"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
-# encoding: UTF-8
 require "mango"
 run Mango::Application
       EOS
@@ -79,8 +77,8 @@ run Mango::Application
       expected = RUNNER_ROOT + "Gemfile"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
-# encoding: UTF-8
 source "http://rubygems.org"
+ruby "2.0.0"
 gem "mango", "~> 0.6.3"
       EOS
     end

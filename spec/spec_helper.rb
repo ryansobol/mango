@@ -1,4 +1,3 @@
-# encoding: UTF-8
 ENV["RACK_ENV"] = "test"
 require "mango"
 
@@ -8,12 +7,4 @@ RUNNER_ROOT  = Pathname File.expand_path("runner", File.dirname(__FILE__))
 
 class Mango::Application
   set :root, FIXTURE_ROOT.to_s
-end
-
-###################################################################################################
-
-Dir[File.expand_path("support/**/*.rb", File.dirname(__FILE__))].each { |f| require f }
-
-RSpec.configure do |config|
-  config.include MalformedWhitespaceMatchers
 end

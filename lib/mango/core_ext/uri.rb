@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # Extentions to the core `URI` module
 #
 module URI

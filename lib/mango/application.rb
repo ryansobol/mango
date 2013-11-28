@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require "sinatra/base"
 require "haml"
 require "sass"
@@ -196,15 +195,6 @@ module Mango
     #   @overload $*
     #   @return [String]
     mime_type "", "text/html"
-
-    # @macro [attach] sinatra.configure
-    #   Run once, at startup, when the environment is set to `${1--1}`
-    #   @scope class
-    #   @attribute
-    #   @overload configure ${1--1}
-    configure :development do
-      use Mango::Rack::Debugger
-    end
 
     # Supported JavaScript template engines
     JAVASCRIPT_TEMPLATE_ENGINES = {

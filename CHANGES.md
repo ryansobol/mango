@@ -8,6 +8,14 @@
 
 * Remove therubyracer-heroku [GH#75](https://github.com/ryansobol/mango/issues/75)
 * Upgrade bundler to v1.3.5 [GH#77](https://github.com/ryansobol/mango/issues/77)
+* Upgrade ruby to v2.0.0 [GH#78](https://github.com/ryansobol/mango/issues/78)
+
+  Requires the following upgrades:
+    * rubygems to v2.0.14
+    * haml to v4.0.4
+    * sass to v3.2.12
+    * rspec to v2.14.1
+    * yard to v0.8.7.3
 
 
 ## v0.6.3 / 2013-11-28

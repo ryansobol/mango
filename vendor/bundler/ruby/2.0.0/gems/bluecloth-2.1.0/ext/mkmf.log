@@ -1,0 +1,162 @@
+have_func: checking for srand()... -------------------- yes
+
+"clang -o conftest -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/x86_64-darwin13.0.0 -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/ruby/backward -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -I/usr/local/opt/libffi/include   -DVERSION=\"2.0.8\"  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration  -pipe -I. conftest.c  -L. -L/Users/ryansobol/.rubies/ruby-2.0.0-p353/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib -L. -fstack-protector -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"clang -o conftest -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/x86_64-darwin13.0.0 -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/ruby/backward -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -I/usr/local/opt/libffi/include   -DVERSION=\"2.0.8\"  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration  -pipe -I. conftest.c  -L. -L/Users/ryansobol/.rubies/ruby-2.0.0-p353/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib -L. -fstack-protector -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))srand; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_func: checking for random()... -------------------- yes
+
+"clang -o conftest -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/x86_64-darwin13.0.0 -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/ruby/backward -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -I/usr/local/opt/libffi/include   -DVERSION=\"2.0.8\"  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration  -pipe -I. conftest.c  -L. -L/Users/ryansobol/.rubies/ruby-2.0.0-p353/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib -L. -fstack-protector -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))random; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_func: checking for bzero() in string.h,strings.h... -------------------- yes
+
+"clang -o conftest -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/x86_64-darwin13.0.0 -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/ruby/backward -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -I/usr/local/opt/libffi/include   -DVERSION=\"2.0.8\"  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration  -pipe -I. conftest.c  -L. -L/Users/ryansobol/.rubies/ruby-2.0.0-p353/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib -L. -fstack-protector -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <string.h>
+ 4: #include <strings.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))bzero; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for strcasecmp()... -------------------- yes
+
+"clang -o conftest -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/x86_64-darwin13.0.0 -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/ruby/backward -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -I/usr/local/opt/libffi/include   -DVERSION=\"2.0.8\"  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration  -pipe -I. conftest.c  -L. -L/Users/ryansobol/.rubies/ruby-2.0.0-p353/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib -L. -fstack-protector -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))strcasecmp; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_func: checking for strncasecmp()... -------------------- yes
+
+"clang -o conftest -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/x86_64-darwin13.0.0 -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/ruby/backward -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -I/usr/local/opt/libffi/include   -DVERSION=\"2.0.8\"  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration  -pipe -I. conftest.c  -L. -L/Users/ryansobol/.rubies/ruby-2.0.0-p353/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib -L. -fstack-protector -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/gdbm/lib -L/usr/local/opt/libffi/lib      -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))strncasecmp; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_header: checking for mkdio.h... -------------------- yes
+
+"clang -E -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/x86_64-darwin13.0.0 -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/ruby/backward -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -I/usr/local/opt/libffi/include   -DVERSION=\"2.0.8\"  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration  -pipe -I.  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mkdio.h>
+/* end */
+
+--------------------
+
+have_header: checking for ruby/encoding.h... -------------------- yes
+
+"clang -E -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/x86_64-darwin13.0.0 -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0/ruby/backward -I/Users/ryansobol/.rubies/ruby-2.0.0-p353/include/ruby-2.0.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT -I/usr/local/opt/openssl/include -I/usr/local/opt/readline/include -I/usr/local/opt/libyaml/include -I/usr/local/opt/gdbm/include -I/usr/local/opt/libffi/include   -DVERSION=\"2.0.8\"  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration  -pipe -I.  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/encoding.h>
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+ 1: #ifndef EXTCONF_H
+ 2: #define EXTCONF_H
+ 3: #define HAVE_SRAND 1
+ 4: #define HAVE_RANDOM 1
+ 5: #define HAVE_BZERO 1
+ 6: #define HAVE_STRCASECMP 1
+ 7: #define HAVE_STRNCASECMP 1
+ 8: #define HAVE_MKDIO_H 1
+ 9: #define HAVE_RUBY_ENCODING_H 1
+10: #endif
+/* end */
+

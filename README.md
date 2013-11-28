@@ -82,14 +82,14 @@ REQUIREMENTS
 
 ### Required dependencies
 
-  * [Ruby](http://www.ruby-lang.org/) ~> 1.9.2 ([RVM](http://rvm.beginrescueend.com/) recommended)
-  * [RubyGems](https://rubygems.org/) >= 1.3.7 (bundled with Ruby)
+  * [Ruby](http://www.ruby-lang.org/) ~> 2.0.0
+  * [RubyGems](https://rubygems.org/) ~> 2.0.14 (bundled with Ruby)
   * [Bundler](http://gembundler.com/) ~> 1.3.5
   * [Thor](https://github.com/wycats/thor) ~> 0.14.6
   * [Rack](http://rack.rubyforge.org/) ~> 1.2.3
   * [Sinatra](http://www.sinatrarb.com/) ~> 1.2.6
-  * [Haml](http://haml-lang.com/) ~> 3.1.1
-  * [Sass](http://sass-lang.com/) ~> 3.1.1
+  * [Haml](http://haml-lang.com/) ~> 4.0.4
+  * [Sass](http://sass-lang.com/) ~> 3.2.12
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
   * [Liquid](http://www.liquidmarkup.org/) ~> 2.2.2
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/) ~> 2.2.0
@@ -97,19 +97,18 @@ REQUIREMENTS
 ### Optional development dependencies
 
   * [Rack::Test](https://github.com/brynary/rack-test) ~> 0.6.0
-  * [RSpec](http://rspec.info/) ~> 2.6.0
-  * [YARD](http://yardoc.org/) ~> 0.7.1
-  * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
+  * [RSpec](http://rspec.info/) ~> 2.14.1
+  * [YARD](http://yardoc.org/) ~> 0.8.7.3
 
 INSTALLING
 ----------
 
-### Ensuring Ruby 1.9.2 is installed and active
+### Ensuring Ruby 2.0.0 is installed and active
 
-I highly recommend [RVM](http://rvm.beginrescueend.com/) by Wayne E. Seguin.  It trivializes managing multiple versions of Ruby on one machine.
+I highly recommend installing Ruby with a [version management tool](https://www.ruby-toolbox.com/categories/ruby_version_management).
 
     $ ruby -v
-    ruby 1.9.2p180 (2011-02-18 revision 30909) [x86_64-darwin10.7.0]
+    ruby 2.0.0p353 (2013-11-22 revision 43784) [x86_64-darwin13.0.0]
 
 **TIP:** The revision and arch-type may differ on your machine.
 
@@ -119,20 +118,16 @@ Mango, and all its necessary components, are packaged as RubyGems for easy distr
 
     $ gem install mango
 
-**TIP:** If you're not using [RVM](http://rvm.beginrescueend.com/), you may want to prepend the `gem` command with `sudo`.
-
 ### Upgrading a Mango website
 
 Simply edit the gem version in your website's `Gemfile` and re-install with [Bundler](http://gembundler.com/).
 
     $ cd /path/to/your/app
     $ cat Gemfile
-    # encoding: UTF-8
     source "http://rubygems.org"
+    ruby "2.0.0"
     gem "mango", "~> 0.6.3"
     $ bundle install
-
-**TIP:** If you're working in the isolation of an [RVM gemset](http://rvm.beginrescueend.com/gemsets/basics/), type `gem clean` to uninstall outdated gems.
 
 GETTING STARTED
 ---------------
@@ -149,9 +144,9 @@ Mango websites are compatible with any [Rack supported web-server](http://rack.r
 
     $ cd /path/to/your/app
     $ rackup
-    [2010-10-30 15:39:41] INFO  WEBrick 1.3.1
-    [2010-10-30 15:39:41] INFO  ruby 1.9.2 (2010-08-18) [x86_64-darwin10.4.0]
-    [2010-10-30 15:39:41] INFO  WEBrick::HTTPServer#start: pid=27513 port=9292
+    [2013-11-28 11:58:24] INFO  WEBrick 1.3.1
+    [2013-11-28 11:58:24] INFO  ruby 2.0.0 (2013-11-22) [x86_64-darwin13.0.0]
+    [2013-11-28 11:58:24] INFO  WEBrick::HTTPServer#start: pid=93451 port=9292
 
 **TIP:** Type `Control + C` to quit `rackup`.
 

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require "spec_helper"
 require "rack/test"
 
@@ -52,7 +51,7 @@ Disallow: /cgi-bin/
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>/themes/default/public/images/index.html</title>
   </head>
   <body>
@@ -72,7 +71,7 @@ Disallow: /cgi-bin/
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>/themes/default/public/index.html</title>
   </head>
   <body>
@@ -144,7 +143,7 @@ Disallow: /cgi-bin/
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>/themes/default/public/override</title>
   </head>
   <body>
@@ -176,7 +175,7 @@ Disallow: /cgi-bin/
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>/themes/default/public/images/index.html</title>
   </head>
   <body>
@@ -207,7 +206,7 @@ Disallow: /cgi-bin/
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>

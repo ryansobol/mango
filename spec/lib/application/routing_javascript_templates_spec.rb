@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require "spec_helper"
 require "rack/test"
 
@@ -28,6 +27,7 @@ describe Mango::Application do
       last_response.body.should == <<-EXPECTED
 (function() {
   var kids;
+
   kids = {
     brother: {
       name: "Max",
@@ -38,6 +38,7 @@ describe Mango::Application do
       age: 9
     }
   };
+
 }).call(this);
       EXPECTED
     end
@@ -67,6 +68,7 @@ describe Mango::Application do
   } else {
     showIt();
   }
+
 }).call(this);
       EXPECTED
     end
@@ -200,7 +202,7 @@ if (opposite) {
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>
@@ -232,7 +234,7 @@ if (opposite) {
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>
@@ -264,7 +266,7 @@ if (opposite) {
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require File.expand_path("lib/mango", File.dirname(__FILE__))
 
 namespace :gem do

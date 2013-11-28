@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require "spec_helper"
 require "rack/test"
 
@@ -243,7 +242,7 @@ time, mark, audio, video {
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>
@@ -275,7 +274,7 @@ time, mark, audio, video {
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>
@@ -307,7 +306,7 @@ time, mark, audio, video {
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>

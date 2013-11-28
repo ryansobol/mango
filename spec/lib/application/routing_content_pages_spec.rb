@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require "spec_helper"
 require "rack/test"
 
@@ -29,7 +28,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -64,7 +63,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -99,7 +98,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -134,7 +133,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -169,7 +168,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -204,7 +203,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -239,7 +238,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -274,7 +273,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.erb</title>
   </head>
   <body>
@@ -311,7 +310,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -346,7 +345,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.erb</title>
   </head>
   <body>
@@ -384,7 +383,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.liquid</title>
   </head>
   <body>
@@ -423,7 +422,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>
@@ -479,7 +478,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>404 Page</title>
   </head>
   <body>
@@ -511,7 +510,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -547,7 +546,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -582,7 +581,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -617,7 +616,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>
@@ -653,7 +652,7 @@ describe Mango::Application do
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset='utf-8'>
     <title>layout.haml</title>
   </head>
   <body>

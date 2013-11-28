@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require "spec_helper"
 
 describe Mango::ContentPage do
@@ -501,7 +500,7 @@ EOS
     end
 
     it "raises an exception" do
-      expected_message = "syntax error on line 1, col 15: `title: WARNING: This needs quotes'"
+      expected_message = "(<unknown>): mapping values are not allowed in this context at line 2 column 15"
       lambda {
         Mango::ContentPage.new(:data => @expected_data)
       }.should raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
