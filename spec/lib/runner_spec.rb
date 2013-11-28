@@ -320,7 +320,7 @@ h2
 !!! 5
 %html
   %head
-    %meta{ :charset => "utf-8" }
+    %meta{ charset: "utf-8" }
     %title The page you were looking for doesn't exist (404)
     :css
       body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
@@ -348,19 +348,19 @@ h2
 !!! 5
 %html
   %head
-    %meta{ :charset => "utf-8" }
+    %meta{ charset: "utf-8" }
     %title= "Mango: \#{page.title}"
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "http://fonts.googleapis.com/css?family=Lobster" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/reset.css" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/screen.css" }
-    %link{ :rel => "stylesheet", :type => "text/css", :media => "screen", :href => "/stylesheets/fireworks.css" }
-    %script{ :type => "text/javascript", :src => "/javascripts/fireworks.js"}
-    %script{ :type => "text/javascript", :src => "/javascripts/timer.js"}
+    %link{ rel: "stylesheet", type: "text/css", media: "screen", href: "http://fonts.googleapis.com/css?family=Lobster" }
+    %link{ rel: "stylesheet", type: "text/css", media: "screen", href: "/stylesheets/reset.css" }
+    %link{ rel: "stylesheet", type: "text/css", media: "screen", href: "/stylesheets/screen.css" }
+    %link{ rel: "stylesheet", type: "text/css", media: "screen", href: "/stylesheets/fireworks.css" }
+    %script{ type: "text/javascript", src: "/javascripts/fireworks.js"}
+    %script{ type: "text/javascript", src: "/javascripts/timer.js"}
   %body
     %div#fireworks-template
       %div#fw.firework
       %div#fp.fireworkParticle
-        %img{ :src => "/images/particles.gif" }
+        %img{ src: "/images/particles.gif" }
 
     %div#fireContainer
 

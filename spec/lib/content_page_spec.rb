@@ -29,7 +29,7 @@ title: Syntactic Sugar Makes Life Sweeter
 view: template.haml
 ---
 EOS
-      @page = Mango::ContentPage.new(:data => data)
+      @page = Mango::ContentPage.new(data: data)
     end
 
     it "sweetens the title attribute" do

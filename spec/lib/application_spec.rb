@@ -14,8 +14,8 @@ describe Mango::Application do
       Mango::Application.views.should == (FIXTURE_ROOT + "themes/default/views").to_s
     end
 
-    it "public should be app_root/themes/default/public/" do
-      Mango::Application.public.should == (FIXTURE_ROOT + "themes/default/public").to_s
+    it "public_dir should be app_root/themes/default/public/" do
+      Mango::Application.public_dir.should == (FIXTURE_ROOT + "themes/default/public").to_s
     end
 
     it "styles should be app_root/themes/default/stylesheets/" do

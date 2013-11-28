@@ -140,7 +140,7 @@ module Mango
       FlavoredMarkdown.shake!(@attributes["body"]) if engine == TEMPLATE_ENGINES.key(:markdown)
       @attributes.merge!("engine" => engine, "data" => data, "content" => nil)
 
-      @attributes["content"] = engine.new { @attributes["body"] }.render(nil, :page => self)
+      @attributes["content"] = engine.new { @attributes["body"] }.render(nil, page: self)
     end
 
     private

@@ -20,7 +20,7 @@ content: Will also not persist
 %p= page.body
       EOS
       @expected_engine = Tilt::HamlTemplate
-      @page = Mango::ContentPage.new(:data => @expected_data, :engine => @expected_engine)
+      @page = Mango::ContentPage.new(data: @expected_data, engine: @expected_engine)
     end
 
     it "has the correct number of attributes" do
@@ -103,7 +103,7 @@ view: blog.haml
 ### Sweet and crumbly!
       EOS
       @expected_engine = Tilt::BlueClothTemplate
-      @page = Mango::ContentPage.new(:data => @expected_data, :engine => @expected_engine)
+      @page = Mango::ContentPage.new(data: @expected_data, engine: @expected_engine)
     end
 
     it "has the correct number of attributes" do
@@ -156,7 +156,7 @@ view: blog.haml
 </pre>
       EOS
       @expected_engine = Tilt::ERBTemplate
-      @page = Mango::ContentPage.new(:data => @expected_data, :engine => @expected_engine)
+      @page = Mango::ContentPage.new(data: @expected_data, engine: @expected_engine)
     end
 
     it "has the correct number of attributes" do
@@ -253,7 +253,7 @@ view: blog.liquid
 </pre>
       EOS
       @expected_engine = Tilt::LiquidTemplate
-      @page = Mango::ContentPage.new(:data => @expected_data, :engine => @expected_engine)
+      @page = Mango::ContentPage.new(data: @expected_data, engine: @expected_engine)
     end
 
     it "has the correct number of attributes" do
@@ -345,7 +345,7 @@ title: Delicious Cake
 view: blog.haml
 ---
       EOS
-      @page = Mango::ContentPage.new(:data => @expected_data)
+      @page = Mango::ContentPage.new(data: @expected_data)
     end
 
     it "has the correct number of attributes" do
@@ -384,7 +384,7 @@ view: blog.haml
       @expected_data = <<-EOS
 ### So delicious!
 EOS
-      @page = Mango::ContentPage.new(:data => @expected_data)
+      @page = Mango::ContentPage.new(data: @expected_data)
     end
 
     it "has the correct number of attributes" do
@@ -420,7 +420,7 @@ EOS
 ---
 ---
 EOS
-      @page = Mango::ContentPage.new(:data => @expected_data)
+      @page = Mango::ContentPage.new(data: @expected_data)
     end
 
     it "saves the data" do
@@ -502,7 +502,7 @@ EOS
     it "raises an exception" do
       expected_message = "(<unknown>): mapping values are not allowed in this context at line 2 column 15"
       lambda {
-        Mango::ContentPage.new(:data => @expected_data)
+        Mango::ContentPage.new(data: @expected_data)
       }.should raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
     end
   end
@@ -521,7 +521,7 @@ EOS
     it "raises an exception" do
       expected_message = 'Cannot parse header -- "This is not a Hash"'
       lambda {
-        Mango::ContentPage.new(:data => @expected_data)
+        Mango::ContentPage.new(data: @expected_data)
       }.should raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
     end
   end
@@ -536,7 +536,7 @@ EOS
     it "raises an exception" do
       expected_message = "Cannot find registered content engine -- unknown"
       lambda {
-        Mango::ContentPage.new(:engine => @unknown_engine)
+        Mango::ContentPage.new(engine: @unknown_engine)
       }.should raise_exception(ArgumentError, expected_message)
     end
   end
@@ -552,7 +552,7 @@ until there is no Mango left.
 Not even for Mango!
       EOS
 
-      @page = Mango::ContentPage.new(:data => data)
+      @page = Mango::ContentPage.new(data: data)
     end
 
     it "seasons the data before rendering the content" do

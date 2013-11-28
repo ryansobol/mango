@@ -13,7 +13,7 @@ module Mango
   # necessary models and/or views to perform actions based on that request.
   #
   # For **every HTTP request**, the application will first attempt to match the request URI path to
-  # a public file found within `settings.public` and send that file with a 200 response code.
+  # a public file found within `settings.public_dir` and send that file with a 200 response code.
   #
   # In addition to serving static assets, the application has these dynamic route handlers:
   #
@@ -25,7 +25,7 @@ module Mango
   #
   #   * 404 Page Not Found with `NOT_FOUND`
   #
-  # # Serving public files found within `settings.public`
+  # # Serving public files found within `settings.public_dir`
   #
   # ### Example requests routed to public files
   #
@@ -183,8 +183,8 @@ module Mango
     set :root,        Dir.getwd
     set :theme,       "default"
     set :javascripts, lambda { File.join(root, "themes", theme, "javascripts") }
-    set :public,      lambda { File.join(root, "themes", theme, "public") }
     set :stylesheets, lambda { File.join(root, "themes", theme, "stylesheets") }
+    set :public_dir,  lambda { File.join(root, "themes", theme, "public") }
     set :views,       lambda { File.join(root, "themes", theme, "views") }
     set :content,     lambda { File.join(root, "content") }
 
@@ -220,7 +220,7 @@ module Mango
 
     # Renders a 404 page with a 404 HTTP response code.
     #
-    # First, the application attempts to render a public 404 file stored in `settings.public`.  If
+    # First, the application attempts to render a public 404 file stored in `settings.public_dir`.  If
     # a public 404 file is found, the application will:
     #
     #   * Send the public 404 file with a 404 HTTP response code
@@ -273,9 +273,9 @@ module Mango
     # @param [String] file_name
     #
     def render_404_public_file!(file_name)
-      four_oh_four_path = File.expand_path("#{file_name}.html", settings.public)
+      four_oh_four_path = File.expand_path("#{file_name}.html", settings.public_dir)
       return unless File.file?(four_oh_four_path)
-      send_file four_oh_four_path
+      send_file four_oh_four_path, status: 404
     end
 
     # Given a template name, and with a prioritized list of template engines, attempts to render a
@@ -289,7 +289,7 @@ module Mango
         @preferred_extension = extension.to_s
         find_template(settings.views, template_name, engine) do |file|
           next unless File.file?(file)
-          halt send(extension, template_name.to_sym, :layout => false)
+          halt send(extension, template_name.to_sym, layout: false)
         end
       end
     end
@@ -299,7 +299,7 @@ module Mango
     # Attempts to render JavaScript templates found within `settings.javascripts`
     #
     # First, the application attempts to match the URI path with a public JavaScript file stored in
-    # `settings.public`.  If a public JavaScript file is found, the application will:
+    # `settings.public_dir`.  If a public JavaScript file is found, the application will:
     #
     #   * Send the public JavaScript file with a 200 HTTP response code
     #   * Halt execution
@@ -362,7 +362,7 @@ module Mango
         @preferred_extension = extension.to_s
         find_template(settings.javascripts, uri_path, engine) do |file|
           next unless File.file?(file)
-          halt send(extension, uri_path.to_sym, :views => settings.javascripts)
+          halt send(extension, uri_path.to_sym, views: settings.javascripts)
         end
       end
     end
@@ -372,7 +372,7 @@ module Mango
     # Attempts to render stylesheet templates found within `settings.stylesheets`
     #
     # First, the application attempts to match the URI path with a public stylesheet file stored in
-    # `settings.public`.  If a public stylesheet file is found, the application will:
+    # `settings.public_dir`.  If a public stylesheet file is found, the application will:
     #
     #   * Send the public stylesheet file with a 200 HTTP response code
     #   * Halt execution
@@ -432,7 +432,7 @@ module Mango
         @preferred_extension = extension.to_s
         find_template(settings.stylesheets, uri_path, engine) do |file|
           next unless File.file?(file)
-          halt send(extension, uri_path.to_sym, :views => settings.stylesheets)
+          halt send(extension, uri_path.to_sym, views: settings.stylesheets)
         end
       end
     end
@@ -442,7 +442,7 @@ module Mango
     # Attempts to render content page templates found within `settings.content`
     #
     # First, the application attempts to match the URI path with a public file stored in
-    # `settings.public`.  If a public file is found, the handler will:
+    # `settings.public_dir`.  If a public file is found, the handler will:
     #
     #   * Send the public file with a 200 HTTP response code
     #   * Halt execution
@@ -504,8 +504,8 @@ module Mango
     def render_index_file!(uri_path)
       return unless URI.directory?(uri_path)
 
-      index_match     = File.join(settings.public, "*")
-      index_file_path = File.expand_path(uri_path + "index.html", settings.public)
+      index_match     = File.join(settings.public_dir, "*")
+      index_file_path = File.expand_path(uri_path + "index.html", settings.public_dir)
 
       return unless File.fnmatch(index_match, index_file_path)
       return unless File.file?(index_file_path)
@@ -553,7 +553,7 @@ module Mango
       end
 
       begin
-        halt send(engine, content_page.view.to_s.templatize, :locals => { :page => content_page })
+        halt send(engine, content_page.view.to_s.templatize, locals: { page: content_page })
       rescue Errno::ENOENT
         message = "Cannot find view template file -- #{view_template_path}"
         raise ViewTemplateNotFound, message
@@ -574,7 +574,7 @@ module Mango
         @preferred_extension = extension.to_s
         find_template(settings.content, uri_path, engine) do |file|
           next unless File.file?(file)
-          return ContentPage.new(:data => File.read(file), :engine => engine)
+          return ContentPage.new(data: File.read(file), engine: engine)
         end
       end
 

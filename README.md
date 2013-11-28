@@ -86,8 +86,7 @@ REQUIREMENTS
   * [RubyGems](https://rubygems.org/) ~> 2.0.14 (bundled with Ruby)
   * [Bundler](http://gembundler.com/) ~> 1.3.5
   * [Thor](https://github.com/wycats/thor) ~> 0.14.6
-  * [Rack](http://rack.rubyforge.org/) ~> 1.2.3
-  * [Sinatra](http://www.sinatrarb.com/) ~> 1.2.6
+  * [Sinatra](http://www.sinatrarb.com/) ~> 1.4.4
   * [Haml](http://haml-lang.com/) ~> 4.0.4
   * [Sass](http://sass-lang.com/) ~> 3.2.12
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0

@@ -17,6 +17,10 @@
     * rspec to v2.14.1
     * yard to v0.8.7.3
 
+* Upgrade sinatra to v1.4.4 [GH#79](https://github.com/ryansobol/mango/issues/79)
+
+  Remove rack explicitly
+
 
 ## v0.6.3 / 2013-11-28
 

@@ -66,7 +66,7 @@ Disallow: /cgi-bin/
 
   describe "GET /" do
     before(:all) do
-      @file_name     = File.join(Mango::Application.public, "index.html")
+      @file_name     = File.join(Mango::Application.public_dir, "index.html")
       @expected_body = <<-EXPECTED
 <!DOCTYPE html>
 <html>
@@ -118,7 +118,7 @@ Disallow: /cgi-bin/
     end
 
     it "sends the correct body content" do
-      content_path = File.join(Mango::Application.public, "images", "ripe-mango.jpg")
+      content_path = File.join(Mango::Application.public_dir, "images", "ripe-mango.jpg")
       last_response.body.should == File.open(content_path, "rb").read
     end
   end
