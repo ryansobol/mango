@@ -93,6 +93,7 @@ REQUIREMENTS
   * [Liquid](http://www.liquidmarkup.org/) ~> 2.2.2
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/) ~> 2.2.0
   * [Foreman](https://github.com/ddollar/foreman) ~> 0.63.0
+  * [Puma](http://puma.io/) ~> 2.6.0
 
 ### Optional development dependencies
 
@@ -140,16 +141,17 @@ With Mango installed, the `mango` command will generate a new website.
 
 ### Starting a webserver
 
-The `foreman start` command will start a webserver (default: WEBrick) listening at `http://0.0.0.0:5000`.
+The `foreman start` command will start a Puma webserver listening at `http://0.0.0.0:5000`.
 
     $ cd /path/to/your/app
     $ foreman start
-    09:18:30 web.1  | started with pid 5008
-    09:18:31 web.1  | [2013-11-29 09:18:31] INFO  WEBrick 1.3.1
-    09:18:31 web.1  | [2013-11-29 09:18:31] INFO  ruby 2.0.0 (2013-11-22) [x86_64-darwin13.0.0]
-    09:18:31 web.1  | [2013-11-29 09:18:31] INFO  WEBrick::HTTPServer#start: pid=5008 port=5000
-
-**TIP:** Type `Control + C` to quit `foreman`.
+    16:32:20 web.1  | started with pid 7796
+    16:32:21 web.1  | Puma starting in single mode...
+    16:32:21 web.1  | * Version 2.6.0, codename: Pantsuit Party
+    16:32:21 web.1  | * Min threads: 0, max threads: 16
+    16:32:21 web.1  | * Environment: development
+    16:32:21 web.1  | * Listening on tcp://0.0.0.0:5000
+    16:32:21 web.1  | Use Ctrl-C to stop
 
 ### Generated website structure
 

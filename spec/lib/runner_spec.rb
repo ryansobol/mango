@@ -87,7 +87,7 @@ gem "mango", "~> 0.6.3"
       expected = RUNNER_ROOT + "Procfile"
       expected.should be_a_file
       File.read(expected).should == <<-EOS
-web: bundle exec rackup config.ru -p $PORT
+web: bundle exec puma config.ru -p $PORT
       EOS
     end
 

@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "bluecloth",     "~> 2.1.0"
   s.add_runtime_dependency "coffee-script", "~> 2.2.0"
   s.add_runtime_dependency "foreman",       "~> 0.63.0"
+  s.add_runtime_dependency "puma",          "~> 2.6.0"
 
   s.add_development_dependency "rack-test", "~> 0.6.0"
   s.add_development_dependency "rspec",     "~> 2.14.1"
