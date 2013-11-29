@@ -152,14 +152,13 @@ GETTING STARTED
 
 With Mango installed, the `mango` command will generate a new website.
 
-    $ mango create /path/to/your/app
+    $ mango create .
 
 ### Starting a webserver
 
 The `foreman start` command will start a Puma webserver listening at `http://0.0.0.0:5000`.
 
-    $ cd /path/to/your/app
-    $ foreman start
+    $ bin/foreman start
     16:32:20 web.1  | started with pid 7796
     16:32:21 web.1  | Puma starting in single mode...
     16:32:21 web.1  | * Version 2.6.0, codename: Pantsuit Party

@@ -7,6 +7,7 @@
 ### Documentation
 
 * Update installation instructions [GH#80](https://github.com/ryansobol/mango/issues/82)
+* Update getting started instructions [GH#80](https://github.com/ryansobol/mango/issues/83)
 
 
 ## v0.7.0 / 2013-11-29
