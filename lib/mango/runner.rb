@@ -21,6 +21,7 @@ module Mango
       copy_file(".gitignore")
       copy_file("config.ru")
       copy_file("Gemfile")
+      copy_file("Procfile")
       copy_file("README.md")
 
       copy_content

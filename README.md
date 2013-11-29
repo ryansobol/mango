@@ -92,6 +92,7 @@ REQUIREMENTS
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
   * [Liquid](http://www.liquidmarkup.org/) ~> 2.2.2
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/) ~> 2.2.0
+  * [Foreman](https://github.com/ddollar/foreman) ~> 0.63.0
 
 ### Optional development dependencies
 
@@ -137,30 +138,18 @@ With Mango installed, the `mango` command will generate a new website.
 
     $ mango create /path/to/your/app
 
-### Starting the web-server
+### Starting a webserver
 
-Mango websites are compatible with any [Rack supported web-server](http://rack.rubyforge.org/doc/).  The `rackup` command will start a web-server (default: WEBrick) listening at `http://0.0.0.0:9292`.
-
-    $ cd /path/to/your/app
-    $ rackup
-    [2013-11-28 11:58:24] INFO  WEBrick 1.3.1
-    [2013-11-28 11:58:24] INFO  ruby 2.0.0 (2013-11-22) [x86_64-darwin13.0.0]
-    [2013-11-28 11:58:24] INFO  WEBrick::HTTPServer#start: pid=93451 port=9292
-
-**TIP:** Type `Control + C` to quit `rackup`.
-
-### Using an alternative web-server
-
-If you prefer an alternative web-server (e.g. `thin`), simply install the gem and use the `-s SERVER` option to specify the web-server.
+The `foreman start` command will start a webserver (default: WEBrick) listening at `http://0.0.0.0:5000`.
 
     $ cd /path/to/your/app
-    $ gem install thin
-    $ rackup -s thin
-    >> Thin web server (v1.2.7 codename No Hup)
-    >> Maximum connections set to 1024
-    >> Listening on 0.0.0.0:9292, CTRL+C to stop
+    $ foreman start
+    09:18:30 web.1  | started with pid 5008
+    09:18:31 web.1  | [2013-11-29 09:18:31] INFO  WEBrick 1.3.1
+    09:18:31 web.1  | [2013-11-29 09:18:31] INFO  ruby 2.0.0 (2013-11-22) [x86_64-darwin13.0.0]
+    09:18:31 web.1  | [2013-11-29 09:18:31] INFO  WEBrick::HTTPServer#start: pid=5008 port=5000
 
-**TIP:** To see a list of all the `rackup` command-line options, use the `--help` option.
+**TIP:** Type `Control + C` to quit `foreman`.
 
 ### Generated website structure
 
@@ -169,26 +158,27 @@ Now that the newly generated Mango website is running, here's how the website is
     $ tree /path/to/your/app
     /path/to/your/app
     ├── Gemfile
+    ├── Procfile
     ├── README.md
     ├── config.ru
     ├── content
-    │   └── index.erb
+    │   └── index.erb
     └── themes
         └── default
             ├── javascripts
-            │   └── timer.coffee
+            │   └── timer.coffee
             ├── public
-            │   ├── favicon.ico
-            │   ├── images
-            │   │   └── particles.gif
-            │   ├── javascripts
-            │   │   └── fireworks.js
-            │   ├── robots.txt
-            │   └── stylesheets
-            │       ├── fireworks.css
-            │       └── reset.css
+            │   ├── favicon.ico
+            │   ├── images
+            │   │   └── particles.gif
+            │   ├── javascripts
+            │   │   └── fireworks.js
+            │   ├── robots.txt
+            │   └── stylesheets
+            │       ├── fireworks.css
+            │       └── reset.css
             ├── stylesheets
-            │   └── screen.sass
+            │   └── screen.sass
             └── views
                 ├── 404.haml
                 ├── layout.haml

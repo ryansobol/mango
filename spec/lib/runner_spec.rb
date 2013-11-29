@@ -83,6 +83,14 @@ gem "mango", "~> 0.6.3"
       EOS
     end
 
+    it "generates Procfile" do
+      expected = RUNNER_ROOT + "Procfile"
+      expected.should be_a_file
+      File.read(expected).should == <<-EOS
+web: bundle exec rackup config.ru -p $PORT
+      EOS
+    end
+
     it "generates README.md" do
       expected = RUNNER_ROOT + "README.md"
       expected.should be_a_file

@@ -21,6 +21,8 @@
 
   Remove rack explicitly
 
+* Add foreman ~> 0.63.0 [GH#80](https://github.com/ryansobol/mango/issues/80)
+
 
 ## v0.6.3 / 2013-11-28
 
