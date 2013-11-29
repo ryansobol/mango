@@ -1,5 +1,14 @@
 # CHANGES
 
+## v0.7.1 / Not yet released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.6.3...v0.7.0)
+
+### Documentation
+
+* Update installation instructions [GH#80](https://github.com/ryansobol/mango/issues/82)
+
+
 ## v0.7.0 / 2013-11-29
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.3...v0.7.0)

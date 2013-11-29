@@ -84,7 +84,7 @@ REQUIREMENTS
 
   * [Ruby](http://www.ruby-lang.org/) ~> 2.0.0
   * [RubyGems](https://rubygems.org/) ~> 2.0.14 (bundled with Ruby)
-  * [Bundler](http://gembundler.com/) ~> 1.3.5
+  * [Bundler](http://bundler.io/) ~> 1.3.5
   * [Thor](https://github.com/wycats/thor) ~> 0.14.6
   * [Sinatra](http://www.sinatrarb.com/) ~> 1.4.4
   * [Haml](http://haml-lang.com/) ~> 4.0.4
@@ -104,7 +104,7 @@ REQUIREMENTS
 INSTALLING
 ----------
 
-### Ensuring Ruby 2.0.0 is installed and active
+### Ensuring Ruby is installed
 
 I highly recommend installing Ruby with a [version management tool](https://www.ruby-toolbox.com/categories/ruby_version_management).
 
@@ -113,21 +113,36 @@ I highly recommend installing Ruby with a [version management tool](https://www.
 
 **TIP:** The revision and arch-type may differ on your machine.
 
-### Installing the Mango gem
+### Ensuring Bundler is installed
 
-Mango, and all its necessary components, are packaged as RubyGems for easy distribution.
+I also highly recommend using [Bundler](http://bundler.io/) to install Mango and it's gem dependencies.
 
-    $ gem install mango
+    $ bundle -v
+    Bundler version 1.3.5
 
-### Upgrading a Mango website
+### Creating a new app
 
-Simply edit the gem version in your website's `Gemfile` and re-install with [Bundler](http://gembundler.com/).
+First, create a new directory for your app.
 
-    $ cd /path/to/your/app
-    $ cat Gemfile
+    $ mkdir app-name
+    $ cd app-name
+
+Then, create a `Gemfile` wit the following contents:
+
     source "http://rubygems.org"
     ruby "2.0.0"
     gem "mango", "~> 0.7.0"
+
+### Installing the Mango gem
+
+I recommend installing Mango, and all its necessary components, inside your app's directory.
+
+    $ bundle install --path vendor/bundler --binstubs
+
+### Upgrading a Mango website
+
+Simply edit the Mango version in your website's `Gemfile` and re-install.
+
     $ bundle install
 
 GETTING STARTED
