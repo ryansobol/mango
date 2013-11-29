@@ -1,5 +1,5 @@
-Mango release 0.6.3 (November 28, 2013)
-=======================================
+Mango release 0.7.0 (2013-11-29)
+================================
 
 Copyright (c) 2013 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
@@ -127,7 +127,7 @@ Simply edit the gem version in your website's `Gemfile` and re-install with [Bun
     $ cat Gemfile
     source "http://rubygems.org"
     ruby "2.0.0"
-    gem "mango", "~> 0.6.3"
+    gem "mango", "~> 0.7.0"
     $ bundle install
 
 GETTING STARTED
