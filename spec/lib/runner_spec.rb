@@ -61,6 +61,8 @@ describe Mango::Runner do
 .DS_Store
 .bundle
 .sass-cache
+bin
+vendor/bundle
       EOS
     end
 

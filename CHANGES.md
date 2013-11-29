@@ -9,6 +9,10 @@
 * Update installation instructions [GH#80](https://github.com/ryansobol/mango/issues/82)
 * Update getting started instructions [GH#80](https://github.com/ryansobol/mango/issues/83)
 
+### Integration
+
+* Add vendor/bundle and bin directories to template .gitignore [GH#84](https://github.com/ryansobol/mango/issues/84)
+
 
 ## v0.7.0 / 2013-11-29
 
