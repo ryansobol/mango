@@ -4,10 +4,14 @@
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.6.3...v0.7.0)
 
+### Features
+
+* Speed up the spec suite [GH#85](https://github.com/ryansobol/mango/issues/85)
+
 ### Documentation
 
-* Update installation instructions [GH#80](https://github.com/ryansobol/mango/issues/82)
-* Update getting started instructions [GH#80](https://github.com/ryansobol/mango/issues/83)
+* Update installation instructions [GH#82](https://github.com/ryansobol/mango/issues/82)
+* Update getting started instructions [GH#83](https://github.com/ryansobol/mango/issues/83)
 
 ### Integration
 
@@ -36,7 +40,7 @@
   Remove rack explicitly
 
 * Add foreman ~> 0.63.0 [GH#80](https://github.com/ryansobol/mango/issues/80)
-* Add puma ~> 2.6.0 [GH#80](https://github.com/ryansobol/mango/issues/81)
+* Add puma ~> 2.6.0 [GH#81](https://github.com/ryansobol/mango/issues/81)
 
 
 ## v0.6.3 / 2013-11-28
