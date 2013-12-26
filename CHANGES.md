@@ -1,5 +1,14 @@
 # CHANGES
 
+## v0.8.0 / Not yet released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.7.1...v0.8.0)
+
+### Bugs
+
+* Fix ignored bundler directory name [GH#87](https://github.com/ryansobol/mango/issues/87)
+
+
 ## v0.7.1 / 2013-12-25
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.7.0...v0.7.1)

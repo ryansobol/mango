@@ -62,7 +62,7 @@ describe Mango::Runner do
 .bundle
 .sass-cache
 bin
-vendor/bundle
+vendor/bundler
       EOS
     end
 
