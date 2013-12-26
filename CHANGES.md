@@ -4,6 +4,10 @@
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.7.1...v0.8.0)
 
+### Dependencies
+
+* Upgrade ruby to v2.1.0 and rubygems to v2.2.0 [GH#88](https://github.com/ryansobol/mango/issues/88)
+
 ### Bugs
 
 * Fix ignored bundler directory name [GH#87](https://github.com/ryansobol/mango/issues/87)

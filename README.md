@@ -82,8 +82,8 @@ REQUIREMENTS
 
 ### Required dependencies
 
-  * [Ruby](http://www.ruby-lang.org/) ~> 2.0.0
-  * [RubyGems](https://rubygems.org/) ~> 2.0.14 (bundled with Ruby)
+  * [Ruby](http://www.ruby-lang.org/) ~> 2.1.0
+  * [RubyGems](https://rubygems.org/) ~> 2.2.0 (bundled with Ruby)
   * [Bundler](http://bundler.io/) ~> 1.3.5
   * [Thor](https://github.com/wycats/thor) ~> 0.14.6
   * [Sinatra](http://www.sinatrarb.com/) ~> 1.4.4
@@ -109,7 +109,7 @@ INSTALLING
 I highly recommend installing Ruby with a [version management tool](https://www.ruby-toolbox.com/categories/ruby_version_management).
 
     $ ruby -v
-    ruby 2.0.0p353 (2013-11-22 revision 43784) [x86_64-darwin13.0.0]
+    ruby 2.1.0p0 (2013-12-25 revision 44422) [x86_64-darwin13.0]
 
 **TIP:** The revision and arch-type may differ on your machine.
 
@@ -130,7 +130,7 @@ First, create a new directory for your app.
 Then, create a `Gemfile` wit the following contents:
 
     source "http://rubygems.org"
-    ruby "2.0.0"
+    ruby "2.1.0"
     gem "mango", "~> 0.7.1"
 
 ### Installing the Mango gem
@@ -152,7 +152,7 @@ GETTING STARTED
 
 With Mango installed, the `mango` command will generate a new website.
 
-    $ mango create .
+    $ bin/mango create .
 
 ### Starting a webserver
 
