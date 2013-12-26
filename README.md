@@ -1,4 +1,4 @@
-Mango release 0.7.0 (2013-11-29)
+Mango release 0.7.1 (2013-12-25)
 ================================
 
 Copyright (c) 2013 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
@@ -131,7 +131,7 @@ Then, create a `Gemfile` wit the following contents:
 
     source "http://rubygems.org"
     ruby "2.0.0"
-    gem "mango", "~> 0.7.0"
+    gem "mango", "~> 0.7.1"
 
 ### Installing the Mango gem
 

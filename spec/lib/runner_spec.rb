@@ -81,7 +81,7 @@ run Mango::Application
       File.read(expected).should == <<-EOS
 source "http://rubygems.org"
 ruby "2.0.0"
-gem "mango", "~> 0.7.0"
+gem "mango", "~> 0.7.1"
       EOS
     end
 
