@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "thor",          "~> 0.14", ">= 0.14.6"
   s.add_runtime_dependency "sinatra",       "~> 1.4", ">= 1.4.4"
   s.add_runtime_dependency "haml",          "~> 4.0", ">= 4.0.4"
-  s.add_runtime_dependency "sass",          "~> 3.2", ">= 3.2.12"
+  s.add_runtime_dependency "sass",          "~> 3.2", ">= 3.2.13"
   s.add_runtime_dependency "liquid",        "~> 2.2", ">= 2.2.2"
   s.add_runtime_dependency "bluecloth",     "~> 2.1", ">= 2.1.0"
   s.add_runtime_dependency "coffee-script", "~> 2.2", ">= 2.2.0"

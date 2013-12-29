@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: sass 3.2.12 ruby lib
+# stub: sass 3.2.13 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "sass"
-  s.version = "3.2.12"
+  s.version = "3.2.13"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Nathan Weizenbaum", "Chris Eppstein", "Hampton Catlin"]
-  s.date = "2013-10-05"
+  s.date = "2013-12-20"
   s.description = "      Sass makes CSS fun again. Sass is an extension of CSS3, adding\n      nested rules, variables, mixins, selector inheritance, and more.\n      It's translated to well-formatted, standard CSS using the\n      command line tool or a web-framework plugin.\n"
   s.email = "sass-lang@googlegroups.com"
   s.executables = ["sass", "sass-convert", "scss"]
