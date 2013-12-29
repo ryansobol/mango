@@ -34,6 +34,22 @@ describe Rack::Test::Session do
       last_request.env['HTTP_HOST'].should == "www.example.ua"
     end
 
+    it "sets HTTP_HOST with port for non-default ports" do
+      request "http://foo.com:8080"
+      last_request.env["HTTP_HOST"].should == "foo.com:8080"
+      request "https://foo.com:8443"
+      last_request.env["HTTP_HOST"].should == "foo.com:8443"
+    end
+
+    it "sets HTTP_HOST without port for default ports" do
+      request "http://foo.com"
+      last_request.env["HTTP_HOST"].should == "foo.com"
+      request "http://foo.com:80"
+      last_request.env["HTTP_HOST"].should == "foo.com"
+      request "https://foo.com:443"
+      last_request.env["HTTP_HOST"].should == "foo.com"
+    end
+
     it "defaults to GET" do
       request "/"
       last_request.env["REQUEST_METHOD"].should == "GET"
@@ -104,6 +120,11 @@ describe Rack::Test::Session do
     it "accepts raw input in params for GET requests" do
       request "/foo?baz=2", :params => "foo[bar]=1"
       last_request.GET.should == { "baz" => "2", "foo" => { "bar" => "1" }}
+    end
+
+    it "does not rewrite a GET query string when :params is not supplied" do
+      request "/foo?a=1&b=2&c=3&e=4&d=5"
+      last_request.query_string.should == "a=1&b=2&c=3&e=4&d=5"
     end
 
     it "accepts params and builds url encoded params for POST requests" do
@@ -228,7 +249,7 @@ describe Rack::Test::Session do
 
       last_request.env["CONTENT_TYPE"].should == "application/json"
     end
-    
+
     it "sets a Host to be sent with requests" do
       header "Host", "www.example.ua"
       request "/"
@@ -292,6 +313,7 @@ describe Rack::Test::Session do
 
       last_response.should_not be_redirect
       last_response.body.should == "You've been redirected"
+      last_request.env["HTTP_REFERER"].should eql("http://example.org/redirect")
     end
 
     it "does not include params when following the redirect" do
@@ -453,6 +475,19 @@ describe Rack::Test::Session do
 
     it "accepts a body" do
       put "/", "Lobsterlicious!"
+      last_request.body.read.should == "Lobsterlicious!"
+    end
+  end
+
+  describe "#patch" do
+    it_should_behave_like "any #verb methods"
+
+    def verb
+      "patch"
+    end
+
+    it "accepts a body" do
+      patch "/", "Lobsterlicious!"
       last_request.body.read.should == "Lobsterlicious!"
     end
   end

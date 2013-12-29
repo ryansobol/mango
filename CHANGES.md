@@ -8,6 +8,7 @@
 
 * Upgrade ruby to v2.1.0 and rubygems to v2.2.0 [GH#88](https://github.com/ryansobol/mango/issues/88)
 * Fix RubyGems warnings about semantically versioned dependencies [GH#94](https://github.com/ryansobol/mango/issues/94)
+* Upgrade rack-test to v0.6.2 [GH#91](https://github.com/ryansobol/mango/issues/91)
 
 ### Bugs
 

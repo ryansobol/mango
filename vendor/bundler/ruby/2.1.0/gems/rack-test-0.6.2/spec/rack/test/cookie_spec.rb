@@ -20,10 +20,28 @@ describe Rack::Test::Session do
       last_request.cookies.should == {}
     end
 
+    it "cookie path defaults to the uri of the document that was requested" do
+      pending "See issue rack-test github issue #50" do
+        post "/cookies/default-path", "value" => "cookie"
+        get "/cookies/default-path"
+        check last_request.cookies.should == { "simple"=>"cookie" }
+        get "/cookies/show"
+        check last_request.cookies.should == { }
+      end
+    end
+
     it "escapes cookie values" do
       jar = Rack::Test::CookieJar.new
       jar["value"] = "foo;abc"
       jar["value"].should == "foo;abc"
+    end
+
+    it "deletes cookies directly from the CookieJar" do
+      jar = Rack::Test::CookieJar.new
+      jar["abcd"] = "1234"
+      jar["abcd"].should == "1234"
+      jar.delete("abcd")
+      jar["abcd"].should == nil
     end
 
     it "doesn't send cookies with the wrong domain" do

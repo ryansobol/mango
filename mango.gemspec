@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "foreman",       "~> 0.63", ">= 0.63.0"
   s.add_runtime_dependency "puma",          "~> 2.6", ">= 2.6.0"
 
-  s.add_development_dependency "rack-test", "~> 0.6", ">= 0.6.0"
+  s.add_development_dependency "rack-test", "~> 0.6", ">= 0.6.2"
   s.add_development_dependency "rspec",     "~> 2.14", ">= 2.14.1"
   s.add_development_dependency "yard",      "~> 0.8", ">= 0.8.7.3"
 

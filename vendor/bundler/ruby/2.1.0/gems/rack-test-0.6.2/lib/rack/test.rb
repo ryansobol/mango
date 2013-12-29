@@ -9,7 +9,7 @@ require "rack/test/uploaded_file"
 
 module Rack
   module Test
-    VERSION = "0.6.0"
+    VERSION = "0.6.2"
 
     DEFAULT_HOST = "example.org"
     MULTIPART_BOUNDARY = "----------XnJLe9ZIbbGUYtzPQJ16u1"
@@ -72,6 +72,15 @@ module Rack
       #   put "/"
       def put(uri, params = {}, env = {}, &block)
         env = env_for(uri, env.merge(:method => "PUT", :params => params))
+        process_request(uri, env, &block)
+      end
+
+      # Issue a PATCH request for the given URI. See #get
+      #
+      # Example:
+      #   patch "/"
+      def patch(uri, params = {}, env = {}, &block)
+        env = env_for(uri, env.merge(:method => "PATCH", :params => params))
         process_request(uri, env, &block)
       end
 
@@ -153,14 +162,15 @@ module Rack
       end
 
       # Rack::Test will not follow any redirects automatically. This method
-      # will follow the redirect returned in the last response. If the last
-      # response was not a redirect, an error will be raised.
+      # will follow the redirect returned (including setting the Referer header
+      # on the new request) in the last response. If the last response was not
+      # a redirect, an error will be raised.
       def follow_redirect!
         unless last_response.redirect?
           raise Error.new("Last response was not a redirect. Cannot follow_redirect!")
         end
 
-        get(last_response["Location"])
+        get(last_response["Location"], {}, { "HTTP_REFERER" => last_request.url })
       end
 
     private
@@ -172,7 +182,7 @@ module Rack
 
         env = default_env.merge(env)
 
-        env["HTTP_HOST"] ||= [uri.host, uri.port].compact.join(":")
+        env["HTTP_HOST"] ||= [uri.host, (uri.port if uri.port != uri.default_port)].compact.join(":")
 
         env.update("HTTPS" => "on") if URI::HTTPS === uri
         env["HTTP_X_REQUESTED_WITH"] = "XMLHttpRequest" if env[:xhr]
@@ -182,10 +192,12 @@ module Rack
         env["REQUEST_METHOD"] ||= env[:method] ? env[:method].to_s.upcase : "GET"
 
         if env["REQUEST_METHOD"] == "GET"
-          params = env[:params] || {}
-          params = parse_nested_query(params) if params.is_a?(String)
-          params.update(parse_nested_query(uri.query))
-          uri.query = build_nested_query(params)
+          # merge :params with the query string
+          if params = env[:params]
+            params = parse_nested_query(params) if params.is_a?(String)
+            params.update(parse_nested_query(uri.query))
+            uri.query = build_nested_query(params)
+          end
         elsif !env.has_key?(:input)
           env["CONTENT_TYPE"] ||= "application/x-www-form-urlencoded"
 
@@ -239,7 +251,7 @@ module Rack
           "username"  => @digest_username,
           "nc"        => "00000001",
           "cnonce"    => "nonsensenonce",
-          "uri"       => last_request.path_info,
+          "uri"       => last_request.fullpath,
           "method"    => last_request.env["REQUEST_METHOD"],
         })
 

@@ -97,7 +97,7 @@ REQUIREMENTS
 
 ### Minimum development dependencies
 
-  * [Rack::Test](https://github.com/brynary/rack-test) 0.6.0
+  * [Rack::Test](https://github.com/brynary/rack-test) 0.6.2
   * [RSpec](http://rspec.info/) 2.14.1
   * [YARD](http://yardoc.org/) 0.8.7.3
 

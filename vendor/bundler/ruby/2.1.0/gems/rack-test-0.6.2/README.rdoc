@@ -1,7 +1,6 @@
-= Rack::Test
+= Rack::Test {<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/brynary/rack-test]
 
 - Code: http://github.com/brynary/rack-test
-- Build: http://runcoderun.com/brynary/rack-test
 
 == Description
 
@@ -17,7 +16,7 @@ request helpers feature.
 * Set request headers to be used by all subsequent requests
 * Small footprint. Approximately 200 LOC
 
-== Example
+== Examples
 
   require "rack/test"
 
@@ -39,19 +38,48 @@ request helpers feature.
 
   end
 
+
+If you want to test one app in isolation, you just return that app as shown above. But if you want to test the entire app stack, including middlewares, cascades etc. you need to parse the app defined in config.ru.
+
+    OUTER_APP = Rack::Builder.parse_file('config.ru').first
+
+    class TestApp < Test::Unit::TestCase
+      include Rack::Test::Methods
+
+      def app
+        OUTER_APP
+      end
+
+      def test_root
+        get '/'
+        assert last_response.ok?
+      end
+    end
+
+
 == Install
 
 To install the latest release as a gem:
 
   sudo gem install rack-test
 
+Or via Bundler:
+
+  gem "rack-test", require: "rack/test"
+
 == Authors
 
 - Maintained by {Bryan Helmkamp}[mailto:bryan@brynary.com]
-- Contributions from Simon Rozet and Pat Nakajima
+- Contributions from Simon Rozet, Pat Nakajima and others
 - Much of the original code was extracted from Merb 1.0's request helper
 
 == License
 
 Copyright (c) 2008-2009 Bryan Helmkamp, Engine Yard Inc.
 See MIT-LICENSE.txt in this directory.
+
+== Releasing
+
+* Ensure History.txt is up-to-date
+* Bump VERSION in lib/rack/test.rb
+* thor :release

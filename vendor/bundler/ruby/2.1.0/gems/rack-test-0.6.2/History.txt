@@ -1,3 +1,24 @@
+== 0.6.2 / 2012-09-27
+
+* Minor enhancements
+
+  * Support HTTP PATCH method (Marjan Krekoten' #33)
+  * Preserve the exact query string when possible (Paul Grayson #63)
+  * Add a #delete method to CookieJar (Paul Grayson #63)
+
+* Bug fixes
+
+  * Fix HTTP Digest authentication when the URI has query params
+  * Don't append default ports to HTTP_HOST (David Lee #57)
+
+== 0.6.1 / 2011-07-27
+
+* Bug fixes
+
+  * Fix support for params with arrays in multipart forms (Joel Chippindale)
+  * Add respond_to? to Rack::Test::UploadedFile to match method_missing (Josh Nichols)
+  * Set the Referer header on requests issued by follow_redirect! (Ryan Bigg)
+
 == 0.6.0 / 2011-05-03
 
 * Bug fixes
