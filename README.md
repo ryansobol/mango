@@ -93,7 +93,7 @@ REQUIREMENTS
   * [Liquid](http://www.liquidmarkup.org/) 2.2.2
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/) 2.2.0
   * [Foreman](https://github.com/ddollar/foreman) 0.63.0
-  * [Puma](http://puma.io/) 2.6.0
+  * [Puma](http://puma.io/) 2.7.1
 
 ### Minimum development dependencies
 
@@ -160,13 +160,13 @@ With Mango installed, the `mango` command will generate a new website.
 The `foreman start` command will start a Puma webserver listening at `http://0.0.0.0:5000`.
 
     $ bin/foreman start
-    16:32:20 web.1  | started with pid 7796
-    16:32:21 web.1  | Puma starting in single mode...
-    16:32:21 web.1  | * Version 2.6.0, codename: Pantsuit Party
-    16:32:21 web.1  | * Min threads: 0, max threads: 16
-    16:32:21 web.1  | * Environment: development
-    16:32:21 web.1  | * Listening on tcp://0.0.0.0:5000
-    16:32:21 web.1  | Use Ctrl-C to stop
+    07:19:41 web.1  | started with pid 57974
+    07:19:42 web.1  | Puma starting in single mode...
+    07:19:42 web.1  | * Version 2.7.1, codename: Earl of Sandwich Partition
+    07:19:42 web.1  | * Min threads: 0, max threads: 16
+    07:19:42 web.1  | * Environment: development
+    07:19:42 web.1  | * Listening on tcp://0.0.0.0:5000
+    07:19:42 web.1  | Use Ctrl-C to stop
 
 ### Generated website structure
 

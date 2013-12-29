@@ -11,6 +11,7 @@
 * Upgrade rack-test to v0.6.2 [GH#91](https://github.com/ryansobol/mango/issues/91)
 * Upgrade sass to v3.2.13 [GH#92](https://github.com/ryansobol/mango/issues/92)
 * Upgrade thor to v0.18.1 [GH#93](https://github.com/ryansobol/mango/issues/93)
+* Upgrade puma to v2.7.1  [GH#90](https://github.com/ryansobol/mango/issues/90)
 
 ### Bugs
 

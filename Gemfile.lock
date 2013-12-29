@@ -8,7 +8,7 @@ PATH
       foreman (~> 0.63, >= 0.63.0)
       haml (~> 4.0, >= 4.0.4)
       liquid (~> 2.2, >= 2.2.2)
-      puma (~> 2.6, >= 2.6.0)
+      puma (~> 2.7, >= 2.7.1)
       sass (~> 3.2, >= 3.2.13)
       sinatra (~> 1.4, >= 1.4.4)
       thor (~> 0.18, >= 0.18.1)
@@ -30,7 +30,7 @@ GEM
     haml (4.0.4)
       tilt
     liquid (2.2.2)
-    puma (2.6.0)
+    puma (2.7.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.1)
