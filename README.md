@@ -90,7 +90,7 @@ REQUIREMENTS
   * [Haml](http://haml-lang.com/) 4.0.4
   * [Sass](http://sass-lang.com/) 3.2.13
   * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.2.0
-  * [Liquid](http://www.liquidmarkup.org/) 2.2.2
+  * [Liquid](http://www.liquidmarkup.org/) 2.6.0
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/) 2.2.0
   * [Foreman](https://github.com/ddollar/foreman) 0.63.0
   * [Puma](http://puma.io/) 2.7.1

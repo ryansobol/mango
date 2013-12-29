@@ -7,7 +7,7 @@ PATH
       coffee-script (~> 2.2, >= 2.2.0)
       foreman (~> 0.63, >= 0.63.0)
       haml (~> 4.0, >= 4.0.4)
-      liquid (~> 2.2, >= 2.2.2)
+      liquid (~> 2.6, >= 2.6.0)
       puma (~> 2.7, >= 2.7.1)
       sass (~> 3.2, >= 3.2.13)
       sinatra (~> 1.4, >= 1.4.4)
@@ -29,7 +29,7 @@ GEM
       thor (>= 0.13.6)
     haml (4.0.4)
       tilt
-    liquid (2.2.2)
+    liquid (2.6.0)
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)

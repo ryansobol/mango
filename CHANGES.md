@@ -13,6 +13,7 @@
 * Upgrade thor to v0.18.1 [GH#93](https://github.com/ryansobol/mango/issues/93)
 * Upgrade puma to v2.7.1 [GH#90](https://github.com/ryansobol/mango/issues/90)
 * Upgrade bluecloth to v2.2.0 [GH#95](https://github.com/ryansobol/mango/issues/95)
+* Upgrade liquid to v2.6.0 [GH#96](https://github.com/ryansobol/mango/issues/96)
 
 ### Bugs
 
