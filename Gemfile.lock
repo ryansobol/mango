@@ -2,16 +2,16 @@ PATH
   remote: .
   specs:
     mango (0.7.1)
-      bluecloth (~> 2.1.0)
-      bundler (~> 1.3.5)
-      coffee-script (~> 2.2.0)
-      foreman (~> 0.63.0)
-      haml (~> 4.0.4)
-      liquid (~> 2.2.2)
-      puma (~> 2.6.0)
-      sass (~> 3.2.12)
-      sinatra (~> 1.4.4)
-      thor (~> 0.14.6)
+      bluecloth (~> 2.1, >= 2.1.0)
+      bundler (~> 1.3, >= 1.3.5)
+      coffee-script (~> 2.2, >= 2.2.0)
+      foreman (~> 0.63, >= 0.63.0)
+      haml (~> 4.0, >= 4.0.4)
+      liquid (~> 2.2, >= 2.2.2)
+      puma (~> 2.6, >= 2.6.0)
+      sass (~> 3.2, >= 3.2.12)
+      sinatra (~> 1.4, >= 1.4.4)
+      thor (~> 0.14, >= 0.14.6)
 
 GEM
   remote: http://rubygems.org/
@@ -59,6 +59,6 @@ PLATFORMS
 
 DEPENDENCIES
   mango!
-  rack-test (~> 0.6.0)
-  rspec (~> 2.14.1)
-  yard (~> 0.8.7.3)
+  rack-test (~> 0.6, >= 0.6.0)
+  rspec (~> 2.14, >= 2.14.1)
+  yard (~> 0.8, >= 0.8.7.3)

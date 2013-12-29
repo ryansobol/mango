@@ -80,26 +80,27 @@ REQUIREMENTS
 
 **Mango respects [Semantic Versioning](http://semver.org/).**
 
-### Required dependencies
+### Minimum required dependencies
 
-  * [Ruby](http://www.ruby-lang.org/) ~> 2.1.0
-  * [RubyGems](https://rubygems.org/) ~> 2.2.0 (bundled with Ruby)
-  * [Bundler](http://bundler.io/) ~> 1.3.5
-  * [Thor](https://github.com/wycats/thor) ~> 0.14.6
-  * [Sinatra](http://www.sinatrarb.com/) ~> 1.4.4
-  * [Haml](http://haml-lang.com/) ~> 4.0.4
-  * [Sass](http://sass-lang.com/) ~> 3.2.12
-  * [BlueCloth](http://deveiate.org/projects/BlueCloth) ~> 2.1.0
-  * [Liquid](http://www.liquidmarkup.org/) ~> 2.2.2
-  * [CoffeeScript](http://jashkenas.github.com/coffee-script/) ~> 2.2.0
-  * [Foreman](https://github.com/ddollar/foreman) ~> 0.63.0
-  * [Puma](http://puma.io/) ~> 2.6.0
+  * [Ruby](http://www.ruby-lang.org/) 2.1.0
+  * [RubyGems](https://rubygems.org/) 2.2.0 (bundled with Ruby)
+  * [Bundler](http://bundler.io/) 1.3.5
+  * [Thor](https://github.com/wycats/thor) 0.14.6
+  * [Sinatra](http://www.sinatrarb.com/) 1.4.4
+  * [Haml](http://haml-lang.com/) 4.0.4
+  * [Sass](http://sass-lang.com/) 3.2.12
+  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.1.0
+  * [Liquid](http://www.liquidmarkup.org/) 2.2.2
+  * [CoffeeScript](http://jashkenas.github.com/coffee-script/) 2.2.0
+  * [Foreman](https://github.com/ddollar/foreman) 0.63.0
+  * [Puma](http://puma.io/) 2.6.0
 
-### Optional development dependencies
+### Minimum development dependencies
 
-  * [Rack::Test](https://github.com/brynary/rack-test) ~> 0.6.0
-  * [RSpec](http://rspec.info/) ~> 2.14.1
-  * [YARD](http://yardoc.org/) ~> 0.8.7.3
+  * [Rack::Test](https://github.com/brynary/rack-test) 0.6.0
+  * [RSpec](http://rspec.info/) 2.14.1
+  * [YARD](http://yardoc.org/) 0.8.7.3
+
 
 INSTALLING
 ----------
