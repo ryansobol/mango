@@ -85,7 +85,7 @@ REQUIREMENTS
   * [Ruby](http://www.ruby-lang.org/) 2.1.0
   * [RubyGems](https://rubygems.org/) 2.2.0 (bundled with Ruby)
   * [Bundler](http://bundler.io/) 1.3.5
-  * [Thor](https://github.com/wycats/thor) 0.14.6
+  * [Thor](https://github.com/wycats/thor) 0.18.1
   * [Sinatra](http://www.sinatrarb.com/) 1.4.4
   * [Haml](http://haml-lang.com/) 4.0.4
   * [Sass](http://sass-lang.com/) 3.2.13

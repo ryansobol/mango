@@ -13,20 +13,20 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = ["~> 2.1", ">= 2.1.0"]
   s.required_rubygems_version = ["~> 2.2", ">= 2.2.0"]
 
-  s.add_runtime_dependency "bundler",       "~> 1.3", ">= 1.3.5"
-  s.add_runtime_dependency "thor",          "~> 0.14", ">= 0.14.6"
-  s.add_runtime_dependency "sinatra",       "~> 1.4", ">= 1.4.4"
-  s.add_runtime_dependency "haml",          "~> 4.0", ">= 4.0.4"
-  s.add_runtime_dependency "sass",          "~> 3.2", ">= 3.2.13"
-  s.add_runtime_dependency "liquid",        "~> 2.2", ">= 2.2.2"
-  s.add_runtime_dependency "bluecloth",     "~> 2.1", ">= 2.1.0"
-  s.add_runtime_dependency "coffee-script", "~> 2.2", ">= 2.2.0"
-  s.add_runtime_dependency "foreman",       "~> 0.63", ">= 0.63.0"
-  s.add_runtime_dependency "puma",          "~> 2.6", ">= 2.6.0"
+  s.add_runtime_dependency "bundler",       "~> 1.3",   ">= 1.3.5"
+  s.add_runtime_dependency "thor",          "~> 0.18",  ">= 0.18.1"
+  s.add_runtime_dependency "sinatra",       "~> 1.4",   ">= 1.4.4"
+  s.add_runtime_dependency "haml",          "~> 4.0",   ">= 4.0.4"
+  s.add_runtime_dependency "sass",          "~> 3.2",   ">= 3.2.13"
+  s.add_runtime_dependency "liquid",        "~> 2.2",   ">= 2.2.2"
+  s.add_runtime_dependency "bluecloth",     "~> 2.1",   ">= 2.1.0"
+  s.add_runtime_dependency "coffee-script", "~> 2.2",   ">= 2.2.0"
+  s.add_runtime_dependency "foreman",       "~> 0.63",  ">= 0.63.0"
+  s.add_runtime_dependency "puma",          "~> 2.6",   ">= 2.6.0"
 
-  s.add_development_dependency "rack-test", "~> 0.6", ">= 0.6.2"
-  s.add_development_dependency "rspec",     "~> 2.14", ">= 2.14.1"
-  s.add_development_dependency "yard",      "~> 0.8", ">= 0.8.7.3"
+  s.add_development_dependency "rack-test", "~> 0.6",   ">= 0.6.2"
+  s.add_development_dependency "rspec",     "~> 2.14",  ">= 2.14.1"
+  s.add_development_dependency "yard",      "~> 0.8",   ">= 0.8.7.3"
 
   s.bindir             = "exec"
   s.files              = `git ls-files`.split("\n")
