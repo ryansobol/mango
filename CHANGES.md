@@ -1,6 +1,6 @@
 # CHANGES
 
-## v0.8.0 / Not yet released
+## v0.8.0 / 2013-12-30
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.7.1...v0.8.0)
 
