@@ -89,7 +89,7 @@ REQUIREMENTS
   * [Sinatra](http://www.sinatrarb.com/) 1.4.4
   * [Haml](http://haml-lang.com/) 4.0.4
   * [Sass](http://sass-lang.com/) 3.2.13
-  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.1.0
+  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.2.0
   * [Liquid](http://www.liquidmarkup.org/) 2.2.2
   * [CoffeeScript](http://jashkenas.github.com/coffee-script/) 2.2.0
   * [Foreman](https://github.com/ddollar/foreman) 0.63.0
