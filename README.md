@@ -138,7 +138,7 @@ Then, create a `Gemfile` wit the following contents:
 
 I recommend installing Mango, and all its necessary components, inside your app's directory.
 
-    $ bundle install --path vendor/bundler --binstubs
+    $ bundle install --path vendor/bundle --binstubs
 
 ### Upgrading a Mango website
 

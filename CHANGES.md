@@ -1,5 +1,14 @@
 # CHANGES
 
+## v0.8.1 / Not yet released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.8.0...v0.8.1)
+
+### Bugs
+
+* Change bundler vendor directory name [GH#98](https://github.com/ryansobol/mango/issues/98)
+
+
 ## v0.8.0 / 2013-12-30
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.7.1...v0.8.0)
