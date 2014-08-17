@@ -9,12 +9,12 @@ Copyright (c) 2013 Ryan Sobol. Licensed under the MIT license.  Please see the {
   * **Issue Tracker**: [https://github.com/ryansobol/mango/issues](https://github.com/ryansobol/mango/issues)
   * **Wiki**: [http://wiki.github.com/ryansobol/mango](http://wiki.github.com/ryansobol/mango)
 
-SYNOPSIS
+Synopsis
 --------
 
 **Mango is a dynamic, database-free, and open source website framework that is designed to make life easier for small teams of developers, designers, and writers.**
 
-FEATURES
+Features
 --------
 
 Mango eliminates the barriers to collaboration by decoupling from one another the activities of writing, theming, publishing, extending, and maintaining a website.  Mango websites are also decoupled from a database, and instead utilize file-based storage and "convention over configuration".
@@ -102,7 +102,7 @@ Dependencies
   * [YARD](http://yardoc.org/)
 
 
-INSTALLING
+Installing
 ----------
 
 ### Ensuring Ruby is installed
@@ -146,7 +146,7 @@ Simply edit the Mango version in your website's `Gemfile` and re-install.
 
     $ bundle install
 
-GETTING STARTED
+Getting Started
 ---------------
 
 ### Generating a Mango website
@@ -213,7 +213,7 @@ Now that the newly generated Mango website is running, here's how the website is
   * If no static or template file is found, Mango tries to route the request to a custom route handler if one exists.
   * Finally, Mango routes unknown HTTP requests to a customizable 404 page found in either `themes/default/public` or `themes/default/views`.
 
-WRITING
+Writing
 -------
 
 Authors write and revise copy in text file called a content page.  A content page contains two optional components -- a body and a header.  Though optional, the majority of authors will utilize both components.
@@ -300,12 +300,12 @@ Calling `<%= page.content %>` in a view template would yield:
 
     <h2>You did it!</h2>
 
-THEMING
+Theming
 -------
 
 Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/3).
 
-PUBLISHING
+Publishing
 ----------
 
 ### Deploying to the cloud with Heroku
@@ -346,12 +346,12 @@ Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#is
 
 Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/5).
 
-EXTENDING
+Extending
 ---------
 
 Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/73).
 
-PHILOSOPHY
+Philosophy
 ----------
 
 ### Painless collaboration
@@ -362,7 +362,7 @@ Mango is designed to make life easier for small, integrated teams.  They prefer 
 
 The Ruby on Rails revolution has arrived.  The world's next-generation web applications are built with powerful tools from the Ruby eco-system.  Mango is designed to harness this power, but delivered in a smaller package to meet the needs of simpler websites.
 
-CONTRIBUTING
+Contributing
 ------------
 
 **Thank you for taking the time to help improve Mango.**
@@ -393,7 +393,7 @@ Mango has a plethora of documentation to bring a Rubyist of any level up to spee
 
 Then point your browser to `http://0.0.0.0:8808`
 
-CREDITS
+Credits
 -------
 
 Thanks to all of my friends and family for their invaluable support!
