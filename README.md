@@ -1,7 +1,7 @@
 Mango release 0.9.0 (Not Yet Released)
 ======================================
 
-[![wercker status](https://app.wercker.com/status/5e6e1fb104563cbb7829be1eb63e14fc/m/master "wercker status")](https://app.wercker.com/project/bykey/5e6e1fb104563cbb7829be1eb63e14fc)
+[![wercker status](https://app.wercker.com/status/5e6e1fb104563cbb7829be1eb63e14fc/s/master "wercker status")](https://app.wercker.com/project/bykey/5e6e1fb104563cbb7829be1eb63e14fc)
 
 Copyright (c) 2014 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
