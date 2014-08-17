@@ -1,7 +1,7 @@
 require "thor"
 
 module Mango
-  # `Mango::Runner` is a `Thor` class and is used in combination with the `exec/mango` executable.
+  # `Mango::Runner` is a `Thor` class and is used in combination with the `bin/mango` executable.
   #
   # @see https://github.com/wycats/thor/wiki
   #

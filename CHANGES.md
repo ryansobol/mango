@@ -1,12 +1,16 @@
 # CHANGES
 
-## v0.8.1 / Not yet released
+## v0.9.0 / Not yet released
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.8.0...v0.8.1)
 
 ### Bugs
 
 * Change bundler vendor directory name [GH#98](https://github.com/ryansobol/mango/issues/98)
+
+### Dependencies
+
+* Use standard bundler infrastructure [GH#103](https://github.com/ryansobol/mango/issues/103)
 
 
 ## v0.8.0 / 2013-12-30

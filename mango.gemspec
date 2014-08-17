@@ -28,8 +28,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec",     "~> 2.14",  ">= 2.14.1"
   s.add_development_dependency "yard",      "~> 0.8",   ">= 0.8.7.3"
 
-  s.bindir             = "exec"
+  s.bindir             = "bin"
   s.files              = `git ls-files`.split("\n")
   s.test_files         = `git ls-files -- spec/*`.split("\n")
-  s.executables        = `git ls-files -- exec/*`.split("\n").map { |f| File.basename(f) }
+  s.executables        = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 end
