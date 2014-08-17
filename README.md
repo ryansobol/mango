@@ -110,7 +110,7 @@ Installing
 I highly recommend installing Ruby with a [version management tool](https://www.ruby-toolbox.com/categories/ruby_version_management).
 
     $ ruby -v
-    ruby 2.1.0p0 (2013-12-25 revision 44422) [x86_64-darwin13.0]
+    ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-darwin13.0]
 
 **TIP:** The revision and arch-type may differ on your machine.
 

@@ -12,6 +12,7 @@
 
 * Use standard bundler infrastructure [GH#103](https://github.com/ryansobol/mango/issues/103)
 * Upgrade sinatra to v1.4.5 [GH#104](https://github.com/ryansobol/mango/issues/104)
+* Upgrade ruby to v2.1.2 and rubygems to v2.2.2 [GH#107](https://github.com/ryansobol/mango/issues/107)
 
 ### Documentation
 
