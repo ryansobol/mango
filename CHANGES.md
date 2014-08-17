@@ -11,6 +11,7 @@
 ### Dependencies
 
 * Use standard bundler infrastructure [GH#103](https://github.com/ryansobol/mango/issues/103)
+* Upgrade sinatra to v1.4.5 [GH#104](https://github.com/ryansobol/mango/issues/104)
 
 
 ## v0.8.0 / 2013-12-30
