@@ -348,10 +348,6 @@ Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#is
 
 Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/5).
 
-Extending
----------
-
-Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/73).
 
 Philosophy
 ----------
