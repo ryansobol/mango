@@ -16,15 +16,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,15 +51,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -86,15 +86,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -121,15 +121,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -156,15 +156,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -191,15 +191,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -226,15 +226,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -261,15 +261,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -298,15 +298,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -333,15 +333,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -371,15 +371,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -410,15 +410,15 @@ describe Mango::Application do
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -440,9 +440,9 @@ describe Mango::Application do
     it "raises an exception" do
       path    = FIXTURE_ROOT + "themes/default/views/unregistered.extension"
       message = "Cannot find registered engine for view template file -- #{path}"
-      lambda {
+      expect {
         get "/page_with_unregistered_view"
-      }.should raise_exception(Mango::Application::RegisteredEngineNotFound, message)
+      }.to raise_exception(Mango::Application::RegisteredEngineNotFound, message)
     end
   end
 
@@ -452,9 +452,9 @@ describe Mango::Application do
     it "raises an exception" do
       path    = FIXTURE_ROOT + "themes/default/views/missing.haml"
       message = "Cannot find view template file -- #{path}"
-      lambda {
+      expect {
         get "/page_with_missing_view"
-      }.should raise_exception(Mango::Application::ViewTemplateNotFound, message)
+      }.to raise_exception(Mango::Application::ViewTemplateNotFound, message)
     end
   end
 
@@ -466,15 +466,15 @@ describe Mango::Application do
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -498,15 +498,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -534,15 +534,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -569,15 +569,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -604,15 +604,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -640,15 +640,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -683,15 +683,15 @@ describe Mango::Application do
       end
 
       it "returns 200 status code" do
-        last_response.should be_ok
+        expect(last_response).to be_ok
       end
 
       it "sends the correct Content-Type header" do
-        last_response["Content-Type"].should == "text/html;charset=utf-8"
+        expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
       end
 
       it "sends the correct body content" do
-        last_response.body.should == "/route/addition isolated and handled"
+        expect(last_response.body).to eq("/route/addition isolated and handled")
       end
     end
   end

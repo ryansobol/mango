@@ -11,28 +11,28 @@ describe Mango::Runner do
     end
 
     it "is a kind of Thor" do
-      @runner.should be_a_kind_of(Thor)
+      expect(@runner).to be_a_kind_of(Thor)
     end
 
     it "is a kind of Thor::Actions" do
-      @runner.should be_a_kind_of(Thor::Actions)
+      expect(@runner).to be_a_kind_of(Thor::Actions)
     end
 
     it "adds runtime options" do
-      Mango::Runner.class_options.should have_key(:force)
-      Mango::Runner.class_options.should have_key(:pretend)
-      Mango::Runner.class_options.should have_key(:quiet)
-      Mango::Runner.class_options.should have_key(:skip)
+      expect(Mango::Runner.class_options).to have_key(:force)
+      expect(Mango::Runner.class_options).to have_key(:pretend)
+      expect(Mango::Runner.class_options).to have_key(:quiet)
+      expect(Mango::Runner.class_options).to have_key(:skip)
     end
 
     it "has a source root" do
-      @runner.source_paths.should include (PROJECT_ROOT + "lib/mango/templates").to_s
+      expect(@runner.source_paths).to include (PROJECT_ROOT + "lib/mango/templates").to_s
     end
 
     it "has a create task" do
       task = Mango::Runner.tasks["create"]
-      task.name.should == "create"
-      task.description.should == "Creates a new Mango application at the specified path"
+      expect(task.name).to eq("create")
+      expect(task.description).to eq("Creates a new Mango application at the specified path")
     end
   end
 
@@ -51,13 +51,13 @@ describe Mango::Runner do
     end
 
     it "generates the destination root" do
-      RUNNER_ROOT.should be_a_directory
+      expect(RUNNER_ROOT).to be_a_directory
     end
 
     it "generates .gitignore" do
       expected = RUNNER_ROOT + ".gitignore"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 .DS_Store
 .bundle
 .sass-cache
@@ -68,8 +68,8 @@ vendor/bundle
 
     it "generates config.ru" do
       expected = RUNNER_ROOT + "config.ru"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 require "mango"
 run Mango::Application
       EOS
@@ -77,8 +77,8 @@ run Mango::Application
 
     it "generates Gemfile" do
       expected = RUNNER_ROOT + "Gemfile"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 source "http://rubygems.org"
 ruby "2.1.0"
 gem "mango", "~> 0.8.0"
@@ -87,16 +87,16 @@ gem "mango", "~> 0.8.0"
 
     it "generates Procfile" do
       expected = RUNNER_ROOT + "Procfile"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 web: bundle exec puma config.ru -p $PORT
       EOS
     end
 
     it "generates README.md" do
       expected = RUNNER_ROOT + "README.md"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 Your Mango Application Name
 ===========================
 
@@ -125,13 +125,13 @@ Credits
     ###############################################################################################
 
     it "generates content/" do
-      (RUNNER_ROOT + "content").should be_a_directory
+      expect(RUNNER_ROOT + "content").to be_a_directory
     end
 
     it "generates content/index.erb" do
       expected = RUNNER_ROOT + "content/index.erb"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 ---
 title: Congratulations!
 ---
@@ -144,23 +144,23 @@ title: Congratulations!
     ###############################################################################################
 
     it "generates themes/" do
-      (RUNNER_ROOT + "themes").should be_a_directory
+      expect(RUNNER_ROOT + "themes").to be_a_directory
     end
 
     it "generates themes/default" do
-      (RUNNER_ROOT + "themes/default").should be_a_directory
+      expect(RUNNER_ROOT + "themes/default").to be_a_directory
     end
 
     ###############################################################################################
 
     it "generates themes/default/javascripts" do
-      (RUNNER_ROOT + "themes/default/javascripts").should be_a_directory
+      expect(RUNNER_ROOT + "themes/default/javascripts").to be_a_directory
     end
 
     it "generates themes/default/javascripts/timer.coffee" do
       expected = RUNNER_ROOT + "themes/default/javascripts/timer.coffee"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 fire = ->
   gap = Math.floor(Math.random() * 1201) + 600
   setTimeout(fire, gap)
@@ -173,19 +173,19 @@ window.onload = fire
     ###############################################################################################
 
     it "generates themes/default/public" do
-      (RUNNER_ROOT + "themes/default/public").should be_a_directory
+      expect(RUNNER_ROOT + "themes/default/public").to be_a_directory
     end
 
     it "generates themes/default/public/favicon.ico" do
       expected = RUNNER_ROOT + "themes/default/public/favicon.ico"
-      expected.should be_a_file
-      File.read(expected).should == ""
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq("")
     end
 
     it "generates themes/default/public/robots.txt" do
       expected = RUNNER_ROOT + "themes/default/public/robots.txt"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
 #
 # To ban all spiders from the entire site uncomment the next two lines:
@@ -197,43 +197,43 @@ window.onload = fire
     ###############################################################################################
 
     it "generates themes/default/public/images" do
-      (RUNNER_ROOT + "themes/default/public/images").should be_a_directory
+      expect(RUNNER_ROOT + "themes/default/public/images").to be_a_directory
     end
 
     it "generates themes/default/public/images" do
       expected = RUNNER_ROOT + "themes/default/public/images/particles.gif"
-      expected.should be_a_file
-      File.open(expected, "rb") { |f| f.read.size.should == 2469 }
+      expect(expected).to be_a_file
+      File.open(expected, "rb") { |f| expect(f.read.size).to eq(2469) }
     end
 
     ###############################################################################################
 
     it "generates themes/default/public/javascripts" do
-      (RUNNER_ROOT + "themes/default/public/javascripts").should be_a_directory
+      expect(RUNNER_ROOT + "themes/default/public/javascripts").to be_a_directory
     end
 
     it "generates themes/default/public/javascripts/fireworks.js" do
       expected = RUNNER_ROOT + "themes/default/public/javascripts/fireworks.js"
-      expected.should be_a_file
-      File.read(expected).size.should == 17167
+      expect(expected).to be_a_file
+      expect(File.read(expected).size).to eq(17167)
     end
 
     ###############################################################################################
 
     it "generates themes/default/public/stylesheets" do
-      (RUNNER_ROOT + "themes/default/public/stylesheets").should be_a_directory
+      expect(RUNNER_ROOT + "themes/default/public/stylesheets").to be_a_directory
     end
 
     it "generates themes/default/public/stylesheets/fireworks.css" do
       expected = RUNNER_ROOT + "themes/default/public/stylesheets/fireworks.css"
-      expected.should be_a_file
-      File.read(expected).size.should == 717
+      expect(expected).to be_a_file
+      expect(File.read(expected).size).to eq(717)
     end
 
     it "generates themes/default/public/stylesheets/reset.css" do
       expected = RUNNER_ROOT + "themes/default/public/stylesheets/reset.css"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 /* v1.0 | 20080212 */
 
 html, body, div, span, applet, object, iframe,
@@ -292,13 +292,13 @@ table {
     ###############################################################################################
 
     it "generates themes/default/stylesheets" do
-      (RUNNER_ROOT + "themes/default/stylesheets").should be_a_directory
+      expect(RUNNER_ROOT + "themes/default/stylesheets").to be_a_directory
     end
 
     it "generates themes/default/stylesheets/screen.sass" do
       expected = RUNNER_ROOT + "themes/default/stylesheets/screen.sass"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 body
   background-color: #D05C12
   font-family: "Lobster", arial, serif
@@ -320,13 +320,13 @@ h2
     ###############################################################################################
 
     it "generates themes/default/views" do
-      (RUNNER_ROOT + "themes/default/views").should be_a_directory
+      expect(RUNNER_ROOT + "themes/default/views").to be_a_directory
     end
 
     it "generates themes/default/views/404.haml" do
       expected = RUNNER_ROOT + "themes/default/views/404.haml"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 !!! 5
 %html
   %head
@@ -353,8 +353,8 @@ h2
 
     it "generates themes/default/views/layout.haml" do
       expected = RUNNER_ROOT + "themes/default/views/layout.haml"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 !!! 5
 %html
   %head
@@ -380,8 +380,8 @@ h2
 
     it "generates themes/default/views/page.haml" do
       expected = RUNNER_ROOT + "themes/default/views/page.haml"
-      expected.should be_a_file
-      File.read(expected).should == <<-EOS
+      expect(expected).to be_a_file
+      expect(File.read(expected)).to eq <<-EOS
 = page.content
       EOS
     end

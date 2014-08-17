@@ -17,15 +17,15 @@ describe Mango::Application do
       end
 
       it "returns 404 status code" do
-        last_response.should be_not_found
+        expect(last_response).to be_not_found
       end
 
       it "sends the correct Content-Type header" do
-        last_response["Content-Type"].should == "text/html;charset=utf-8"
+        expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
       end
 
       it "sends the correct body content" do
-        last_response.body.should == <<-EXPECTED
+        expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -63,15 +63,15 @@ describe Mango::Application do
       end
 
       it "returns 404 status code" do
-        last_response.should be_not_found
+        expect(last_response).to be_not_found
       end
 
       it "sends the correct Content-Type header" do
-        last_response["Content-Type"].should == "text/html;charset=utf-8"
+        expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
       end
 
       it "sends the correct body content" do
-        last_response.body.should == <<-EXPECTED
+        expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -121,15 +121,15 @@ describe Mango::Application do
       end
 
       it "returns 404 status code" do
-        last_response.should be_not_found
+        expect(last_response).to be_not_found
       end
 
       it "sends the correct Content-Type header" do
-        last_response["Content-Type"].should == "text/html;charset=utf-8"
+        expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
       end
 
       it "sends the correct body content" do
-        last_response.body.should == <<-EXPECTED
+        expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -179,15 +179,15 @@ describe Mango::Application do
       end
 
       it "returns 404 status code" do
-        last_response.should be_not_found
+        expect(last_response).to be_not_found
       end
 
       it "sends the correct Content-Type header" do
-        last_response["Content-Type"].should == "text/html;charset=utf-8"
+        expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
       end
 
       it "sends the correct body content" do
-        last_response.body.should == <<-EXPECTED
+        expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -237,16 +237,16 @@ describe Mango::Application do
       end
 
       it "returns 404 status code" do
-        last_response.should be_not_found
+        expect(last_response).to be_not_found
       end
 
       it "sends the correct Content-Type header" do
-        last_response["Content-Type"].should == "text/html;charset=utf-8"
+        expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
       end
 
       it "sends the correct body content" do
         expected = "<!DOCTYPE html><title>404 Page Not Found</title><h1>404 Page Not Found</h1>"
-        last_response.body.should == expected
+        expect(last_response.body).to eq(expected)
       end
     end
   end

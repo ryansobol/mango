@@ -16,15 +16,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/css;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/css;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 .main {
   background-image: url("sass.sass"); }
 
@@ -48,15 +48,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/css;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/css;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 .main {
   background-image: url("scss.scss"); }
 
@@ -80,15 +80,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/css;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/css;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 table.hl {
   margin: 2em 0; }
   table.hl td.ln {
@@ -110,15 +110,15 @@ li {
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/css;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/css;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 /*
 html5doctor.com Reset Stylesheet
 v1.4.1
@@ -158,15 +158,15 @@ time, mark, audio, video {
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/css;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/css;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 #override {
   font-weight: bold;
 }
@@ -182,15 +182,15 @@ time, mark, audio, video {
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/css;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/css;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 #default {
   background-color: black;
 }
@@ -206,15 +206,15 @@ time, mark, audio, video {
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/css;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/css;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 #another {
   color: red;
 }
@@ -230,15 +230,15 @@ time, mark, audio, video {
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -262,15 +262,15 @@ time, mark, audio, video {
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -294,15 +294,15 @@ time, mark, audio, video {
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -333,15 +333,15 @@ time, mark, audio, video {
       end
 
       it "returns 200 status code" do
-        last_response.should be_ok
+        expect(last_response).to be_ok
       end
 
       it "sends the correct Content-Type header" do
-        last_response["Content-Type"].should == "text/html;charset=utf-8"
+        expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
       end
 
       it "sends the correct body content" do
-        last_response.body.should == "/stylesheets/addition.css isolated and handled"
+        expect(last_response.body).to eq("/stylesheets/addition.css isolated and handled")
       end
     end
   end

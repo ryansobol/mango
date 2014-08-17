@@ -5,7 +5,7 @@ describe URI, ".directory?(uri_path)" do
     let(:uri_path) { "" }
 
     it "is true" do
-      URI.directory?(uri_path).should be_true
+      expect(URI.directory?(uri_path)).to be_truthy
     end
   end
 
@@ -15,7 +15,7 @@ describe URI, ".directory?(uri_path)" do
     let(:uri_path) { "/" }
 
     it "is true" do
-      URI.directory?(uri_path).should be_true
+      expect(URI.directory?(uri_path)).to be_truthy
     end
   end
 
@@ -25,7 +25,7 @@ describe URI, ".directory?(uri_path)" do
     let(:uri_path) {  "/images/" }
 
     it "is true" do
-      URI.directory?(uri_path).should be_true
+      expect(URI.directory?(uri_path)).to be_truthy
     end
   end
 
@@ -35,7 +35,7 @@ describe URI, ".directory?(uri_path)" do
     let(:uri_path) {  "/images" }
 
     it "is false" do
-      URI.directory?(uri_path).should be_false
+      expect(URI.directory?(uri_path)).to be_falsey
     end
   end
 end

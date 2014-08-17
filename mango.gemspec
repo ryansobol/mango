@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "puma",          "~> 2.7",   ">= 2.7.1"
 
   s.add_development_dependency "rack-test", "~> 0.6",   ">= 0.6.2"
-  s.add_development_dependency "rspec",     "~> 2.14",  ">= 2.14.1"
+  s.add_development_dependency "rspec",     "~> 3.0",   ">= 3.0.0"
   s.add_development_dependency "yard",      "~> 0.8",   ">= 0.8.7.3"
 
   s.bindir             = "bin"

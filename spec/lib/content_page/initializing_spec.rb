@@ -24,27 +24,27 @@ content: Will also not persist
     end
 
     it "has the correct number of attributes" do
-      @page.attributes.should have(6).items
+      expect(@page.attributes.size).to eq(6)
     end
 
     it "has the correct title attribute" do
-      @page.title.should == "Delicious Cake"
+      expect(@page.title).to eq("Delicious Cake")
     end
 
     it "has the correct view attribute" do
-      @page.view.should == "blog.haml"
+      expect(@page.view).to eq("blog.haml")
     end
 
     it "has the correct engine attribute" do
-      @page.engine.should == @expected_engine
+      expect(@page.engine).to eq(@expected_engine)
     end
 
     it "has the correct data attribute" do
-      @page.data.should == @expected_data
+      expect(@page.data).to eq(@expected_data)
     end
 
     it "has the correct body attribute" do
-      @page.body.should == <<-EOS
+      expect(@page.body).to eq <<-EOS
 %h1= page.title
 %p So delicious!
 %p= page.view
@@ -56,7 +56,7 @@ content: Will also not persist
     end
 
     it "has the correct content attribute" do
-      @page.content.should == <<-EOS
+      expect(@page.content).to eq <<-EOS
 <h1>Delicious Cake</h1>
 <p>So delicious!</p>
 <p>blog.haml</p>
@@ -107,31 +107,31 @@ view: blog.haml
     end
 
     it "has the correct number of attributes" do
-      @page.attributes.should have(6).items
+      expect(@page.attributes.size).to eq(6)
     end
 
     it "has the correct title attribute" do
-      @page.title.should == "Chocolate Pie"
+      expect(@page.title).to eq("Chocolate Pie")
     end
 
     it "has the correct view attribute" do
-      @page.view.should == "blog.haml"
+      expect(@page.view).to eq("blog.haml")
     end
 
     it "has the correct engine attribute" do
-      @page.engine.should == @expected_engine
+      expect(@page.engine).to eq(@expected_engine)
     end
 
     it "has the correct data attribute" do
-      @page.data.should == @expected_data
+      expect(@page.data).to eq(@expected_data)
     end
 
     it "has the correct body attribute" do
-      @page.body.should == "### Sweet and crumbly!\n"
+      expect(@page.body).to eq("### Sweet and crumbly!\n")
     end
 
     it "has the correct content attribute" do
-      @page.content.should == "<h3>Sweet and crumbly!</h3>"
+      expect(@page.content).to eq("<h3>Sweet and crumbly!</h3>")
     end
   end
 
@@ -160,27 +160,27 @@ view: blog.haml
     end
 
     it "has the correct number of attributes" do
-      @page.attributes.should have(6).items
+      expect(@page.attributes.size).to eq(6)
     end
 
     it "has the correct title attribute" do
-      @page.title.should == "Cake Pops"
+      expect(@page.title).to eq("Cake Pops")
     end
 
     it "has the correct view attribute" do
-      @page.view.should == "blog.haml"
+      expect(@page.view).to eq("blog.haml")
     end
 
     it "has the correct engine attribute" do
-      @page.engine.should == @expected_engine
+      expect(@page.engine).to eq(@expected_engine)
     end
 
     it "has the correct data attribute" do
-      @page.data.should == @expected_data
+      expect(@page.data).to eq(@expected_data)
     end
 
     it "has the correct body attribute" do
-      @page.body.should == <<-EOS
+      expect(@page.body).to eq <<-EOS
 <h1><%= page.title %></h1>
 <p>Did you mean <%= 'crack' %> pops?</p>
 <p><%= page.view %></p>
@@ -195,7 +195,7 @@ view: blog.haml
     end
 
     it "has the correct content attribute" do
-      @page.content.should == <<-EOS
+      expect(@page.content).to eq <<-EOS
 <h1>Cake Pops</h1>
 <p>Did you mean crack pops?</p>
 <p>blog.haml</p>
@@ -257,31 +257,31 @@ view: blog.liquid
     end
 
     it "has the correct number of attributes" do
-      @page.attributes.should have(6).items
+      expect(@page.attributes.size).to eq(6)
     end
 
     it "converts itself to liquid format" do
-      @page.attributes.should == @page.to_liquid
+      expect(@page.attributes).to eq(@page.to_liquid)
     end
 
     it "has the correct title attribute" do
-      @page.title.should == "Cake Pops"
+      expect(@page.title).to eq("Cake Pops")
     end
 
     it "has the correct view attribute" do
-      @page.view.should == "blog.liquid"
+      expect(@page.view).to eq("blog.liquid")
     end
 
     it "has the correct engine attribute" do
-      @page.engine.should == @expected_engine
+      expect(@page.engine).to eq(@expected_engine)
     end
 
     it "has the correct data attribute" do
-      @page.data.should == @expected_data
+      expect(@page.data).to eq(@expected_data)
     end
 
     it "has the correct body attribute" do
-      @page.body.should == <<-EOS
+      expect(@page.body).to eq <<-EOS
 <h1>{{ page.title }}</h1>
 <p>Did you mean {{ 'crack' }} pops?</p>
 <p>{{ page.view }}</p>
@@ -296,7 +296,7 @@ view: blog.liquid
     end
 
     it "has the correct content attribute" do
-      @page.content.should == <<-EOS
+      expect(@page.content).to eq <<-EOS
 <h1>Cake Pops</h1>
 <p>Did you mean crack pops?</p>
 <p>blog.liquid</p>
@@ -349,31 +349,31 @@ view: blog.haml
     end
 
     it "has the correct number of attributes" do
-      @page.attributes.should have(6).items
+      expect(@page.attributes.size).to eq(6)
     end
 
     it "has the correct title attribute" do
-      @page.title.should == "Delicious Cake"
+      expect(@page.title).to eq("Delicious Cake")
     end
 
     it "has the correct view attribute" do
-      @page.view.should == "blog.haml"
+      expect(@page.view).to eq("blog.haml")
     end
 
     it "has the correct engine attribute" do
-      @page.engine.should == Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"]
+      expect(@page.engine).to eq(Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"])
     end
 
     it "has the correct data attribute" do
-      @page.data.should == @expected_data
+      expect(@page.data).to eq(@expected_data)
     end
 
     it "has the correct body attribute" do
-      @page.body.should be_empty
+      expect(@page.body).to be_empty
     end
 
     it "has the correct content attribute" do
-      @page.content.should be_empty
+      expect(@page.content).to be_empty
     end
   end
 
@@ -388,27 +388,27 @@ EOS
     end
 
     it "has the correct number of attributes" do
-      @page.attributes.should have(5).items
+      expect(@page.attributes.size).to eq(5)
     end
 
     it "has the correct view attribute" do
-      @page.view.should == "page.haml"
+      expect(@page.view).to eq("page.haml")
     end
 
     it "has the correct engine attribute" do
-      @page.engine.should == Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"]
+      expect(@page.engine).to eq(Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"])
     end
 
     it "has the correct data attribute" do
-      @page.data.should == @expected_data
+      expect(@page.data).to eq(@expected_data)
     end
 
     it "has the correct body attribute" do
-      @page.body.should == @expected_data
+      expect(@page.body).to eq(@expected_data)
     end
 
     it "has the correct content attribute" do
-      @page.content.should == "<h3>So delicious!</h3>"
+      expect(@page.content).to eq("<h3>So delicious!</h3>")
     end
   end
 
@@ -424,31 +424,31 @@ EOS
     end
 
     it "saves the data" do
-      @page.data.should == @expected_data
+      expect(@page.data).to eq(@expected_data)
     end
 
     it "has the correct number of attributes" do
-      @page.attributes.should have(5).items
+      expect(@page.attributes.size).to eq(5)
     end
 
     it "has the correct view attribute" do
-      @page.view.should == "page.haml"
+      expect(@page.view).to eq("page.haml")
     end
 
     it "has the correct engine attribute" do
-      @page.engine.should == Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"]
+      expect(@page.engine).to eq(Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"])
     end
 
     it "has the correct data attribute" do
-      @page.data.should == @expected_data
+      expect(@page.data).to eq(@expected_data)
     end
 
     it "has the correct body attribute" do
-      @page.body.should be_empty
+      expect(@page.body).to be_empty
     end
 
     it "has the correct content attribute" do
-      @page.content.should be_empty
+      expect(@page.content).to be_empty
     end
   end
 
@@ -460,31 +460,31 @@ EOS
     end
 
     it "saves the data" do
-      @page.data.should == ""
+      expect(@page.data).to eq("")
     end
 
     it "has the correct number of attributes" do
-      @page.attributes.should have(5).items
+      expect(@page.attributes.size).to eq(5)
     end
 
     it "has the correct view attribute" do
-      @page.view.should == "page.haml"
+      expect(@page.view).to eq("page.haml")
     end
 
     it "has the correct engine attribute" do
-      @page.engine.should == Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"]
+      expect(@page.engine).to eq(Mango::ContentPage::DEFAULT_ATTRIBUTES["engine"])
     end
 
     it "has the correct data attribute" do
-      @page.data.should be_empty
+      expect(@page.data).to be_empty
     end
 
     it "has the correct body attribute" do
-      @page.body.should be_empty
+      expect(@page.body).to be_empty
     end
 
     it "has the correct content attribute" do
-      @page.content.should be_empty
+      expect(@page.content).to be_empty
     end
   end
 
@@ -501,9 +501,9 @@ EOS
 
     it "raises an exception" do
       expected_message = "(<unknown>): mapping values are not allowed in this context at line 2 column 15"
-      lambda {
+      expect {
         Mango::ContentPage.new(data: @expected_data)
-      }.should raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
+      }.to raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
     end
   end
 
@@ -520,9 +520,9 @@ EOS
 
     it "raises an exception" do
       expected_message = 'Cannot parse header -- "This is not a Hash"'
-      lambda {
+      expect {
         Mango::ContentPage.new(data: @expected_data)
-      }.should raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
+      }.to raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
     end
   end
 
@@ -535,9 +535,9 @@ EOS
 
     it "raises an exception" do
       expected_message = "Cannot find registered content engine -- unknown"
-      lambda {
+      expect {
         Mango::ContentPage.new(engine: @unknown_engine)
-      }.should raise_exception(ArgumentError, expected_message)
+      }.to raise_exception(ArgumentError, expected_message)
     end
   end
 
@@ -563,7 +563,7 @@ until there is no Mango left.<br/>
 Not even for Mango!</p>
       EOS
 
-      @page.content.should == expected.strip
+      expect(@page.content).to eq(expected.strip)
     end
   end
 end

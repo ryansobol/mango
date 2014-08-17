@@ -16,15 +16,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/plain;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/plain;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 User-agent: *
 Disallow: /cgi-bin/
       EXPECTED
@@ -39,15 +39,15 @@ Disallow: /cgi-bin/
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -90,15 +90,15 @@ Disallow: /cgi-bin/
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == @expected_body
+      expect(last_response.body).to eq(@expected_body)
     end
   end
 
@@ -110,16 +110,16 @@ Disallow: /cgi-bin/
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "image/jpeg"
+      expect(last_response["Content-Type"]).to eq("image/jpeg")
     end
 
     it "sends the correct body content" do
       content_path = File.join(Mango::Application.public_dir, "images", "ripe-mango.jpg")
-      last_response.body.should == File.open(content_path, "rb").read
+      expect(last_response.body).to eq(File.open(content_path, "rb").read)
     end
   end
 
@@ -131,15 +131,15 @@ Disallow: /cgi-bin/
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -163,15 +163,15 @@ Disallow: /cgi-bin/
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -194,15 +194,15 @@ Disallow: /cgi-bin/
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>

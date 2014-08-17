@@ -5,7 +5,7 @@ describe String, "#templatize" do
     let(:file_name) { "blog.haml" }
 
     it "converts it to a Sinatra-compliant template name" do
-      file_name.templatize.should eq(:blog)
+      expect(file_name.templatize).to eq(:blog)
     end
   end
 
@@ -13,7 +13,7 @@ describe String, "#templatize" do
     let(:file_name) { "blog/home.erb" }
 
     it "converts it to a Sinatra-compliant template name" do
-      file_name.templatize.should eq(:"blog/home")
+      expect(file_name.templatize).to eq(:"blog/home")
     end
   end
 
@@ -21,7 +21,7 @@ describe String, "#templatize" do
     let(:file_name) { "page.html.liquid" }
 
     it "converts it to a Sinatra-compliant template name" do
-      file_name.templatize.should eq(:"page.html")
+      expect(file_name.templatize).to eq(:"page.html")
     end
   end
 
@@ -29,7 +29,7 @@ describe String, "#templatize" do
     let(:file_name) { "article/post.html.haml" }
 
     it "converts it to a Sinatra-compliant template name" do
-      file_name.templatize.should eq(:"article/post.html")
+      expect(file_name.templatize).to eq(:"article/post.html")
     end
   end
 end

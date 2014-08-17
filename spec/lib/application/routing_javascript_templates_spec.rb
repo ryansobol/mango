@@ -16,15 +16,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "application/javascript;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("application/javascript;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 (function() {
   var kids;
 
@@ -52,15 +52,15 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "application/javascript;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("application/javascript;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 (function() {
   if (happy && knowsIt) {
     clapsHands();
@@ -82,11 +82,11 @@ describe Mango::Application do
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "application/javascript;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("application/javascript;charset=utf-8")
     end
 
     it "sends the correct body content" do
@@ -101,7 +101,7 @@ if (this.studyingEconomics) {
 }
       EXPECTED
 
-      last_response.body.should == expected
+      expect(last_response.body).to eq(expected)
     end
   end
 
@@ -113,15 +113,15 @@ if (this.studyingEconomics) {
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "application/javascript;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("application/javascript;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == "var bitlist = [1, 0, 1, 0, 0, 1, 1, 1, 0];\n"
+      expect(last_response.body).to eq("var bitlist = [1, 0, 1, 0, 0, 1, 1, 1, 0];\n")
     end
   end
 
@@ -133,11 +133,11 @@ if (this.studyingEconomics) {
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "application/javascript;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("application/javascript;charset=utf-8")
     end
 
     it "sends the correct body content" do
@@ -149,7 +149,7 @@ var yearsOld = {
 };
       EXPECTED
 
-      last_response.body.should == expected
+      expect(last_response.body).to eq(expected)
     end
   end
 
@@ -161,11 +161,11 @@ var yearsOld = {
     end
 
     it "returns 200 status code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "application/javascript;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("application/javascript;charset=utf-8")
     end
 
     it "sends the correct body content" do
@@ -178,7 +178,7 @@ if (opposite) {
 }
       EXPECTED
 
-      last_response.body.should == expected
+      expect(last_response.body).to eq(expected)
     end
   end
 
@@ -190,15 +190,15 @@ if (opposite) {
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -222,15 +222,15 @@ if (opposite) {
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -254,15 +254,15 @@ if (opposite) {
     end
 
     it "returns 404 status code" do
-      last_response.should be_not_found
+      expect(last_response).to be_not_found
     end
 
     it "sends the correct Content-Type header" do
-      last_response["Content-Type"].should == "text/html;charset=utf-8"
+      expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
     end
 
     it "sends the correct body content" do
-      last_response.body.should == <<-EXPECTED
+      expect(last_response.body).to eq <<-EXPECTED
 <!DOCTYPE html>
 <html>
   <head>
@@ -293,15 +293,15 @@ if (opposite) {
       end
 
       it "returns 200 status code" do
-        last_response.should be_ok
+        expect(last_response).to be_ok
       end
 
       it "sends the correct Content-Type header" do
-        last_response["Content-Type"].should == "text/html;charset=utf-8"
+        expect(last_response["Content-Type"]).to eq("text/html;charset=utf-8")
       end
 
       it "sends the correct body content" do
-        last_response.body.should == "/javascripts/addition.js isolated and handled"
+        expect(last_response.body).to eq("/javascripts/addition.js isolated and handled")
       end
     end
   end
