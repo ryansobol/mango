@@ -24,6 +24,10 @@
 * Announce the switch to FerVer in README.md [GH#102](https://github.com/ryansobol/mango/issues/102)
 * Announce the upcoming release in README.md [GH#112](https://github.com/ryansobol/mango/issues/112)
 
+### Integration
+
+* Integrate with Wercker (and downgrade bundler to v1.6.2) [GH#70](https://github.com/ryansobol/mango/issues/70)
+
 ### Legal
 
 * Update the copyright year [GH#109](https://github.com/ryansobol/mango/issues/109)

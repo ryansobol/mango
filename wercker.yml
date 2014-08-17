@@ -1,0 +1,11 @@
+box: wercker/rvm
+build:
+  steps:
+    - rvm-use:
+        version: 2.1.2
+
+    - bundle-install
+
+    - script:
+        name: rspec
+        code: bundle exec rspec
