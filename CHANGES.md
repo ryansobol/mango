@@ -24,6 +24,7 @@
 * Lowercase all the section headers of README.md [GH#106](https://github.com/ryansobol/mango/issues/106)
 * Announce the switch to FerVer in README.md [GH#102](https://github.com/ryansobol/mango/issues/102)
 * Remove the Extending section of the README.md [GH#73](https://github.com/ryansobol/mango/issues/73)
+* Remove the Deploying to non-Heroku sub-sections in README.md [GH#113](https://github.com/ryansobol/mango/issues/113)
 
 ### Integration
 

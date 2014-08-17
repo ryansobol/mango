@@ -340,14 +340,6 @@ Now, bask in the glory of your live website in the cloud.
 
 **TIP:** Like the entire the platform, the `heroku` command-line tool has [great documentation](http://docs.heroku.com/heroku-command).
 
-### Deploying to a single target with secure FTP uploads
-
-Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/4).
-
-### Deploying to multiple targets with Capistrano
-
-Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/5).
-
 
 Philosophy
 ----------
