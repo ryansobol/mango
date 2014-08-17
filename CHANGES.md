@@ -25,6 +25,7 @@
 * Announce the switch to FerVer in README.md [GH#102](https://github.com/ryansobol/mango/issues/102)
 * Remove the Extending section of the README.md [GH#73](https://github.com/ryansobol/mango/issues/73)
 * Remove the Deploying to non-Heroku sub-sections in README.md [GH#113](https://github.com/ryansobol/mango/issues/113)
+* Remove the Theming section of the README.md [GH#3](https://github.com/ryansobol/mango/issues/3)
 
 ### Integration
 

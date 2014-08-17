@@ -302,10 +302,6 @@ Calling `<%= page.content %>` in a view template would yield:
 
     <h2>You did it!</h2>
 
-Theming
--------
-
-Coming soon.  [Patches are welcome](https://github.com/ryansobol/mango/issues#issue/3).
 
 Publishing
 ----------
