@@ -75,31 +75,31 @@ With Mango and server-side processing you can:
 
 Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/).  In concert with Bundler, upgrading a Mango website is painless and backwards-compatible between patch releases.
 
-REQUIREMENTS
+Dependencies
 ------------
 
 **Mango respects [Semantic Versioning](http://semver.org/).**
 
-### Minimum required dependencies
+### Runtime
 
-  * [Ruby](http://www.ruby-lang.org/) 2.1.0
-  * [RubyGems](https://rubygems.org/) 2.2.0 (bundled with Ruby)
-  * [Bundler](http://bundler.io/) 1.3.5
-  * [Thor](https://github.com/wycats/thor) 0.18.1
-  * [Sinatra](http://www.sinatrarb.com/) 1.4.5
-  * [Haml](http://haml-lang.com/) 4.0.4
-  * [Sass](http://sass-lang.com/) 3.2.13
-  * [BlueCloth](http://deveiate.org/projects/BlueCloth) 2.2.0
-  * [Liquid](http://www.liquidmarkup.org/) 2.6.0
-  * [CoffeeScript](http://jashkenas.github.com/coffee-script/) 2.2.0
-  * [Foreman](https://github.com/ddollar/foreman) 0.63.0
-  * [Puma](http://puma.io/) 2.7.1
+  * [Ruby](http://www.ruby-lang.org/)
+  * [RubyGems](https://rubygems.org/)
+  * [Bundler](http://bundler.io/)
+  * [Sinatra](http://www.sinatrarb.com/)
+  * [Thor](https://github.com/wycats/thor)
+  * [Haml](http://haml-lang.com/)
+  * [Sass](http://sass-lang.com/)
+  * [BlueCloth](http://deveiate.org/projects/BlueCloth)
+  * [Liquid](http://www.liquidmarkup.org/)
+  * [CoffeeScript](http://jashkenas.github.com/coffee-script/)
+  * [Foreman](https://github.com/ddollar/foreman)
+  * [Puma](http://puma.io/)
 
-### Minimum development dependencies
+### Development
 
-  * [Rack::Test](https://github.com/brynary/rack-test) 0.6.2
-  * [RSpec](http://rspec.info/) 2.14.1
-  * [YARD](http://yardoc.org/) 0.8.7.3
+  * [Rack::Test](https://github.com/brynary/rack-test)
+  * [RSpec](http://rspec.info/)
+  * [YARD](http://yardoc.org/)
 
 
 INSTALLING
