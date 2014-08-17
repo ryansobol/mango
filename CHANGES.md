@@ -32,7 +32,6 @@
 ### Legal
 
 * Update the copyright year [GH#109](https://github.com/ryansobol/mango/issues/109)
-* Update the copyright year [GH#109](https://github.com/ryansobol/mango/issues/109)
 
 
 ## v0.8.0 / 2013-12-30
