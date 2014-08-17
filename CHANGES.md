@@ -16,13 +16,13 @@
 * Upgrade bundler to v1.7.0 [GH#108](https://github.com/ryansobol/mango/issues/108)
 * Upgrade rspec to v3.0.0 [GH#110](https://github.com/ryansobol/mango/issues/110)
 * Upgrade yard to v0.8.7.4 [GH#111](https://github.com/ryansobol/mango/issues/111)
+* Upgrade mango to v0.9.0 [GH#112](https://github.com/ryansobol/mango/issues/112)
 
 ### Documentation
 
 * Refactor Dependencies section in README.md [GH#105](https://github.com/ryansobol/mango/issues/105)
 * Lowercase all the section headers of README.md [GH#106](https://github.com/ryansobol/mango/issues/106)
 * Announce the switch to FerVer in README.md [GH#102](https://github.com/ryansobol/mango/issues/102)
-* Announce the upcoming release in README.md [GH#112](https://github.com/ryansobol/mango/issues/112)
 
 ### Integration
 
