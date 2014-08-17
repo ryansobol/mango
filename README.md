@@ -1,7 +1,7 @@
 Mango release 0.8.0 (2013-12-30)
 ================================
 
-Copyright (c) 2013 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
+Copyright (c) 2014 Ryan Sobol. Licensed under the MIT license.  Please see the {file:LICENSE} for more information.
 
   * **Demo Application** : [http://mango-fireworks.heroku.com/](http://mango-fireworks.heroku.com/)
   * **Source Code**: [https://github.com/ryansobol/mango](https://github.com/ryansobol/mango)

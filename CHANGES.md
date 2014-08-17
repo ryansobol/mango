@@ -20,6 +20,11 @@
 * Refactor Dependencies section in README.md [GH#105](https://github.com/ryansobol/mango/issues/105)
 * Lowercase all the section headers of README.md [GH#106](https://github.com/ryansobol/mango/issues/106)
 
+### Legal
+
+* Update the copyright year [GH#109](https://github.com/ryansobol/mango/issues/109)
+* Update the copyright year [GH#109](https://github.com/ryansobol/mango/issues/109)
+
 
 ## v0.8.0 / 2013-12-30
 
