@@ -27,6 +27,7 @@
 ### Integration
 
 * Integrate with Wercker (and downgrade bundler to v1.6.2) [GH#70](https://github.com/ryansobol/mango/issues/70)
+* Integrate with Code Climate [GH#7](https://github.com/ryansobol/mango/issues/7)
 
 ### Legal
 
