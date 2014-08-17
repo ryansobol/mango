@@ -22,6 +22,7 @@
 * Refactor Dependencies section in README.md [GH#105](https://github.com/ryansobol/mango/issues/105)
 * Lowercase all the section headers of README.md [GH#106](https://github.com/ryansobol/mango/issues/106)
 * Announce the switch to FerVer in README.md [GH#102](https://github.com/ryansobol/mango/issues/102)
+* Announce the upcoming release in README.md [GH#112](https://github.com/ryansobol/mango/issues/112)
 
 ### Legal
 
