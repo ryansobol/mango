@@ -73,12 +73,10 @@ With Mango and server-side processing you can:
 
 ### Easy to maintain
 
-Mango is distributed as a RubyGem and respects [Semantic Versioning](http://semver.org/).  In concert with Bundler, upgrading a Mango website is painless and backwards-compatible between patch releases.
+Mango is distributed as a RubyGem and utilizes [Fear-Driven Versioning](https://github.com/jonathanong/ferver), a versioning scheme for those who only care about breaking changes.
 
 Dependencies
 ------------
-
-**Mango respects [Semantic Versioning](http://semver.org/).**
 
 ### Runtime
 
