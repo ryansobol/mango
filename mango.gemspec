@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = ["~> 2.1", ">= 2.1.2"]
   s.required_rubygems_version = ["~> 2.2", ">= 2.2.2"]
 
-  s.add_runtime_dependency "bundler",       "~> 1.3",   ">= 1.3.5"
+  s.add_runtime_dependency "bundler",       "~> 1.7",   ">= 1.7.0"
   s.add_runtime_dependency "thor",          "~> 0.18",  ">= 0.18.1"
   s.add_runtime_dependency "sinatra",       "~> 1.4",   ">= 1.4.5"
   s.add_runtime_dependency "haml",          "~> 4.0",   ">= 4.0.4"

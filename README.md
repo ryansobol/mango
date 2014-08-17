@@ -119,7 +119,7 @@ I highly recommend installing Ruby with a [version management tool](https://www.
 I also highly recommend using [Bundler](http://bundler.io/) to install Mango and it's gem dependencies.
 
     $ bundle -v
-    Bundler version 1.3.5
+    Bundler version 1.7.0
 
 ### Creating a new app
 
