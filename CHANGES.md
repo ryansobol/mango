@@ -1,5 +1,13 @@
 # CHANGES
 
+## v0.10.0 / Not Yet Released
+
+[Full changes](https://github.com/ryansobol/mango/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* Remove Mango::Runner [GH#116](https://github.com/ryansobol/mango/issues/116)
+
 ## v0.9.0 / 2014-08-17
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.8.0...v0.9.0)

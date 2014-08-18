@@ -88,7 +88,6 @@ Dependencies
   * [RubyGems](https://rubygems.org/)
   * [Bundler](http://bundler.io/)
   * [Sinatra](http://www.sinatrarb.com/)
-  * [Thor](https://github.com/wycats/thor)
   * [Haml](http://haml-lang.com/)
   * [Sass](http://sass-lang.com/)
   * [BlueCloth](http://deveiate.org/projects/BlueCloth)
