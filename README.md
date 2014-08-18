@@ -133,8 +133,8 @@ First, create a new directory for your app.
 Then, create a `Gemfile` wit the following contents:
 
     source "http://rubygems.org"
-    ruby "2.1.0"
-    gem "mango", "~> 0.8.0"
+    ruby "2.1.2"
+    gem "mango", "~> 0.9.0"
 
 ### Installing the Mango gem
 

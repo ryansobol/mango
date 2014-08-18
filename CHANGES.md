@@ -17,6 +17,7 @@
 * Upgrade rspec to v3.0.0 [GH#110](https://github.com/ryansobol/mango/issues/110)
 * Upgrade yard to v0.8.7.4 [GH#111](https://github.com/ryansobol/mango/issues/111)
 * Upgrade mango to v0.9.0 [GH#112](https://github.com/ryansobol/mango/issues/112)
+* Update app dependencies [GH#114](https://github.com/ryansobol/mango/issues/114)
 
 ### Documentation
 

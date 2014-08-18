@@ -80,8 +80,8 @@ run Mango::Application
       expect(expected).to be_a_file
       expect(File.read(expected)).to eq <<-EOS
 source "http://rubygems.org"
-ruby "2.1.0"
-gem "mango", "~> 0.8.0"
+ruby "2.1.2"
+gem "mango", "~> 0.9.0"
       EOS
     end
 
