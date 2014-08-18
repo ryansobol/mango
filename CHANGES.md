@@ -8,6 +8,8 @@
 
 * Remove Mango::Runner [GH#116](https://github.com/ryansobol/mango/issues/116)
 * Remove Gem::Specification [GH#117](https://github.com/ryansobol/mango/issues/117)
+* Remove Rakefile [GH#118](https://github.com/ryansobol/mango/issues/118)
+
 
 ## v0.9.0 / 2014-08-17
 
