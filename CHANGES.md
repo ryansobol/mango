@@ -13,6 +13,7 @@
 * Remove the Dependencies section of README.md [GH#125](https://github.com/ryansobol/mango/issues/125)
 * Remove the Philosophy section of README.md [GH#126](https://github.com/ryansobol/mango/issues/126)
 * Merge Synopsis and Features section of README.md [GH#127](https://github.com/ryansobol/mango/issues/127)
+* Extract content from README.md [GH#128](https://github.com/ryansobol/mango/issues/128)
 
 ### Features
 
