@@ -11,6 +11,7 @@
 * Remove Rakefile [GH#118](https://github.com/ryansobol/mango/issues/118)
 * Load dependencies with bundler [GH#119](https://github.com/ryansobol/mango/issues/119)
 * Remove version.rb [GH#120](https://github.com/ryansobol/mango/issues/120)
+* Create a development and production Gem group [GH#121](https://github.com/ryansobol/mango/issues/121)
 
 
 ## v0.9.0 / 2014-08-17
