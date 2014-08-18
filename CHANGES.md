@@ -7,6 +7,7 @@
 ### Documentation
 
 * Remove the Dependencies section of README.md [GH#125](https://github.com/ryansobol/mango/issues/125)
+* Remove the Philosophy section of README.md [GH#126](https://github.com/ryansobol/mango/issues/126)
 
 ### Features
 

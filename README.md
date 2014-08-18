@@ -313,17 +313,6 @@ Now, bask in the glory of your live website in the cloud.
 **TIP:** Like the entire the platform, the `heroku` command-line tool has [great documentation](http://docs.heroku.com/heroku-command).
 
 
-Philosophy
-----------
-
-### Painless collaboration
-
-Mango is designed to make life easier for small, integrated teams.  They prefer tools that allow for shared access to the same resources and for processes that provide instantaneous feedback.
-
-### Harness the power of the Ruby toolbox
-
-The Ruby on Rails revolution has arrived.  The world's next-generation web applications are built with powerful tools from the Ruby eco-system.  Mango is designed to harness this power, but delivered in a smaller package to meet the needs of simpler websites.
-
 Contributing
 ------------
 
