@@ -79,29 +79,6 @@ With Mango and server-side processing you can:
 
 Mango is distributed as a RubyGem and utilizes [Fear-Driven Versioning](https://github.com/jonathanong/ferver), a versioning scheme for those who only care about breaking changes.
 
-Dependencies
-------------
-
-### Runtime
-
-  * [Ruby](http://www.ruby-lang.org/)
-  * [RubyGems](https://rubygems.org/)
-  * [Bundler](http://bundler.io/)
-  * [Sinatra](http://www.sinatrarb.com/)
-  * [Haml](http://haml-lang.com/)
-  * [Sass](http://sass-lang.com/)
-  * [BlueCloth](http://deveiate.org/projects/BlueCloth)
-  * [Liquid](http://www.liquidmarkup.org/)
-  * [CoffeeScript](http://jashkenas.github.com/coffee-script/)
-  * [Foreman](https://github.com/ddollar/foreman)
-  * [Puma](http://puma.io/)
-
-### Development
-
-  * [Rack::Test](https://github.com/brynary/rack-test)
-  * [RSpec](http://rspec.info/)
-  * [YARD](http://yardoc.org/)
-
 
 Installing
 ----------

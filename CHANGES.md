@@ -4,6 +4,10 @@
 
 [Full changes](https://github.com/ryansobol/mango/compare/v0.9.0...v0.10.0)
 
+### Documentation
+
+* Remove the Dependencies section of README.md [GH#125](https://github.com/ryansobol/mango/issues/125)
+
 ### Features
 
 * Remove Mango::Runner [GH#116](https://github.com/ryansobol/mango/issues/116)
