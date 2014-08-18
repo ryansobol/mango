@@ -13,6 +13,7 @@
 * Remove version.rb [GH#120](https://github.com/ryansobol/mango/issues/120)
 * Create a development and production Gem group [GH#121](https://github.com/ryansobol/mango/issues/121)
 * Clean up .gitignore [GH#122](https://github.com/ryansobol/mango/issues/122)
+* Integrate with foreman and puma [GH#123](https://github.com/ryansobol/mango/issues/123)
 
 
 ## v0.9.0 / 2014-08-17
