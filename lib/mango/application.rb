@@ -1,10 +1,4 @@
-require "sinatra/base"
-require "haml"
-require "sass"
 require "erb"
-require "liquid"
-require "bluecloth"
-require "coffee_script"
 
 module Mango
   # It's probably no surprise that `Mango::Application` is a modular **application controller**

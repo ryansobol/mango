@@ -1,4 +1,5 @@
-require "bundler/setup"
+require "bundler"
+Bundler.require
 
 require_relative "mango/version"
 require_relative "mango/core_ext/string"
