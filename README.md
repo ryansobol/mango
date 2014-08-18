@@ -18,11 +18,6 @@ Synopsis
 
 **Mango is a dynamic, database-free, and open source website framework that is designed to make life easier for small teams of developers, designers, and writers.**
 
-Features
---------
-
-Mango eliminates the barriers to collaboration by decoupling from one another the activities of writing, theming, publishing, extending, and maintaining a website.  Mango websites are also decoupled from a database, and instead utilize file-based storage and "convention over configuration".
-
 ### Easy to write
 
 Writing and revising copy using the clunky administrator interface of a CMS is painful.  Which is why it's common for people to work in a text editor and then copy-and-paste their changes back into the CMS.
