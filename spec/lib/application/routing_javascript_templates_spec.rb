@@ -8,8 +8,6 @@ describe Mango::Application do
     Mango::Application
   end
 
-  #################################################################################################
-
   describe "GET /javascripts/siblings.js" do
     before(:all) do
       get "/javascripts/siblings.js"
@@ -44,8 +42,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /javascripts/songs/happy.js" do
     before(:all) do
       get "/javascripts/songs/happy.js"
@@ -73,8 +69,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /javascripts/econ.js" do
     before(:all) do
@@ -105,8 +99,6 @@ if (this.studyingEconomics) {
     end
   end
 
-  #################################################################################################
-
   describe "GET /javascripts/override.js" do
     before(:all) do
       get "/javascripts/override.js"
@@ -124,8 +116,6 @@ if (this.studyingEconomics) {
       expect(last_response.body).to eq("var bitlist = [1, 0, 1, 0, 0, 1, 1, 1, 0];\n")
     end
   end
-
-  #################################################################################################
 
   describe "GET /root.js" do
     before(:all) do
@@ -153,8 +143,6 @@ var yearsOld = {
     end
   end
 
-  #################################################################################################
-
   describe "GET /javascripts/math/opposite.js" do
     before(:all) do
       get "/javascripts/math/opposite.js"
@@ -181,8 +169,6 @@ if (opposite) {
       expect(last_response.body).to eq(expected)
     end
   end
-
-  #################################################################################################
 
   describe "GET /javascripts/not_found.js" do
     before(:all) do
@@ -214,8 +200,6 @@ if (opposite) {
     end
   end
 
-  #################################################################################################
-
   describe "GET /siblings.js" do
     before(:all) do
       get "/siblings.js"
@@ -246,8 +230,6 @@ if (opposite) {
     end
   end
 
-  #################################################################################################
-
   describe "GET /javascripts/../security_hole.js" do
     before(:all) do
       get "/javascripts/../security_hole.js"
@@ -277,8 +259,6 @@ if (opposite) {
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   context "given an additional GET route handler to Mango::Application" do
     class Mango::Application

@@ -31,8 +31,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "constants" do
     it "defines JAVASCRIPT_TEMPLATE_ENGINES" do
       expect(Mango::Application::JAVASCRIPT_TEMPLATE_ENGINES).to eq({

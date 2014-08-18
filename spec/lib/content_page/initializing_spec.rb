@@ -91,8 +91,6 @@ content: Will also not persist
     end
   end
 
-  #################################################################################################
-
   describe "given data with header and Markdown body, using the Markdown engine" do
     before(:all) do
       @expected_data = <<-EOS
@@ -134,8 +132,6 @@ view: blog.haml
       expect(@page.content).to eq("<h3>Sweet and crumbly!</h3>")
     end
   end
-
-  #################################################################################################
 
   describe "given data with header and ERB body, using the ERB engine" do
     before(:all) do
@@ -231,8 +227,6 @@ view: blog.haml
       EOS
     end
   end
-
-  #################################################################################################
 
   describe "given data with header and Liquid body, using the Liquid engine" do
     before(:all) do
@@ -335,8 +329,6 @@ view: blog.liquid
     end
   end
 
-  #################################################################################################
-
   describe "given data with header only, using the default engine" do
     before(:all) do
       @expected_data = <<-EOS
@@ -377,8 +369,6 @@ view: blog.haml
     end
   end
 
-  #################################################################################################
-
   describe "given data with Markdown body only, using the default engine" do
     before(:all) do
       @expected_data = <<-EOS
@@ -411,8 +401,6 @@ EOS
       expect(@page.content).to eq("<h3>So delicious!</h3>")
     end
   end
-
-  #################################################################################################
 
   describe "given data with empty header only, using the default engine" do
     before(:all) do
@@ -452,8 +440,6 @@ EOS
     end
   end
 
-  #################################################################################################
-
   describe "given no data" do
     before(:all) do
       @page = Mango::ContentPage.new
@@ -488,8 +474,6 @@ EOS
     end
   end
 
-  #################################################################################################
-
   describe "given data with an invalid title attribute within the header" do
     before(:all) do
       @expected_data = <<-EOS
@@ -506,8 +490,6 @@ EOS
       }.to raise_exception(Mango::ContentPage::InvalidHeaderError, expected_message)
     end
   end
-
-  #################################################################################################
 
   describe "given data with an invalid header" do
     before(:all) do
@@ -526,8 +508,6 @@ EOS
     end
   end
 
-  #################################################################################################
-
   describe "given no data, using an unknown engine" do
     before(:all) do
       @unknown_engine = :unknown
@@ -540,8 +520,6 @@ EOS
       }.to raise_exception(ArgumentError, expected_message)
     end
   end
-
-  #################################################################################################
 
   describe "given data with seasonable Markdown body, using the default engine" do
     before(:all) do

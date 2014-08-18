@@ -8,8 +8,6 @@ describe Mango::Application do
     Mango::Application
   end
 
-  #################################################################################################
-
   describe "GET /robots.txt" do
     before(:all) do
       get "/robots.txt"
@@ -30,8 +28,6 @@ Disallow: /cgi-bin/
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /images/" do
     before(:all) do
@@ -61,8 +57,6 @@ Disallow: /cgi-bin/
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /" do
     before(:all) do
@@ -102,8 +96,6 @@ Disallow: /cgi-bin/
     end
   end
 
-  #################################################################################################
-
   describe "GET /images/ripe-mango.jpg" do
     before(:all) do
       get "/images/ripe-mango.jpg"
@@ -122,8 +114,6 @@ Disallow: /cgi-bin/
       expect(last_response.body).to eq(File.open(content_path, "rb").read)
     end
   end
-
-  #################################################################################################
 
   describe "GET /override" do
     before(:all) do
@@ -153,8 +143,6 @@ Disallow: /cgi-bin/
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   # see http://bit.ly/9kLBDx
   describe "GET /images/" do
@@ -186,8 +174,6 @@ Disallow: /cgi-bin/
     end
   end
 
-  #################################################################################################
-
   describe "GET /../security_hole.txt" do
     before(:all) do
       get "/../security_hole.txt"
@@ -217,5 +203,4 @@ Disallow: /cgi-bin/
       EXPECTED
     end
   end
-
 end

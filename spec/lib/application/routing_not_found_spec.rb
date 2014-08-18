@@ -8,7 +8,6 @@ describe Mango::Application do
     Mango::Application
   end
 
-  #################################################################################################
 
   describe "not_found" do
     describe "with an HTML file" do
@@ -40,8 +39,6 @@ describe Mango::Application do
         EXPECTED
       end
     end
-
-    ###############################################################################################
 
     describe "with a Haml template" do
       before(:all) do
@@ -86,8 +83,6 @@ describe Mango::Application do
         EXPECTED
       end
     end
-
-    ###############################################################################################
 
     describe "with an ERB template" do
       before(:all) do
@@ -145,8 +140,6 @@ describe Mango::Application do
       end
     end
 
-    ###############################################################################################
-
     describe "with a Liquid template" do
       before(:all) do
         %w(html).each do |extension|
@@ -202,8 +195,6 @@ describe Mango::Application do
         EXPECTED
       end
     end
-
-    ###############################################################################################
 
     describe "with no templates" do
       before(:all) do

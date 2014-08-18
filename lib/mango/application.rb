@@ -208,8 +208,6 @@ module Mango
       Tilt::LiquidTemplate => :liquid
     }
 
-    ###############################################################################################
-
     private
 
     # Renders a 404 page with a 404 HTTP response code.
@@ -288,8 +286,6 @@ module Mango
       end
     end
 
-    ###############################################################################################
-
     # Attempts to render JavaScript templates found within `settings.javascripts`
     #
     # First, the application attempts to match the URI path with a public JavaScript file stored in
@@ -361,8 +357,6 @@ module Mango
       end
     end
 
-    ###############################################################################################
-
     # Attempts to render stylesheet templates found within `settings.stylesheets`
     #
     # First, the application attempts to match the URI path with a public stylesheet file stored in
@@ -430,8 +424,6 @@ module Mango
         end
       end
     end
-
-    ###############################################################################################
 
     # Attempts to render content page templates found within `settings.content`
     #

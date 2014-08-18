@@ -8,8 +8,6 @@ describe Mango::Application do
     Mango::Application
   end
 
-  #################################################################################################
-
   describe "GET (empty String)" do
     before(:all) do
       get ""
@@ -42,8 +40,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /" do
     before(:all) do
@@ -78,8 +74,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /index" do
     before(:all) do
       get "/index"
@@ -112,8 +106,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /index?foo=bar" do
     before(:all) do
@@ -148,8 +140,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /about/" do
     before(:all) do
       get "/about/"
@@ -182,8 +172,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /about/index" do
     before(:all) do
@@ -218,8 +206,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /about/us" do
     before(:all) do
       get "/about/us"
@@ -252,8 +238,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /articles/index" do
     before(:all) do
@@ -290,8 +274,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /turner%2Bhooch" do
     before(:all) do
       get "/turner%2Bhooch"
@@ -324,8 +306,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /view_engines/erb" do
     before(:all) do
@@ -362,8 +342,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /view_engines/liquid" do
     before(:all) do
@@ -402,8 +380,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /page_not_found" do
     before(:all) do
       get "/page_not_found"
@@ -434,8 +410,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /page_with_unregistered_view" do
     it "raises an exception" do
       path    = FIXTURE_ROOT + "themes/default/views/unregistered.extension"
@@ -446,8 +420,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /page_with_missing_view" do
     it "raises an exception" do
       path    = FIXTURE_ROOT + "themes/default/views/missing.haml"
@@ -457,8 +429,6 @@ describe Mango::Application do
       }.to raise_exception(Mango::Application::ViewTemplateNotFound, message)
     end
   end
-
-  #################################################################################################
 
   describe "GET /../security_hole" do
     before(:all) do
@@ -489,8 +459,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /engines/haml" do
     before(:all) do
@@ -526,8 +494,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /engines/md" do
     before(:all) do
       get "/engines/md"
@@ -561,8 +527,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /engines/mkd" do
     before(:all) do
       get "/engines/mkd"
@@ -595,8 +559,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /engines/erb" do
     before(:all) do
@@ -632,8 +594,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /engines/liquid" do
     before(:all) do
       get "/engines/liquid"
@@ -667,8 +627,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   context "given an additional GET route handler to Mango::Application" do
     class Mango::Application

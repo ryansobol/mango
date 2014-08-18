@@ -9,8 +9,6 @@ describe URI, ".directory?(uri_path)" do
     end
   end
 
-  #################################################################################################
-
   context "given a URI path of /" do
     let(:uri_path) { "/" }
 
@@ -19,8 +17,6 @@ describe URI, ".directory?(uri_path)" do
     end
   end
 
-  #################################################################################################
-
   context "given a URI path of /images/" do
     let(:uri_path) {  "/images/" }
 
@@ -28,8 +24,6 @@ describe URI, ".directory?(uri_path)" do
       expect(URI.directory?(uri_path)).to be_truthy
     end
   end
-
-  #################################################################################################
 
   context "given a URI path of /images" do
     let(:uri_path) {  "/images" }

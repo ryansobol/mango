@@ -42,8 +42,6 @@ describe Mango::FlavoredMarkdown do
     end
   end
 
-  #################################################################################################
-
   describe ".shake!" do
     before(:all) do
       @original_data = "foo_bar_baz"

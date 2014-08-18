@@ -19,8 +19,6 @@ describe Mango::ContentPage do
     end
   end
 
-  #################################################################################################
-
   describe "attribute syntactic sugar" do
     before(:all) do
       data = <<-EOS

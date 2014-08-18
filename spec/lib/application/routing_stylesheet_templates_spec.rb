@@ -8,8 +8,6 @@ describe Mango::Application do
     Mango::Application
   end
 
-  #################################################################################################
-
   describe "GET /stylesheets/sass.css" do
     before(:all) do
       get "/stylesheets/sass.css"
@@ -39,8 +37,6 @@ describe Mango::Application do
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /stylesheets/scss.css" do
     before(:all) do
@@ -72,8 +68,6 @@ describe Mango::Application do
     end
   end
 
-  #################################################################################################
-
   describe "GET /stylesheets/subfolder/screen.css" do
     before(:all) do
       get "/stylesheets/subfolder/screen.css"
@@ -101,8 +95,6 @@ li {
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /stylesheets/reset.css" do
     before(:all) do
@@ -150,8 +142,6 @@ time, mark, audio, video {
     end
   end
 
-  #################################################################################################
-
   describe "GET /stylesheets/override.css" do
     before(:all) do
       get "/stylesheets/override.css"
@@ -173,8 +163,6 @@ time, mark, audio, video {
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /default.css" do
     before(:all) do
@@ -198,8 +186,6 @@ time, mark, audio, video {
     end
   end
 
-  #################################################################################################
-
   describe "GET /stylesheets/subfolder/another.css" do
     before(:all) do
       get "/stylesheets/subfolder/another.css"
@@ -221,8 +207,6 @@ time, mark, audio, video {
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   describe "GET /stylesheets/not_found.css" do
     before(:all) do
@@ -254,8 +238,6 @@ time, mark, audio, video {
     end
   end
 
-  #################################################################################################
-
   describe "GET /screen.css" do
     before(:all) do
       get "/screen.css"
@@ -286,8 +268,6 @@ time, mark, audio, video {
     end
   end
 
-  #################################################################################################
-
   describe "GET /stylesheets/../security_hole.css" do
     before(:all) do
       get "/stylesheets/../security_hole.css"
@@ -317,8 +297,6 @@ time, mark, audio, video {
       EXPECTED
     end
   end
-
-  #################################################################################################
 
   context "given an additional GET route handler to Mango::Application" do
     class Mango::Application
