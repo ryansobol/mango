@@ -1,5 +1,5 @@
-Mango release 0.9.0 (Not Yet Released)
-======================================
+Mango release 0.9.0 (2014-08-17)
+================================
 
 [![wercker status](https://app.wercker.com/status/5e6e1fb104563cbb7829be1eb63e14fc/s/master "wercker status")](https://app.wercker.com/project/bykey/5e6e1fb104563cbb7829be1eb63e14fc)
 
